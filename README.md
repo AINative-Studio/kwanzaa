@@ -1,4 +1,3 @@
-````markdown
 # 🕯️ Kwanzaa Model — First Fruits for AI
 
 **First Fruits for AI — grounded knowledge, cultural integrity, and community power.**
