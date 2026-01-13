@@ -1,4 +1,3 @@
-```markdown
 # Kwanzaa RAG Chatbot — ZeroDB Data Model (MVP)
 
 ## Design Goals
@@ -333,5 +332,5 @@ Per-question results for citation coverage + retrieval hit rate.
 - This avoids duplicating the full corpus in SQL tables while still enabling UX + auditability.
 
 ---
-```
+
 
