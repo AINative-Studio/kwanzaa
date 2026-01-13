@@ -1,311 +1,219 @@
-# Data Ingest Plan
+# Data Ingestion Plan: Kwanzaa “First Fruits” Corpus
 
-**Leveraging the OnSide Personal Data Lakehouse + Agent Pipelines**
+**Goal:** Ingest a small, high-signal, provenance-rich public corpus quickly to demonstrate credibility, trust, and cultural integrity.
 
-## Strategic Reframe (Critical)
-
-We are **not building a new ingestion system**.
-
-We are **repurposing OnSide’s proven strengths**:
-
-* Multi-source data aggregation
-* Automated scraping & API ingestion
-* Normalization pipelines
-* Historical retention
-* AI-ready structuring
-* Agent-driven analysis loops
-
-**New framing:**
-
-> **OnSide = AINative’s Internal Data Acquisition + Scraping Engine**
-> ZeroDB = Long-term semantic memory + RAG layer
-
-OnSide gathers, cleans, and structures data.
-ZeroDB indexes, embeds, and serves it for reasoning.
+This plan is optimized for **speed, automation, and auditability** while remaining aligned with the **Nguzo Saba** and the 15-day MVP constraint.
 
 ---
 
-## How OnSide Fits the Cultural MVP (At a Systems Level)
+## Guiding Principles (Nguzo Saba → System Rules)
 
-### Existing OnSide Capabilities We Reuse
+### Umoja (Unity)
+- One **unified schema**
+- Consistent **namespace conventions**
+- Single ingestion manifest as the source of truth
 
-From the doc you shared, OnSide already supports:
+### Kujichagulia (Self-Determination)
+- Explicit disclosures of:
+  - What is included
+  - What is excluded
+  - What is incomplete
+- Users can see corpus boundaries clearly
 
-* Automated **web + content ingestion**
-* **Competitor content scraping**
-* **News monitoring**
-* **Content inventory creation**
-* **Topic clustering & semantic analysis**
-* **Historical backfill**
-* **Daily automated pipelines**
-* **Agent-first interaction model**
+### Ujima (Collective Work & Responsibility)
+- Repeatable ingestion workflows
+- Logged runs with timestamps and counts
+- Deterministic behavior (same input → same output)
 
-These map *directly* to what we need for cultural data.
+### Nia (Purpose)
+- Educational and research value prioritized over volume
+- Preference for primary or historically grounded sources
 
----
-
-## Revised Ingest Architecture (AINative + OnSide)
-
-```
-┌───────────────────────────────────────────┐
-│          PUBLIC / OPEN WEB SOURCES        │
-│  (archives, news, speeches, essays, etc.)│
-└─────────────────────┬─────────────────────┘
-                      ▼
-┌───────────────────────────────────────────┐
-│     ONSIDE INGEST & SCRAPE PIPELINES      │
-│                                           │
-│  • Source discovery                       │
-│  • Scheduled scraping                    │
-│  • Content extraction                    │
-│  • Normalization                          │
-│  • Metadata enrichment                   │
-│  • Historical backfill                   │
-└─────────────────────┬─────────────────────┘
-                      ▼
-┌───────────────────────────────────────────┐
-│        ONSIDE PERSONAL DATA LAKEHOUSE     │
-│  (internal AINative tenant / project)    │
-│                                           │
-│  • Raw → Clean → AI-ready layers          │
-│  • Full provenance                        │
-│  • Time-indexed                           │
-└─────────────────────┬─────────────────────┘
-                      ▼
-┌───────────────────────────────────────────┐
-│              ZeroDB                       │
-│                                           │
-│  • Chunking                               │
-│  • Embeddings                             │
-│  • Semantic search                        │
-│  • RAG                                   │
-│  • Citation surfacing                     │
-└───────────────────────────────────────────┘
-```
+### Imani (Faith)
+- Provenance is mandatory
+- Licenses are recorded and surfaced
+- No anonymous or unverifiable content
 
 ---
 
-## Persona-Driven Ingest Strategy (Using OnSide)
+## A) Data Scope (MVP)
 
-### Persona 1: Builders / Developers
+### Target Volume
+- **Documents:** 500–5,000
+- **Chunks:** 5,000–50,000
 
-**“Give me a culturally aware agent + RAG patterns”**
-
-#### How OnSide Helps
-
-* OnSide already:
-
-  * Crawls competitor content
-  * Tracks topic coverage
-  * Builds content inventories
-* We repurpose this to:
-
-  * Crawl *public cultural sources*
-  * Treat each source like a “competitor domain”
-  * Track topic clusters across sources
-
-#### Ingest Pattern
-
-* OnSide:
-
-  * Scrapes content pages
-  * Extracts text + metadata
-  * Groups by topic / theme
-* ZeroDB:
-
-  * Embeds cleaned content
-  * Enables RAG examples
-
-#### What This Proves
-
-* Developers see:
-
-  * A real, automated RAG pipeline
-  * How topic clustering feeds retrieval
-  * How agents reason over structured corpora
+This scope is:
+- Small enough to ingest and validate quickly
+- Large enough to demonstrate:
+  - citation reliability
+  - cross-source retrieval
+  - semantic depth
 
 ---
 
-### Persona 2: Educators / Students
+## B) Ingestion Workflow (MVP)
 
-**“Answer w/ citations and primary sources”**
+### Step 1 — Source List (“First Fruits Manifest”)
 
-#### How OnSide Helps
+Create a **single manifest file** that defines *all* ingestable sources.
 
-* OnSide already:
+**Manifest Fields**
+- `source_name`
+- `source_type` (archive, press, academic, curriculum, code, etc.)
+- `access_method` (API / bulk download / allowed scrape)
+- `license`
+- `canonical_url`
+- `priority` (P0 / P1 / P2)
+- `tags` (era, theme, geography, persona)
 
-  * Monitors news sources
-  * Stores historical content
-  * Preserves timestamps
-* We adapt this to:
-
-  * Monitor trusted public archives
-  * Backfill historical content
-  * Preserve source URLs + publish dates
-
-#### Ingest Pattern
-
-* OnSide:
-
-  * Pulls content on a schedule
-  * Captures original URLs, authors, dates
-* ZeroDB:
-
-  * Stores chunks with provenance
-  * Enforces citation-first RAG
-
-#### What This Proves
-
-* The system behaves like:
-
-  * An academic assistant
-  * A citation engine
-  * A trustworthy knowledge base
+> This manifest is the **single source of truth** for ingestion decisions.
 
 ---
 
-### Persona 3: Creators / Community
+### Step 2 — Metadata-First Import
 
-**“Generate prompts, speeches, explainers, curricula”**
+- Ingest **metadata + short text/snippets first**
+- Store immediately as ZeroDB documents
+- Enables:
+  - search
+  - filtering
+  - provenance UI
+  - early demo value
 
-#### How OnSide Helps
-
-* OnSide already:
-
-  * Analyzes content tone
-  * Identifies content gaps
-  * Generates content briefs
-* We reuse this to:
-
-  * Classify narrative content
-  * Preserve rhetorical structure
-  * Enable style-aware generation
-
-#### Ingest Pattern
-
-* OnSide:
-
-  * Extracts long-form content
-  * Tags themes, tone, audience
-* ZeroDB:
-
-  * Supports generative RAG prompts
-  * Optionally surfaces sources
-
-#### What This Proves
-
-* Culture is:
-
-  * Retrieved, not hallucinated
-  * Transformable, not distorted
-* Same data powers both facts *and* creativity
+**Outcome**
+- The system becomes usable *before* full text ingestion completes.
 
 ---
 
-### Persona 4: Researchers
+### Step 3 — Full-Text Expansion (Selective)
 
-**“Search across a curated corpus with provenance”**
+- Only **P0 sources** are expanded to full text during MVP
+- Process:
+  - fetch full text
+  - normalize
+  - chunk
+  - embed
+  - store in ZeroDB
 
-#### How OnSide Helps
-
-* OnSide already:
-
-  * Maintains a **lakehouse**
-  * Tracks historical changes
-  * Correlates across sources
-* We adapt this to:
-
-  * Maintain a metadata-first index
-  * Preserve long-term historical timelines
-
-#### Ingest Pattern
-
-* OnSide:
-
-  * Acts as the canonical record store
-  * Maintains clean, queryable metadata
-* ZeroDB:
-
-  * Provides semantic search + filters
-  * Exposes why results matched
-
-#### What This Proves
-
-* AINative + OnSide can function as:
-
-  * A discovery engine
-  * A research index
-  * A provenance-first AI system
+This keeps the corpus **high-signal and manageable**.
 
 ---
 
-## How OnSide Pipelines Map to Cultural Ingest
+### Step 4 — Daily Incremental Updates
 
-| OnSide Concept      | Cultural MVP Equivalent        |
-| ------------------- | ------------------------------ |
-| Competitor Domains  | Public archives / sites        |
-| Content Inventory   | Cultural corpus                |
-| News Monitoring     | Historical + current discourse |
-| Topic Clusters      | Themes / movements / eras      |
-| Historical Backfill | Archive ingestion              |
-| Daily Pipelines     | Incremental corpus growth      |
-| Agent Insights      | RAG + explanation layer        |
+- Re-run ingestion from the manifest daily
+- Behavior:
+  - append new records
+  - update metadata if changed
+  - do not silently overwrite historical records
 
-This is reuse, not reinvention.
-
----
-
-## Minimal Changes Required (Realistic)
-
-We **do not** need to rebuild OnSide.
-
-We only need:
-
-* A new internal “AINative Cultural Project” tenant
-* Source definitions pointed at public/open content
-* Slight schema extension for:
-
-  * license
-  * content_type
-  * canonical_source
-
-Everything else already exists conceptually.
+This supports:
+- reproducibility
+- auditability
+- future community contributions
 
 ---
 
-## What Agents Should Validate in the Codebase
+## C) Namespace Design (ZeroDB)
 
-Have agents confirm:
+Namespaces are **persona-aligned** and intentional.
 
-1. Existing scraping & crawling logic
-2. Content extraction & cleaning steps
-3. Topic clustering / semantic analysis
-4. Historical backfill support
-5. Scheduled ingestion workflows
-6. Data handoff points where ZeroDB can ingest
-7. Where provenance metadata already exists
+| Namespace | Primary Persona | Purpose |
+|---------|-----------------|---------|
+| `kwanzaa_primary_sources` | Educators / Students | Foundational texts with attribution |
+| `kwanzaa_black_press` | Researchers / Educators | Context, timelines, reportage |
+| `kwanzaa_speeches_letters` | Creators / Educators | Rhetorical and historical documents |
+| `kwanzaa_black_stem` | Researchers / Education | STEM history and contributions |
+| `kwanzaa_teaching_kits` | Creators / Educators | Curriculum-ready chunks |
+| `kwanzaa_dev_patterns` | Builders / Developers | RAG recipes, prompts, schemas |
 
-The question becomes:
-
-> **How fast can we point OnSide at cultural sources instead of SMB competitors?**
-
----
-
-## Why This Is a Strong Move Strategically
-
-* You showcase **two internal products working together**
-* You avoid one-off MVP hacks
-* You prove AINative can:
-
-  * ingest
-  * reason
-  * cite
-  * generate
-  * scale
-* You turn Black History Month into:
-
-  * a real platform demo
-  * not a marketing stunt
+Namespaces drive:
+- retrieval filtering
+- persona presets
+- citation enforcement rules
 
 ---
 
+## D) Required Metadata Schema (Provenance)
+
+**Every chunk must include the following fields:**
+
+- `source_org`
+- `collection`
+- `record_id`
+- `canonical_url`
+- `license`
+- `year`
+- `content_type`
+- `retrieved_at`
+- `chunk_index`
+
+> **Rule:**  
+> If provenance is missing or incomplete → **do not ingest**.
+
+This is non-negotiable and enforced at ingestion time.
+
+---
+
+## E) Persona-Based Ingestion Priorities
+
+### Builders / Developers
+- **Namespace:** `kwanzaa_dev_patterns`
+- **Content Focus:**
+  - RAG recipes
+  - example prompts
+  - schema docs
+- **Goal:** Demonstrate reusable cultural RAG patterns
+
+---
+
+### Educators / Students
+- **Namespaces:**  
+  - `kwanzaa_primary_sources`  
+  - `kwanzaa_speeches_letters`
+- **Content Focus:**
+  - primary texts
+  - dates
+  - authorship
+- **Goal:** Citation-first, classroom-safe answers
+
+---
+
+### Creators / Community
+- **Namespaces:**  
+  - `kwanzaa_speeches_letters`  
+  - `kwanzaa_teaching_kits`
+- **Content Focus:**
+  - rhetorical structure
+  - explainable historical context
+- **Goal:** Creative synthesis without hallucination
+
+---
+
+### Researchers
+- **Namespaces:** All
+- **Requirements:**
+  - strict metadata completeness
+  - full filter support
+- **Content Focus:**
+  - metadata-first discovery
+  - provenance verification
+- **Goal:** Trustworthy semantic research
+
+---
+
+## F) Quality Gates (Fast, Automated)
+
+### Minimum Acceptance Criteria for Launch
+
+- **Citation Integrity**
+  - ≥90% of responses in educator/research modes:
+    - include citations **or**
+    - explicitly state “not in corpus”
+
+- **Provenance Completeness**
+  - 100% of chunks include all required metadata fields
+
+- **Demo Reliability**
+  - At least **10 demo-ready questions per persona**
+  - E
