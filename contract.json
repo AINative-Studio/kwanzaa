@@ -1,0 +1,125 @@
+```json
+{
+  "version": "kwanzaa.answer.v1",
+  "persona": "educator",
+  "model_mode": "base_adapter_rag",
+  "toggles": {
+    "require_citations": true,
+    "primary_sources_only": false,
+    "creative_mode": false
+  },
+
+  "answer": {
+    "text": "The Civil Rights Act of 1964 was a landmark federal law that prohibited discrimination based on race, color, religion, sex, or national origin in public accommodations, employment, and federally funded programs.",
+    "confidence": 0.92,
+    "tone": "neutral",
+    "completeness": "partial"
+  },
+
+  "sources": [
+    {
+      "citation_label": "National Archives (1964) — Civil Rights Act",
+      "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+      "source_org": "National Archives",
+      "year": 1964,
+      "content_type": "proclamation",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "doc_id": "nara_cra_1964",
+      "chunk_id": "nara_cra_1964::chunk::3"
+    }
+  ],
+
+  "retrieval_summary": {
+    "query": "What did the Civil Rights Act of 1964 prohibit?",
+    "top_k": 5,
+    "namespaces": [
+      "kwanzaa_primary_sources"
+    ],
+    "filters": {
+      "content_type": ["proclamation"],
+      "year_gte": 1960,
+      "year_lte": 1970
+    },
+    "results": [
+      {
+        "rank": 1,
+        "score": 0.93,
+        "snippet": "An Act to enforce the constitutional right to vote, to confer jurisdiction upon the district courts of the United States to provide injunctive relief against discrimination in public accommodations...",
+        "citation_label": "National Archives (1964) — Civil Rights Act",
+        "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+        "doc_id": "nara_cra_1964",
+        "chunk_id": "nara_cra_1964::chunk::3",
+        "namespace": "kwanzaa_primary_sources"
+      },
+      {
+        "rank": 2,
+        "score": 0.81,
+        "snippet": "The Civil Rights Act of 1964 outlawed major forms of discrimination against African Americans and women...",
+        "citation_label": "Library of Congress (1964) — Legislative Summary",
+        "canonical_url": "https://www.loc.gov/item/legis-summary-cra-1964",
+        "doc_id": "loc_legis_cra_1964",
+        "chunk_id": "loc_legis_cra_1964::chunk::1",
+        "namespace": "kwanzaa_primary_sources"
+      }
+    ]
+  },
+
+  "unknowns": {
+    "unsupported_claims": [],
+    "missing_context": [
+      "This corpus does not include detailed enforcement case law from 1965–1967."
+    ],
+    "clarifying_questions": []
+  },
+
+  "integrity": {
+    "citation_required": true,
+    "citations_provided": true,
+    "retrieval_confidence": "high",
+    "fallback_behavior": "not_needed"
+  },
+
+  "provenance": {
+    "generated_at": "2026-02-03T18:42:11Z",
+    "retrieval_run_id": "9b2d7cfa-cc5e-4a2b-9a6e-6c77f47a9c21",
+    "assistant_message_id": "c5f0a75e-4e5c-4a11-9f55-1b5b0a31d77e"
+  }
+}
+```
+
+---
+
+### Rendering Notes for AIKit
+
+* **Answer**
+
+  * Render `answer.text` as the main response
+  * Optionally display `confidence` as a badge or tooltip
+
+* **Sources**
+
+  * Render each entry in `sources` as a clickable citation
+  * Group by `source_org` or `namespace` if desired
+
+* **Retrieval Summary**
+
+  * Collapsible section
+  * Show `query`, `top_k`, filters
+  * Display top results with rank, score, snippet, and links
+
+* **Unknowns**
+
+  * Only render if any arrays are non-empty
+  * Use as a trust signal (“Here’s what’s missing or unclear”)
+
+* **Integrity**
+
+  * Can drive UI badges:
+
+    * “Citations required: ✓”
+    * “Retrieval confidence: High”
+
+---
+
+
