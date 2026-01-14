@@ -1,0 +1,146 @@
+[
+  {
+    "title": "Bootstrap repo structure and core docs",
+    "body": "Create initial repo structure: /docs, /data, /app, /scripts, /infra, /examples. Add placeholder README with project overview and personas.",
+    "labels": ["epic:bootstrap", "type:infra"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Add CONTRIBUTING, CODE_OF_CONDUCT, and LICENSE",
+    "body": "Add open-source friendly contribution docs, including expectations for data provenance and licensing.",
+    "labels": ["epic:bootstrap", "type:docs"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Define Kwanzaa brand constants and Nguzo Saba mapping",
+    "body": "Encode brand constants (name origin, tagline) and map Nguzo Saba principles to explicit product requirements.",
+    "labels": ["epic:branding", "type:product"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Define persona presets (builder, educator, creator, researcher)",
+    "body": "Create config-driven persona presets with defaults for citations_required, primary_sources_only, and creative_mode.",
+    "labels": ["epic:branding", "type:product"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Define answer_json response contract",
+    "body": "Define strict JSON schema for AI responses: Answer, Sources, RetrievalSummary, Unknowns. Must be renderable by AIKit.",
+    "labels": ["epic:product-contracts", "type:api"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Create ZeroDB table: kw_sources",
+    "body": "Table for source manifest registry with license, canonical_url, source_type, and access_method.",
+    "labels": ["epic:datamodel", "type:database"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Create ZeroDB table: kw_documents",
+    "body": "Document-level records including source_org, canonical_url, license, year, content_type.",
+    "labels": ["epic:datamodel", "type:database"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Create ZeroDB table: kw_chunks",
+    "body": "Chunk-level records with embeddings, provenance metadata, chunk_index, retrieved_at.",
+    "labels": ["epic:datamodel", "type:database"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Create ZeroDB table: kw_ingestion_runs",
+    "body": "Track ingestion jobs: run_id, source_name, counts, errors, timestamps.",
+    "labels": ["epic:datamodel", "type:database"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Define FirstFruitsManifest format",
+    "body": "Define manifest schema: source_name, source_type, access_method, license, canonical_url, priority, tags.",
+    "labels": ["epic:ingestion", "type:data"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Create initial P0 First Fruits manifest",
+    "body": "Add 10–25 high-signal, public-domain or permissively licensed sources focused on primary Black history materials.",
+    "labels": ["epic:ingestion", "type:data"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Implement metadata-first ingestion pipeline",
+    "body": "Ingest metadata + short snippets first into ZeroDB to enable fast search and provenance UI.",
+    "labels": ["epic:ingestion", "type:backend"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Implement selective full-text expansion for P0 sources",
+    "body": "Expand only P0 sources to full text, then chunk, embed, and store.",
+    "labels": ["epic:ingestion", "type:backend"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Finalize namespace strategy",
+    "body": "Create and document namespaces: kwanzaa_primary_sources, kwanzaa_black_press, kwanzaa_speeches_letters, kwanzaa_black_stem, kwanzaa_teaching_kits, kwanzaa_dev_patterns.",
+    "labels": ["epic:namespaces", "type:architecture"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Implement semantic search with provenance filters",
+    "body": "Enable search with filters for year, source_org, content_type, tags, and namespace.",
+    "labels": ["epic:search", "type:backend"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Build Kwanzaa Chat UI (AIKit)",
+    "body": "Chat UI with persona presets, mode toggles, and answer_json rendering.",
+    "labels": ["epic:ui", "type:frontend"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Implement RAG orchestration with citation enforcement",
+    "body": "Retrieve → inject context → generate. If citations_required and none retrieved, must refuse.",
+    "labels": ["epic:rag", "type:backend"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Implement 'Show Your Work' retrieval panel",
+    "body": "Display top retrieved chunks with scores, metadata, and canonical URLs.",
+    "labels": ["epic:ui", "type:frontend"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Define base model selection criteria (AI2-first)",
+    "body": "Document criteria: license, instruction-following, context length, JSON compliance, hosting cost.",
+    "labels": ["epic:modeling", "type:ml"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Prepare training dataset (citation + refusal + JSON)",
+    "body": "Create ≥120 training examples and 25–40 eval examples. Validate JSONL format.",
+    "labels": ["epic:training", "type:ml"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Run QLoRA adapter training (HF AutoTrain)",
+    "body": "Train adapter focused on citation-following, refusal, and strict answer_json output.",
+    "labels": ["epic:training", "type:ml"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Evaluate adapter (citation coverage + refusal correctness)",
+    "body": "Run eval harness and record metrics. Decide if second run needed.",
+    "labels": ["epic:evaluation", "type:ml"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Publish adapter artifact and dataset manifest",
+    "body": "Publish adapter weights, training config, dataset manifest, and reproducibility notes.",
+    "labels": ["epic:training", "type:release"],
+    "milestone": "Kwanzaa MVP"
+  },
+  {
+    "title": "Create demo scripts for all four personas",
+    "body": "Write demo walkthroughs with 10 demo-ready questions per persona.",
+    "labels": ["epic:launch", "type:docs"],
+    "milestone": "Kwanzaa MVP"
+  }
+]
