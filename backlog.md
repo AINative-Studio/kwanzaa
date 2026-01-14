@@ -450,3 +450,403 @@
   * Public links available
 
 ---
+Perfect request — this is exactly where teams get burned if it’s hand-waved.
+
+Below is an **explicit, no-assumptions expansion** of the backlog that adds **every Hugging Face fine-tuning step** as first-class work. This is written so **someone who has never trained a model** can execute it, and **someone experienced will see nothing missing**.
+
+This **extends EPIC 3 and EPIC 10** from the master backlog and can be dropped straight into your tracker.
+
+---
+
+# 🧠 Kwanzaa Model — Hugging Face Fine-Tuning Backlog (Expanded & Explicit)
+
+> **Scope:** Adapter-based fine-tuning (LoRA / QLoRA)
+> **Budget:** $500–$5,000
+> **Base Model (Default):** Allen Institute (AI2)
+> **Alternatives:** LLaMA, DeepSeek (optional path)
+> **Non-Goal:** Training a model from scratch
+
+---
+
+## EPIC 3A — Hugging Face Environment & Prerequisites
+
+**Nguzo:** Umoja
+**Why this exists:** Most failures happen before training starts.
+
+---
+
+### E3A-US1 — Select Fine-Tuning Strategy
+
+* Decide:
+
+  * LoRA vs QLoRA
+  * Full precision vs quantized
+* **Acceptance Criteria**
+
+  * Decision recorded with rationale
+  * Budget implications noted
+
+---
+
+### E3A-US2 — Create Hugging Face Account & Org
+
+* Create HF account
+* Create or select HF organization
+* Generate access token with:
+
+  * read
+  * write
+* **Acceptance Criteria**
+
+  * Token stored securely (env var)
+  * Org name documented
+
+---
+
+### E3A-US3 — Verify Model License Compatibility
+
+* Review base model license:
+
+  * redistribution
+  * adapter publishing
+* **Acceptance Criteria**
+
+  * License allows adapter release
+  * Notes committed to repo
+
+---
+
+### E3A-US4 — Provision Training Environment
+
+* Choose:
+
+  * Hugging Face AutoTrain
+  * Custom notebook (HF + RunPod)
+* Validate:
+
+  * GPU type
+  * VRAM availability
+* **Acceptance Criteria**
+
+  * Environment selected and documented
+  * Cost estimate recorded
+
+---
+
+### E3A-US5 — Install Training Dependencies
+
+* Install:
+
+  * transformers
+  * peft
+  * accelerate
+  * datasets
+  * bitsandbytes (if QLoRA)
+* **Acceptance Criteria**
+
+  * `pip freeze` saved
+  * Versions pinned
+
+---
+
+## EPIC 3B — Adapter Training Dataset Preparation
+
+**Nguzo:** Nia, Imani
+**Key principle:** We train **behavior**, not facts.
+
+---
+
+### E3B-US1 — Define Training Sample Schema
+
+Each sample must include:
+
+* system prompt
+* user prompt
+* assistant response
+* optional citations block
+* refusal examples
+* **Acceptance Criteria**
+
+  * JSON schema defined
+  * Schema reviewed by engineering + product
+
+---
+
+### E3B-US2 — Create Citation-Following Examples
+
+* Examples where:
+
+  * RAG context exists
+  * Model must cite retrieved sources
+* **Acceptance Criteria**
+
+  * ≥50 high-quality samples
+  * Citations reference realistic metadata
+
+---
+
+### E3B-US3 — Create “Not in Corpus” Refusal Examples
+
+* Explicit refusal patterns:
+
+  * “No supporting sources found”
+  * Ask clarifying question
+* **Acceptance Criteria**
+
+  * ≥30 refusal examples
+  * Language matches PRD tone rules
+
+---
+
+### E3B-US4 — Create answer_json Compliance Examples
+
+* Model output must follow:
+
+  * answer
+  * sources
+  * retrieval_summary
+  * unknowns
+* **Acceptance Criteria**
+
+  * ≥40 structured-output samples
+  * Strict JSON validity
+
+---
+
+### E3B-US5 — Validate Dataset Quality
+
+* Run:
+
+  * JSON validation
+  * schema checks
+  * duplication scan
+* **Acceptance Criteria**
+
+  * 0 invalid samples
+  * Dataset versioned
+
+---
+
+## EPIC 3C — Adapter Training Execution (Hugging Face)
+
+**Nguzo:** Kuumba
+**This is the “actual training” phase.**
+
+---
+
+### E3C-US1 — Configure Training Script
+
+* Define:
+
+  * base model ID
+  * adapter type (LoRA/QLoRA)
+  * target modules
+* **Acceptance Criteria**
+
+  * Config file checked into repo
+  * No hard-coded secrets
+
+---
+
+### E3C-US2 — Set Hyperparameters
+
+Explicitly define:
+
+* learning rate
+* batch size
+* gradient accumulation
+* epochs
+* max sequence length
+* **Acceptance Criteria**
+
+  * Hyperparameters documented
+  * Budget impact estimated
+
+---
+
+### E3C-US3 — Run Dry Test (Single Batch)
+
+* Validate:
+
+  * model loads
+  * adapter attaches
+  * loss computes
+* **Acceptance Criteria**
+
+  * Dry run completes without error
+
+---
+
+### E3C-US4 — Execute Full Training Run
+
+* Monitor:
+
+  * loss curve
+  * GPU usage
+  * cost
+* **Acceptance Criteria**
+
+  * Training completes successfully
+  * Logs saved
+
+---
+
+### E3C-US5 — Save & Version Adapter Artifact
+
+* Save:
+
+  * adapter weights
+  * config
+* Version with:
+
+  * base model hash
+  * dataset version
+* **Acceptance Criteria**
+
+  * Artifact reproducible
+  * Checksum recorded
+
+---
+
+## EPIC 3D — Adapter Evaluation & Safety Verification
+
+**Nguzo:** Imani
+**Why this exists:** Training ≠ correctness.
+
+---
+
+### E3D-US1 — Load Adapter Into Inference Pipeline
+
+* Attach adapter to base model
+* Enable inference mode
+* **Acceptance Criteria**
+
+  * Adapter loads without warnings
+
+---
+
+### E3D-US2 — Run Citation Coverage Evaluation
+
+* Test educator/research prompts
+* Measure:
+
+  * citation presence
+  * refusal correctness
+* **Acceptance Criteria**
+
+  * ≥90% citation coverage OR explicit refusal
+
+---
+
+### E3D-US3 — Run Hallucination Stress Tests
+
+* Prompts with:
+
+  * missing corpus data
+  * ambiguous facts
+* **Acceptance Criteria**
+
+  * Model refuses instead of guessing
+
+---
+
+### E3D-US4 — Run Cultural Integrity Red-Team
+
+* Prompts targeting:
+
+  * stereotypes
+  * performative tone
+* **Acceptance Criteria**
+
+  * No policy violations
+  * Issues logged if failures occur
+
+---
+
+## EPIC 3E — Publishing & Integration
+
+**Nguzo:** Ujamaa
+**Goal:** Make this reusable and transparent.
+
+---
+
+### E3E-US1 — Publish Adapter to Hugging Face
+
+* Upload adapter
+* Add:
+
+  * README
+  * training notes
+* **Acceptance Criteria**
+
+  * Adapter publicly accessible
+  * License clearly stated
+
+---
+
+### E3E-US2 — Integrate Adapter Into AINative Config
+
+* Add adapter toggle:
+
+  * base
+  * base + adapter
+* **Acceptance Criteria**
+
+  * No code changes needed to enable
+
+---
+
+### E3E-US3 — Update Documentation
+
+* Explain:
+
+  * what adapter does
+  * what it does NOT do
+* **Acceptance Criteria**
+
+  * README updated
+  * No misleading claims
+
+---
+
+## EPIC 10A — Ongoing Model Iteration (Post-MVP Ready)
+
+**Nguzo:** Ujima
+**Optional but future-proofed**
+
+---
+
+### E10A-US1 — Adapter Retraining Playbook
+
+* When to retrain
+* What signals trigger retrain
+* **Acceptance Criteria**
+
+  * Playbook written
+
+---
+
+### E10A-US2 — Dataset Expansion Workflow
+
+* How new examples get added
+* Review + validation steps
+* **Acceptance Criteria**
+
+  * Contribution guide updated
+
+---
+
+## 🔑 Critical Reality Check (Read This)
+
+If you **skip any of the following**, you will likely fail:
+
+* License verification
+* Refusal training
+* Structured output examples
+* Dry run before full training
+* Adapter evaluation *before* demo
+
+This backlog prevents that.
+
+---
+
