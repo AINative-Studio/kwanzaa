@@ -1,0 +1,50 @@
+# AI2 (Allen Institute) Model Configuration
+# Preferred base model for instruction following and citation compliance
+
+model:
+  provider: "ai2"
+  model_id: "allenai/OLMo-7B-Instruct"
+  model_type: "causal_lm"
+
+  # Model capabilities
+  capabilities:
+    instruction_following: "high"
+    context_length: 2048
+    json_compliance: "high"
+    license: "apache-2.0"
+
+  # Loading configuration
+  loading:
+    trust_remote_code: true
+    torch_dtype: "auto"  # Will use bf16 if available, else fp16
+    device_map: "auto"
+    low_cpu_mem_usage: true
+
+  # Attention optimization
+  attention:
+    use_flash_attention_2: true  # Enable if supported
+    use_sdpa: true  # Scaled Dot Product Attention fallback
+
+  # Generation defaults
+  generation:
+    max_new_tokens: 800
+    temperature: 0.2
+    top_p: 0.9
+    top_k: 50
+    repetition_penalty: 1.1
+    do_sample: true
+    pad_token_id: null  # Will use eos_token_id if null
+    eos_token_id: null  # Auto-detect from tokenizer
+
+  # Alternative AI2 models (fallback options)
+  alternatives:
+    - model_id: "allenai/OLMo-1B-Instruct"
+      note: "Smaller, faster option for development"
+    - model_id: "allenai/tulu-2-7b"
+      note: "Strong instruction tuning, good for citations"
+
+# Cost estimation (for planning)
+cost_estimate:
+  training_per_hour_a100: "$1.50"
+  inference_per_1k_tokens: "$0.0002"
+  recommended_gpu: "A100-40GB or A10G-24GB"

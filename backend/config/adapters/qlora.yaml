@@ -1,0 +1,65 @@
+# QLoRA Adapter Configuration
+# Quantized LoRA for efficient fine-tuning with 4-bit quantization
+
+adapter:
+  name: "qlora"
+  method: "qlora"
+
+  # LoRA parameters
+  lora:
+    r: 16  # Rank of LoRA matrices
+    alpha: 32  # Scaling parameter (typically 2*r)
+    dropout: 0.05
+    bias: "none"  # Options: "none", "all", "lora_only"
+    task_type: "CAUSAL_LM"
+
+    # Target modules - attention and MLP layers
+    target_modules:
+      - "q_proj"
+      - "k_proj"
+      - "v_proj"
+      - "o_proj"
+      - "gate_proj"
+      - "up_proj"
+      - "down_proj"
+
+    # Optional: Add LoRA to additional modules
+    # modules_to_save: ["embed_tokens", "lm_head"]
+
+  # 4-bit quantization configuration
+  quantization:
+    load_in_4bit: true
+    bnb_4bit_compute_dtype: "bfloat16"  # Use bf16 for computation
+    bnb_4bit_use_double_quant: true  # Nested quantization for better performance
+    bnb_4bit_quant_type: "nf4"  # NormalFloat4 quantization
+
+  # Training optimizations
+  training:
+    gradient_checkpointing: true
+    gradient_checkpointing_kwargs:
+      use_reentrant: false
+    optim: "paged_adamw_8bit"  # Memory-efficient optimizer
+
+  # Memory estimates
+  memory:
+    estimated_vram_gb: 12
+    minimum_vram_gb: 10
+    recommended_gpu: "RTX 3090, RTX 4090, A10G, or better"
+
+# Hyperparameter recommendations
+hyperparameters:
+  learning_rate: 0.0002  # 2e-4 standard for QLoRA
+  lr_scheduler: "cosine"
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 16
+  num_train_epochs: 2
+
+# Use cases
+use_cases:
+  - "Production fine-tuning with limited GPU resources"
+  - "Quick iteration on behavior changes"
+  - "Cost-effective adapter training"
+  - "Citation compliance and refusal training"

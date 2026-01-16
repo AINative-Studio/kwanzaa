@@ -1,0 +1,68 @@
+# Full Fine-tuning Configuration
+# Complete model fine-tuning (not adapter-based)
+# Use only when adapter methods are insufficient
+
+training:
+  name: "full_finetune"
+  method: "full"
+
+  # No adapter - all parameters are trainable
+  trainable_params: "all"
+
+  # Quantization options (optional, for inference only)
+  quantization:
+    load_in_4bit: false
+    load_in_8bit: false
+
+  # Training optimizations
+  optimization:
+    gradient_checkpointing: true
+    gradient_checkpointing_kwargs:
+      use_reentrant: false
+    optim: "adamw_torch"
+    mixed_precision: "bf16"  # Use bfloat16 for training
+
+  # DeepSpeed configuration (recommended for full fine-tuning)
+  deepspeed:
+    enabled: false  # Enable for multi-GPU setups
+    config_file: "config/deepspeed/zero2.json"
+
+  # Memory estimates (7B model)
+  memory:
+    estimated_vram_gb: 80
+    minimum_vram_gb: 80
+    recommended_gpu: "A100-80GB or multiple A100-40GB with DeepSpeed"
+
+# Hyperparameter recommendations
+hyperparameters:
+  learning_rate: 0.00005  # 5e-5 standard for full fine-tuning
+  lr_scheduler: "linear"
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 32
+  num_train_epochs: 1  # Usually 1-2 epochs for full fine-tuning
+
+# Cost warning
+cost_estimate:
+  training_hours: "8-24 hours"
+  cost_range: "$100-$500 per run"
+  recommendation: "Use QLoRA or LoRA unless absolutely necessary"
+
+# Use cases
+use_cases:
+  - "Significant domain shift requiring full model adaptation"
+  - "Final production model after adapter prototyping"
+  - "Research experiments comparing adapter vs full fine-tuning"
+
+# Decision criteria
+when_to_use:
+  required:
+    - "Adapter methods tested and insufficient"
+    - "Budget approved for full fine-tuning cost"
+    - "Access to A100-80GB or multi-GPU setup"
+  not_recommended_for:
+    - "Initial experimentation"
+    - "Behavior changes (use adapters)"
+    - "Limited GPU resources"

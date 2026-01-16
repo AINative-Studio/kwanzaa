@@ -1,0 +1,141 @@
+# RAG Retrieval Configuration
+# Core retrieval settings and strategies
+
+retrieval:
+  # Default retrieval settings
+  defaults:
+    top_k: 10
+    similarity_threshold: 0.7
+    min_score: 0.6
+    max_tokens_per_chunk: 512
+    include_metadata: true
+
+  # Embedding configuration
+  embedding:
+    model: "BAAI/bge-small-en-v1.5"
+    dimensions: 1536
+    batch_size: 32
+    normalize: true
+    pooling: "mean"
+
+  # Reranking configuration
+  reranking:
+    enabled: true
+    model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    top_n: 5
+    batch_size: 16
+
+  # Query processing
+  query:
+    min_length: 3
+    max_length: 512
+    preprocessing:
+      - "lowercase"
+      - "remove_extra_whitespace"
+    expansion:
+      enabled: false
+      method: "synonyms"  # or "llm"
+
+  # Chunking strategy
+  chunking:
+    strategy: "semantic"  # or "fixed", "recursive"
+    size: 512
+    overlap: 50
+    min_chunk_size: 100
+    max_chunk_size: 1024
+    preserve_boundaries:
+      - "sentence"
+      - "paragraph"
+
+  # Filtering
+  filters:
+    allowed_filters:
+      - "year"
+      - "source_org"
+      - "content_type"
+      - "tags"
+      - "license"
+      - "namespace"
+
+    filter_operators:
+      year: ["eq", "gt", "gte", "lt", "lte", "between"]
+      source_org: ["eq", "in"]
+      content_type: ["eq", "in"]
+      tags: ["contains", "in"]
+      license: ["eq", "in"]
+      namespace: ["eq", "in"]
+
+  # Hybrid search configuration
+  hybrid:
+    enabled: false  # Enable for keyword + semantic search
+    semantic_weight: 0.7
+    keyword_weight: 0.3
+    keyword_method: "bm25"
+
+  # Caching
+  cache:
+    enabled: true
+    ttl_seconds: 300  # 5 minutes
+    max_size_mb: 1024
+    key_prefix: "rag_query"
+
+  # Performance
+  performance:
+    max_concurrent_queries: 10
+    timeout_seconds: 30
+    retry_attempts: 3
+    retry_delay_seconds: 1
+
+# Citation generation
+citations:
+  formats:
+    chicago:
+      enabled: true
+      template: "{author}. \"{title}.\" {source_org}, {year}. {url}"
+
+    apa:
+      enabled: true
+      template: "{author} ({year}). {title}. {source_org}. {url}"
+
+    mla:
+      enabled: true
+      template: "{author}. \"{title}.\" {source_org}, {year}, {url}"
+
+  fallback_format: "chicago"
+
+  # Citation validation
+  validation:
+    require_year: true
+    require_source: true
+    require_url: true
+
+# Source provenance
+provenance:
+  # Required fields for all retrieved documents
+  required_fields:
+    - "source_org"
+    - "canonical_url"
+    - "license"
+    - "year"
+    - "content_type"
+
+  # Optional but recommended
+  recommended_fields:
+    - "author"
+    - "title"
+    - "description"
+    - "tags"
+
+  # Metadata enrichment
+  enrich_metadata: true
+  include_chunk_context: true
+
+# Quality thresholds by content type
+quality_thresholds:
+  historical_document: 0.80
+  newspaper_article: 0.75
+  speech: 0.75
+  scientific_paper: 0.80
+  educational_resource: 0.70
+  code_example: 0.65
+  technical_guide: 0.70

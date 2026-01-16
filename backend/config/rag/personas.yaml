@@ -1,0 +1,145 @@
+# Persona Configuration
+# Defines preset configurations for different user personas
+
+personas:
+  educator:
+    display_name: "Educator"
+    description: "For teachers and educational professionals seeking historically accurate, citation-backed content"
+
+    # RAG configuration
+    rag:
+      namespaces:
+        - "kwanzaa_primary_sources"
+      similarity_threshold: 0.80
+      max_results: 10
+      min_results: 3
+      rerank: true
+
+    # Mode settings
+    modes:
+      citations_required: true
+      primary_sources_only: true
+      creative_mode: false
+
+    # Response configuration
+    response:
+      require_sources: true
+      min_sources: 2
+      show_retrieval_summary: true
+      format: "answer_json"
+
+    # System prompt overrides
+    system_prompt_additions:
+      - "You are assisting an educator. Prioritize historical accuracy and cite all sources."
+      - "When sources are insufficient, clearly state what information is missing."
+
+  researcher:
+    display_name: "Researcher"
+    description: "For scholars and researchers requiring comprehensive source coverage"
+
+    # RAG configuration
+    rag:
+      namespaces:
+        - "kwanzaa_primary_sources"
+        - "kwanzaa_black_press"
+        - "kwanzaa_speeches_letters"
+        - "kwanzaa_black_stem"
+      similarity_threshold: 0.75
+      max_results: 20
+      min_results: 5
+      rerank: true
+
+    # Mode settings
+    modes:
+      citations_required: true
+      primary_sources_only: true
+      creative_mode: false
+
+    # Response configuration
+    response:
+      require_sources: true
+      min_sources: 3
+      show_retrieval_summary: true
+      show_unknowns: true
+      format: "answer_json"
+
+    # System prompt overrides
+    system_prompt_additions:
+      - "You are assisting a researcher. Provide comprehensive coverage with multiple source perspectives."
+      - "Acknowledge gaps in the available corpus explicitly."
+
+  creator:
+    display_name: "Creator"
+    description: "For content creators and writers seeking inspiration and historical context"
+
+    # RAG configuration
+    rag:
+      namespaces:
+        - "kwanzaa_primary_sources"
+        - "kwanzaa_speeches_letters"
+        - "kwanzaa_teaching_kits"
+      similarity_threshold: 0.65
+      max_results: 15
+      min_results: 2
+      rerank: false
+
+    # Mode settings
+    modes:
+      citations_required: false
+      primary_sources_only: false
+      creative_mode: true
+
+    # Response configuration
+    response:
+      require_sources: false
+      min_sources: 1
+      show_retrieval_summary: true
+      allow_synthesis: true
+      format: "answer_json"
+
+    # System prompt overrides
+    system_prompt_additions:
+      - "You are assisting a content creator. Provide inspiring context and connections."
+      - "You may synthesize information, but always indicate when you're making connections beyond direct citations."
+
+  builder:
+    display_name: "Builder"
+    description: "For developers and technical professionals working with the platform"
+
+    # RAG configuration
+    rag:
+      namespaces:
+        - "kwanzaa_dev_patterns"
+      similarity_threshold: 0.70
+      max_results: 10
+      min_results: 1
+      rerank: false
+
+    # Mode settings
+    modes:
+      citations_required: false
+      primary_sources_only: false
+      creative_mode: false
+
+    # Response configuration
+    response:
+      require_sources: false
+      min_sources: 1
+      show_retrieval_summary: true
+      show_code_examples: true
+      format: "answer_json"
+
+    # System prompt overrides
+    system_prompt_additions:
+      - "You are assisting a developer. Provide practical, actionable guidance."
+      - "Include code examples and implementation details when relevant."
+
+# Default persona (used when none specified)
+default_persona: "educator"
+
+# Persona validation rules
+validation:
+  max_namespaces: 6
+  min_similarity_threshold: 0.5
+  max_similarity_threshold: 0.95
+  max_results_limit: 50

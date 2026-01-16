@@ -1,0 +1,70 @@
+# LoRA Adapter Configuration
+# Standard LoRA without quantization for higher precision
+
+adapter:
+  name: "lora"
+  method: "lora"
+
+  # LoRA parameters
+  lora:
+    r: 32  # Higher rank for better capacity (vs QLoRA's 16)
+    alpha: 64  # Scaling parameter (typically 2*r)
+    dropout: 0.05
+    bias: "none"
+    task_type: "CAUSAL_LM"
+
+    # Target modules
+    target_modules:
+      - "q_proj"
+      - "k_proj"
+      - "v_proj"
+      - "o_proj"
+      - "gate_proj"
+      - "up_proj"
+      - "down_proj"
+
+  # No quantization - full precision
+  quantization:
+    load_in_4bit: false
+    load_in_8bit: false
+
+  # Training optimizations
+  training:
+    gradient_checkpointing: true
+    gradient_checkpointing_kwargs:
+      use_reentrant: false
+    optim: "adamw_torch"  # Standard AdamW
+
+  # Memory estimates
+  memory:
+    estimated_vram_gb: 32
+    minimum_vram_gb: 24
+    recommended_gpu: "A100-40GB or A100-80GB"
+
+# Hyperparameter recommendations
+hyperparameters:
+  learning_rate: 0.0001  # 1e-4 standard for LoRA
+  lr_scheduler: "cosine"
+  warmup_ratio: 0.03
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  per_device_batch_size: 2
+  gradient_accumulation_steps: 8
+  num_train_epochs: 3
+
+# Use cases
+use_cases:
+  - "High-precision fine-tuning with sufficient GPU resources"
+  - "Better convergence for complex behavior changes"
+  - "Production models requiring maximum quality"
+
+# Comparison with QLoRA
+comparison:
+  advantages:
+    - "Higher precision training"
+    - "Better convergence"
+    - "Can use higher rank (r=32 vs r=16)"
+  disadvantages:
+    - "Requires 3x more VRAM"
+    - "Slower training speed"
+    - "Higher cost per training run"

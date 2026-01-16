@@ -1,0 +1,56 @@
+# DeepSeek Model Configuration
+# Alternative option with strong coding and reasoning capabilities
+
+model:
+  provider: "deepseek"
+  model_id: "deepseek-ai/deepseek-llm-7b-chat"
+  model_type: "causal_lm"
+
+  # Model capabilities
+  capabilities:
+    instruction_following: "high"
+    context_length: 4096
+    json_compliance: "high"
+    license: "deepseek-license"
+
+  # Loading configuration
+  loading:
+    trust_remote_code: true
+    torch_dtype: "auto"
+    device_map: "auto"
+    low_cpu_mem_usage: true
+
+  # Attention optimization
+  attention:
+    use_flash_attention_2: true
+    use_sdpa: true
+
+  # Generation defaults
+  generation:
+    max_new_tokens: 800
+    temperature: 0.2
+    top_p: 0.9
+    top_k: 50
+    repetition_penalty: 1.1
+    do_sample: true
+    pad_token_id: null
+    eos_token_id: null
+
+  # Alternative DeepSeek models
+  alternatives:
+    - model_id: "deepseek-ai/deepseek-coder-6.7b-instruct"
+      note: "Optimized for code generation and technical content"
+    - model_id: "deepseek-ai/deepseek-llm-7b-base"
+      note: "Base model for custom fine-tuning"
+
+# Cost estimation
+cost_estimate:
+  training_per_hour_a100: "$1.50"
+  inference_per_1k_tokens: "$0.0002"
+  recommended_gpu: "A100-40GB or A10G-24GB"
+
+# Special considerations
+notes:
+  - "Strong performance on structured output tasks"
+  - "Good balance of capability and cost"
+  - "Check license for commercial use requirements"

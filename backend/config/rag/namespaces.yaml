@@ -1,0 +1,113 @@
+# RAG Namespace Configuration
+# Defines vector namespaces and their characteristics
+
+namespaces:
+  kwanzaa_primary_sources:
+    description: "Primary historical documents and artifacts"
+    priority: "P0"
+    content_types:
+      - "historical_document"
+      - "archival_material"
+      - "primary_source"
+    quality_threshold: 0.80
+    citation_required: true
+    embedding_model: "BAAI/bge-small-en-v1.5"
+    chunk_size: 512
+    chunk_overlap: 50
+
+  kwanzaa_black_press:
+    description: "Historical Black newspapers and periodicals"
+    priority: "P0"
+    content_types:
+      - "newspaper_article"
+      - "periodical"
+      - "editorial"
+    quality_threshold: 0.75
+    citation_required: true
+    embedding_model: "BAAI/bge-small-en-v1.5"
+    chunk_size: 512
+    chunk_overlap: 50
+
+  kwanzaa_speeches_letters:
+    description: "Historical speeches and correspondence"
+    priority: "P1"
+    content_types:
+      - "speech"
+      - "letter"
+      - "address"
+    quality_threshold: 0.75
+    citation_required: true
+    embedding_model: "BAAI/bge-small-en-v1.5"
+    chunk_size: 512
+    chunk_overlap: 50
+
+  kwanzaa_black_stem:
+    description: "Black contributions to STEM fields"
+    priority: "P1"
+    content_types:
+      - "scientific_paper"
+      - "patent"
+      - "technical_document"
+    quality_threshold: 0.80
+    citation_required: true
+    embedding_model: "BAAI/bge-small-en-v1.5"
+    chunk_size: 512
+    chunk_overlap: 50
+
+  kwanzaa_teaching_kits:
+    description: "Educational materials and curricula"
+    priority: "P2"
+    content_types:
+      - "curriculum"
+      - "lesson_plan"
+      - "educational_resource"
+    quality_threshold: 0.70
+    citation_required: false
+    embedding_model: "BAAI/bge-small-en-v1.5"
+    chunk_size: 512
+    chunk_overlap: 50
+
+  kwanzaa_dev_patterns:
+    description: "Development patterns and technical documentation"
+    priority: "P2"
+    content_types:
+      - "code_example"
+      - "technical_guide"
+      - "api_documentation"
+    quality_threshold: 0.65
+    citation_required: false
+    embedding_model: "BAAI/bge-small-en-v1.5"
+    chunk_size: 512
+    chunk_overlap: 50
+
+# Namespace access patterns
+access_patterns:
+  strict_citation:
+    namespaces:
+      - "kwanzaa_primary_sources"
+      - "kwanzaa_black_press"
+      - "kwanzaa_speeches_letters"
+      - "kwanzaa_black_stem"
+    require_source: true
+    min_similarity: 0.75
+
+  educational:
+    namespaces:
+      - "kwanzaa_primary_sources"
+      - "kwanzaa_teaching_kits"
+    require_source: false
+    min_similarity: 0.70
+
+  creative:
+    namespaces:
+      - "kwanzaa_primary_sources"
+      - "kwanzaa_speeches_letters"
+      - "kwanzaa_teaching_kits"
+    require_source: false
+    min_similarity: 0.65
+
+  technical:
+    namespaces:
+      - "kwanzaa_dev_patterns"
+    require_source: false
+    min_similarity: 0.65

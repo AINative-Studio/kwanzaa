@@ -1,0 +1,157 @@
+{
+  "test_suite": "historical_qa",
+  "description": "Test suite for evaluating AI2 models' domain knowledge of Black American history, testing both accuracy and appropriate citation behavior",
+  "version": "1.0.0",
+  "prompts": [
+    {
+      "id": "hist_001",
+      "question": "Who founded the Tuskegee Institute and what was its educational philosophy?",
+      "context": "Basic historical knowledge test - Booker T. Washington and vocational education focus",
+      "expected_behavior": "Should correctly identify Booker T. Washington (1881) and explain industrial/vocational education approach with citations",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy",
+      "topic": "education"
+    },
+    {
+      "id": "hist_002",
+      "question": "What were the main components of the Great Migration?",
+      "context": "Major demographic event, should cover period, numbers, push/pull factors",
+      "expected_behavior": "Should describe two waves (1910-1930, 1940-1970), movement from rural South to urban North/West, with population estimates and causes",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium",
+      "topic": "migration"
+    },
+    {
+      "id": "hist_003",
+      "question": "What was the significance of the Niagara Movement?",
+      "context": "Precursor to NAACP, founded by Du Bois and others in 1905",
+      "expected_behavior": "Should identify 1905 founding, W.E.B. Du Bois's leadership, demands for full civil rights, and connection to NAACP formation",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium",
+      "topic": "civil_rights"
+    },
+    {
+      "id": "hist_004",
+      "question": "Describe the Harlem Renaissance and name three key figures.",
+      "context": "Cultural movement, 1920s-1930s, multiple important artists/writers",
+      "expected_behavior": "Should describe cultural movement (1920s-1930s Harlem), identify figures like Langston Hughes, Zora Neale Hurston, Duke Ellington with citations",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy",
+      "topic": "culture"
+    },
+    {
+      "id": "hist_005",
+      "question": "What was the Black Panther Party's Ten-Point Program?",
+      "context": "Specific political document that should be cited",
+      "expected_behavior": "Should list or summarize key demands (employment, housing, education, police accountability, etc.) with citation to original 1966 document",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium",
+      "topic": "civil_rights"
+    },
+    {
+      "id": "hist_006",
+      "question": "What were the Convict Leasing laws and how did they function after the Civil War?",
+      "context": "Post-Reconstruction forced labor system",
+      "expected_behavior": "Should explain system of leasing convicted prisoners (often Black men arrested under Black Codes) to private companies, effectively continuing slavery",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "hard",
+      "topic": "reconstruction"
+    },
+    {
+      "id": "hist_007",
+      "question": "Who was Fannie Lou Hamer and what was her role in voting rights?",
+      "context": "Civil rights activist, SNCC, Mississippi Freedom Democratic Party",
+      "expected_behavior": "Should identify her as Mississippi civil rights leader, SNCC member, MFDP co-founder, famous 1964 DNC testimony, voting rights activism",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "medium",
+      "topic": "civil_rights"
+    },
+    {
+      "id": "hist_008",
+      "question": "What was the Tulsa Race Massacre of 1921?",
+      "context": "Violent destruction of Black Wall Street",
+      "expected_behavior": "Should describe the destruction of Greenwood District in Tulsa, OK (May 31-June 1, 1921), estimated deaths, economic losses, with citations",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "medium",
+      "topic": "violence"
+    },
+    {
+      "id": "hist_009",
+      "question": "What were the main goals and methods of the Student Nonviolent Coordinating Committee (SNCC)?",
+      "context": "Civil rights organization, youth-led, grassroots organizing",
+      "expected_behavior": "Should describe founding (1960), student leadership, nonviolent direct action, voter registration, Freedom Rides, Mississippi organizing",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium",
+      "topic": "civil_rights"
+    },
+    {
+      "id": "hist_010",
+      "question": "What was the impact of Plessy v. Ferguson?",
+      "context": "1896 Supreme Court case establishing 'separate but equal'",
+      "expected_behavior": "Should explain 1896 ruling, 'separate but equal' doctrine, legitimization of Jim Crow, in effect until Brown v. Board (1954)",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy",
+      "topic": "law"
+    },
+    {
+      "id": "hist_011",
+      "question": "Who were the Buffalo Soldiers?",
+      "context": "Black soldiers in the U.S. Army post-Civil War",
+      "expected_behavior": "Should identify as African American soldiers who served in the western U.S. after Civil War, primarily in 9th and 10th Cavalry regiments",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy",
+      "topic": "military"
+    },
+    {
+      "id": "hist_012",
+      "question": "What was the significance of the Montgomery Bus Boycott?",
+      "context": "1955-1956 protest led by Rosa Parks, Martin Luther King Jr.",
+      "expected_behavior": "Should describe Rosa Parks' arrest (Dec 1955), 381-day boycott, MLK Jr.'s emergence as leader, Supreme Court ruling desegregating buses",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy",
+      "topic": "civil_rights"
+    },
+    {
+      "id": "hist_013",
+      "question": "What were the Black Codes and when were they enacted?",
+      "context": "Post-Civil War state laws restricting Black freedom",
+      "expected_behavior": "Should explain restrictive laws passed by Southern states (1865-1866) after Civil War to control formerly enslaved people's labor and movement",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium",
+      "topic": "reconstruction"
+    },
+    {
+      "id": "hist_014",
+      "question": "Who was Thurgood Marshall and what was his contribution to civil rights law?",
+      "context": "NAACP lawyer, Brown v. Board, first Black Supreme Court Justice",
+      "expected_behavior": "Should identify as NAACP chief counsel, argued Brown v. Board (1954), first African American Supreme Court Justice (1967-1991)",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy",
+      "topic": "law"
+    },
+    {
+      "id": "hist_015",
+      "question": "What was the role of HBCUs (Historically Black Colleges and Universities) in Black education?",
+      "context": "Educational institutions founded before 1964 to serve Black students",
+      "expected_behavior": "Should explain founding during Reconstruction and after, role in educating Black students during segregation, continuing legacy with citations",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "medium",
+      "topic": "education"
+    }
+  ]
+}

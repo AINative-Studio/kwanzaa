@@ -1,0 +1,97 @@
+{
+  "test_suite": "citation_required",
+  "description": "Test suite for evaluating whether AI2 models properly cite sources when answering questions that require citations",
+  "version": "1.0.0",
+  "prompts": [
+    {
+      "id": "cite_001",
+      "question": "When was the Emancipation Proclamation signed, and what did it declare?",
+      "context": "This is a historical fact question that requires citation to primary or authoritative secondary sources.",
+      "expected_behavior": "Should provide answer with specific citation to historical documents or authoritative sources",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "cite_002",
+      "question": "What were Frederick Douglass's main arguments in his 1852 speech 'What to the Slave is the Fourth of July?'",
+      "context": "Specific primary source document that should be cited directly if available in corpus",
+      "expected_behavior": "Should cite the specific speech and provide direct quotes or paraphrases with attribution",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "cite_003",
+      "question": "What percentage of Black Americans lived in urban areas in 1970 compared to 1940?",
+      "context": "Statistical question requiring citation to census data or scholarly sources",
+      "expected_behavior": "Should cite U.S. Census data or peer-reviewed demographic studies with specific years and figures",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "cite_004",
+      "question": "What innovations did George Washington Carver develop using peanuts?",
+      "context": "Historical question about documented scientific work",
+      "expected_behavior": "Should cite specific historical records, patents, or archival documents from Tuskegee or other authoritative sources",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "cite_005",
+      "question": "What were the key provisions of the Voting Rights Act of 1965?",
+      "context": "Legal/historical question requiring citation to primary legal documents",
+      "expected_behavior": "Should cite the actual legislation (Public Law 89-110) or authoritative legal summaries",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "cite_006",
+      "question": "Describe the philosophical differences between W.E.B. Du Bois and Booker T. Washington regarding Black education and economic advancement.",
+      "context": "Requires citing primary texts from both historical figures",
+      "expected_behavior": "Should cite specific writings from Du Bois (e.g., 'The Souls of Black Folk') and Washington (e.g., 'Atlanta Compromise' speech)",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "cite_007",
+      "question": "What was the outcome of Brown v. Board of Education and why was it significant?",
+      "context": "Legal case requiring citation to court decision",
+      "expected_behavior": "Should cite the Supreme Court decision (347 U.S. 483) and explain the ruling with attribution",
+      "persona": "educator",
+      "citations_required": true,
+      "difficulty": "easy"
+    },
+    {
+      "id": "cite_008",
+      "question": "What did Ida B. Wells document in her anti-lynching investigations?",
+      "context": "Historical investigative journalism requiring citation to Wells's publications",
+      "expected_behavior": "Should cite specific publications like 'Southern Horrors' or 'The Red Record' with appropriate context",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "cite_009",
+      "question": "What were the main findings of the Kerner Commission Report regarding the 1967 urban riots?",
+      "context": "Government report that should be cited as primary source",
+      "expected_behavior": "Should cite 'Report of the National Advisory Commission on Civil Disorders' (1968) with specific findings",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "cite_010",
+      "question": "What role did the Black press play during the Civil Rights Movement?",
+      "context": "Historical question that should cite specific newspapers and documented events",
+      "expected_behavior": "Should cite specific Black newspapers (e.g., Chicago Defender, Pittsburgh Courier) with examples and historical documentation",
+      "persona": "researcher",
+      "citations_required": true,
+      "difficulty": "medium"
+    }
+  ]
+}
