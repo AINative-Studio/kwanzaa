@@ -1,0 +1,18 @@
+{
+  "version": "kwanzaa.answer.v1",
+  "answer": {
+    "text": "Kwanzaa was created in 1966 by Dr. Maulana Karenga as a celebration of African American culture and values."
+  },
+  "sources": [],
+  "retrieval_summary": {
+    "query": "When was Kwanzaa created?",
+    "top_k": 10,
+    "namespaces": ["kwanzaa_primary_sources"],
+    "results": []
+  },
+  "unknowns": {
+    "unsupported_claims": [],
+    "missing_context": ["No primary source documents available in current corpus"],
+    "clarifying_questions": []
+  }
+}

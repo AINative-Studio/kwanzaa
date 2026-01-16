@@ -1,0 +1,93 @@
+{
+  "version": "kwanzaa.answer.v1",
+  "persona": "researcher",
+  "model_mode": "base_adapter_rag",
+  "toggles": {
+    "require_citations": true,
+    "primary_sources_only": false,
+    "creative_mode": false
+  },
+  "answer": {
+    "text": "Based on the available sources, I can confirm that the Nguzo Saba (Seven Principles) are central to Kwanzaa celebrations. However, the corpus does not contain comprehensive information about regional variations in how these principles are taught or celebrated across different communities.",
+    "confidence": 0.72,
+    "tone": "neutral",
+    "completeness": "partial"
+  },
+  "sources": [
+    {
+      "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+      "canonical_url": "https://example.org/karenga-kwanzaa-1977",
+      "source_org": "Kawaida Publications",
+      "year": 1977,
+      "content_type": "book",
+      "license": "Copyright - Fair Use",
+      "namespace": "kwanzaa_secondary_sources",
+      "doc_id": "karenga_origin_1977",
+      "chunk_id": "karenga_origin_1977::chunk::12",
+      "tags": ["kwanzaa", "nguzo_saba", "principles"],
+      "relevance_score": 0.89
+    }
+  ],
+  "retrieval_summary": {
+    "query": "How are the Nguzo Saba principles celebrated in different regions?",
+    "top_k": 10,
+    "namespaces": ["kwanzaa_primary_sources", "kwanzaa_secondary_sources"],
+    "filters": {
+      "tags": ["nguzo_saba", "principles", "celebrations"]
+    },
+    "results": [
+      {
+        "rank": 1,
+        "score": 0.89,
+        "snippet": "The Nguzo Saba (Seven Principles) provide a value system and communitarian African philosophy which speaks on issues and concerns of Black people...",
+        "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+        "canonical_url": "https://example.org/karenga-kwanzaa-1977",
+        "doc_id": "karenga_origin_1977",
+        "chunk_id": "karenga_origin_1977::chunk::12",
+        "namespace": "kwanzaa_secondary_sources"
+      },
+      {
+        "rank": 2,
+        "score": 0.65,
+        "snippet": "Each day of Kwanzaa focuses on one of the seven principles, with families and communities gathering to discuss and reflect...",
+        "citation_label": "African American Cultural Center (2020) — Kwanzaa Celebration Guide",
+        "canonical_url": "https://example.org/aacc-kwanzaa-guide-2020",
+        "doc_id": "aacc_guide_2020",
+        "chunk_id": "aacc_guide_2020::chunk::4",
+        "namespace": "kwanzaa_secondary_sources"
+      }
+    ],
+    "execution_time_ms": 428,
+    "embedding_model": "text-embedding-3-small"
+  },
+  "unknowns": {
+    "unsupported_claims": [
+      "Regional variation claim cannot be fully supported by current corpus"
+    ],
+    "missing_context": [
+      "Limited documentation of regional celebration practices across United States",
+      "No comparative studies of international Kwanzaa celebrations in corpus",
+      "Oral tradition and community-specific practices are underrepresented"
+    ],
+    "clarifying_questions": [
+      "Are you interested in specific geographic regions (e.g., Northeast, South, West Coast)?",
+      "Are you looking for historical evolution of practices or current contemporary practices?",
+      "Would you like information about institutional celebrations (schools, community centers) or family practices?"
+    ],
+    "out_of_scope": [
+      "Comparative analysis with other cultural holidays",
+      "Economic impact of Kwanzaa celebrations"
+    ]
+  },
+  "integrity": {
+    "citation_required": true,
+    "citations_provided": true,
+    "retrieval_confidence": "medium",
+    "fallback_behavior": "clarification_requested"
+  },
+  "provenance": {
+    "generated_at": "2026-01-16T19:45:12Z",
+    "retrieval_run_id": "f3a4b5c6-d7e8-4f9a-0b1c-2d3e4f5a6b7c",
+    "assistant_message_id": "d8e9f0a1-b2c3-4d5e-6f7a-8b9c0d1e2f3a"
+  }
+}

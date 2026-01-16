@@ -1,0 +1,18 @@
+{
+  "version": "v1.0.0",
+  "answer": {
+    "text": "This has an invalid version format."
+  },
+  "sources": [],
+  "retrieval_summary": {
+    "query": "test",
+    "top_k": 10,
+    "namespaces": ["test"],
+    "results": []
+  },
+  "unknowns": {
+    "unsupported_claims": [],
+    "missing_context": [],
+    "clarifying_questions": []
+  }
+}
