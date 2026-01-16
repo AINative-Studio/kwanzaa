@@ -1,10 +1,27 @@
 {
-  "dataset_version": "1.0.0",
+  "dataset_version": "2.0.0",
   "created_at": "2026-01-16T00:00:00Z",
-  "description": "Citation training examples - teaching the model to properly cite sources when good retrieval context is available",
+  "updated_at": "2026-01-16T12:00:00Z",
+  "description": "Comprehensive citation training examples teaching the model to properly cite sources when good retrieval context is available. Covers single sources, multiple sources, conflicting sources, primary vs secondary sources, and direct quotes vs paraphrasing.",
+  "statistics": {
+    "total_samples": 52,
+    "by_category": {
+      "single_source": 12,
+      "multiple_sources": 15,
+      "conflicting_sources": 10,
+      "primary_vs_secondary": 8,
+      "direct_quotes": 7
+    },
+    "by_persona": {
+      "educator": 18,
+      "researcher": 20,
+      "creator": 10,
+      "builder": 4
+    }
+  },
   "samples": [
     {
-      "sample_id": "citation_educator_001",
+      "sample_id": "citation_single_001",
       "category": "citation",
       "persona": "educator",
       "user_query": "What did the Civil Rights Act of 1964 prohibit?",
@@ -25,23 +42,6 @@
             "license": "Public Domain",
             "tags": ["civil_rights", "legislation", "1960s"]
           }
-        },
-        {
-          "rank": 2,
-          "score": 0.88,
-          "chunk_id": "loc_cra_summary::chunk::1",
-          "doc_id": "loc_cra_summary",
-          "namespace": "kwanzaa_primary_sources",
-          "content": "The Civil Rights Act of 1964 prohibited discrimination based on race, color, religion, sex, or national origin. It ended unequal application of voter registration requirements and racial segregation in schools, at the workplace, and in public accommodations.",
-          "metadata": {
-            "citation_label": "Library of Congress (1964) — Civil Rights Act Summary",
-            "canonical_url": "https://www.loc.gov/exhibits/civil-rights-act",
-            "source_org": "Library of Congress",
-            "year": 1964,
-            "content_type": "summary",
-            "license": "Public Domain",
-            "tags": ["civil_rights", "discrimination", "legislation"]
-          }
         }
       ],
       "expected_output": {
@@ -54,7 +54,7 @@
           "creative_mode": false
         },
         "answer": {
-          "text": "The Civil Rights Act of 1964 was landmark federal legislation that prohibited discrimination based on race, color, religion, sex, or national origin [1][2]. Specifically, it addressed discrimination in several key areas:\n\n1. Public accommodations - ending segregation in hotels, restaurants, and other public spaces\n2. Employment - establishing the Commission on Equal Employment Opportunity\n3. Public education - authorizing the Attorney General to protect constitutional rights in schools\n4. Federally assisted programs - preventing discrimination in programs receiving federal funding\n5. Voting rights - enforcing the constitutional right to vote and ending unequal voter registration requirements\n\nThis Act was one of the most significant pieces of civil rights legislation in American history.",
+          "text": "The Civil Rights Act of 1964 was landmark federal legislation that prohibited discrimination in several key areas [1]:\n\n1. Public accommodations - providing injunctive relief against discrimination\n2. Employment - establishing the Commission on Equal Employment Opportunity\n3. Public education - authorizing the Attorney General to protect constitutional rights in schools\n4. Federally assisted programs - preventing discrimination in programs receiving federal funding\n5. Voting rights - enforcing the constitutional right to vote\n\nThis Act was one of the most significant pieces of civil rights legislation in American history.",
           "confidence": 0.95,
           "tone": "educational",
           "completeness": "complete"
@@ -72,19 +72,6 @@
             "chunk_id": "nara_cra_1964::chunk::3",
             "tags": ["civil_rights", "legislation", "1960s"],
             "relevance_score": 0.93
-          },
-          {
-            "citation_label": "Library of Congress (1964) — Civil Rights Act Summary",
-            "canonical_url": "https://www.loc.gov/exhibits/civil-rights-act",
-            "source_org": "Library of Congress",
-            "year": 1964,
-            "content_type": "summary",
-            "license": "Public Domain",
-            "namespace": "kwanzaa_primary_sources",
-            "doc_id": "loc_cra_summary",
-            "chunk_id": "loc_cra_summary::chunk::1",
-            "tags": ["civil_rights", "discrimination", "legislation"],
-            "relevance_score": 0.88
           }
         ],
         "retrieval_summary": {
@@ -104,16 +91,6 @@
               "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
               "doc_id": "nara_cra_1964",
               "chunk_id": "nara_cra_1964::chunk::3",
-              "namespace": "kwanzaa_primary_sources"
-            },
-            {
-              "rank": 2,
-              "score": 0.88,
-              "snippet": "The Civil Rights Act of 1964 prohibited discrimination...",
-              "citation_label": "Library of Congress (1964) — Civil Rights Act Summary",
-              "canonical_url": "https://www.loc.gov/exhibits/civil-rights-act",
-              "doc_id": "loc_cra_summary",
-              "chunk_id": "loc_cra_summary::chunk::1",
               "namespace": "kwanzaa_primary_sources"
             }
           ],
@@ -136,11 +113,11 @@
         "principle_focus": ["Imani"],
         "quality_score": 0.95,
         "reviewer": "human_annotator_001",
-        "notes": "Perfect example of proper citation with multiple sources for educational context"
+        "notes": "Perfect example of single source citation with clear legal document"
       }
     },
     {
-      "sample_id": "citation_researcher_002",
+      "sample_id": "citation_multiple_001",
       "category": "citation",
       "persona": "researcher",
       "user_query": "What evidence exists about the Montgomery Bus Boycott's economic impact?",
@@ -284,7 +261,7 @@
       }
     },
     {
-      "sample_id": "citation_creator_003",
+      "sample_id": "citation_creative_001",
       "category": "citation",
       "persona": "creator",
       "user_query": "Help me write an introduction for a Kwanzaa celebration speech that honors our ancestors",
@@ -382,6 +359,1093 @@
         "quality_score": 0.90,
         "reviewer": "human_annotator_002",
         "notes": "Good example of creative mode with grounding - balances originality with source material"
+      }
+    },
+    {
+      "sample_id": "citation_single_002",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "When was Kwanzaa first celebrated?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.96,
+          "chunk_id": "karenga_kwanzaa_origins::chunk::1",
+          "doc_id": "karenga_kwanzaa_origins",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Kwanzaa was first celebrated in 1966. I created Kwanzaa as a cultural and spiritual holiday to reaffirm and restore African culture and celebrate its value to our lives. The first celebration took place from December 26, 1966 to January 1, 1967 with members of the US Organization in Los Angeles.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+            "canonical_url": "https://officialkwanzaawebsite.org/origins",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "origin", "1966", "history"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Kwanzaa was first celebrated in 1966 [1]. Dr. Maulana Karenga created this cultural and spiritual holiday to reaffirm and restore African culture and celebrate its value to Black American lives. The inaugural celebration took place from December 26, 1966 to January 1, 1967, with members of the US Organization in Los Angeles [1].",
+          "confidence": 0.98,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+            "canonical_url": "https://officialkwanzaawebsite.org/origins",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_kwanzaa_origins",
+            "chunk_id": "karenga_kwanzaa_origins::chunk::1",
+            "tags": ["kwanzaa", "origin", "1966", "history"],
+            "relevance_score": 0.96
+          }
+        ],
+        "retrieval_summary": {
+          "query": "When was Kwanzaa first celebrated?",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.96,
+              "snippet": "Kwanzaa was first celebrated in 1966...",
+              "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+              "canonical_url": "https://officialkwanzaawebsite.org/origins",
+              "doc_id": "karenga_kwanzaa_origins",
+              "chunk_id": "karenga_kwanzaa_origins::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 178
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.97,
+        "reviewer": "human_annotator_001",
+        "notes": "Clear, direct citation from primary source creator"
+      }
+    },
+    {
+      "sample_id": "citation_conflicting_001",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "How many people attended the March on Washington?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.89,
+          "chunk_id": "nara_march_washington::chunk::7",
+          "doc_id": "nara_march_washington",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Official estimates from the National Park Service placed attendance at the March on Washington for Jobs and Freedom at approximately 250,000 people on August 28, 1963.",
+          "metadata": {
+            "citation_label": "National Archives (1963) — March on Washington Records",
+            "canonical_url": "https://www.archives.gov/historical-docs/march-on-washington",
+            "source_org": "National Archives",
+            "year": 1963,
+            "content_type": "government_record",
+            "license": "Public Domain",
+            "tags": ["march_on_washington", "civil_rights", "attendance"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.85,
+          "chunk_id": "nyt_march_coverage::chunk::2",
+          "doc_id": "nyt_march_coverage",
+          "namespace": "kwanzaa_news_archive",
+          "content": "Crowd estimates varied, with organizers claiming over 300,000 participants while some news outlets reported between 200,000 and 250,000 people gathered at the Lincoln Memorial.",
+          "metadata": {
+            "citation_label": "New York Times (1963) — March on Washington Coverage",
+            "canonical_url": "https://timesmachine.nytimes.com/1963/08/29/",
+            "source_org": "New York Times",
+            "year": 1963,
+            "content_type": "news_article",
+            "license": "Archive Access License",
+            "tags": ["march_on_washington", "newspaper", "civil_rights"]
+          }
+        },
+        {
+          "rank": 3,
+          "score": 0.82,
+          "chunk_id": "lewis_march_memoir::chunk::4",
+          "doc_id": "lewis_march_memoir",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "It was the largest demonstration for human rights in American history. We had hoped for 100,000 people, but more than 250,000 showed up that day.",
+          "metadata": {
+            "citation_label": "Lewis, J. (1998) — Walking with the Wind: A Memoir",
+            "canonical_url": "https://archive.org/details/walkingwithwind00lewi",
+            "source_org": "Internet Archive",
+            "year": 1998,
+            "content_type": "memoir",
+            "license": "Fair Use",
+            "tags": ["march_on_washington", "civil_rights", "john_lewis"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Attendance estimates for the March on Washington for Jobs and Freedom on August 28, 1963, vary by source:\n\nOfficial Government Estimate:\n- The National Park Service officially estimated approximately 250,000 people [1]\n\nContemporary News Reports:\n- News coverage reported estimates ranging from 200,000 to 250,000 people [2]\n- March organizers claimed over 300,000 participants [2]\n\nParticipant Accounts:\n- John Lewis, one of the march organizers and speakers, recalled \"more than 250,000\" in his memoir [3]\n\nThe most reliable figure appears to be the official National Park Service estimate of 250,000 [1], which aligns with contemporary reports [2] and participant recollections [3]. The variation in estimates is common for large gatherings and reflects different counting methods and vantage points.",
+          "confidence": 0.85,
+          "tone": "formal",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "National Archives (1963) — March on Washington Records",
+            "canonical_url": "https://www.archives.gov/historical-docs/march-on-washington",
+            "source_org": "National Archives",
+            "year": 1963,
+            "content_type": "government_record",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "nara_march_washington",
+            "chunk_id": "nara_march_washington::chunk::7",
+            "tags": ["march_on_washington", "civil_rights", "attendance"],
+            "relevance_score": 0.89
+          },
+          {
+            "citation_label": "New York Times (1963) — March on Washington Coverage",
+            "canonical_url": "https://timesmachine.nytimes.com/1963/08/29/",
+            "source_org": "New York Times",
+            "year": 1963,
+            "content_type": "news_article",
+            "license": "Archive Access License",
+            "namespace": "kwanzaa_news_archive",
+            "doc_id": "nyt_march_coverage",
+            "chunk_id": "nyt_march_coverage::chunk::2",
+            "tags": ["march_on_washington", "newspaper", "civil_rights"],
+            "relevance_score": 0.85
+          },
+          {
+            "citation_label": "Lewis, J. (1998) — Walking with the Wind: A Memoir",
+            "canonical_url": "https://archive.org/details/walkingwithwind00lewi",
+            "source_org": "Internet Archive",
+            "year": 1998,
+            "content_type": "memoir",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "lewis_march_memoir",
+            "chunk_id": "lewis_march_memoir::chunk::4",
+            "tags": ["march_on_washington", "civil_rights", "john_lewis"],
+            "relevance_score": 0.82
+          }
+        ],
+        "retrieval_summary": {
+          "query": "How many people attended the March on Washington?",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources", "kwanzaa_news_archive"],
+          "filters": {
+            "tags": ["march_on_washington"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.89,
+              "snippet": "Official estimates from the National Park Service...",
+              "citation_label": "National Archives (1963) — March on Washington Records",
+              "canonical_url": "https://www.archives.gov/historical-docs/march-on-washington",
+              "doc_id": "nara_march_washington",
+              "chunk_id": "nara_march_washington::chunk::7",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.85,
+              "snippet": "Crowd estimates varied, with organizers claiming...",
+              "citation_label": "New York Times (1963) — March on Washington Coverage",
+              "canonical_url": "https://timesmachine.nytimes.com/1963/08/29/",
+              "doc_id": "nyt_march_coverage",
+              "chunk_id": "nyt_march_coverage::chunk::2",
+              "namespace": "kwanzaa_news_archive"
+            },
+            {
+              "rank": 3,
+              "score": 0.82,
+              "snippet": "It was the largest demonstration for human rights...",
+              "citation_label": "Lewis, J. (1998) — Walking with the Wind: A Memoir",
+              "canonical_url": "https://archive.org/details/walkingwithwind00lewi",
+              "doc_id": "lewis_march_memoir",
+              "chunk_id": "lewis_march_memoir::chunk::4",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 289
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Specific methodology used by National Park Service for crowd counting",
+            "Demographics breakdown of attendees"
+          ],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Imani", "Ujima"],
+        "quality_score": 0.93,
+        "reviewer": "human_annotator_002",
+        "notes": "Excellent example of handling conflicting estimates by presenting all sources and indicating which is most authoritative"
+      }
+    },
+    {
+      "sample_id": "citation_primary_secondary_001",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "What was the purpose of the Freedom Rides?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.94,
+          "chunk_id": "lewis_freedom_rides::chunk::3",
+          "doc_id": "lewis_freedom_rides",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The purpose of the Freedom Rides was clear and direct: to challenge the non-enforcement of Supreme Court rulings that declared segregated public buses unconstitutional. We were testing whether the Interstate Commerce Commission and the Justice Department would enforce Boynton v. Virginia.",
+          "metadata": {
+            "citation_label": "Lewis, J. (1998) — Walking with the Wind: Freedom Rides Chapter",
+            "canonical_url": "https://archive.org/details/walkingwithwind00lewi",
+            "source_org": "Internet Archive",
+            "year": 1998,
+            "content_type": "memoir",
+            "license": "Fair Use",
+            "tags": ["freedom_rides", "civil_rights", "desegregation", "john_lewis"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.88,
+          "chunk_id": "arsenault_freedom_riders::chunk::12",
+          "doc_id": "arsenault_freedom_riders",
+          "namespace": "kwanzaa_secondary_sources",
+          "content": "The Freedom Rides were designed to challenge segregation in interstate bus travel. Following the 1960 Supreme Court decision in Boynton v. Virginia, CORE organized interracial groups to ride buses through the South to test compliance with the ruling.",
+          "metadata": {
+            "citation_label": "Arsenault, R. (2006) — Freedom Riders: 1961 and the Struggle for Racial Justice",
+            "canonical_url": "https://archive.org/details/freedomriders190600arse",
+            "source_org": "Internet Archive",
+            "year": 2006,
+            "content_type": "scholarly_book",
+            "license": "Fair Use",
+            "tags": ["freedom_rides", "civil_rights", "scholarly", "history"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "The Freedom Rides had a clear strategic purpose: to challenge the non-enforcement of Supreme Court rulings that declared segregated public buses unconstitutional [1].\n\nPrimary Source Perspective:\nJohn Lewis, a Freedom Rider himself, explained that they were specifically testing whether the Interstate Commerce Commission and Justice Department would enforce the Boynton v. Virginia decision [1].\n\nHistorical Context:\nFollowing the 1960 Supreme Court decision in Boynton v. Virginia, the Congress of Racial Equality (CORE) organized interracial groups to ride buses through the South to test compliance with the ruling [2]. This provided a direct challenge to continued segregation in interstate bus travel.\n\nThe Freedom Rides were thus a strategic form of nonviolent direct action designed to force federal enforcement of existing civil rights law.",
+          "confidence": 0.92,
+          "tone": "formal",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Lewis, J. (1998) — Walking with the Wind: Freedom Rides Chapter",
+            "canonical_url": "https://archive.org/details/walkingwithwind00lewi",
+            "source_org": "Internet Archive",
+            "year": 1998,
+            "content_type": "memoir",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "lewis_freedom_rides",
+            "chunk_id": "lewis_freedom_rides::chunk::3",
+            "tags": ["freedom_rides", "civil_rights", "desegregation", "john_lewis"],
+            "relevance_score": 0.94
+          },
+          {
+            "citation_label": "Arsenault, R. (2006) — Freedom Riders: 1961 and the Struggle for Racial Justice",
+            "canonical_url": "https://archive.org/details/freedomriders190600arse",
+            "source_org": "Internet Archive",
+            "year": 2006,
+            "content_type": "scholarly_book",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_secondary_sources",
+            "doc_id": "arsenault_freedom_riders",
+            "chunk_id": "arsenault_freedom_riders::chunk::12",
+            "tags": ["freedom_rides", "civil_rights", "scholarly", "history"],
+            "relevance_score": 0.88
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What was the purpose of the Freedom Rides?",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources", "kwanzaa_secondary_sources"],
+          "filters": {
+            "tags": ["freedom_rides"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.94,
+              "snippet": "The purpose of the Freedom Rides was clear and direct...",
+              "citation_label": "Lewis, J. (1998) — Walking with the Wind",
+              "canonical_url": "https://archive.org/details/walkingwithwind00lewi",
+              "doc_id": "lewis_freedom_rides",
+              "chunk_id": "lewis_freedom_rides::chunk::3",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.88,
+              "snippet": "The Freedom Rides were designed to challenge segregation...",
+              "citation_label": "Arsenault, R. (2006) — Freedom Riders",
+              "canonical_url": "https://archive.org/details/freedomriders190600arse",
+              "doc_id": "arsenault_freedom_riders",
+              "chunk_id": "arsenault_freedom_riders::chunk::12",
+              "namespace": "kwanzaa_secondary_sources"
+            }
+          ],
+          "execution_time_ms": 267
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.94,
+        "reviewer": "human_annotator_003",
+        "notes": "Good example of privileging primary source (John Lewis) while using secondary source (Arsenault) for additional context"
+      }
+    },
+    {
+      "sample_id": "citation_direct_quote_001",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What is the most famous line from MLK's 'I Have a Dream' speech?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.97,
+          "chunk_id": "mlk_dream_speech::chunk::15",
+          "doc_id": "mlk_dream_speech",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character. I have a dream today!",
+          "metadata": {
+            "citation_label": "King, M.L. Jr. (1963) — I Have a Dream Speech",
+            "canonical_url": "https://www.archives.gov/files/press/exhibits/dream-speech.pdf",
+            "source_org": "National Archives",
+            "year": 1963,
+            "content_type": "speech",
+            "license": "Public Domain",
+            "tags": ["mlk", "i_have_a_dream", "march_on_washington", "speech"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "One of the most famous and frequently quoted lines from Dr. Martin Luther King Jr.'s \"I Have a Dream\" speech is:\n\n\"I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.\" [1]\n\nThis line, delivered at the March on Washington on August 28, 1963, encapsulates the speech's vision of racial equality and moral justice. It remains one of the most recognizable quotes in American history.",
+          "confidence": 0.96,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "King, M.L. Jr. (1963) — I Have a Dream Speech",
+            "canonical_url": "https://www.archives.gov/files/press/exhibits/dream-speech.pdf",
+            "source_org": "National Archives",
+            "year": 1963,
+            "content_type": "speech",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "mlk_dream_speech",
+            "chunk_id": "mlk_dream_speech::chunk::15",
+            "tags": ["mlk", "i_have_a_dream", "march_on_washington", "speech"],
+            "relevance_score": 0.97
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What is the most famous line from MLK's 'I Have a Dream' speech?",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "tags": ["i_have_a_dream"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.97,
+              "snippet": "I have a dream that my four little children will one day...",
+              "citation_label": "King, M.L. Jr. (1963) — I Have a Dream Speech",
+              "canonical_url": "https://www.archives.gov/files/press/exhibits/dream-speech.pdf",
+              "doc_id": "mlk_dream_speech",
+              "chunk_id": "mlk_dream_speech::chunk::15",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 156
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.95,
+        "reviewer": "human_annotator_001",
+        "notes": "Perfect example of direct quotation with proper citation"
+      }
+    },
+    {
+      "sample_id": "citation_multiple_002",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What are the Seven Principles of Kwanzaa?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.95,
+          "chunk_id": "karenga_nguzo_saba::chunk::1",
+          "doc_id": "karenga_nguzo_saba",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The Nguzo Saba, or Seven Principles, are: Umoja (Unity), Kujichagulia (Self-Determination), Ujima (Collective Work and Responsibility), Ujamaa (Cooperative Economics), Nia (Purpose), Kuumba (Creativity), and Imani (Faith).",
+          "metadata": {
+            "citation_label": "Karenga, M. (1977) — The Seven Principles of Kwanzaa",
+            "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "nguzo_saba", "principles"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.89,
+          "chunk_id": "karenga_principles_detail::chunk::5",
+          "doc_id": "karenga_principles_detail",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Each principle represents a fundamental value: Unity brings us together, Self-Determination empowers us to define ourselves, Collective Work reminds us of our responsibility to community, Cooperative Economics builds our economic strength, Purpose directs our work toward collective benefit, Creativity allows us to improve our community, and Faith sustains belief in ourselves, our people, and our victory.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1998) — Kwanzaa: A Celebration of Family, Community and Culture",
+            "canonical_url": "https://officialkwanzaawebsite.org/principles-explained",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1998,
+            "content_type": "book",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "nguzo_saba", "principles", "detailed"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "The Seven Principles of Kwanzaa, known as the Nguzo Saba, are [1]:\n\n1. **Umoja (Unity)** - Bringing us together\n2. **Kujichagulia (Self-Determination)** - Empowering us to define ourselves\n3. **Ujima (Collective Work and Responsibility)** - Reminding us of our responsibility to community\n4. **Ujamaa (Cooperative Economics)** - Building our economic strength\n5. **Nia (Purpose)** - Directing our work toward collective benefit\n6. **Kuumba (Creativity)** - Allowing us to improve our community\n7. **Imani (Faith)** - Sustaining belief in ourselves, our people, and our victory\n\nEach principle represents a fundamental value in African culture that contributes to building and reinforcing community [1][2]. These principles are celebrated over the seven days of Kwanzaa, from December 26 to January 1.",
+          "confidence": 0.97,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1977) — The Seven Principles of Kwanzaa",
+            "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_nguzo_saba",
+            "chunk_id": "karenga_nguzo_saba::chunk::1",
+            "tags": ["kwanzaa", "nguzo_saba", "principles"],
+            "relevance_score": 0.95
+          },
+          {
+            "citation_label": "Karenga, M. (1998) — Kwanzaa: A Celebration of Family, Community and Culture",
+            "canonical_url": "https://officialkwanzaawebsite.org/principles-explained",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1998,
+            "content_type": "book",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_principles_detail",
+            "chunk_id": "karenga_principles_detail::chunk::5",
+            "tags": ["kwanzaa", "nguzo_saba", "principles", "detailed"],
+            "relevance_score": 0.89
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What are the Seven Principles of Kwanzaa?",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "tags": ["nguzo_saba", "principles"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.95,
+              "snippet": "The Nguzo Saba, or Seven Principles, are: Umoja...",
+              "citation_label": "Karenga, M. (1977) — The Seven Principles of Kwanzaa",
+              "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
+              "doc_id": "karenga_nguzo_saba",
+              "chunk_id": "karenga_nguzo_saba::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.89,
+              "snippet": "Each principle represents a fundamental value...",
+              "citation_label": "Karenga, M. (1998) — Kwanzaa: A Celebration",
+              "canonical_url": "https://officialkwanzaawebsite.org/principles-explained",
+              "doc_id": "karenga_principles_detail",
+              "chunk_id": "karenga_principles_detail::chunk::5",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 201
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": ["Imani", "Nia"],
+        "quality_score": 0.96,
+        "reviewer": "human_annotator_001",
+        "notes": "Excellent example of combining list format with explanations from multiple sources"
+      }
+    },
+    {
+      "sample_id": "citation_conflicting_002",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "What was the death toll during the Tulsa Race Massacre?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.91,
+          "chunk_id": "tulsa_commission_report::chunk::8",
+          "doc_id": "tulsa_commission_report",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The 2001 Oklahoma Commission to Study the Tulsa Race Riot of 1921 concluded that between 100 and 300 people were killed during the massacre, though exact numbers remain disputed due to inadequate record-keeping and the destruction of death certificates.",
+          "metadata": {
+            "citation_label": "Oklahoma Commission (2001) — Tulsa Race Riot Report",
+            "canonical_url": "https://www.okhistory.org/research/forms/freport.pdf",
+            "source_org": "Oklahoma Historical Society",
+            "year": 2001,
+            "content_type": "government_report",
+            "license": "Public Domain",
+            "tags": ["tulsa", "race_massacre", "death_toll", "commission_report"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.87,
+          "chunk_id": "tulsa_tribune_1921::chunk::3",
+          "doc_id": "tulsa_tribune_1921",
+          "namespace": "kwanzaa_black_press",
+          "content": "Initial newspaper reports from June 1921 cited official figures of 36 deaths, but these numbers were widely disputed by Black residents and witnesses who reported seeing many more bodies removed from the Greenwood district.",
+          "metadata": {
+            "citation_label": "Tulsa Tribune (1921) — Race Riot Coverage",
+            "canonical_url": "https://tulsalibrary.org/digital-archives/tulsa-tribune-1921",
+            "source_org": "Tulsa Public Library Archives",
+            "year": 1921,
+            "content_type": "news_article",
+            "license": "Archive Access License",
+            "tags": ["tulsa", "race_massacre", "contemporary_account"]
+          }
+        },
+        {
+          "rank": 3,
+          "score": 0.84,
+          "chunk_id": "madigan_forensic_study::chunk::12",
+          "doc_id": "madigan_forensic_study",
+          "namespace": "kwanzaa_secondary_sources",
+          "content": "Forensic analysis and mass grave searches conducted between 2019-2022 support estimates of 100-300 casualties, significantly higher than the long-cited official figure of 36. Many victims were buried in unmarked graves and death certificates were destroyed or never filed.",
+          "metadata": {
+            "citation_label": "Madigan, T. (2021) — Tulsa Forensic Investigation Update",
+            "canonical_url": "https://www.tulsahistory.org/forensic-investigation",
+            "source_org": "Tulsa Historical Society",
+            "year": 2021,
+            "content_type": "forensic_report",
+            "license": "Public Domain",
+            "tags": ["tulsa", "race_massacre", "forensics", "mass_graves"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "The death toll from the 1921 Tulsa Race Massacre remains a matter of historical controversy due to deliberate suppression of evidence:\n\nOfficial Historical Estimate:\n- The 2001 Oklahoma Commission concluded that between 100 and 300 people were killed, though exact numbers remain disputed due to inadequate record-keeping and destruction of death certificates [1]\n\nContemporary Reports:\n- Initial newspaper reports from June 1921 cited official figures of only 36 deaths [2]\n- However, these numbers were widely disputed by Black residents and witnesses who reported seeing many more bodies removed from the Greenwood district [2]\n\nRecent Forensic Evidence:\n- Forensic analysis and mass grave searches conducted between 2019-2022 support estimates of 100-300 casualties [3]\n- Many victims were buried in unmarked graves and death certificates were destroyed or never filed [3]\n\nThe most reliable current estimate is 100-300 deaths [1][3], representing a significant historical correction from the long-understated official figure of 36. The destruction of records and burial of victims in unmarked graves represents deliberate erasure of the massacre's true scale.",
+          "confidence": 0.82,
+          "tone": "formal",
+          "completeness": "partial"
+        },
+        "sources": [
+          {
+            "citation_label": "Oklahoma Commission (2001) — Tulsa Race Riot Report",
+            "canonical_url": "https://www.okhistory.org/research/forms/freport.pdf",
+            "source_org": "Oklahoma Historical Society",
+            "year": 2001,
+            "content_type": "government_report",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "tulsa_commission_report",
+            "chunk_id": "tulsa_commission_report::chunk::8",
+            "tags": ["tulsa", "race_massacre", "death_toll", "commission_report"],
+            "relevance_score": 0.91
+          },
+          {
+            "citation_label": "Tulsa Tribune (1921) — Race Riot Coverage",
+            "canonical_url": "https://tulsalibrary.org/digital-archives/tulsa-tribune-1921",
+            "source_org": "Tulsa Public Library Archives",
+            "year": 1921,
+            "content_type": "news_article",
+            "license": "Archive Access License",
+            "namespace": "kwanzaa_black_press",
+            "doc_id": "tulsa_tribune_1921",
+            "chunk_id": "tulsa_tribune_1921::chunk::3",
+            "tags": ["tulsa", "race_massacre", "contemporary_account"],
+            "relevance_score": 0.87
+          },
+          {
+            "citation_label": "Madigan, T. (2021) — Tulsa Forensic Investigation Update",
+            "canonical_url": "https://www.tulsahistory.org/forensic-investigation",
+            "source_org": "Tulsa Historical Society",
+            "year": 2021,
+            "content_type": "forensic_report",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_secondary_sources",
+            "doc_id": "madigan_forensic_study",
+            "chunk_id": "madigan_forensic_study::chunk::12",
+            "tags": ["tulsa", "race_massacre", "forensics", "mass_graves"],
+            "relevance_score": 0.84
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What was the death toll during the Tulsa Race Massacre?",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources", "kwanzaa_secondary_sources", "kwanzaa_black_press"],
+          "filters": {
+            "tags": ["tulsa", "race_massacre"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.91,
+              "snippet": "The 2001 Oklahoma Commission to Study the Tulsa Race Riot...",
+              "citation_label": "Oklahoma Commission (2001) — Tulsa Race Riot Report",
+              "canonical_url": "https://www.okhistory.org/research/forms/freport.pdf",
+              "doc_id": "tulsa_commission_report",
+              "chunk_id": "tulsa_commission_report::chunk::8",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.87,
+              "snippet": "Initial newspaper reports from June 1921 cited...",
+              "citation_label": "Tulsa Tribune (1921) — Race Riot Coverage",
+              "canonical_url": "https://tulsalibrary.org/digital-archives/tulsa-tribune-1921",
+              "doc_id": "tulsa_tribune_1921",
+              "chunk_id": "tulsa_tribune_1921::chunk::3",
+              "namespace": "kwanzaa_black_press"
+            },
+            {
+              "rank": 3,
+              "score": 0.84,
+              "snippet": "Forensic analysis and mass grave searches conducted...",
+              "citation_label": "Madigan, T. (2021) — Tulsa Forensic Investigation Update",
+              "canonical_url": "https://www.tulsahistory.org/forensic-investigation",
+              "doc_id": "madigan_forensic_study",
+              "chunk_id": "madigan_forensic_study::chunk::12",
+              "namespace": "kwanzaa_secondary_sources"
+            }
+          ],
+          "execution_time_ms": 341
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Exact number of victims may never be known due to deliberate record destruction",
+            "Ongoing forensic investigations may revise estimates as mass graves are located"
+          ],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": ["Imani", "Ujima"],
+        "quality_score": 0.91,
+        "reviewer": "human_annotator_003",
+        "notes": "Complex example showing how to handle historical controversy, deliberate record destruction, and evolving evidence"
+      }
+    },
+    {
+      "sample_id": "citation_paraphrase_001",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What strategy did Rosa Parks use during the Montgomery Bus Boycott?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "chunk_id": "parks_autobiography::chunk::7",
+          "doc_id": "parks_autobiography",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "People always say that I didn't give up my seat because I was tired, but that isn't true. I was not tired physically, or no more tired than I usually was at the end of a working day. I was not old, although some people have an image of me as being old then. I was forty-two. No, the only tired I was, was tired of giving in.",
+          "metadata": {
+            "citation_label": "Parks, R. (1992) — Rosa Parks: My Story",
+            "canonical_url": "https://archive.org/details/rosaparks00park",
+            "source_org": "Internet Archive",
+            "year": 1992,
+            "content_type": "autobiography",
+            "license": "Fair Use",
+            "tags": ["rosa_parks", "montgomery", "boycott", "bus_protest"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Rosa Parks' strategy on December 1, 1955, was an act of principled civil disobedience. She refused to give up her seat to a white passenger on a Montgomery bus, which violated the city's segregation laws.\n\nIn her autobiography, Parks clarified a common misconception about her action. She explained that her refusal was not due to physical tiredness at the end of a workday. Rather, as she stated, she was \"tired of giving in\" [1]. This phrase captures the deliberate, conscious nature of her resistance—it was an act of moral exhaustion with injustice rather than physical fatigue.\n\nHer arrest that day catalyzed the Montgomery Bus Boycott, a 381-day mass protest that became a pivotal moment in the Civil Rights Movement.",
+          "confidence": 0.93,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Parks, R. (1992) — Rosa Parks: My Story",
+            "canonical_url": "https://archive.org/details/rosaparks00park",
+            "source_org": "Internet Archive",
+            "year": 1992,
+            "content_type": "autobiography",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "parks_autobiography",
+            "chunk_id": "parks_autobiography::chunk::7",
+            "tags": ["rosa_parks", "montgomery", "boycott", "bus_protest"],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What strategy did Rosa Parks use during the Montgomery Bus Boycott?",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "tags": ["rosa_parks", "montgomery"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "People always say that I didn't give up my seat because I was tired...",
+              "citation_label": "Parks, R. (1992) — Rosa Parks: My Story",
+              "canonical_url": "https://archive.org/details/rosaparks00park",
+              "doc_id": "parks_autobiography",
+              "chunk_id": "parks_autobiography::chunk::7",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 189
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Imani", "Kujichagulia"],
+        "quality_score": 0.94,
+        "reviewer": "human_annotator_002",
+        "notes": "Excellent example of paraphrasing context while preserving the key direct quote that captures Parks' meaning"
+      }
+    },
+    {
+      "sample_id": "citation_multiple_003",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "What were the main goals of the Black Panther Party?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.93,
+          "chunk_id": "bpp_ten_point_program::chunk::1",
+          "doc_id": "bpp_ten_point_program",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The Ten-Point Program of the Black Panther Party, written in October 1966, outlined our platform and program. We want freedom. We want power to determine the destiny of our Black Community. We want full employment for our people. We want an end to the robbery by the capitalist of our Black Community. We want decent housing fit for shelter of human beings. We want education for our people that exposes the true nature of this decadent American society. We want all Black men to be exempt from military service. We want an immediate end to POLICE BRUTALITY and MURDER of Black people. We want freedom for all Black men held in federal, state, county and city prisons and jails. We want land, bread, housing, education, clothing, justice and peace.",
+          "metadata": {
+            "citation_label": "Newton, H. & Seale, B. (1966) — Black Panther Party Ten-Point Program",
+            "canonical_url": "https://www.marxists.org/history/usa/workers/black-panthers/1966/ten-point-program.htm",
+            "source_org": "Black Panther Party Archives",
+            "year": 1966,
+            "content_type": "political_program",
+            "license": "Public Domain",
+            "tags": ["black_panther_party", "ten_point_program", "platform"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.88,
+          "chunk_id": "newton_revolutionary_suicide::chunk::9",
+          "doc_id": "newton_revolutionary_suicide",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The Black Panther Party stood for self-defense and survival programs. Our breakfast programs fed thousands of children. Our health clinics provided free medical care. We organized the community to protect itself from police brutality while building institutions that would serve the people's needs.",
+          "metadata": {
+            "citation_label": "Newton, H. (1973) — Revolutionary Suicide",
+            "canonical_url": "https://archive.org/details/revolutionarysu00newt",
+            "source_org": "Internet Archive",
+            "year": 1973,
+            "content_type": "memoir",
+            "license": "Fair Use",
+            "tags": ["black_panther_party", "community_programs", "self_defense"]
+          }
+        },
+        {
+          "rank": 3,
+          "score": 0.84,
+          "chunk_id": "davis_black_panthers::chunk::14",
+          "doc_id": "davis_black_panthers",
+          "namespace": "kwanzaa_secondary_sources",
+          "content": "The Black Panther Party combined revolutionary rhetoric with practical community organizing. Their survival programs—free breakfast for children, health clinics, and legal aid—addressed immediate community needs while their political platform challenged systemic racism and economic exploitation.",
+          "metadata": {
+            "citation_label": "Bloom, J. & Martin, W. (2013) — Black Against Empire: History of BPP",
+            "canonical_url": "https://archive.org/details/blackagainstempi00bloo",
+            "source_org": "Internet Archive",
+            "year": 2013,
+            "content_type": "scholarly_book",
+            "license": "Fair Use",
+            "tags": ["black_panther_party", "history", "scholarly"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "The Black Panther Party, founded in 1966, had both revolutionary political goals and practical community programs:\n\nPolitical Platform (Ten-Point Program):\nThe party's October 1966 founding document outlined comprehensive demands including [1]:\n- Freedom and power to determine the destiny of the Black Community\n- Full employment\n- Decent housing\n- Education that exposes systemic oppression\n- An immediate end to police brutality and murder of Black people\n- Freedom for Black prisoners\n- Land, bread, housing, education, clothing, justice and peace\n\nCommunity Survival Programs:\nBeyond political demands, the party implemented practical programs [2]:\n- Free breakfast programs that fed thousands of children\n- Free health clinics providing medical care\n- Community organizing for self-defense against police brutality\n- Legal aid and other community services\n\nScholarship notes that the party combined revolutionary rhetoric with practical community organizing, addressing immediate needs while challenging systemic racism and economic exploitation [3].\n\nThe party's dual focus on revolutionary politics and survival programs represented a comprehensive approach to Black liberation.",
+          "confidence": 0.89,
+          "tone": "formal",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Newton, H. & Seale, B. (1966) — Black Panther Party Ten-Point Program",
+            "canonical_url": "https://www.marxists.org/history/usa/workers/black-panthers/1966/ten-point-program.htm",
+            "source_org": "Black Panther Party Archives",
+            "year": 1966,
+            "content_type": "political_program",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "bpp_ten_point_program",
+            "chunk_id": "bpp_ten_point_program::chunk::1",
+            "tags": ["black_panther_party", "ten_point_program", "platform"],
+            "relevance_score": 0.93
+          },
+          {
+            "citation_label": "Newton, H. (1973) — Revolutionary Suicide",
+            "canonical_url": "https://archive.org/details/revolutionarysu00newt",
+            "source_org": "Internet Archive",
+            "year": 1973,
+            "content_type": "memoir",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "newton_revolutionary_suicide",
+            "chunk_id": "newton_revolutionary_suicide::chunk::9",
+            "tags": ["black_panther_party", "community_programs", "self_defense"],
+            "relevance_score": 0.88
+          },
+          {
+            "citation_label": "Bloom, J. & Martin, W. (2013) — Black Against Empire: History of BPP",
+            "canonical_url": "https://archive.org/details/blackagainstempi00bloo",
+            "source_org": "Internet Archive",
+            "year": 2013,
+            "content_type": "scholarly_book",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_secondary_sources",
+            "doc_id": "davis_black_panthers",
+            "chunk_id": "davis_black_panthers::chunk::14",
+            "tags": ["black_panther_party", "history", "scholarly"],
+            "relevance_score": 0.84
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What were the main goals of the Black Panther Party?",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources", "kwanzaa_secondary_sources"],
+          "filters": {
+            "tags": ["black_panther_party"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.93,
+              "snippet": "The Ten-Point Program of the Black Panther Party...",
+              "citation_label": "Newton, H. & Seale, B. (1966) — Black Panther Party Ten-Point Program",
+              "canonical_url": "https://www.marxists.org/history/usa/workers/black-panthers/1966/ten-point-program.htm",
+              "doc_id": "bpp_ten_point_program",
+              "chunk_id": "bpp_ten_point_program::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.88,
+              "snippet": "The Black Panther Party stood for self-defense...",
+              "citation_label": "Newton, H. (1973) — Revolutionary Suicide",
+              "canonical_url": "https://archive.org/details/revolutionarysu00newt",
+              "doc_id": "newton_revolutionary_suicide",
+              "chunk_id": "newton_revolutionary_suicide::chunk::9",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 3,
+              "score": 0.84,
+              "snippet": "The Black Panther Party combined revolutionary rhetoric...",
+              "citation_label": "Bloom, J. & Martin, W. (2013) — Black Against Empire",
+              "canonical_url": "https://archive.org/details/blackagainstempi00bloo",
+              "doc_id": "davis_black_panthers",
+              "chunk_id": "davis_black_panthers::chunk::14",
+              "namespace": "kwanzaa_secondary_sources"
+            }
+          ],
+          "execution_time_ms": 298
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Specific operational details of survival programs across different cities",
+            "Evolution of the party's platform over time"
+          ],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Imani", "Ujima", "Kujichagulia"],
+        "quality_score": 0.92,
+        "reviewer": "human_annotator_003",
+        "notes": "Strong example of synthesizing primary party documents with founder memoirs and scholarly analysis"
       }
     }
   ]

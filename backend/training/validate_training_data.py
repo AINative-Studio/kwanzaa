@@ -213,6 +213,11 @@ class TrainingDataValidator:
 
     def _validate_schema_compliance(self, data: Dict[str, Any], file_path: Path):
         """Validate data against JSON schema"""
+        if not HAS_JSONSCHEMA:
+            # Basic validation without jsonschema library
+            self._basic_schema_validation(data, file_path)
+            return
+
         try:
             jsonschema.validate(instance=data, schema=self.schema)
         except jsonschema.ValidationError as e:
@@ -231,6 +236,30 @@ class TrainingDataValidator:
                 sample_id="N/A",
                 file_path=str(file_path),
                 message=f"Invalid schema: {str(e)}"
+            ))
+
+    def _basic_schema_validation(self, data: Dict[str, Any], file_path: Path):
+        """Basic schema validation without jsonschema library"""
+        # Check top-level required fields
+        required_top_level = ["dataset_version", "created_at", "samples"]
+        for field in required_top_level:
+            if field not in data:
+                self.report.add_issue(ValidationIssue(
+                    severity="error",
+                    category="schema_compliance",
+                    sample_id="N/A",
+                    file_path=str(file_path),
+                    message=f"Missing required top-level field: {field}"
+                ))
+
+        # Check samples is array
+        if "samples" in data and not isinstance(data["samples"], list):
+            self.report.add_issue(ValidationIssue(
+                severity="error",
+                category="schema_compliance",
+                sample_id="N/A",
+                file_path=str(file_path),
+                message="'samples' must be an array"
             ))
 
     def _check_duplications(self, sample: Dict[str, Any], file_path: Path):
