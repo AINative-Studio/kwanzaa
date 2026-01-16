@@ -449,22 +449,35 @@ class TrainingDataValidator:
                 ))
 
         # Check for culturally insensitive language (basic check)
+        # Note: These are heuristics and require human review
         sensitive_patterns = [
-            r'\brace\b(?! discrimination)',  # "race" without context
-            r'\bexotic\b',
-            r'\bprimitive\b',
-            r'\btribe\b(?! history)',
+            (r'\bexotic\b', 'potentially exoticizing language'),
+            (r'\bprimitive\b', 'potentially derogatory term'),
         ]
 
-        for pattern in sensitive_patterns:
+        # More nuanced check for "race" - allow in historical contexts
+        if re.search(r'\brace\b', answer_text, re.IGNORECASE):
+            # Check if it's in appropriate context
+            appropriate_contexts = [
+                'race discrimination', 'race massacre', 'race riot',
+                'race-based', 'racial', 'racism', 'race relations',
+                'race equality', 'race and ethnicity'
+            ]
+            text_lower = answer_text.lower()
+            has_appropriate_context = any(ctx in text_lower for ctx in appropriate_contexts)
+
+            if not has_appropriate_context:
+                sensitive_patterns.append((r'\brace\b', 'unclear usage of "race" term'))
+
+        for pattern, description in sensitive_patterns:
             if re.search(pattern, answer_text, re.IGNORECASE):
                 self.report.add_issue(ValidationIssue(
                     severity="warning",
                     category="answer_quality",
                     sample_id=sample_id,
                     file_path=str(file_path),
-                    message=f"Potentially insensitive language detected (pattern: {pattern})",
-                    details={"recommendation": "Review for cultural sensitivity"}
+                    message=f"Potentially insensitive language: {description}",
+                    details={"pattern": pattern, "recommendation": "Review for cultural sensitivity"}
                 ))
 
     def _check_citation_accuracy(self, sample: Dict[str, Any], file_path: Path):

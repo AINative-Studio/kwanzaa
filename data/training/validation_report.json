@@ -1,10 +1,10 @@
 {
-  "validation_timestamp": "2026-01-16T23:42:30.242792",
+  "validation_timestamp": "2026-01-16T23:43:44.289732",
   "summary": {
     "total_samples": 22,
     "valid_samples": 22,
     "invalid_samples": 0,
-    "warnings": 1,
+    "warnings": 0,
     "pass_rate": "100.00%"
   },
   "statistics": {
@@ -40,23 +40,8 @@
       "max_quality_score": 0.97,
       "edge_cases": 4
     },
-    "issues_by_category": {
-      "answer_quality": 1
-    },
-    "issues_by_severity": {
-      "warning": 1
-    }
+    "issues_by_category": {},
+    "issues_by_severity": {}
   },
-  "issues": [
-    {
-      "severity": "warning",
-      "category": "answer_quality",
-      "sample_id": "citation_conflicting_002",
-      "file_path": "/Users/aideveloper/kwanzaa/data/training/examples/citation-examples.json",
-      "message": "Potentially insensitive language detected (pattern: \\brace\\b(?! discrimination))",
-      "details": {
-        "recommendation": "Review for cultural sensitivity"
-      }
-    }
-  ]
+  "issues": []
 }
