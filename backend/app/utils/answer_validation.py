@@ -21,7 +21,7 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import ValidationError
 
-from app.schemas.answer_json import AnswerJson
+from app.models.answer_json import AnswerJsonContract
 
 
 class ValidationErrorDetail:
@@ -123,7 +123,7 @@ def _parse_pydantic_errors(validation_error: ValidationError) -> List[Validation
     return error_details
 
 
-def validate_answer_json(data: Dict[str, Any]) -> AnswerJson:
+def validate_answer_json(data: Dict[str, Any]) -> AnswerJsonContract:
     """Validate a dictionary against the answer_json schema.
 
     This is the primary validation function that should be used to ensure
@@ -133,7 +133,7 @@ def validate_answer_json(data: Dict[str, Any]) -> AnswerJson:
         data: Dictionary containing the response data
 
     Returns:
-        Validated AnswerJson instance
+        Validated AnswerJsonContract instance
 
     Raises:
         AnswerValidationError: If validation fails
@@ -159,7 +159,7 @@ def validate_answer_json(data: Dict[str, Any]) -> AnswerJson:
 
     try:
         # Attempt to parse and validate using Pydantic
-        return AnswerJson.model_validate(data)
+        return AnswerJsonContract.model_validate(data)
     except ValidationError as e:
         # Convert Pydantic errors to our custom error format
         error_details = _parse_pydantic_errors(e)
@@ -234,7 +234,7 @@ def get_validation_errors(data: Dict[str, Any]) -> List[ValidationErrorDetail]:
 
 def validate_multiple_responses(
     responses: List[Dict[str, Any]],
-) -> tuple[List[AnswerJson], List[tuple[int, AnswerValidationError]]]:
+) -> tuple[List[AnswerJsonContract], List[tuple[int, AnswerValidationError]]]:
     """Validate multiple responses and return both successes and failures.
 
     Args:
@@ -242,14 +242,14 @@ def validate_multiple_responses(
 
     Returns:
         Tuple of (valid_responses, errors)
-        - valid_responses: List of validated AnswerJson instances
+        - valid_responses: List of validated AnswerJsonContract instances
         - errors: List of tuples (index, error) for failed validations
 
     Example:
         >>> valid, invalid = validate_multiple_responses(batch_responses)
         >>> print(f"Valid: {len(valid)}, Invalid: {len(invalid)}")
     """
-    valid_responses: List[AnswerJson] = []
+    valid_responses: List[AnswerJsonContract] = []
     errors: List[tuple[int, AnswerValidationError]] = []
 
     for idx, response in enumerate(responses):
