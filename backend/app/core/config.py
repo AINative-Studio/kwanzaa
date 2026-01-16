@@ -90,6 +90,12 @@ class Settings(BaseSettings):
         description="Batch size for embedding generation",
     )
 
+    # Reranking Settings
+    RERANK_MODEL: str = Field(
+        default="cross-encoder/ms-marco-MiniLM-L-6-v2",
+        description="Cross-encoder model for reranking",
+    )
+
     # Search Settings
     DEFAULT_SEARCH_LIMIT: int = Field(
         default=10,
@@ -212,7 +218,7 @@ class Settings(BaseSettings):
             persona_key: Persona identifier (educator, researcher, creator, builder)
 
         Returns:
-            Dict containing threshold and namespaces for the persona
+            Dict containing threshold, namespaces, and RAG settings for the persona
 
         Raises:
             ValueError: If persona_key is invalid
@@ -223,9 +229,23 @@ class Settings(BaseSettings):
                 f"Valid options: {list(self.PERSONA_THRESHOLDS.keys())}"
             )
 
+        # Default RAG settings by persona
+        rag_defaults = {
+            "educator": {"max_results": 10, "min_results": 3, "rerank": True},
+            "researcher": {"max_results": 20, "min_results": 5, "rerank": True},
+            "creator": {"max_results": 15, "min_results": 2, "rerank": False},
+            "builder": {"max_results": 10, "min_results": 1, "rerank": False},
+        }
+
         return {
             "threshold": self.PERSONA_THRESHOLDS[persona_key],
             "namespaces": self.PERSONA_NAMESPACES.get(persona_key, [self.DEFAULT_NAMESPACE]),
+            "rag": {
+                "similarity_threshold": self.PERSONA_THRESHOLDS[persona_key],
+                "max_results": rag_defaults[persona_key]["max_results"],
+                "min_results": rag_defaults[persona_key]["min_results"],
+                "rerank": rag_defaults[persona_key]["rerank"],
+            },
         }
 
 

@@ -13,7 +13,12 @@ from app.models.search import (
     SearchResponse,
     SearchResult,
 )
+from app.models.query_template import (
+    PersonaType,
+    TemplateSelectionRequest,
+)
 from app.services.embedding import EmbeddingService
+from app.services.query_templates import QueryTemplateService
 
 
 class SearchService:
@@ -28,14 +33,18 @@ class SearchService:
     def __init__(
         self,
         embedding_service: Optional[EmbeddingService] = None,
+        template_service: Optional[QueryTemplateService] = None,
     ) -> None:
         """Initialize the search service.
 
         Args:
             embedding_service: Service for generating embeddings.
                               If None, creates a new instance.
+            template_service: Service for query template processing.
+                             If None, creates a new instance.
         """
         self.embedding_service = embedding_service or EmbeddingService()
+        self.template_service = template_service or QueryTemplateService()
 
     def _apply_persona_defaults(self, request: SearchRequest) -> SearchRequest:
         """Apply persona-specific defaults to search request.
@@ -263,3 +272,164 @@ class SearchService:
         """
         embedding, _ = await self.embedding_service.generate_embedding(text)
         return embedding, self.embedding_service.model_name
+
+    async def search_with_template(
+        self,
+        query: str,
+        persona: PersonaType,
+        zerodb_search_func: Any,
+        template_overrides: Optional[Dict[str, Any]] = None,
+        context: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """Perform semantic search using a query template.
+
+        This method integrates the query template system with search execution:
+        1. Applies persona-specific template to query
+        2. Expands query based on template rules
+        3. Applies metadata filters and retrieval parameters
+        4. Executes search with template configuration
+        5. Returns results with template metadata
+
+        Args:
+            query: User query text
+            persona: Persona type for template selection
+            zerodb_search_func: Async function for ZeroDB vector search
+            template_overrides: Optional parameter overrides
+            context: Additional context for query processing
+
+        Returns:
+            Dictionary with search results and template information:
+            {
+                "search_response": SearchResponse object,
+                "template_metadata": Template application metadata,
+                "query_expansion": Query expansion details
+            }
+
+        Raises:
+            ValueError: If persona is invalid or template not found
+            RuntimeError: If search execution fails
+        """
+        start_time = time.time()
+
+        # Apply query template
+        template_request = TemplateSelectionRequest(
+            query=query,
+            persona=persona,
+            template_overrides=template_overrides,
+            context=context,
+        )
+
+        template_response = self.template_service.apply_template(template_request)
+        template_app = template_response.application
+
+        # Build search request from template application
+        search_request = SearchRequest(
+            query=template_app.expanded_query,
+            namespace=template_app.namespaces[0],  # Use primary namespace
+            filters=self._parse_template_filters(template_app.metadata_filters),
+            limit=template_app.result_limit,
+            threshold=template_app.similarity_threshold,
+            include_embeddings=False,
+        )
+
+        # Execute search
+        search_response = await self.search(search_request, zerodb_search_func)
+
+        # Calculate total processing time
+        total_time_ms = int((time.time() - start_time) * 1000)
+
+        # Build comprehensive response
+        return {
+            "search_response": search_response,
+            "template_metadata": {
+                "persona": template_app.persona.value,
+                "template_used": template_app.template_used,
+                "nguzo_saba_principle": template_response.template_metadata.get(
+                    "nguzo_saba_principle", ""
+                ),
+                "expansion_strategy": template_response.template_metadata.get(
+                    "expansion_strategy", ""
+                ),
+            },
+            "query_expansion": {
+                "original_query": template_app.original_query,
+                "expanded_query": template_app.expanded_query,
+                "expansion_terms": template_app.expansion_terms,
+                "terms_added_count": len(template_app.expansion_terms),
+            },
+            "retrieval_configuration": {
+                "namespaces": template_app.namespaces,
+                "similarity_threshold": template_app.similarity_threshold,
+                "result_limit": template_app.result_limit,
+                "min_results": template_app.min_results,
+                "rerank": template_app.rerank,
+            },
+            "context_formatting": {
+                "citation_style": template_app.context_formatting.citation_style,
+                "include_citations": template_app.context_formatting.include_citations,
+                "show_provenance": template_app.context_formatting.show_provenance,
+            },
+            "performance": {
+                "total_time_ms": total_time_ms,
+                "search_time_ms": search_response.search_metadata.execution_time_ms,
+                "template_application_time_ms": total_time_ms
+                - search_response.search_metadata.execution_time_ms,
+            },
+        }
+
+    def _parse_template_filters(
+        self, template_filters: Dict[str, Any]
+    ) -> Optional[ProvenanceFilters]:
+        """Parse template metadata filters into ProvenanceFilters.
+
+        Args:
+            template_filters: Metadata filters from template application
+
+        Returns:
+            ProvenanceFilters object or None if no filters
+        """
+        if not template_filters:
+            return None
+
+        # Extract provenance filter fields
+        filter_data = {}
+
+        # Handle year filters
+        if "year_gte" in template_filters:
+            filter_data["year_gte"] = template_filters["year_gte"]
+        if "year_lte" in template_filters:
+            filter_data["year_lte"] = template_filters["year_lte"]
+        if "year" in template_filters:
+            filter_data["year"] = template_filters["year"]
+
+        # Handle content_type (convert from $in format)
+        if "content_type" in template_filters:
+            if isinstance(template_filters["content_type"], dict):
+                filter_data["content_type"] = template_filters["content_type"].get("$in", [])
+            else:
+                filter_data["content_type"] = [template_filters["content_type"]]
+
+        # Handle source_org
+        if "source_org" in template_filters:
+            if isinstance(template_filters["source_org"], dict):
+                filter_data["source_org"] = template_filters["source_org"].get("$in", [])
+            else:
+                filter_data["source_org"] = [template_filters["source_org"]]
+
+        # Handle tags
+        if "tags" in template_filters:
+            if isinstance(template_filters["tags"], dict):
+                # Could be $all, $contains_any, etc.
+                filter_data["tags"] = (
+                    template_filters["tags"].get("$all")
+                    or template_filters["tags"].get("$contains_any")
+                    or []
+                )
+            else:
+                filter_data["tags"] = template_filters["tags"]
+
+        # Create ProvenanceFilters if we have any data
+        if filter_data:
+            return ProvenanceFilters(**filter_data)
+
+        return None

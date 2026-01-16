@@ -1,0 +1,418 @@
+# Query Template Configuration
+# Defines persona-specific query templates for tailored retrieval
+
+# Templates for each persona type
+templates:
+  builder:
+    display_name: "Builder"
+    description: "For developers and technical professionals seeking code patterns, schemas, and implementation examples"
+
+    # Nguzo Saba alignment
+    nguzo_saba_principle: "Kujichagulia (Self-Determination) - Empowering builders to learn and create independently"
+
+    # Namespaces in priority order
+    namespaces:
+      - "kwanzaa_dev_patterns"
+
+    # Query expansion rules
+    expansion:
+      strategy: "technical"
+      add_synonyms: true
+      add_related_terms: true
+      extract_entities: true
+      temporal_context: false
+      max_expansion_terms: 10
+
+    # Metadata filter templates
+    filters:
+      content_types:
+        - "code_example"
+        - "technical_guide"
+        - "api_documentation"
+        - "schema_definition"
+      tags_preferred:
+        - "implementation"
+        - "pattern"
+        - "best-practice"
+        - "api"
+        - "architecture"
+
+    # Retrieval parameter overrides
+    retrieval:
+      similarity_threshold: 0.70
+      result_limit: 10
+      min_results: 1
+      rerank: false
+      diversity_factor: 0.3
+
+    # Context formatting preferences
+    context_formatting:
+      include_metadata: true
+      include_citations: false
+      citation_style: "chicago"
+      snippet_length: 1024
+      highlight_query_terms: true
+      show_provenance: false
+      deduplicate_sources: false
+
+    # Example queries
+    example_queries:
+      - "How do I implement semantic search with ZeroDB?"
+      - "Show me the API schema for search requests"
+      - "What's the best pattern for embedding generation?"
+      - "How to structure metadata for provenance tracking?"
+      - "Example code for persona-based retrieval"
+
+  educator:
+    display_name: "Educator"
+    description: "For teachers and educational professionals seeking historically accurate, citation-backed content"
+
+    # Nguzo Saba alignment
+    nguzo_saba_principle: "Imani (Faith) - Maintaining trust through accurate, verifiable historical information"
+
+    # Namespaces in priority order (primary sources only)
+    namespaces:
+      - "kwanzaa_primary_sources"
+
+    # Query expansion rules
+    expansion:
+      strategy: "historical"
+      add_synonyms: true
+      add_related_terms: true
+      extract_entities: true
+      temporal_context: true
+      max_expansion_terms: 8
+
+    # Metadata filter templates
+    filters:
+      content_types:
+        - "historical_document"
+        - "archival_material"
+        - "primary_source"
+      tags_required:
+        - "verified"
+      tags_preferred:
+        - "educational"
+        - "factual"
+        - "historical"
+
+    # Retrieval parameter overrides
+    retrieval:
+      similarity_threshold: 0.80
+      result_limit: 10
+      min_results: 3
+      rerank: true
+      diversity_factor: 0.5
+
+    # Context formatting preferences
+    context_formatting:
+      include_metadata: true
+      include_citations: true
+      citation_style: "chicago"
+      snippet_length: 512
+      highlight_query_terms: false
+      show_provenance: true
+      deduplicate_sources: true
+
+    # Example queries
+    example_queries:
+      - "When was Kwanzaa first celebrated?"
+      - "Who founded Kwanzaa and why?"
+      - "What are the seven principles of Kwanzaa?"
+      - "Historical context of the Black Power movement"
+      - "Primary sources about Maulana Karenga"
+
+  creator:
+    display_name: "Creator"
+    description: "For content creators and writers seeking rhetorical structures, narrative elements, and cultural inspiration"
+
+    # Nguzo Saba alignment
+    nguzo_saba_principle: "Kuumba (Creativity) - Inspiring creative expression grounded in cultural authenticity"
+
+    # Namespaces in priority order
+    namespaces:
+      - "kwanzaa_primary_sources"
+      - "kwanzaa_speeches_letters"
+      - "kwanzaa_teaching_kits"
+
+    # Query expansion rules
+    expansion:
+      strategy: "thematic"
+      add_synonyms: true
+      add_related_terms: true
+      extract_entities: true
+      temporal_context: true
+      max_expansion_terms: 12
+
+    # Metadata filter templates
+    filters:
+      content_types:
+        - "speech"
+        - "letter"
+        - "address"
+        - "historical_document"
+        - "educational_resource"
+      tags_preferred:
+        - "inspirational"
+        - "narrative"
+        - "rhetorical"
+        - "cultural"
+        - "ceremonial"
+
+    # Retrieval parameter overrides
+    retrieval:
+      similarity_threshold: 0.65
+      result_limit: 15
+      min_results: 2
+      rerank: false
+      diversity_factor: 0.7
+
+    # Context formatting preferences
+    context_formatting:
+      include_metadata: true
+      include_citations: true
+      citation_style: "mla"
+      snippet_length: 768
+      highlight_query_terms: false
+      show_provenance: true
+      deduplicate_sources: false
+
+    # Example queries
+    example_queries:
+      - "Powerful speeches about unity and collective work"
+      - "Narrative structures in Kwanzaa storytelling"
+      - "Ceremonial language for Karamu feast"
+      - "Themes of self-determination in African American literature"
+      - "Inspirational quotes about cultural identity"
+
+  researcher:
+    display_name: "Researcher"
+    description: "For scholars and researchers requiring comprehensive source coverage with metadata-first approach"
+
+    # Nguzo Saba alignment
+    nguzo_saba_principle: "Ujima (Collective Work and Responsibility) - Supporting rigorous scholarship for community benefit"
+
+    # Namespaces in priority order (comprehensive coverage)
+    namespaces:
+      - "kwanzaa_primary_sources"
+      - "kwanzaa_black_press"
+      - "kwanzaa_speeches_letters"
+      - "kwanzaa_black_stem"
+
+    # Query expansion rules
+    expansion:
+      strategy: "research"
+      add_synonyms: true
+      add_related_terms: true
+      extract_entities: true
+      temporal_context: true
+      max_expansion_terms: 15
+
+    # Metadata filter templates
+    filters:
+      content_types:
+        - "historical_document"
+        - "newspaper_article"
+        - "periodical"
+        - "speech"
+        - "letter"
+        - "scientific_paper"
+        - "archival_material"
+      tags_preferred:
+        - "peer-reviewed"
+        - "archival"
+        - "scholarly"
+        - "primary-source"
+        - "historical"
+
+    # Retrieval parameter overrides
+    retrieval:
+      similarity_threshold: 0.75
+      result_limit: 20
+      min_results: 5
+      rerank: true
+      diversity_factor: 0.6
+
+    # Context formatting preferences
+    context_formatting:
+      include_metadata: true
+      include_citations: true
+      citation_style: "chicago"
+      snippet_length: 512
+      highlight_query_terms: false
+      show_provenance: true
+      deduplicate_sources: false
+
+    # Example queries
+    example_queries:
+      - "Evolution of Kwanzaa celebrations 1966-1980"
+      - "Academic discourse on African American cultural movements"
+      - "Primary sources from the Black Press about Kwanzaa"
+      - "Scholarly analysis of the Nguzo Saba principles"
+      - "Historical methodology for studying cultural holidays"
+
+# Query expansion dictionaries
+expansion_dictionaries:
+  technical:
+    # Technical terms and their related concepts
+    api:
+      - "endpoint"
+      - "interface"
+      - "rest"
+      - "graphql"
+    schema:
+      - "model"
+      - "structure"
+      - "definition"
+      - "format"
+    embedding:
+      - "vector"
+      - "representation"
+      - "encoding"
+      - "semantic"
+    search:
+      - "retrieval"
+      - "query"
+      - "ranking"
+      - "relevance"
+
+  historical:
+    # Historical terms and context
+    kwanzaa:
+      - "African American holiday"
+      - "cultural celebration"
+      - "seven principles"
+      - "Nguzo Saba"
+    founder:
+      - "Maulana Karenga"
+      - "Dr. Karenga"
+      - "creator"
+      - "originator"
+    principles:
+      - "Umoja"
+      - "Kujichagulia"
+      - "Ujima"
+      - "Ujamaa"
+      - "Nia"
+      - "Kuumba"
+      - "Imani"
+    movement:
+      - "Black Power"
+      - "Civil Rights"
+      - "cultural nationalism"
+      - "African diaspora"
+
+  thematic:
+    # Thematic and narrative concepts
+    unity:
+      - "togetherness"
+      - "solidarity"
+      - "collective"
+      - "community"
+    heritage:
+      - "ancestry"
+      - "tradition"
+      - "legacy"
+      - "roots"
+    creativity:
+      - "innovation"
+      - "expression"
+      - "artistry"
+      - "imagination"
+    purpose:
+      - "mission"
+      - "goal"
+      - "vision"
+      - "calling"
+
+  research:
+    # Research and academic terms
+    methodology:
+      - "approach"
+      - "framework"
+      - "method"
+      - "protocol"
+    analysis:
+      - "examination"
+      - "investigation"
+      - "study"
+      - "research"
+    evidence:
+      - "source"
+      - "citation"
+      - "reference"
+      - "documentation"
+    context:
+      - "background"
+      - "setting"
+      - "circumstances"
+      - "environment"
+
+# Template selection rules
+selection_rules:
+  # Default template if none specified
+  default: "educator"
+
+  # Automatic template detection based on query patterns
+  auto_detection:
+    enabled: true
+    confidence_threshold: 0.75
+
+    patterns:
+      builder:
+        - "how to implement"
+        - "code example"
+        - "api"
+        - "schema"
+        - "pattern"
+        - "architecture"
+
+      educator:
+        - "when was"
+        - "who founded"
+        - "what is"
+        - "historical"
+        - "primary source"
+
+      creator:
+        - "inspiring"
+        - "creative"
+        - "narrative"
+        - "story"
+        - "ceremony"
+
+      researcher:
+        - "scholarly"
+        - "research"
+        - "academic"
+        - "methodology"
+        - "comprehensive"
+
+# Validation rules
+validation:
+  max_namespaces: 6
+  min_similarity_threshold: 0.5
+  max_similarity_threshold: 0.95
+  max_result_limit: 50
+  max_expansion_terms: 20
+
+  # Required fields for all templates
+  required_fields:
+    - "display_name"
+    - "description"
+    - "namespaces"
+    - "nguzo_saba_principle"
+
+# Performance tuning
+performance:
+  # Caching for expanded queries
+  cache_expanded_queries: true
+  cache_ttl_seconds: 600
+
+  # Parallel namespace search
+  parallel_namespace_search: true
+  max_parallel_namespaces: 3
+
+  # Query preprocessing
+  enable_query_normalization: true
+  enable_stopword_removal: false  # Keep stopwords for semantic search

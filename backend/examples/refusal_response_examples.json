@@ -1,0 +1,250 @@
+{
+  "description": "Example refusal responses for citation enforcement",
+  "version": "1.0.0",
+  "examples": [
+    {
+      "scenario": "insufficient_retrieval",
+      "persona": "educator",
+      "query": "What was the impact of the Selma to Montgomery marches?",
+      "retrieval_results": [],
+      "refusal_decision": {
+        "should_refuse": true,
+        "context": {
+          "reason": "insufficient_retrieval",
+          "persona": "educator",
+          "similarity_threshold": 0.80,
+          "actual_similarity": 0.0,
+          "min_sources_required": 2,
+          "sources_found": 0,
+          "primary_sources_required": false,
+          "primary_sources_found": 0,
+          "query_type": "factual"
+        },
+        "refusal_message": "I cannot provide a cited answer to this query because no relevant documents were found in the current corpus. To maintain accuracy and trust, I must refuse rather than provide an uncited response.",
+        "specific_gaps": [
+          "No relevant documents found in the corpus for query: 'What was the impact of the Selma to Montgomery marches?'",
+          "The current corpus may not contain information about this topic"
+        ],
+        "suggestions": [
+          {
+            "suggestion_type": "refine_query",
+            "description": "Try rephrasing your query with different keywords",
+            "example": "Instead of specific names, try broader topic areas"
+          },
+          {
+            "suggestion_type": "expand_corpus",
+            "description": "The corpus may need expansion to cover this topic",
+            "example": "Consider ingesting additional documents on this subject"
+          }
+        ]
+      },
+      "answer_json_contract": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide a cited answer to this query because no relevant documents were found in the current corpus. To maintain accuracy and trust, I must refuse rather than provide an uncited response.",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What was the impact of the Selma to Montgomery marches?",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "results": []
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "No relevant documents found in the corpus for query: 'What was the impact of the Selma to Montgomery marches?'",
+            "The current corpus may not contain information about this topic"
+          ],
+          "clarifying_questions": [
+            "Could you rephrase your query with different keywords?",
+            "Are there alternative terms for this topic?"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        }
+      }
+    },
+    {
+      "scenario": "low_similarity_score",
+      "persona": "educator",
+      "query": "How did the Civil Rights Act change education?",
+      "retrieval_best_score": 0.65,
+      "refusal_decision": {
+        "should_refuse": true,
+        "context": {
+          "reason": "low_similarity_score",
+          "persona": "educator",
+          "similarity_threshold": 0.80,
+          "actual_similarity": 0.65,
+          "min_sources_required": 2,
+          "sources_found": 2,
+          "query_type": "factual"
+        },
+        "refusal_message": "I cannot provide a cited answer because the retrieved documents have low relevance (best: 0.65, required: 0.80). To maintain accuracy, I must refuse rather than cite insufficient sources.",
+        "specific_gaps": [
+          "Retrieved documents have low relevance (best: 0.65, required: 0.80)",
+          "Available documents do not sufficiently address the specific query"
+        ],
+        "suggestions": [
+          {
+            "suggestion_type": "refine_query",
+            "description": "Rephrase your query to better match document content",
+            "example": "Use terminology that appears in historical documents"
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "no_primary_sources",
+      "persona": "researcher",
+      "query": "What were the key provisions of the Voting Rights Act?",
+      "retrieval_results_count": 3,
+      "primary_sources_found": 0,
+      "refusal_decision": {
+        "should_refuse": true,
+        "context": {
+          "reason": "no_primary_sources",
+          "persona": "researcher",
+          "similarity_threshold": 0.75,
+          "actual_similarity": 0.88,
+          "min_sources_required": 3,
+          "sources_found": 3,
+          "primary_sources_required": true,
+          "primary_sources_found": 0,
+          "query_type": "factual"
+        },
+        "refusal_message": "I cannot provide a cited answer because no primary sources were found in the retrieval results, and primary sources are required for researcher persona queries.",
+        "specific_gaps": [
+          "All retrieved sources are secondary sources",
+          "Primary sources (speeches, legal documents, proclamations) not found in corpus"
+        ],
+        "suggestions": [
+          {
+            "suggestion_type": "adjust_filters",
+            "description": "Consider allowing secondary sources",
+            "example": "Disable primary_sources_only toggle"
+          },
+          {
+            "suggestion_type": "expand_corpus",
+            "description": "Ingest primary source documents on this topic",
+            "example": "Add speeches, letters, or official documents"
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "below_min_sources",
+      "persona": "researcher",
+      "query": "What was the significance of Executive Order 9981?",
+      "retrieval_results_count": 2,
+      "refusal_decision": {
+        "should_refuse": true,
+        "context": {
+          "reason": "below_min_sources",
+          "persona": "researcher",
+          "similarity_threshold": 0.75,
+          "actual_similarity": 0.85,
+          "min_sources_required": 3,
+          "sources_found": 2,
+          "query_type": "factual"
+        },
+        "refusal_message": "I cannot provide a cited answer because only 2 source(s) were found, but 3 are required for confident citation.",
+        "specific_gaps": [
+          "Only 2 unique source(s) found - insufficient for confident citation"
+        ],
+        "suggestions": [
+          {
+            "suggestion_type": "refine_query",
+            "description": "Broaden your query to match more documents",
+            "example": "Use more general terms or remove specific constraints"
+          }
+        ]
+      }
+    },
+    {
+      "scenario": "successful_citation_educator",
+      "persona": "educator",
+      "query": "What did the Civil Rights Act of 1964 prohibit?",
+      "retrieval_results_count": 2,
+      "best_score": 0.93,
+      "refusal_decision": {
+        "should_refuse": false
+      },
+      "answer_json_contract": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "The Civil Rights Act of 1964 was landmark federal legislation that prohibited discrimination based on race, color, religion, sex, or national origin in public accommodations, employment, and federally funded programs.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "National Archives (1964) — Civil Rights Act",
+            "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+            "source_org": "National Archives",
+            "year": 1964,
+            "content_type": "legal_document",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "nara_cra_1964",
+            "chunk_id": "nara_cra_1964::chunk::3",
+            "tags": ["civil_rights", "legislation", "1960s"],
+            "relevance_score": 0.93
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What did the Civil Rights Act of 1964 prohibit?",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.93,
+              "snippet": "An Act to enforce the constitutional right to vote, to confer jurisdiction upon the district courts of the United States to provide injunctive relief against discrimination in public accommodations...",
+              "citation_label": "National Archives (1964) — Civil Rights Act",
+              "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+              "doc_id": "nara_cra_1964",
+              "chunk_id": "nara_cra_1964::chunk::3",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Detailed enforcement case law from 1965-1967 not included in corpus"
+          ],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      }
+    }
+  ]
+}
