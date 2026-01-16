@@ -1,0 +1,180 @@
+{
+  "manifest_version": "1.0.0",
+  "source_id": "schomburg_digital",
+  "source_name": "Schomburg Center Digital Collections",
+  "source_type": "library_catalog",
+  "description": "The Schomburg Center for Research in Black Culture houses one of the world's leading collections documenting the African diaspora. Digital collections include rare books, manuscripts, photographs, moving images, and audio recordings spanning five centuries. Notable collections include the Jean Blackwell Hutson Research and Reference Division, the Photographs and Prints Division, and the Moving Image and Recorded Sound Division. Materials cover African American history, Pan-African movements, the Harlem Renaissance, and contemporary Black culture.",
+  "access_method": {
+    "type": "web_scraping",
+    "endpoint": "https://digitalcollections.nypl.org/collections/schomburg-center",
+    "authentication": {
+      "required": false,
+      "method": "none"
+    },
+    "rate_limits": {
+      "requests_per_second": 1.0,
+      "requests_per_day": 5000,
+      "concurrent_connections": 2
+    },
+    "protocol_details": {
+      "scraping_strategy": "respectful_crawl",
+      "robots_txt_compliant": true,
+      "user_agent": "Kwanzaa-DataPipeline/1.0 (+https://github.com/ainative/kwanzaa)",
+      "retry_strategy": "exponential_backoff"
+    }
+  },
+  "license": {
+    "type": "Mixed - CC BY-SA 4.0 and Public Domain",
+    "url": "https://www.nypl.org/help/about-nypl/legal-notices/website-terms-and-conditions",
+    "commercial_use_allowed": true,
+    "attribution_required": true,
+    "share_alike_required": true,
+    "restrictions": [
+      "Some items may have additional copyright restrictions",
+      "Must attribute to The New York Public Library, Schomburg Center",
+      "Derivative works should use compatible licenses"
+    ],
+    "notes": "NYPL generally uses CC BY-SA 4.0 for digitized public domain materials. Individual items should be checked for specific rights statements."
+  },
+  "canonical_url": "https://www.nypl.org/locations/schomburg",
+  "alternate_urls": [
+    "https://digitalcollections.nypl.org/",
+    "https://archives.nypl.org/scm"
+  ],
+  "priority": "P1",
+  "tags": [
+    "harlem-renaissance",
+    "african-diaspora",
+    "literature",
+    "art",
+    "photographs",
+    "manuscripts",
+    "cultural-history",
+    "primary-sources",
+    "rare-books"
+  ],
+  "content_metadata": {
+    "content_types": [
+      "book",
+      "manuscript",
+      "photograph",
+      "article",
+      "letter",
+      "periodical",
+      "audio",
+      "video"
+    ],
+    "time_period": {
+      "start_year": 1600,
+      "end_year": 2020
+    },
+    "languages": [
+      "en",
+      "es",
+      "fr",
+      "pt"
+    ],
+    "geographic_coverage": [
+      "United States",
+      "Caribbean",
+      "Africa",
+      "Latin America",
+      "Europe"
+    ],
+    "estimated_size": {
+      "document_count": 250000,
+      "total_size_bytes": 536870912000,
+      "total_size_human": "500 GB"
+    }
+  },
+  "ingestion_config": {
+    "pipeline_type": "batch",
+    "schedule": {
+      "frequency": "weekly",
+      "cron_expression": "0 3 * * 0"
+    },
+    "chunk_strategy": {
+      "method": "semantic",
+      "chunk_size": 1200,
+      "overlap": 200
+    },
+    "embedding_model": "text-embedding-3-small",
+    "target_namespace": "kwanzaa_primary_sources",
+    "quality_checks": [
+      "content_validation",
+      "deduplication",
+      "language_detection",
+      "encoding_validation",
+      "metadata_completeness",
+      "link_validation"
+    ]
+  },
+  "data_quality": {
+    "completeness_score": 0.88,
+    "accuracy_score": 0.94,
+    "last_verified": "2026-01-16T09:00:00Z",
+    "known_issues": [
+      "OCR quality varies for older materials",
+      "Some collections are only partially digitized",
+      "Metadata standards have evolved over time",
+      "Some high-resolution images require special access",
+      "Multi-language materials may need translation"
+    ],
+    "data_lineage": [
+      "Original physical materials in Schomburg collections",
+      "Digitization by NYPL (ongoing since 2000s)",
+      "OCR and metadata creation by NYPL staff",
+      "Digital preservation in NYPL digital repository"
+    ]
+  },
+  "nguzo_saba_alignment": {
+    "umoja": true,
+    "kujichagulia": true,
+    "ujima": true,
+    "ujamaa": true,
+    "nia": true,
+    "kuumba": true,
+    "imani": true
+  },
+  "contact": {
+    "organization": "The New York Public Library - Schomburg Center for Research in Black Culture",
+    "email": "schomburgref@nypl.org",
+    "website": "https://www.nypl.org/locations/schomburg"
+  },
+  "provenance": {
+    "created_by": "data_eng_team",
+    "reviewed_by": [
+      "librarian_davis",
+      "digital_collections_manager"
+    ],
+    "change_history": [
+      {
+        "date": "2026-01-16T16:00:00Z",
+        "changed_by": "data_eng_team",
+        "changes": "Initial manifest creation after consultation with Schomburg digital collections team"
+      }
+    ]
+  },
+  "related_sources": [
+    {
+      "source_id": "loc_oral_histories",
+      "relationship": "complement",
+      "description": "Schomburg collections complement LOC oral histories with archival materials"
+    },
+    {
+      "source_id": "nara_civil_rights",
+      "relationship": "complement",
+      "description": "Cultural and literary materials complement government records"
+    }
+  ],
+  "ingestion_status": {
+    "status": "not_started",
+    "last_ingestion_date": null,
+    "documents_ingested": 0,
+    "vectors_created": 0,
+    "errors": []
+  },
+  "created_at": "2026-01-16T16:00:00Z",
+  "updated_at": "2026-01-16T16:00:00Z",
+  "notes": "The Schomburg Center is a premier institution for Black history and culture research. Web scraping must be respectful and follow robots.txt. Consider reaching out to NYPL for bulk data access or API access if available. Prioritize fully digitized collections with complete metadata. The diversity of content types (text, images, audio, video) will require flexible processing pipelines."
+}

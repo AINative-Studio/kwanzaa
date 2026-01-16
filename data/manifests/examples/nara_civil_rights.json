@@ -1,0 +1,163 @@
+{
+  "manifest_version": "1.0.0",
+  "source_id": "nara_civil_rights",
+  "source_name": "National Archives - Civil Rights Era Documents",
+  "source_type": "archive",
+  "description": "Primary source documents from the Civil Rights Movement (1954-1968) housed at the National Archives. This collection includes presidential speeches, executive orders, congressional records, FBI files, and correspondence related to the Civil Rights Movement. Key materials include documents from the March on Washington, Selma to Montgomery marches, and the passage of landmark civil rights legislation.",
+  "access_method": {
+    "type": "api_key_required",
+    "endpoint": "https://catalog.archives.gov/api/v1",
+    "authentication": {
+      "required": true,
+      "method": "api_key",
+      "env_var": "NARA_API_KEY"
+    },
+    "rate_limits": {
+      "requests_per_second": 2.0,
+      "requests_per_day": 1000,
+      "concurrent_connections": 3
+    },
+    "protocol_details": {
+      "api_version": "v1",
+      "pagination": "cursor",
+      "max_results_per_page": 100
+    }
+  },
+  "license": {
+    "type": "Public Domain",
+    "url": "https://www.archives.gov/legal/standard-license.html",
+    "commercial_use_allowed": true,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "restrictions": [
+      "Some materials may have access restrictions for privacy reasons",
+      "Verify individual document licenses for specific use cases"
+    ],
+    "notes": "Federal government works are generally in the public domain. However, some materials may be subject to copyright if created by non-federal entities."
+  },
+  "canonical_url": "https://www.archives.gov/research/african-americans/civil-rights",
+  "alternate_urls": [
+    "https://catalog.archives.gov/",
+    "https://www.docsteach.org/topics/civil-rights"
+  ],
+  "priority": "P0",
+  "tags": [
+    "civil-rights",
+    "primary-sources",
+    "government-records",
+    "1960s",
+    "mlk",
+    "legislation",
+    "executive-orders",
+    "speeches"
+  ],
+  "content_metadata": {
+    "content_types": [
+      "legal_document",
+      "speech",
+      "letter",
+      "government_record",
+      "photograph"
+    ],
+    "time_period": {
+      "start_year": 1954,
+      "end_year": 1968
+    },
+    "languages": [
+      "en"
+    ],
+    "geographic_coverage": [
+      "United States",
+      "Washington DC",
+      "Alabama",
+      "Mississippi",
+      "Georgia"
+    ],
+    "estimated_size": {
+      "document_count": 15000,
+      "total_size_bytes": 52428800000,
+      "total_size_human": "48.8 GB"
+    }
+  },
+  "ingestion_config": {
+    "pipeline_type": "incremental",
+    "schedule": {
+      "frequency": "monthly",
+      "cron_expression": "0 2 1 * *"
+    },
+    "chunk_strategy": {
+      "method": "semantic",
+      "chunk_size": 1000,
+      "overlap": 200
+    },
+    "embedding_model": "text-embedding-3-small",
+    "target_namespace": "kwanzaa_primary_sources",
+    "quality_checks": [
+      "content_validation",
+      "deduplication",
+      "metadata_completeness",
+      "link_validation"
+    ]
+  },
+  "data_quality": {
+    "completeness_score": 0.92,
+    "accuracy_score": 0.98,
+    "last_verified": "2026-01-15T10:30:00Z",
+    "known_issues": [
+      "Some documents have incomplete OCR text",
+      "Handwritten notes may be difficult to parse",
+      "Some cross-references use legacy catalog numbers"
+    ],
+    "data_lineage": [
+      "Original physical documents",
+      "Digitization by NARA (2010-2023)",
+      "OCR processing by NARA contractors",
+      "Metadata enrichment by archivists"
+    ]
+  },
+  "nguzo_saba_alignment": {
+    "umoja": true,
+    "kujichagulia": true,
+    "ujima": true,
+    "ujamaa": false,
+    "nia": true,
+    "kuumba": false,
+    "imani": true
+  },
+  "contact": {
+    "organization": "National Archives and Records Administration",
+    "email": "catalog@nara.gov",
+    "website": "https://www.archives.gov"
+  },
+  "provenance": {
+    "created_by": "data_eng_team",
+    "reviewed_by": [
+      "curator_jones",
+      "lead_historian_smith"
+    ],
+    "change_history": [
+      {
+        "date": "2026-01-16T14:00:00Z",
+        "changed_by": "data_eng_team",
+        "changes": "Initial manifest creation"
+      }
+    ]
+  },
+  "related_sources": [
+    {
+      "source_id": "loc_civil_rights",
+      "relationship": "complement",
+      "description": "Library of Congress civil rights materials complement NARA holdings"
+    }
+  ],
+  "ingestion_status": {
+    "status": "not_started",
+    "last_ingestion_date": null,
+    "documents_ingested": 0,
+    "vectors_created": 0,
+    "errors": []
+  },
+  "created_at": "2026-01-16T14:00:00Z",
+  "updated_at": "2026-01-16T14:00:00Z",
+  "notes": "This is a high-priority source due to the quality and significance of primary source materials. Initial ingestion should focus on the most significant documents (speeches, legislation, executive orders) before processing the full corpus."
+}

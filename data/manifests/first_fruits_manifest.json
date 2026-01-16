@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "created_at": "2025-01-16T00:00:00Z",
+  "updated_at": "2025-01-16T00:00:00Z",
+  "sources": [],
+  "global_config": {
+    "max_parallel_sources": 3,
+    "default_rate_limit": 1.0,
+    "chunk_size": 1000,
+    "chunk_overlap": 200
+  },
+  "namespaces": {
+    "kwanzaa_primary_sources": {
+      "description": "Primary sources and archival records"
+    },
+    "kwanzaa_black_press": {
+      "description": "Newspaper and periodical coverage"
+    },
+    "kwanzaa_speeches_letters": {
+      "description": "Speeches, letters, essays, proclamations"
+    },
+    "kwanzaa_black_stem": {
+      "description": "STEM contributions and institutional records"
+    },
+    "kwanzaa_teaching_kits": {
+      "description": "Curriculum-ready content"
+    },
+    "kwanzaa_dev_patterns": {
+      "description": "Developer documentation"
+    }
+  }
+}

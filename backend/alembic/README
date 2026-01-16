@@ -1,0 +1,44 @@
+Generic single-database configuration with async support for Kwanzaa project.
+
+This directory contains Alembic migrations for the PostgreSQL database schema.
+
+## Usage
+
+Create a new migration:
+```bash
+cd backend
+alembic revision --autogenerate -m "description of changes"
+```
+
+Apply migrations:
+```bash
+cd backend
+alembic upgrade head
+```
+
+Downgrade migrations:
+```bash
+cd backend
+alembic downgrade -1  # Go back one revision
+alembic downgrade <revision_id>  # Go back to specific revision
+```
+
+View migration history:
+```bash
+cd backend
+alembic history
+alembic current
+```
+
+## Database Schema
+
+The following tables are managed by these migrations:
+
+1. **sources** - Source manifest registry
+2. **documents** - Document-level records with provenance
+3. **chunks** - Chunk-level records linked to vector embeddings
+4. **collections** - Namespace/collection groupings
+5. **ingestion_logs** - Ingestion job tracking
+6. **evaluations** - Evaluation results and metrics
+
+See `app/db/models.py` for complete schema definitions.
