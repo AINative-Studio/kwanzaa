@@ -1,0 +1,62 @@
+{
+  "validation_timestamp": "2026-01-16T23:42:30.242792",
+  "summary": {
+    "total_samples": 22,
+    "valid_samples": 22,
+    "invalid_samples": 0,
+    "warnings": 1,
+    "pass_rate": "100.00%"
+  },
+  "statistics": {
+    "by_category": {
+      "citation": 11,
+      "refusal": 4,
+      "grounded_answer": 3,
+      "format_compliance": 4
+    },
+    "by_persona": {
+      "educator": 10,
+      "researcher": 8,
+      "creator": 3,
+      "builder": 1
+    },
+    "by_difficulty": {
+      "easy": 7,
+      "medium": 10,
+      "hard": 5
+    },
+    "principle_coverage": {
+      "Imani": 20,
+      "Ujima": 5,
+      "Kuumba": 4,
+      "Nia": 5,
+      "Kujichagulia": 3,
+      "Umoja": 1,
+      "Ujamaa": 1
+    },
+    "quality_metrics": {
+      "average_quality_score": 0.931,
+      "min_quality_score": 0.89,
+      "max_quality_score": 0.97,
+      "edge_cases": 4
+    },
+    "issues_by_category": {
+      "answer_quality": 1
+    },
+    "issues_by_severity": {
+      "warning": 1
+    }
+  },
+  "issues": [
+    {
+      "severity": "warning",
+      "category": "answer_quality",
+      "sample_id": "citation_conflicting_002",
+      "file_path": "/Users/aideveloper/kwanzaa/data/training/examples/citation-examples.json",
+      "message": "Potentially insensitive language detected (pattern: \\brace\\b(?! discrimination))",
+      "details": {
+        "recommendation": "Review for cultural sensitivity"
+      }
+    }
+  ]
+}
