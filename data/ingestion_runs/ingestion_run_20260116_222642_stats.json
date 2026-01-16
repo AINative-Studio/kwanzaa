@@ -1,0 +1,38 @@
+{
+  "run_id": "ingestion_run_20260116_222642",
+  "started_at": "2026-01-16T22:26:42.347558+00:00",
+  "completed_at": "2026-01-16T22:26:42.348145+00:00",
+  "total_sources": 4,
+  "sources_processed": 0,
+  "sources_failed": 4,
+  "total_documents": 0,
+  "documents_inserted": 0,
+  "documents_updated": 0,
+  "documents_failed": 0,
+  "errors": [
+    {
+      "source_id": "loc_douglass_papers",
+      "error_type": "processing_error",
+      "error_message": "'base_url'",
+      "timestamp": "2026-01-16T22:26:42.348063+00:00"
+    },
+    {
+      "source_id": "btw_papers",
+      "error_type": "processing_error",
+      "error_message": "'base_url'",
+      "timestamp": "2026-01-16T22:26:42.348094+00:00"
+    },
+    {
+      "source_id": "malcolm_x_speeches",
+      "error_type": "processing_error",
+      "error_message": "'base_url'",
+      "timestamp": "2026-01-16T22:26:42.348119+00:00"
+    },
+    {
+      "source_id": "chicago_defender",
+      "error_type": "processing_error",
+      "error_message": "'base_url'",
+      "timestamp": "2026-01-16T22:26:42.348144+00:00"
+    }
+  ]
+}

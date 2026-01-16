@@ -1,0 +1,13 @@
+{
+  "run_id": "ingestion_run_20260116_222808",
+  "started_at": "2026-01-16T22:28:08.788397+00:00",
+  "completed_at": "2026-01-16T22:28:08.789062+00:00",
+  "total_sources": 4,
+  "sources_processed": 4,
+  "sources_failed": 0,
+  "total_documents": 4,
+  "documents_inserted": 4,
+  "documents_updated": 0,
+  "documents_failed": 0,
+  "errors": []
+}

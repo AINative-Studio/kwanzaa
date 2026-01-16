@@ -1,0 +1,628 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ainative.studio/schemas/kwanzaa/first_fruits_manifest/v1.0.0",
+  "title": "Kwanzaa First Fruits Manifest Schema",
+  "description": "Standardized manifest schema for source metadata ensuring consistency, traceability, and provenance tracking for the First Fruits Corpus. Embodies Unity (Umoja) through standardization, Collective Work (Ujima) through transparent sourcing, and Faith (Imani) through verifiable attribution.",
+  "version": "1.0.0",
+
+  "definitions": {
+    "priority_level": {
+      "type": "string",
+      "enum": ["P0", "P1", "P2", "P3", "P4"],
+      "description": "Priority level for data ingestion. P0 = Critical/Immediate, P1 = High, P2 = Medium, P3 = Low, P4 = Backlog"
+    },
+
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "archive",
+        "database",
+        "api",
+        "file_collection",
+        "web_scrape",
+        "repository",
+        "dataset",
+        "library_catalog",
+        "museum_collection",
+        "oral_history",
+        "digitized_documents"
+      ],
+      "description": "Classification of the source type for appropriate ingestion strategy"
+    },
+
+    "access_method": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "direct_download",
+            "api_key_required",
+            "oauth_required",
+            "web_scraping",
+            "manual_download",
+            "bulk_export",
+            "streaming",
+            "ftp",
+            "s3_bucket",
+            "rsync"
+          ],
+          "description": "Method of accessing the data source"
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "API endpoint or base URL for access"
+        },
+        "authentication": {
+          "type": "object",
+          "properties": {
+            "required": {
+              "type": "boolean",
+              "description": "Whether authentication is required"
+            },
+            "method": {
+              "type": "string",
+              "enum": ["api_key", "oauth2", "basic_auth", "bearer_token", "none"],
+              "description": "Authentication method"
+            },
+            "env_var": {
+              "type": "string",
+              "description": "Environment variable name for credentials (do not store actual credentials)"
+            }
+          }
+        },
+        "rate_limits": {
+          "type": "object",
+          "properties": {
+            "requests_per_second": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Maximum requests per second"
+            },
+            "requests_per_day": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Maximum requests per day"
+            },
+            "concurrent_connections": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Maximum concurrent connections allowed"
+            }
+          }
+        },
+        "protocol_details": {
+          "type": "object",
+          "description": "Protocol-specific configuration details",
+          "additionalProperties": true
+        }
+      }
+    },
+
+    "license_info": {
+      "type": "object",
+      "required": ["type", "commercial_use_allowed", "attribution_required"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "License type or identifier",
+          "examples": [
+            "Public Domain",
+            "CC0",
+            "CC BY 4.0",
+            "CC BY-SA 4.0",
+            "CC BY-NC 4.0",
+            "Fair Use",
+            "All Rights Reserved",
+            "Custom"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the full license text"
+        },
+        "commercial_use_allowed": {
+          "type": "boolean",
+          "description": "Whether commercial use is permitted"
+        },
+        "attribution_required": {
+          "type": "boolean",
+          "description": "Whether attribution is required"
+        },
+        "share_alike_required": {
+          "type": "boolean",
+          "description": "Whether derivative works must use the same license"
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Any specific restrictions or conditions"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional license notes or clarifications"
+        }
+      }
+    },
+
+    "content_metadata": {
+      "type": "object",
+      "properties": {
+        "content_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "text",
+              "speech",
+              "letter",
+              "proclamation",
+              "legal_document",
+              "article",
+              "book",
+              "photograph",
+              "audio",
+              "video",
+              "oral_history",
+              "manuscript",
+              "newspaper",
+              "periodical",
+              "government_record"
+            ]
+          },
+          "description": "Types of content available in this source"
+        },
+        "time_period": {
+          "type": "object",
+          "properties": {
+            "start_year": {
+              "type": "integer",
+              "minimum": 1600,
+              "maximum": 2100,
+              "description": "Earliest year of content coverage"
+            },
+            "end_year": {
+              "type": "integer",
+              "minimum": 1600,
+              "maximum": 2100,
+              "description": "Latest year of content coverage"
+            }
+          }
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+          },
+          "description": "ISO 639-1 language codes (e.g., 'en', 'es', 'fr-CA')"
+        },
+        "geographic_coverage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Geographic regions or locations covered"
+        },
+        "estimated_size": {
+          "type": "object",
+          "properties": {
+            "document_count": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Estimated number of documents"
+            },
+            "total_size_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Estimated total size in bytes"
+            },
+            "total_size_human": {
+              "type": "string",
+              "description": "Human-readable size (e.g., '2.5 GB', '150 MB')"
+            }
+          }
+        }
+      }
+    },
+
+    "ingestion_config": {
+      "type": "object",
+      "properties": {
+        "pipeline_type": {
+          "type": "string",
+          "enum": ["batch", "streaming", "incremental", "one_time"],
+          "description": "Type of ingestion pipeline"
+        },
+        "schedule": {
+          "type": "object",
+          "properties": {
+            "frequency": {
+              "type": "string",
+              "enum": ["once", "hourly", "daily", "weekly", "monthly", "on_demand"],
+              "description": "Ingestion frequency"
+            },
+            "cron_expression": {
+              "type": "string",
+              "description": "Cron expression for scheduled ingestion"
+            }
+          }
+        },
+        "chunk_strategy": {
+          "type": "object",
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": ["fixed_size", "semantic", "paragraph", "sentence", "document"],
+              "description": "Chunking strategy for document processing"
+            },
+            "chunk_size": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 10000,
+              "description": "Target chunk size in tokens or characters"
+            },
+            "overlap": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Overlap between chunks in tokens or characters"
+            }
+          }
+        },
+        "embedding_model": {
+          "type": "string",
+          "description": "Embedding model to use for vectorization",
+          "examples": ["text-embedding-3-small", "text-embedding-ada-002"]
+        },
+        "target_namespace": {
+          "type": "string",
+          "description": "Target vector namespace for ingested data",
+          "examples": ["kwanzaa_primary_sources", "kwanzaa_secondary_sources"]
+        },
+        "quality_checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "content_validation",
+              "deduplication",
+              "language_detection",
+              "encoding_validation",
+              "metadata_completeness",
+              "link_validation"
+            ]
+          },
+          "description": "Quality checks to perform during ingestion"
+        }
+      }
+    },
+
+    "data_quality": {
+      "type": "object",
+      "properties": {
+        "completeness_score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Estimated completeness of metadata (0.0 = incomplete, 1.0 = complete)"
+        },
+        "accuracy_score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Estimated accuracy of source information"
+        },
+        "last_verified": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the source was last verified as accessible"
+        },
+        "known_issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Known data quality issues or limitations"
+        },
+        "data_lineage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Data provenance and transformation history"
+        }
+      }
+    },
+
+    "nguzo_saba_alignment": {
+      "type": "object",
+      "description": "Alignment with the Seven Principles (Nguzo Saba) of Kwanzaa",
+      "properties": {
+        "umoja": {
+          "type": "boolean",
+          "description": "Unity: Promotes collective Black history and culture"
+        },
+        "kujichagulia": {
+          "type": "boolean",
+          "description": "Self-Determination: Centers Black voices and agency"
+        },
+        "ujima": {
+          "type": "boolean",
+          "description": "Collective Work: Shared community resources"
+        },
+        "ujamaa": {
+          "type": "boolean",
+          "description": "Cooperative Economics: Supports community-owned knowledge"
+        },
+        "nia": {
+          "type": "boolean",
+          "description": "Purpose: Serves educational and cultural preservation goals"
+        },
+        "kuumba": {
+          "type": "boolean",
+          "description": "Creativity: Enables creative expression and interpretation"
+        },
+        "imani": {
+          "type": "boolean",
+          "description": "Faith: Verifiable, trustworthy primary sources"
+        }
+      }
+    }
+  },
+
+  "type": "object",
+  "required": [
+    "manifest_version",
+    "source_id",
+    "source_name",
+    "source_type",
+    "access_method",
+    "license",
+    "canonical_url",
+    "priority",
+    "tags",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "manifest_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Semantic version of this manifest schema",
+      "examples": ["1.0.0"]
+    },
+
+    "source_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]+$",
+      "minLength": 3,
+      "maxLength": 100,
+      "description": "Unique identifier for this source (lowercase, alphanumeric, underscores, hyphens)"
+    },
+
+    "source_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Human-readable name of the source"
+    },
+
+    "source_type": {
+      "$ref": "#/definitions/source_type"
+    },
+
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 5000,
+      "description": "Detailed description of the source, its contents, and significance"
+    },
+
+    "access_method": {
+      "$ref": "#/definitions/access_method"
+    },
+
+    "license": {
+      "$ref": "#/definitions/license_info"
+    },
+
+    "canonical_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Primary canonical URL for the source"
+    },
+
+    "alternate_urls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "Alternative URLs or mirrors for the source"
+    },
+
+    "priority": {
+      "$ref": "#/definitions/priority_level"
+    },
+
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_-]+$",
+        "minLength": 2,
+        "maxLength": 50
+      },
+      "minItems": 1,
+      "maxItems": 50,
+      "description": "Tags for categorization and discovery (lowercase, alphanumeric, underscores, hyphens)"
+    },
+
+    "content_metadata": {
+      "$ref": "#/definitions/content_metadata"
+    },
+
+    "ingestion_config": {
+      "$ref": "#/definitions/ingestion_config"
+    },
+
+    "data_quality": {
+      "$ref": "#/definitions/data_quality"
+    },
+
+    "nguzo_saba_alignment": {
+      "$ref": "#/definitions/nguzo_saba_alignment"
+    },
+
+    "contact": {
+      "type": "object",
+      "properties": {
+        "organization": {
+          "type": "string",
+          "description": "Organization responsible for the source"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Contact email for source-related inquiries"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Organization website"
+        }
+      }
+    },
+
+    "provenance": {
+      "type": "object",
+      "required": ["created_by"],
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "Person or system that created this manifest"
+        },
+        "reviewed_by": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "People who have reviewed this manifest"
+        },
+        "change_history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["date", "changed_by", "changes"],
+            "properties": {
+              "date": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "changed_by": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Change history for this manifest"
+        }
+      }
+    },
+
+    "related_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "relationship"],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "description": "ID of related source"
+          },
+          "relationship": {
+            "type": "string",
+            "enum": ["subset", "superset", "complement", "alternative", "upstream", "downstream"],
+            "description": "Type of relationship"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the relationship"
+          }
+        }
+      },
+      "description": "Related sources and their relationships"
+    },
+
+    "ingestion_status": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["not_started", "in_progress", "completed", "failed", "paused", "archived"],
+          "description": "Current ingestion status"
+        },
+        "last_ingestion_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When data was last successfully ingested"
+        },
+        "documents_ingested": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of documents ingested"
+        },
+        "vectors_created": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of vectors created"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "error_type": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Ingestion errors encountered"
+        }
+      }
+    },
+
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this manifest was created (ISO 8601)"
+    },
+
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this manifest was last updated (ISO 8601)"
+    },
+
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or special considerations"
+    }
+  },
+
+  "additionalProperties": false
+}

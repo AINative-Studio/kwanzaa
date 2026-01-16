@@ -1,0 +1,169 @@
+{
+  "manifest_version": "1.0.0",
+  "source_id": "loc_oral_histories",
+  "source_name": "Library of Congress - African American Oral Histories",
+  "source_type": "oral_history",
+  "description": "The Library of Congress American Folklife Center houses extensive oral history collections documenting African American experiences from the Great Migration through contemporary times. Includes the Civil Rights History Project, Veterans History Project (African American veterans), and StoryCorps collections. These first-person narratives provide invaluable perspectives on lived experiences, community organizing, cultural traditions, and social movements.",
+  "access_method": {
+    "type": "direct_download",
+    "endpoint": "https://www.loc.gov/collections/",
+    "authentication": {
+      "required": false,
+      "method": "none"
+    },
+    "rate_limits": {
+      "requests_per_second": 5.0,
+      "requests_per_day": 10000,
+      "concurrent_connections": 5
+    },
+    "protocol_details": {
+      "format": "json",
+      "download_type": "http",
+      "bulk_download_available": true
+    }
+  },
+  "license": {
+    "type": "Mixed - Varies by Collection",
+    "url": "https://www.loc.gov/legal/",
+    "commercial_use_allowed": false,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "restrictions": [
+      "Some interviews have usage restrictions",
+      "Must respect interviewee privacy and release agreements",
+      "No commercial use without explicit permission",
+      "Educational and research use generally permitted"
+    ],
+    "notes": "Each oral history has specific usage terms. The Library of Congress is the steward but does not always hold copyright. Users must review individual item rights statements."
+  },
+  "canonical_url": "https://www.loc.gov/collections/civil-rights-history-project/",
+  "alternate_urls": [
+    "https://www.loc.gov/folklife/",
+    "https://www.loc.gov/collections/veterans-history-project/",
+    "https://archive.org/details/loc-oral-histories"
+  ],
+  "priority": "P1",
+  "tags": [
+    "oral-history",
+    "primary-sources",
+    "first-person-narratives",
+    "civil-rights",
+    "lived-experience",
+    "community-organizing",
+    "cultural-traditions",
+    "veterans"
+  ],
+  "content_metadata": {
+    "content_types": [
+      "oral_history",
+      "audio",
+      "video",
+      "text"
+    ],
+    "time_period": {
+      "start_year": 1920,
+      "end_year": 2020
+    },
+    "languages": [
+      "en"
+    ],
+    "geographic_coverage": [
+      "United States",
+      "Southern United States",
+      "Northern Urban Centers",
+      "Midwest"
+    ],
+    "estimated_size": {
+      "document_count": 850,
+      "total_size_bytes": 214748364800,
+      "total_size_human": "200 GB"
+    }
+  },
+  "ingestion_config": {
+    "pipeline_type": "batch",
+    "schedule": {
+      "frequency": "once",
+      "cron_expression": null
+    },
+    "chunk_strategy": {
+      "method": "paragraph",
+      "chunk_size": 800,
+      "overlap": 150
+    },
+    "embedding_model": "text-embedding-3-small",
+    "target_namespace": "kwanzaa_primary_sources",
+    "quality_checks": [
+      "content_validation",
+      "deduplication",
+      "language_detection",
+      "metadata_completeness"
+    ]
+  },
+  "data_quality": {
+    "completeness_score": 0.85,
+    "accuracy_score": 0.95,
+    "last_verified": "2026-01-14T16:20:00Z",
+    "known_issues": [
+      "Transcription quality varies by project and era",
+      "Some audio files lack complete transcripts",
+      "Metadata inconsistency across different collection periods",
+      "Some interviews only partially digitized"
+    ],
+    "data_lineage": [
+      "Original audio/video recordings",
+      "Professional transcription (varies by project)",
+      "Metadata creation by LOC staff and volunteers",
+      "Digital preservation by LOC"
+    ]
+  },
+  "nguzo_saba_alignment": {
+    "umoja": true,
+    "kujichagulia": true,
+    "ujima": true,
+    "ujamaa": true,
+    "nia": true,
+    "kuumba": true,
+    "imani": true
+  },
+  "contact": {
+    "organization": "Library of Congress - American Folklife Center",
+    "email": "folklife@loc.gov",
+    "website": "https://www.loc.gov/folklife/"
+  },
+  "provenance": {
+    "created_by": "data_eng_team",
+    "reviewed_by": [
+      "oral_history_specialist_johnson",
+      "metadata_curator_williams"
+    ],
+    "change_history": [
+      {
+        "date": "2026-01-16T15:30:00Z",
+        "changed_by": "data_eng_team",
+        "changes": "Initial manifest creation with review from oral history specialists"
+      }
+    ]
+  },
+  "related_sources": [
+    {
+      "source_id": "nara_civil_rights",
+      "relationship": "complement",
+      "description": "Oral histories provide personal narratives that complement official government records"
+    },
+    {
+      "source_id": "storycorps_archive",
+      "relationship": "subset",
+      "description": "Some StoryCorps content is housed at LOC"
+    }
+  ],
+  "ingestion_status": {
+    "status": "not_started",
+    "last_ingestion_date": null,
+    "documents_ingested": 0,
+    "vectors_created": 0,
+    "errors": []
+  },
+  "created_at": "2026-01-16T15:30:00Z",
+  "updated_at": "2026-01-16T15:30:00Z",
+  "notes": "Oral histories require special handling due to their narrative structure and personal nature. Chunking should preserve context and speaker attribution. Consider implementing speaker diarization for multi-person interviews. Priority should be given to fully transcribed interviews with complete metadata."
+}
