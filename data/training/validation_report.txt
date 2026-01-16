@@ -1,0 +1,54 @@
+================================================================================
+KWANZAA ADAPTER TRAINING DATASET VALIDATION REPORT
+================================================================================
+Generated: 2026-01-16T15:42:51.305757
+
+SUMMARY
+--------------------------------------------------------------------------------
+Total files validated: 4
+Successful: 1
+Failed: 3
+
+AGGREGATE STATISTICS
+--------------------------------------------------------------------------------
+Total samples across all files: 52
+
+By Category:
+  conflicting_sources :  10 ( 19.2%)
+  direct_quotes       :   7 ( 13.5%)
+  multiple_sources    :  15 ( 28.8%)
+  primary_vs_secondary:   8 ( 15.4%)
+  single_source       :  12 ( 23.1%)
+
+By Persona:
+  builder             :   4 (  7.7%)
+  creator             :  10 ( 19.2%)
+  educator            :  18 ( 34.6%)
+  researcher          :  20 ( 38.5%)
+
+By Difficulty:
+
+FILE VALIDATION RESULTS
+--------------------------------------------------------------------------------
+
+✓ PASS: citation-examples.json
+  Version: 2.0.0
+  Samples: 52
+
+✗ FAIL: format-compliance-examples.json
+  Errors:
+    - Schema validation failed:
+    -   samples -> 0 -> user_query: String should have at least 10 characters
+
+✗ FAIL: grounded-answer-examples.json
+  Version: 1.0.0
+  Samples: 0
+  Errors:
+    - WARNING: Missing personas: {'creator'}. All four personas should be represented.
+
+✗ FAIL: refusal-examples.json
+  Errors:
+    - Schema validation failed:
+    -   samples -> 3: Value error, Refusal sample refusal_creator_004 has high-quality retrieval results (score > 0.7). Refusal samples should have no context or low-quality context.
+
+================================================================================
