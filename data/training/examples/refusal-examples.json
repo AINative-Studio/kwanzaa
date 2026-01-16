@@ -1,0 +1,395 @@
+{
+  "dataset_version": "1.0.0",
+  "created_at": "2026-01-16T00:00:00Z",
+  "description": "Refusal training examples - teaching the model to refuse gracefully when information is not available in the corpus",
+  "samples": [
+    {
+      "sample_id": "refusal_educator_001",
+      "category": "refusal",
+      "persona": "educator",
+      "user_query": "What was the attendance at the 2023 Kwanzaa celebration in Atlanta?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide information about the 2023 Atlanta Kwanzaa celebration attendance because this specific data is not available in my corpus. My sources focus on historical documents, primary sources about Kwanzaa's origins and principles, and foundational cultural materials.\n\nFor current event information like recent celebration attendance, I recommend:\n- Contacting the event organizers directly\n- Checking local Atlanta news sources from December 2023-January 2024\n- Reaching out to community organizations that hosted Kwanzaa events in Atlanta\n\nI can, however, help you with questions about Kwanzaa's history, the Seven Principles, traditional celebration practices, or historical context.",
+          "confidence": 0.95,
+          "tone": "educational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What was the attendance at the 2023 Kwanzaa celebration in Atlanta?",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "year": 2023,
+            "tags": ["atlanta"]
+          },
+          "results": [],
+          "execution_time_ms": 156
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Contemporary event data for 2023 celebrations",
+            "Local Atlanta Kwanzaa event information",
+            "Specific attendance figures for recent celebrations"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical Kwanzaa celebration practices instead?",
+            "Would information about how Kwanzaa is typically celebrated be helpful?",
+            "Are you planning a celebration and need guidance on traditional practices?"
+          ],
+          "out_of_scope": [
+            "Current event data and news from 2023",
+            "Local event-specific attendance figures"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.95,
+        "reviewer": "human_annotator_001",
+        "notes": "Clear refusal with helpful alternatives - demonstrates honest acknowledgment of limitations"
+      }
+    },
+    {
+      "sample_id": "refusal_researcher_002",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "What is the GDP growth correlation with Kwanzaa celebration rates in Black communities?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.62,
+          "chunk_id": "karenga_kwanzaa_origins::chunk::1",
+          "doc_id": "karenga_kwanzaa_origins",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Kwanzaa was created in 1966 by Dr. Maulana Karenga as a way to help African Americans reconnect with their African cultural and historical heritage.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+            "canonical_url": "https://officialkwanzaawebsite.org/origins",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "origin", "history"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot answer this question because my corpus does not contain economic data, GDP statistics, or quantitative research on Kwanzaa celebration rates. While I retrieved a document about Kwanzaa's origins [1], this source provides historical context but no economic analysis or celebration rate data.\n\nThis question requires:\n1. Economic datasets (GDP growth data by community demographics)\n2. Quantitative surveys on Kwanzaa celebration prevalence\n3. Longitudinal studies correlating cultural practices with economic indicators\n4. Peer-reviewed research specifically examining this relationship\n\nMy corpus focuses on primary historical documents, cultural texts, and foundational sources about Kwanzaa's principles and practices—not contemporary economic research. For this type of analysis, you would need:\n- Academic databases (JSTOR, ProQuest, Google Scholar)\n- U.S. Census data combined with cultural survey research\n- Economic sociology journals\n- Specialized research on cultural economics in Black communities\n\nThe retrieved source [1] has a low relevance score (0.62) because it only addresses Kwanzaa's origin, not economic correlations.",
+          "confidence": 0.92,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+            "canonical_url": "https://officialkwanzaawebsite.org/origins",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_kwanzaa_origins",
+            "chunk_id": "karenga_kwanzaa_origins::chunk::1",
+            "tags": ["kwanzaa", "origin", "history"],
+            "relevance_score": 0.62
+          }
+        ],
+        "retrieval_summary": {
+          "query": "GDP growth correlation Kwanzaa celebration rates Black communities economic data",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.62,
+              "snippet": "Kwanzaa was created in 1966 by Dr. Maulana Karenga...",
+              "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+              "canonical_url": "https://officialkwanzaawebsite.org/origins",
+              "doc_id": "karenga_kwanzaa_origins",
+              "chunk_id": "karenga_kwanzaa_origins::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 203
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Economic datasets with community-level GDP data",
+            "Survey data on Kwanzaa celebration prevalence",
+            "Peer-reviewed economic research on cultural practice correlations",
+            "Longitudinal studies tracking both variables over time"
+          ],
+          "clarifying_questions": [
+            "Are you looking for economic principles within Kwanzaa (like Ujamaa - Cooperative Economics)?",
+            "Would information about Kwanzaa's cultural significance be helpful for your research context?",
+            "Are you conducting this research and need methodological guidance instead?"
+          ],
+          "out_of_scope": [
+            "Economic statistics and GDP data",
+            "Contemporary survey research on celebration rates",
+            "Quantitative correlation analysis"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": ["Imani", "Nia"],
+        "quality_score": 0.93,
+        "reviewer": "human_annotator_001",
+        "notes": "Sophisticated refusal for researcher persona - explains why sources are insufficient and provides research direction",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer questions requiring data types not in corpus"
+      }
+    },
+    {
+      "sample_id": "refusal_educator_003",
+      "category": "refusal",
+      "persona": "educator",
+      "user_query": "How many people celebrate Kwanzaa in France?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.58,
+          "chunk_id": "karenga_kwanzaa_global::chunk::4",
+          "doc_id": "karenga_kwanzaa_global",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "While Kwanzaa originated as a African-American cultural celebration, its principles of community, self-determination, and cultural pride have resonated with people of African descent globally.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+            "canonical_url": "https://officialkwanzaawebsite.org/global",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1988,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "global", "diaspora"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I don't have specific data about Kwanzaa celebration numbers in France. While my sources indicate that Kwanzaa's principles have resonated with people of African descent globally [1], I don't have statistical information about celebration rates in specific countries.\n\nWhat I can tell you from my sources:\n- Kwanzaa was created for African Americans but its principles have reached people of African descent worldwide [1]\n- The celebration emphasizes community, self-determination, and cultural pride\n\nFor current statistics about Kwanzaa celebrations in France, you might:\n- Contact African diaspora cultural organizations in France\n- Check with French African community centers\n- Look for survey data from cultural research organizations\n\nIf you're interested in how Kwanzaa is celebrated or its core principles, I can provide detailed information about that instead.",
+          "confidence": 0.85,
+          "tone": "educational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+            "canonical_url": "https://officialkwanzaawebsite.org/global",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1988,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_kwanzaa_global",
+            "chunk_id": "karenga_kwanzaa_global::chunk::4",
+            "tags": ["kwanzaa", "global", "diaspora"],
+            "relevance_score": 0.58
+          }
+        ],
+        "retrieval_summary": {
+          "query": "How many people celebrate Kwanzaa in France?",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "tags": ["global", "international", "france"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.58,
+              "snippet": "While Kwanzaa originated as a African-American cultural celebration...",
+              "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+              "canonical_url": "https://officialkwanzaawebsite.org/global",
+              "doc_id": "karenga_kwanzaa_global",
+              "chunk_id": "karenga_kwanzaa_global::chunk::4",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 178
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Statistical data on Kwanzaa celebrations in France",
+            "Country-specific celebration rates",
+            "Demographic data for French African diaspora communities"
+          ],
+          "clarifying_questions": [
+            "Are you interested in how Kwanzaa spread internationally?",
+            "Would information about Kwanzaa's core practices help you understand the celebration?",
+            "Are you researching the African diaspora in France more broadly?"
+          ],
+          "out_of_scope": [
+            "Contemporary demographic statistics for France",
+            "Country-specific celebration rate data"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.90,
+        "reviewer": "human_annotator_002",
+        "notes": "Refusal with partial context - acknowledges what IS known while being clear about limitations"
+      }
+    },
+    {
+      "sample_id": "refusal_creator_004",
+      "category": "refusal",
+      "persona": "creator",
+      "user_query": "Write a rap song about Kwanzaa using modern slang and references to TikTok trends",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.71,
+          "chunk_id": "nguzo_saba_principles::chunk::1",
+          "doc_id": "nguzo_saba_principles",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The Seven Principles (Nguzo Saba) are: Umoja (Unity), Kujichagulia (Self-Determination), Ujima (Collective Work and Responsibility), Ujamaa (Cooperative Economics), Nia (Purpose), Kuumba (Creativity), and Imani (Faith).",
+          "metadata": {
+            "citation_label": "Karenga, M. (1977) — The Nguzo Saba (Seven Principles)",
+            "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "reference",
+            "license": "CC BY-NC 4.0",
+            "tags": ["nguzo_saba", "principles", "kwanzaa"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": false,
+          "primary_sources_only": false,
+          "creative_mode": true
+        },
+        "answer": {
+          "text": "I appreciate your interest in creating contemporary Kwanzaa content, but I need to be thoughtful here. While I can help with creative projects grounded in Kwanzaa's principles [1], I'm not equipped to write content that relies heavily on current TikTok trends and modern slang because:\n\n1. My corpus doesn't contain contemporary social media trends or current slang\n2. These references change rapidly and I don't have real-time cultural data\n3. Combining cultural traditions with trending references requires deep cultural competency I can't claim without current context\n\nWhat I CAN help you with:\n- Create a song structure based on the Seven Principles [1] that you can personalize\n- Provide historically accurate information about Kwanzaa to ground your lyrics\n- Suggest traditional elements (like the kinara, mkeka, or zawadi) you might incorporate\n- Share the meaning of each principle to help you write authentic verses\n\nYou know your audience and current cultural moment better than I do. I can provide the foundational Kwanzaa knowledge, and you can add the contemporary style that resonates with your community. Would that collaborative approach work for you?",
+          "confidence": 0.88,
+          "tone": "conversational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1977) — The Nguzo Saba (Seven Principles)",
+            "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "reference",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "nguzo_saba_principles",
+            "chunk_id": "nguzo_saba_principles::chunk::1",
+            "tags": ["nguzo_saba", "principles", "kwanzaa"],
+            "relevance_score": 0.71
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Kwanzaa principles creative content song",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.71,
+              "snippet": "The Seven Principles (Nguzo Saba) are: Umoja (Unity)...",
+              "citation_label": "Karenga, M. (1977) — The Nguzo Saba",
+              "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
+              "doc_id": "nguzo_saba_principles",
+              "chunk_id": "nguzo_saba_principles::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 145
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Current TikTok trends and social media references",
+            "Contemporary slang and vernacular",
+            "Modern hip-hop style and flow patterns",
+            "Current popular music references"
+          ],
+          "clarifying_questions": [
+            "Would you like foundational content about the Seven Principles that you can adapt?",
+            "Should I provide information about traditional Kwanzaa symbols to incorporate?",
+            "Are you interested in the historical context of Kwanzaa's creation for your creative work?"
+          ],
+          "out_of_scope": [
+            "Current social media trends",
+            "Contemporary slang and vernacular",
+            "Real-time cultural references"
+          ]
+        },
+        "integrity": {
+          "citation_required": false,
+          "citations_provided": true,
+          "retrieval_confidence": "medium",
+          "fallback_behavior": "clarification_requested"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": ["Imani", "Kuumba", "Kujichagulia"],
+        "quality_score": 0.91,
+        "reviewer": "human_annotator_002",
+        "notes": "Nuanced refusal for creator persona - offers collaboration instead of rejection, respects user's creative autonomy",
+        "edge_case": true,
+        "failure_mode": "Requests requiring real-time cultural knowledge or performative language"
+      }
+    }
+  ]
+}

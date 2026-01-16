@@ -1,0 +1,407 @@
+{
+  "dataset_version": "1.0.0",
+  "created_at": "2026-01-16T00:00:00Z",
+  "description": "Format compliance training examples - teaching the model to strictly follow answer_json contract structure across edge cases",
+  "samples": [
+    {
+      "sample_id": "format_edge_case_001",
+      "category": "format_compliance",
+      "persona": "educator",
+      "user_query": "Hi",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "answer": {
+          "text": "Hello! I'm here to help you learn about Kwanzaa, African American history, and related topics. I provide answers grounded in primary sources and historical documents.\n\nWhat would you like to know about? I can help with:\n- The Seven Principles (Nguzo Saba) of Kwanzaa\n- Kwanzaa celebration practices and symbols\n- Historical context of the Civil Rights Movement\n- African American history and culture\n- Primary source research and analysis\n\nFeel free to ask specific questions, and I'll provide cited, source-based answers.",
+          "confidence": 0.95,
+          "tone": "conversational",
+          "completeness": "complete"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "greeting",
+          "top_k": 0,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "results": []
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": [
+            "What topic would you like to explore?",
+            "Are you a student, teacher, or researcher?",
+            "Is this for a class project or personal learning?"
+          ]
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.90,
+        "reviewer": "human_annotator_001",
+        "notes": "Edge case: minimal input that doesn't warrant retrieval but still requires valid answer_json",
+        "edge_case": true
+      }
+    },
+    {
+      "sample_id": "format_multiple_unknowns_002",
+      "category": "format_compliance",
+      "persona": "researcher",
+      "user_query": "Compare the economic policies of Kwanzaa celebrations in three different countries and analyze the impact on diaspora identity formation from 1990-2020",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.54,
+          "chunk_id": "kwanzaa_global::chunk::1",
+          "doc_id": "kwanzaa_global",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Kwanzaa has been celebrated by people of African descent in various countries, though it originated as an African-American cultural celebration.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1988) — Kwanzaa Global Spread",
+            "canonical_url": "https://officialkwanzaawebsite.org/global",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1988,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "global", "international"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide the comparative analysis you've requested because my corpus lacks the necessary data across multiple dimensions:\n\nWhile I can confirm that Kwanzaa has spread to various countries with populations of African descent [1], I do not have:\n\n1. Economic policy data for Kwanzaa celebrations in specific countries\n2. Comparative datasets across three or more countries\n3. Longitudinal data covering the 1990-2020 period\n4. Research on diaspora identity formation metrics\n5. Studies correlating celebration practices with identity outcomes\n\nThe retrieved source [1] only provides general information about Kwanzaa's global spread, but it was published in 1988 (before your study period) and contains no economic policy analysis or comparative country data. The relevance score of 0.54 reflects this mismatch.\n\nFor this research, you would need:\n- Peer-reviewed studies in diaspora studies journals\n- Comparative ethnographic research across multiple countries\n- Economic anthropology literature\n- Survey data from diaspora communities in specific countries\n- Longitudinal identity studies (1990-2020)\n\nI recommend searching databases like JSTOR, ProQuest, and Google Scholar with terms like \"Kwanzaa diaspora comparative\" or \"African diaspora identity formation longitudinal.\"",
+          "confidence": 0.90,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1988) — Kwanzaa Global Spread",
+            "canonical_url": "https://officialkwanzaawebsite.org/global",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1988,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "kwanzaa_global",
+            "chunk_id": "kwanzaa_global::chunk::1",
+            "tags": ["kwanzaa", "global", "international"],
+            "relevance_score": 0.54
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Kwanzaa economic policies countries comparison diaspora identity 1990-2020",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "year_gte": 1990,
+            "year_lte": 2020
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.54,
+              "snippet": "Kwanzaa has been celebrated by people of African descent...",
+              "citation_label": "Karenga, M. (1988) — Kwanzaa Global Spread",
+              "canonical_url": "https://officialkwanzaawebsite.org/global",
+              "doc_id": "kwanzaa_global",
+              "chunk_id": "kwanzaa_global::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 234
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Country-specific economic policy data for Kwanzaa celebrations",
+            "Comparative datasets across three or more countries",
+            "Longitudinal identity formation research (1990-2020)",
+            "Economic anthropology studies of diaspora cultural practices",
+            "Quantitative celebration prevalence data by country",
+            "Peer-reviewed research correlating celebration with identity metrics"
+          ],
+          "clarifying_questions": [
+            "Which three countries are you specifically interested in comparing?",
+            "Are you conducting primary research and need methodological guidance?",
+            "Would information about Kwanzaa's core principles (like Ujamaa - Cooperative Economics) help frame your research?",
+            "Do you have access to specific academic databases where this research might exist?"
+          ],
+          "out_of_scope": [
+            "Contemporary economic policy analysis",
+            "Cross-national comparative research",
+            "Identity formation metrics and longitudinal studies",
+            "Post-1988 global Kwanzaa practice research"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.94,
+        "reviewer": "human_annotator_001",
+        "notes": "Complex edge case with multiple unknowns categories populated - demonstrates handling of highly ambitious queries",
+        "edge_case": true,
+        "failure_mode": "Overly complex queries requiring multiple missing data types"
+      }
+    },
+    {
+      "sample_id": "format_partial_completeness_003",
+      "category": "format_compliance",
+      "persona": "creator",
+      "user_query": "Create a lesson plan about Ujamaa for elementary students, including activities and discussion questions",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.86,
+          "chunk_id": "ujamaa_definition::chunk::1",
+          "doc_id": "ujamaa_definition",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Ujamaa (Cooperative Economics): To build and maintain our own stores, shops, and other businesses and to profit from them together. This principle emphasizes economic cooperation and collective ownership within the community.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1977) — Nguzo Saba: Ujamaa",
+            "canonical_url": "https://officialkwanzaawebsite.org/ujamaa",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "reference",
+            "license": "CC BY-NC 4.0",
+            "tags": ["ujamaa", "cooperative_economics", "nguzo_saba"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": false,
+          "primary_sources_only": false,
+          "creative_mode": true
+        },
+        "answer": {
+          "text": "Here's a foundational lesson plan about Ujamaa (Cooperative Economics) for elementary students, grounded in the principle's core definition [1]:\n\n**Lesson Title:** \"Working Together: Understanding Ujamaa\"\n\n**Core Concept [1]:**\nUjamaa means Cooperative Economics—building and maintaining our own businesses and profiting from them together as a community.\n\n**Age-Appropriate Explanation:**\n\"Ujamaa teaches us that when we work together and help each other, everyone can succeed. Instead of competing, we cooperate!\"\n\n**Activity Ideas:**\n\n1. **Classroom Store Simulation**\n   - Students collaboratively run a classroom store\n   - Everyone has a role: inventory, cashier, marketing, restocking\n   - Discuss how everyone benefits when the \"business\" succeeds\n\n2. **Cooperative Art Project**\n   - Create a class mural where each student contributes\n   - Emphasize that individual contributions make the whole better\n\n3. **Community Helpers Discussion**\n   - Identify local businesses owned by community members\n   - Discuss how supporting local businesses helps neighbors\n\n**Discussion Questions:**\n- What happens when everyone in a group works together versus working alone?\n- How can our class help each other succeed?\n- What does it mean to share success with your community?\n- Can you think of a time when cooperation worked better than competition?\n\n**Note:** This lesson plan provides the conceptual framework and principle-aligned activities [1]. For complete curriculum development, you'll want to add:\n- Specific learning objectives aligned with your grade level\n- Assessment methods\n- Time allocations for each activity\n- Materials lists\n- Differentiation strategies for diverse learners\n- Standards alignment (if required)\n\nI can provide the cultural foundation, but you know your students best and can adapt these ideas to their needs and your teaching style.",
+          "confidence": 0.80,
+          "tone": "creative",
+          "completeness": "partial"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1977) — Nguzo Saba: Ujamaa",
+            "canonical_url": "https://officialkwanzaawebsite.org/ujamaa",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "reference",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "ujamaa_definition",
+            "chunk_id": "ujamaa_definition::chunk::1",
+            "tags": ["ujamaa", "cooperative_economics", "nguzo_saba"],
+            "relevance_score": 0.86
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Ujamaa cooperative economics lesson plan elementary students",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "tags": ["ujamaa", "education"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.86,
+              "snippet": "Ujamaa (Cooperative Economics): To build and maintain...",
+              "citation_label": "Karenga, M. (1977) — Nguzo Saba: Ujamaa",
+              "canonical_url": "https://officialkwanzaawebsite.org/ujamaa",
+              "doc_id": "ujamaa_definition",
+              "chunk_id": "ujamaa_definition::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 156
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Age-specific pedagogy research for elementary grades",
+            "Specific learning standards or curriculum frameworks",
+            "Detailed activity instructions with step-by-step procedures",
+            "Assessment rubrics and learning outcome measurements",
+            "Children's literature or resources about Ujamaa"
+          ],
+          "clarifying_questions": [
+            "What grade level specifically? (K-2 vs. 3-5 would need different approaches)",
+            "How much time do you have for this lesson?",
+            "Are you integrating this into a larger Kwanzaa unit or teaching it standalone?",
+            "Do you need this aligned to specific educational standards?"
+          ]
+        },
+        "integrity": {
+          "citation_required": false,
+          "citations_provided": true,
+          "retrieval_confidence": "medium",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Kuumba", "Ujamaa", "Imani"],
+        "quality_score": 0.91,
+        "reviewer": "human_annotator_002",
+        "notes": "Demonstrates 'partial' completeness correctly - provides substantial value while acknowledging limitations",
+        "edge_case": false
+      }
+    },
+    {
+      "sample_id": "format_high_confidence_004",
+      "category": "format_compliance",
+      "persona": "educator",
+      "user_query": "When was Kwanzaa created and by whom?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.98,
+          "chunk_id": "kwanzaa_creation::chunk::1",
+          "doc_id": "kwanzaa_creation",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Kwanzaa was created in 1966 by Dr. Maulana Karenga, professor and chairman of Black Studies at California State University, Long Beach.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1997) — Kwanzaa: A Celebration of Family, Community and Culture",
+            "canonical_url": "https://officialkwanzaawebsite.org/origins",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1997,
+            "content_type": "book",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "origin", "creation", "karenga"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.96,
+          "chunk_id": "karenga_bio::chunk::2",
+          "doc_id": "karenga_bio",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Dr. Maulana Karenga (born Ronald McKinley Everett on July 14, 1941) is an African-American professor of Africana studies, activist, and author. He is best known as the creator of Kwanzaa, the African-American holiday celebrated from December 26 to January 1.",
+          "metadata": {
+            "citation_label": "Encyclopedia of African American History (2008) — Maulana Karenga",
+            "canonical_url": "https://www.oxfordreference.com/karenga",
+            "source_org": "Oxford University Press",
+            "year": 2008,
+            "content_type": "encyclopedia_entry",
+            "license": "Educational Use",
+            "tags": ["karenga", "biography", "kwanzaa"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Kwanzaa was created in 1966 by Dr. Maulana Karenga [1][2]. Dr. Karenga was a professor and chairman of Black Studies at California State University, Long Beach [1]. Born Ronald McKinley Everett in 1941, Dr. Karenga is an African-American professor of Africana studies, activist, and author [2]. The holiday is celebrated from December 26 to January 1 each year [2].",
+          "confidence": 0.99,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1997) — Kwanzaa: A Celebration of Family, Community and Culture",
+            "canonical_url": "https://officialkwanzaawebsite.org/origins",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1997,
+            "content_type": "book",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "kwanzaa_creation",
+            "chunk_id": "kwanzaa_creation::chunk::1",
+            "tags": ["kwanzaa", "origin", "creation", "karenga"],
+            "relevance_score": 0.98
+          },
+          {
+            "citation_label": "Encyclopedia of African American History (2008) — Maulana Karenga",
+            "canonical_url": "https://www.oxfordreference.com/karenga",
+            "source_org": "Oxford University Press",
+            "year": 2008,
+            "content_type": "encyclopedia_entry",
+            "license": "Educational Use",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_bio",
+            "chunk_id": "karenga_bio::chunk::2",
+            "tags": ["karenga", "biography", "kwanzaa"],
+            "relevance_score": 0.96
+          }
+        ],
+        "retrieval_summary": {
+          "query": "When was Kwanzaa created and by whom?",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "tags": ["origin", "creation", "karenga"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.98,
+              "snippet": "Kwanzaa was created in 1966 by Dr. Maulana Karenga...",
+              "citation_label": "Karenga, M. (1997) — Kwanzaa: A Celebration",
+              "canonical_url": "https://officialkwanzaawebsite.org/origins",
+              "doc_id": "kwanzaa_creation",
+              "chunk_id": "kwanzaa_creation::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.96,
+              "snippet": "Dr. Maulana Karenga (born Ronald McKinley Everett...",
+              "citation_label": "Encyclopedia of African American History (2008)",
+              "canonical_url": "https://www.oxfordreference.com/karenga",
+              "doc_id": "karenga_bio",
+              "chunk_id": "karenga_bio::chunk::2",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 132
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.97,
+        "reviewer": "human_annotator_001",
+        "notes": "High-confidence case with perfect retrieval - all fields correctly populated with strong evidence"
+      }
+    }
+  ]
+}

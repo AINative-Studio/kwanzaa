@@ -1,0 +1,466 @@
+{
+  "dataset_version": "1.0.0",
+  "created_at": "2026-01-16T00:00:00Z",
+  "description": "Grounded answer training examples - teaching the model to synthesize information from multiple sources while maintaining retrieval grounding",
+  "samples": [
+    {
+      "sample_id": "grounded_educator_001",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Explain the principle of Umoja to middle school students",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "chunk_id": "nguzo_saba_umoja::chunk::1",
+          "doc_id": "nguzo_saba_umoja",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Umoja (Unity): To strive for and to maintain unity in the family, community, nation, and race. The first principle emphasizes the collective over the individual, recognizing that the strength of the community comes from everyone working together.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1977) — Nguzo Saba: Umoja (Unity)",
+            "canonical_url": "https://officialkwanzaawebsite.org/umoja",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "reference",
+            "license": "CC BY-NC 4.0",
+            "tags": ["umoja", "unity", "nguzo_saba", "principles"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.87,
+          "chunk_id": "karenga_umoja_practice::chunk::3",
+          "doc_id": "karenga_umoja_practice",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Unity begins at home. Children learn Umoja by participating in family activities, sharing responsibilities, and understanding that each person's contribution matters to the whole family's wellbeing. This principle teaches that we are stronger together than apart.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1980) — Practicing the Principles: A Family Guide",
+            "canonical_url": "https://officialkwanzaawebsite.org/family-guide",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1980,
+            "content_type": "guide",
+            "license": "CC BY-NC 4.0",
+            "tags": ["umoja", "family", "education", "children"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Umoja (oo-MOH-jah) is the Swahili word for \"Unity,\" and it's the first of the Seven Principles of Kwanzaa. Here's what it means in a way that connects to your life:\n\nThe Big Idea:\nUmoja means working together as a team [1]. It teaches us that we're stronger when we support each other—in our families, schools, communities, and as a people. Think of it like this: one stick breaks easily, but a bundle of sticks is much harder to break.\n\nHow It Works in Real Life:\nUnity starts at home with your family [2]. When you:\n- Help with chores even when it's not \"your turn\"\n- Share resources with your siblings\n- Support your family members when they're having a hard day\n- Work together to solve problems\n\n...you're practicing Umoja! Each person's contribution matters, and the whole family is stronger because everyone participates [2].\n\nWhy It Matters:\nUmoja reminds us that individual success is important, but community strength is essential [1]. When your whole community is doing well—when neighbors help each other, when people work together for common goals—everyone benefits.\n\nThink about your classroom: when students help each other learn instead of competing, everyone understands the material better. That's Umoja in action!",
+          "confidence": 0.93,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1977) — Nguzo Saba: Umoja (Unity)",
+            "canonical_url": "https://officialkwanzaawebsite.org/umoja",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "reference",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "nguzo_saba_umoja",
+            "chunk_id": "nguzo_saba_umoja::chunk::1",
+            "tags": ["umoja", "unity", "nguzo_saba", "principles"],
+            "relevance_score": 0.92
+          },
+          {
+            "citation_label": "Karenga, M. (1980) — Practicing the Principles: A Family Guide",
+            "canonical_url": "https://officialkwanzaawebsite.org/family-guide",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1980,
+            "content_type": "guide",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_umoja_practice",
+            "chunk_id": "karenga_umoja_practice::chunk::3",
+            "tags": ["umoja", "family", "education", "children"],
+            "relevance_score": 0.87
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Explain Umoja unity principle for students education",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "tags": ["umoja", "education"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Umoja (Unity): To strive for and to maintain unity...",
+              "citation_label": "Karenga, M. (1977) — Nguzo Saba: Umoja",
+              "canonical_url": "https://officialkwanzaawebsite.org/umoja",
+              "doc_id": "nguzo_saba_umoja",
+              "chunk_id": "nguzo_saba_umoja::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.87,
+              "snippet": "Unity begins at home. Children learn Umoja...",
+              "citation_label": "Karenga, M. (1980) — Practicing the Principles",
+              "canonical_url": "https://officialkwanzaawebsite.org/family-guide",
+              "doc_id": "karenga_umoja_practice",
+              "chunk_id": "karenga_umoja_practice::chunk::3",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 189
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Umoja", "Nia"],
+        "quality_score": 0.94,
+        "reviewer": "human_annotator_001",
+        "notes": "Excellent example of age-appropriate synthesis with concrete examples and clear grounding"
+      }
+    },
+    {
+      "sample_id": "grounded_researcher_002",
+      "category": "grounded_answer",
+      "persona": "researcher",
+      "user_query": "What were the historical circumstances that led to Kwanzaa's creation in 1966?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.94,
+          "chunk_id": "karenga_kwanzaa_creation::chunk::2",
+          "doc_id": "karenga_kwanzaa_creation",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Kwanzaa was born out of the Black Freedom Movement and the struggles of the 1960s. It was created in 1966, following the Watts Rebellion, as a way to bring African Americans together as a community and to reaffirm their bonds with each other and their African heritage and culture.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+            "canonical_url": "https://officialkwanzaawebsite.org/creation",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1988,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "origin", "1960s", "watts", "black_power"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.89,
+          "chunk_id": "karenga_cultural_revolution::chunk::7",
+          "doc_id": "karenga_cultural_revolution",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The cultural dimension of the Black Power Movement emphasized the need for African Americans to define themselves culturally and to move beyond the reactive posture of simply opposing oppression. Kwanzaa emerged as a proactive cultural practice that allowed African Americans to celebrate themselves and their culture in their own terms.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1982) — Introduction to Black Studies",
+            "canonical_url": "https://archive.org/details/blackstudies1982",
+            "source_org": "University Kawaida",
+            "year": 1982,
+            "content_type": "academic_text",
+            "license": "Educational Use",
+            "tags": ["black_power", "cultural_revolution", "1960s", "self-definition"]
+          }
+        },
+        {
+          "rank": 3,
+          "score": 0.85,
+          "chunk_id": "watts_rebellion_context::chunk::4",
+          "doc_id": "watts_rebellion_context",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The Watts Rebellion of August 1965 highlighted the deep frustrations and systemic inequalities facing Black communities in urban America. In its aftermath, community leaders and activists sought constructive ways to rebuild and strengthen community bonds beyond protest and resistance.",
+          "metadata": {
+            "citation_label": "UCLA Center for African American Studies (1966) — Watts Aftermath Report",
+            "canonical_url": "https://www.library.ucla.edu/watts-1965",
+            "source_org": "UCLA",
+            "year": 1966,
+            "content_type": "report",
+            "license": "Public Domain",
+            "tags": ["watts", "rebellion", "1965", "community"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Kwanzaa's creation in 1966 emerged from a specific constellation of historical forces in the mid-1960s Black Freedom Movement:\n\nImmediate Context - Watts Rebellion (1965):\nDr. Maulana Karenga created Kwanzaa in 1966 following the Watts Rebellion of August 1965 [1][3]. The rebellion exposed deep systemic inequalities facing Black communities in urban America, and its aftermath prompted community leaders to seek constructive approaches to rebuild and strengthen community bonds [3].\n\nIdeological Context - Black Power Movement:\nKwanzaa was philosophically rooted in the cultural dimension of the Black Power Movement [2]. This movement emphasized the necessity for African Americans to engage in cultural self-definition rather than merely reacting to oppression [2]. Karenga designed Kwanzaa as a \"proactive cultural practice\" that enabled African Americans to celebrate themselves and their culture on their own terms [2].\n\nPurpose and Vision:\nThe holiday was explicitly created to:\n1. Bring African Americans together as a unified community [1]\n2. Reaffirm bonds with each other [1]\n3. Reconnect with African heritage and culture [1]\n4. Move beyond reactive opposition to a stance of cultural affirmation [2]\n\nHistorical Significance:\nKwanzaa represented a synthesis of resistance and reconstruction—acknowledging the struggles of the 1960s while providing a framework for cultural continuity and community building [1]. It emerged as part of the broader project of Black cultural nationalism that characterized the late 1960s.\n\nThe timing and context are essential: Kwanzaa was not created in a vacuum but as a direct response to both the trauma of urban rebellion and the possibilities of cultural self-determination.",
+          "confidence": 0.92,
+          "tone": "formal",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+            "canonical_url": "https://officialkwanzaawebsite.org/creation",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1988,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_kwanzaa_creation",
+            "chunk_id": "karenga_kwanzaa_creation::chunk::2",
+            "tags": ["kwanzaa", "origin", "1960s", "watts", "black_power"],
+            "relevance_score": 0.94
+          },
+          {
+            "citation_label": "Karenga, M. (1982) — Introduction to Black Studies",
+            "canonical_url": "https://archive.org/details/blackstudies1982",
+            "source_org": "University Kawaida",
+            "year": 1982,
+            "content_type": "academic_text",
+            "license": "Educational Use",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_cultural_revolution",
+            "chunk_id": "karenga_cultural_revolution::chunk::7",
+            "tags": ["black_power", "cultural_revolution", "1960s", "self-definition"],
+            "relevance_score": 0.89
+          },
+          {
+            "citation_label": "UCLA Center for African American Studies (1966) — Watts Aftermath Report",
+            "canonical_url": "https://www.library.ucla.edu/watts-1965",
+            "source_org": "UCLA",
+            "year": 1966,
+            "content_type": "report",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "watts_rebellion_context",
+            "chunk_id": "watts_rebellion_context::chunk::4",
+            "tags": ["watts", "rebellion", "1965", "community"],
+            "relevance_score": 0.85
+          }
+        ],
+        "retrieval_summary": {
+          "query": "historical circumstances creation Kwanzaa 1966 context",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "year_gte": 1960,
+            "year_lte": 1990,
+            "tags": ["origin", "1960s", "history"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.94,
+              "snippet": "Kwanzaa was born out of the Black Freedom Movement...",
+              "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+              "canonical_url": "https://officialkwanzaawebsite.org/creation",
+              "doc_id": "karenga_kwanzaa_creation",
+              "chunk_id": "karenga_kwanzaa_creation::chunk::2",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.89,
+              "snippet": "The cultural dimension of the Black Power Movement...",
+              "citation_label": "Karenga, M. (1982) — Introduction to Black Studies",
+              "canonical_url": "https://archive.org/details/blackstudies1982",
+              "doc_id": "karenga_cultural_revolution",
+              "chunk_id": "karenga_cultural_revolution::chunk::7",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 3,
+              "score": 0.85,
+              "snippet": "The Watts Rebellion of August 1965 highlighted...",
+              "citation_label": "UCLA Center for African American Studies (1966)",
+              "canonical_url": "https://www.library.ucla.edu/watts-1965",
+              "doc_id": "watts_rebellion_context",
+              "chunk_id": "watts_rebellion_context::chunk::4",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 276
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Detailed timeline of Kwanzaa's development throughout 1966",
+            "Specific individuals beyond Dr. Karenga involved in Kwanzaa's creation",
+            "Initial community reception and adoption patterns"
+          ],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": ["Imani", "Ujima", "Nia"],
+        "quality_score": 0.96,
+        "reviewer": "human_annotator_001",
+        "notes": "Sophisticated synthesis for researcher persona - weaves multiple sources into coherent historical narrative"
+      }
+    },
+    {
+      "sample_id": "grounded_builder_003",
+      "category": "grounded_answer",
+      "persona": "builder",
+      "user_query": "What are the technical requirements for implementing a Kwanzaa symbol display system?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.88,
+          "chunk_id": "kwanzaa_symbols_reference::chunk::1",
+          "doc_id": "kwanzaa_symbols_reference",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The seven symbols of Kwanzaa are: Mkeka (mat), Kinara (candleholder), Mishumaa Saba (seven candles: one black, three red, three green), Muhindi (corn - one ear for each child), Kikombe cha Umoja (unity cup), Zawadi (gifts), and Mazao (crops).",
+          "metadata": {
+            "citation_label": "Karenga, M. (1977) — Kwanzaa Symbols and Meaning",
+            "canonical_url": "https://officialkwanzaawebsite.org/symbols",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "reference",
+            "license": "CC BY-NC 4.0",
+            "tags": ["symbols", "reference", "kinara", "mkeka"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.83,
+          "chunk_id": "candle_lighting_order::chunk::2",
+          "doc_id": "candle_lighting_order",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Candles are arranged with the black candle in the center, three red candles on the left, and three green candles on the right. They are lit in a specific sequence over the seven days: the black candle first (December 26), then alternating between red and green, moving outward from the center.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1997) — Kwanzaa: A Celebration of Family, Community and Culture",
+            "canonical_url": "https://officialkwanzaawebsite.org/celebration-guide",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1997,
+            "content_type": "guide",
+            "license": "CC BY-NC 4.0",
+            "tags": ["candles", "ceremony", "practice", "sequence"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Based on the traditional Kwanzaa celebration structure, here are the technical requirements for a symbol display system:\n\nCore Data Model:\n\n1. Seven Symbol Types [1]:\n   - Mkeka (mat) - base element\n   - Kinara (candleholder) - structural container\n   - Mishumaa Saba (seven candles) - stateful elements\n   - Muhindi (corn) - dynamic count based on children\n   - Kikombe cha Umoja (unity cup) - single element\n   - Zawadi (gifts) - collection type\n   - Mazao (crops) - collection type\n\n2. Candle State Management [2]:\n   - Total: 7 candles with specific colors\n   - Color schema: 1 black (center), 3 red (left), 3 green (right)\n   - Position system: center-outward arrangement\n   - State tracking: lit/unlit per day\n\n3. Lighting Sequence Logic [2]:\n   - Day 1 (Dec 26): Black candle (center position)\n   - Days 2-7: Alternating red/green, moving outward\n   - Sequence pattern: center → left → right → left → right → left → right\n\nImplementation Requirements:\n\n```\nInterface: KwanzaaDisplay {\n  symbols: Symbol[]\n  currentDay: 1-7\n  candleStates: CandleState[]\n  \n  methods:\n    - initializeDisplay()\n    - lightCandle(day: number)\n    - getCandleSequence(day: number): CandlePosition\n    - renderSymbols()\n}\n\nInterface CandleState {\n  position: \"center\" | \"left-1\" | \"left-2\" | \"left-3\" | \"right-1\" | \"right-2\" | \"right-3\"\n  color: \"black\" | \"red\" | \"green\"\n  isLit: boolean\n  lightingDay: 1-7\n}\n```\n\nValidation Rules:\n- Enforce 7-symbol minimum [1]\n- Validate candle arrangement pattern [2]\n- Ensure proper lighting sequence [2]\n- Handle dynamic Muhindi count based on context\n\nThis structure ensures cultural accuracy while providing flexibility for various display implementations (web, mobile, AR, etc.).",
+          "confidence": 0.87,
+          "tone": "neutral",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1977) — Kwanzaa Symbols and Meaning",
+            "canonical_url": "https://officialkwanzaawebsite.org/symbols",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "reference",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "kwanzaa_symbols_reference",
+            "chunk_id": "kwanzaa_symbols_reference::chunk::1",
+            "tags": ["symbols", "reference", "kinara", "mkeka"],
+            "relevance_score": 0.88
+          },
+          {
+            "citation_label": "Karenga, M. (1997) — Kwanzaa: A Celebration of Family, Community and Culture",
+            "canonical_url": "https://officialkwanzaawebsite.org/celebration-guide",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1997,
+            "content_type": "guide",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "candle_lighting_order",
+            "chunk_id": "candle_lighting_order::chunk::2",
+            "tags": ["candles", "ceremony", "practice", "sequence"],
+            "relevance_score": 0.83
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Kwanzaa symbols structure candles arrangement implementation",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources", "kwanzaa_dev_patterns"],
+          "filters": {
+            "tags": ["symbols", "reference", "ceremony"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.88,
+              "snippet": "The seven symbols of Kwanzaa are: Mkeka (mat)...",
+              "citation_label": "Karenga, M. (1977) — Kwanzaa Symbols and Meaning",
+              "canonical_url": "https://officialkwanzaawebsite.org/symbols",
+              "doc_id": "kwanzaa_symbols_reference",
+              "chunk_id": "kwanzaa_symbols_reference::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.83,
+              "snippet": "Candles are arranged with the black candle in the center...",
+              "citation_label": "Karenga, M. (1997) — Kwanzaa: A Celebration Guide",
+              "canonical_url": "https://officialkwanzaawebsite.org/celebration-guide",
+              "doc_id": "candle_lighting_order",
+              "chunk_id": "candle_lighting_order::chunk::2",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 167
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Visual specifications (sizes, proportions, colors beyond candles)",
+            "Accessibility requirements for display systems",
+            "Animation timing or transition specifications"
+          ],
+          "clarifying_questions": [
+            "Are you building for web, mobile, or another platform?",
+            "Do you need 3D rendering specifications or 2D is sufficient?",
+            "Should the system support multiple languages for symbol names?"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Nia", "Kuumba"],
+        "quality_score": 0.89,
+        "reviewer": "human_annotator_003",
+        "notes": "Good example of builder persona translating cultural information into technical specifications"
+      }
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+# Kwanzaa Adapter Training Configuration
+# QLoRA-based adapter training for citation-grounded chat
+
+run:
+  name: "kwanzaa-adapter-v0"
+  output_dir: "outputs/kwanzaa-adapter-v0"
+  seed: 42
+  mixed_precision: "bf16"  # fallback to "fp16" if bf16 not supported
+  logging_steps: 10
+  save_steps: 200
+  eval_steps: 200
+  save_total_limit: 3
+  report_to: ["tensorboard"]  # Options: tensorboard, wandb, mlflow
+
+  # Reproducibility
+  deterministic: true
+  dataloader_num_workers: 4
+  dataloader_pin_memory: true
+
+model:
+  # Base model configuration (references backend/config/models/ai2.yaml)
+  base_model_id: "allenai/OLMo-7B-Instruct"
+  model_config_path: "backend/config/models/ai2.yaml"
+  trust_remote_code: true
+  use_flash_attention: true  # Enable if hardware supports
+
+  # Loading configuration
+  torch_dtype: "auto"  # Will use bf16 if available, else fp16
+  device_map: "auto"
+  low_cpu_mem_usage: true
+
+adapter:
+  # Adapter configuration (references backend/config/adapters/qlora.yaml)
+  method: "qlora"
+  adapter_config_path: "backend/config/adapters/qlora.yaml"
+
+  # LoRA parameters
+  lora:
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    bias: "none"
+    task_type: "CAUSAL_LM"
+    target_modules:
+      - "q_proj"
+      - "k_proj"
+      - "v_proj"
+      - "o_proj"
+      - "gate_proj"
+      - "up_proj"
+      - "down_proj"
+
+  # 4-bit quantization
+  quantization:
+    load_in_4bit: true
+    bnb_4bit_compute_dtype: "bfloat16"
+    bnb_4bit_use_double_quant: true
+    bnb_4bit_quant_type: "nf4"
+
+data:
+  # Dataset paths (relative to project root)
+  train_file: "data/training/kwanzaa_train.jsonl"
+  eval_file: "data/training/kwanzaa_eval.jsonl"
+
+  # Data format
+  format: "chat_jsonl"  # Messages format with system/user/assistant
+  max_seq_length: 2048
+  packing: true  # Pack multiple short samples into sequences
+
+  # Data processing
+  num_proc: 4
+  preprocessing_num_workers: 4
+
+  # Conversation template
+  system_prompt: "You are a helpful AI assistant that provides accurate, citation-grounded responses. Always use retrieved context when available and cite sources appropriately."
+
+training:
+  # Training hyperparameters
+  num_train_epochs: 2
+  learning_rate: 0.0002  # 2e-4 standard for QLoRA
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+
+  # Batch sizes and accumulation
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16
+  effective_batch_size: 16  # per_device * accumulation * num_gpus
+
+  # Optimizer (memory-efficient for QLoRA)
+  optim: "paged_adamw_8bit"
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-8
+
+  # Memory optimizations
+  gradient_checkpointing: true
+  gradient_checkpointing_kwargs:
+    use_reentrant: false
+
+  # Early stopping
+  early_stopping:
+    enabled: true
+    patience: 3
+    threshold: 0.001
+
+evaluation:
+  # Evaluation strategy
+  strategy: "steps"
+  steps: 200
+
+  # Metrics to track
+  metrics:
+    - "loss"
+    - "perplexity"
+    - "json_valid_rate"
+    - "citation_coverage_rate"
+    - "refusal_correctness_rate"
+    - "retrieval_groundedness_rate"
+
+  # Generation parameters for evaluation
+  generation:
+    temperature: 0.2
+    top_p: 0.9
+    top_k: 50
+    max_new_tokens: 800
+    do_sample: true
+    repetition_penalty: 1.1
+
+checkpointing:
+  # Checkpoint management
+  save_strategy: "steps"
+  save_steps: 200
+  save_total_limit: 3
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false
+
+  # Checkpoint verification
+  verify_base_weights_unchanged: true
+  generate_checksums: true
+
+artifacts:
+  # Output artifacts
+  output_dir: "outputs/kwanzaa-adapter-v0"
+
+  # Versioning
+  versioning:
+    enabled: true
+    version_format: "v{major}.{minor}.{patch}"
+    auto_increment: true
+    git_tag: true
+
+  # Metadata to include
+  metadata:
+    base_model_id: "allenai/OLMo-7B-Instruct"
+    dataset_version: "v0"
+    task: "citation_grounded_chat"
+    training_date: "auto"
+    author: "ainative"
+
+  # Files to include in final artifact
+  include_files:
+    - "adapter_config.json"
+    - "adapter_model.safetensors"
+    - "training_config.yaml"
+    - "training_metrics.json"
+    - "checksums.json"
+    - "README.md"
+
+publishing:
+  # Hugging Face Hub publishing
+  enabled: false  # Set to true to auto-publish
+  hf_repo: "ainative/kwanzaa-adapter-v0"
+  private: false
+
+  # Publishing metadata
+  metadata:
+    base_model: "allenai/OLMo-7B-Instruct"
+    task: "citation-grounded-chat"
+    language: "en"
+    license: "apache-2.0"
+    tags:
+      - "qlora"
+      - "citation"
+      - "grounded-chat"
+      - "rag"
+
+monitoring:
+  # Training monitoring
+  tensorboard:
+    enabled: true
+    log_dir: "outputs/kwanzaa-adapter-v0/tensorboard"
+
+  # Weights & Biases (optional)
+  wandb:
+    enabled: false
+    project: "kwanzaa-training"
+    entity: "ainative"
+    name: "kwanzaa-adapter-v0"
+
+  # MLflow (optional)
+  mlflow:
+    enabled: false
+    tracking_uri: "http://localhost:5000"
+    experiment_name: "kwanzaa-adapter-training"
+
+# Hardware requirements
+hardware:
+  minimum_vram_gb: 10
+  recommended_vram_gb: 12
+  recommended_gpu: "RTX 3090, RTX 4090, A10G, A100, or better"
+  distributed_training: false
+  num_gpus: 1
+
+# Budget and cost estimates
+cost_estimate:
+  training_hours: 2
+  cost_per_hour_a100: 1.50
+  estimated_total_cost: 3.00
+  currency: "USD"

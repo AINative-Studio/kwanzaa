@@ -1,0 +1,377 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Kwanzaa Adapter Training Dataset Schema",
+  "description": "Schema for high-quality adapter training samples that teach citation, refusal, and answer_json compliance behaviors",
+  "version": "1.0.0",
+
+  "definitions": {
+    "training_sample": {
+      "type": "object",
+      "required": ["sample_id", "category", "persona", "user_query", "retrieved_context", "expected_output", "metadata"],
+      "properties": {
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$",
+          "description": "Unique identifier for the sample (e.g., 'citation_educator_001')"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["citation", "refusal", "grounded_answer", "format_compliance"],
+          "description": "Primary training objective category"
+        },
+        "persona": {
+          "type": "string",
+          "enum": ["educator", "researcher", "creator", "builder"],
+          "description": "Target persona for this sample"
+        },
+        "user_query": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 500,
+          "description": "The user's question or prompt"
+        },
+        "retrieved_context": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/retrieval_result"
+          },
+          "description": "Simulated retrieval results (can be empty for refusal cases)"
+        },
+        "expected_output": {
+          "$ref": "#/definitions/answer_json_contract",
+          "description": "The complete answer_json contract that the model should learn to generate"
+        },
+        "metadata": {
+          "type": "object",
+          "required": ["difficulty", "principle_focus", "quality_score"],
+          "properties": {
+            "difficulty": {
+              "type": "string",
+              "enum": ["easy", "medium", "hard"],
+              "description": "Complexity level for the model"
+            },
+            "principle_focus": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["Umoja", "Kujichagulia", "Ujima", "Ujamaa", "Nia", "Kuumba", "Imani"]
+              },
+              "description": "Which Nguzo Saba principles this sample emphasizes"
+            },
+            "quality_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Quality rating for this sample (0.0-1.0)"
+            },
+            "reviewer": {
+              "type": "string",
+              "description": "Name or ID of person who validated this sample"
+            },
+            "notes": {
+              "type": "string",
+              "description": "Additional notes about this sample"
+            },
+            "edge_case": {
+              "type": "boolean",
+              "description": "Whether this tests an edge case or rare scenario"
+            },
+            "failure_mode": {
+              "type": "string",
+              "description": "What common failure mode this sample addresses"
+            }
+          }
+        }
+      }
+    },
+
+    "retrieval_result": {
+      "type": "object",
+      "required": ["rank", "score", "chunk_id", "doc_id", "namespace", "content", "metadata"],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "chunk_id": {
+          "type": "string"
+        },
+        "doc_id": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "metadata": {
+          "type": "object",
+          "required": ["citation_label", "canonical_url", "source_org", "year", "content_type", "license"],
+          "properties": {
+            "citation_label": {
+              "type": "string"
+            },
+            "canonical_url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "source_org": {
+              "type": "string"
+            },
+            "year": {
+              "type": "integer",
+              "minimum": 1600,
+              "maximum": 2100
+            },
+            "content_type": {
+              "type": "string"
+            },
+            "license": {
+              "type": "string"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "answer_json_contract": {
+      "type": "object",
+      "required": ["version", "answer", "sources", "retrieval_summary", "unknowns"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^kwanzaa\\.answer\\.v[0-9]+$"
+        },
+        "persona": {
+          "type": "string",
+          "enum": ["educator", "researcher", "creator", "builder"]
+        },
+        "model_mode": {
+          "type": "string",
+          "enum": ["base_adapter_rag", "base_only", "adapter_only", "creative"]
+        },
+        "toggles": {
+          "type": "object",
+          "properties": {
+            "require_citations": {
+              "type": "boolean"
+            },
+            "primary_sources_only": {
+              "type": "boolean"
+            },
+            "creative_mode": {
+              "type": "boolean"
+            }
+          }
+        },
+        "answer": {
+          "type": "object",
+          "required": ["text"],
+          "properties": {
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10000
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "tone": {
+              "type": "string",
+              "enum": ["neutral", "educational", "conversational", "formal", "creative"]
+            },
+            "completeness": {
+              "type": "string",
+              "enum": ["complete", "partial", "insufficient_data"]
+            }
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "retrieval_summary": {
+          "type": "object",
+          "required": ["query", "top_k", "namespaces", "results"],
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "top_k": {
+              "type": "integer"
+            },
+            "namespaces": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "filters": {
+              "type": "object"
+            },
+            "results": {
+              "type": "array"
+            }
+          }
+        },
+        "unknowns": {
+          "type": "object",
+          "required": ["unsupported_claims", "missing_context", "clarifying_questions"],
+          "properties": {
+            "unsupported_claims": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "missing_context": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "clarifying_questions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "out_of_scope": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "integrity": {
+          "type": "object",
+          "properties": {
+            "citation_required": {
+              "type": "boolean"
+            },
+            "citations_provided": {
+              "type": "boolean"
+            },
+            "retrieval_confidence": {
+              "type": "string",
+              "enum": ["high", "medium", "low", "none"]
+            },
+            "fallback_behavior": {
+              "type": "string",
+              "enum": ["not_needed", "creative_generation", "refusal", "clarification_requested"]
+            }
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "generated_at": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "type": "object",
+  "required": ["dataset_version", "created_at", "samples"],
+  "properties": {
+    "dataset_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "description": "Semantic version of the dataset"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Dataset creation timestamp"
+    },
+    "description": {
+      "type": "string",
+      "description": "Overview of this dataset batch"
+    },
+    "statistics": {
+      "type": "object",
+      "properties": {
+        "total_samples": {
+          "type": "integer"
+        },
+        "by_category": {
+          "type": "object",
+          "properties": {
+            "citation": {
+              "type": "integer"
+            },
+            "refusal": {
+              "type": "integer"
+            },
+            "grounded_answer": {
+              "type": "integer"
+            },
+            "format_compliance": {
+              "type": "integer"
+            }
+          }
+        },
+        "by_persona": {
+          "type": "object",
+          "properties": {
+            "educator": {
+              "type": "integer"
+            },
+            "researcher": {
+              "type": "integer"
+            },
+            "creator": {
+              "type": "integer"
+            },
+            "builder": {
+              "type": "integer"
+            }
+          }
+        },
+        "by_difficulty": {
+          "type": "object",
+          "properties": {
+            "easy": {
+              "type": "integer"
+            },
+            "medium": {
+              "type": "integer"
+            },
+            "hard": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/training_sample"
+      },
+      "minItems": 1
+    }
+  }
+}

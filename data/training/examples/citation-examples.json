@@ -1,0 +1,388 @@
+{
+  "dataset_version": "1.0.0",
+  "created_at": "2026-01-16T00:00:00Z",
+  "description": "Citation training examples - teaching the model to properly cite sources when good retrieval context is available",
+  "samples": [
+    {
+      "sample_id": "citation_educator_001",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What did the Civil Rights Act of 1964 prohibit?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.93,
+          "chunk_id": "nara_cra_1964::chunk::3",
+          "doc_id": "nara_cra_1964",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "An Act to enforce the constitutional right to vote, to confer jurisdiction upon the district courts of the United States to provide injunctive relief against discrimination in public accommodations, to authorize the Attorney General to institute suits to protect constitutional rights in public facilities and public education, to extend the Commission on Civil Rights, to prevent discrimination in federally assisted programs, to establish a Commission on Equal Employment Opportunity, and for other purposes.",
+          "metadata": {
+            "citation_label": "National Archives (1964) — Civil Rights Act",
+            "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+            "source_org": "National Archives",
+            "year": 1964,
+            "content_type": "legal_document",
+            "license": "Public Domain",
+            "tags": ["civil_rights", "legislation", "1960s"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.88,
+          "chunk_id": "loc_cra_summary::chunk::1",
+          "doc_id": "loc_cra_summary",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The Civil Rights Act of 1964 prohibited discrimination based on race, color, religion, sex, or national origin. It ended unequal application of voter registration requirements and racial segregation in schools, at the workplace, and in public accommodations.",
+          "metadata": {
+            "citation_label": "Library of Congress (1964) — Civil Rights Act Summary",
+            "canonical_url": "https://www.loc.gov/exhibits/civil-rights-act",
+            "source_org": "Library of Congress",
+            "year": 1964,
+            "content_type": "summary",
+            "license": "Public Domain",
+            "tags": ["civil_rights", "discrimination", "legislation"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "The Civil Rights Act of 1964 was landmark federal legislation that prohibited discrimination based on race, color, religion, sex, or national origin [1][2]. Specifically, it addressed discrimination in several key areas:\n\n1. Public accommodations - ending segregation in hotels, restaurants, and other public spaces\n2. Employment - establishing the Commission on Equal Employment Opportunity\n3. Public education - authorizing the Attorney General to protect constitutional rights in schools\n4. Federally assisted programs - preventing discrimination in programs receiving federal funding\n5. Voting rights - enforcing the constitutional right to vote and ending unequal voter registration requirements\n\nThis Act was one of the most significant pieces of civil rights legislation in American history.",
+          "confidence": 0.95,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "National Archives (1964) — Civil Rights Act",
+            "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+            "source_org": "National Archives",
+            "year": 1964,
+            "content_type": "legal_document",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "nara_cra_1964",
+            "chunk_id": "nara_cra_1964::chunk::3",
+            "tags": ["civil_rights", "legislation", "1960s"],
+            "relevance_score": 0.93
+          },
+          {
+            "citation_label": "Library of Congress (1964) — Civil Rights Act Summary",
+            "canonical_url": "https://www.loc.gov/exhibits/civil-rights-act",
+            "source_org": "Library of Congress",
+            "year": 1964,
+            "content_type": "summary",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "loc_cra_summary",
+            "chunk_id": "loc_cra_summary::chunk::1",
+            "tags": ["civil_rights", "discrimination", "legislation"],
+            "relevance_score": 0.88
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What did the Civil Rights Act of 1964 prohibit?",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "year_gte": 1960,
+            "year_lte": 1970
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.93,
+              "snippet": "An Act to enforce the constitutional right to vote...",
+              "citation_label": "National Archives (1964) — Civil Rights Act",
+              "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+              "doc_id": "nara_cra_1964",
+              "chunk_id": "nara_cra_1964::chunk::3",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.88,
+              "snippet": "The Civil Rights Act of 1964 prohibited discrimination...",
+              "citation_label": "Library of Congress (1964) — Civil Rights Act Summary",
+              "canonical_url": "https://www.loc.gov/exhibits/civil-rights-act",
+              "doc_id": "loc_cra_summary",
+              "chunk_id": "loc_cra_summary::chunk::1",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": ["Imani"],
+        "quality_score": 0.95,
+        "reviewer": "human_annotator_001",
+        "notes": "Perfect example of proper citation with multiple sources for educational context"
+      }
+    },
+    {
+      "sample_id": "citation_researcher_002",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "What evidence exists about the Montgomery Bus Boycott's economic impact?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.91,
+          "chunk_id": "mlk_stride_toward_freedom::chunk::12",
+          "doc_id": "mlk_stride_toward_freedom",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The bus company, which depended heavily on Negro patronage, was suffering financially. At one point it publicly acknowledged that it had lost over 65 percent of its normal revenue during the boycott period.",
+          "metadata": {
+            "citation_label": "King, M.L. (1958) — Stride Toward Freedom: The Montgomery Story",
+            "canonical_url": "https://archive.org/details/stridetowardfree00king",
+            "source_org": "Internet Archive",
+            "year": 1958,
+            "content_type": "memoir",
+            "license": "Public Domain",
+            "tags": ["montgomery", "boycott", "civil_rights", "economic_impact"]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.87,
+          "chunk_id": "montgomery_advertiser_1956::chunk::5",
+          "doc_id": "montgomery_advertiser_1956",
+          "namespace": "kwanzaa_black_press",
+          "content": "City officials reported that the bus line operated at a significant deficit throughout 1956. Ridership dropped from an average of 30,000 daily passengers to fewer than 8,000. The Negro community, which made up approximately 75% of bus riders before the boycott, organized carpools and alternative transportation.",
+          "metadata": {
+            "citation_label": "Montgomery Advertiser (1956) — Bus Line Financial Reports",
+            "canonical_url": "https://newspapers.com/montgomery-advertiser-1956",
+            "source_org": "Montgomery Advertiser",
+            "year": 1956,
+            "content_type": "news_article",
+            "license": "Archive Access License",
+            "tags": ["montgomery", "boycott", "newspaper", "primary_source"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Primary sources document significant economic impact from the Montgomery Bus Boycott:\n\nDirect Impact on Bus Company:\n- The bus company publicly acknowledged losing over 65% of its normal revenue during the boycott [1]\n- Daily ridership dropped from approximately 30,000 to fewer than 8,000 passengers [2]\n- The bus line operated at a deficit throughout 1956 [2]\n\nCommunity Organization:\n- The Black community, which comprised approximately 75% of pre-boycott bus riders, organized alternative transportation including carpools [2]\n- This demonstrates both the economic leverage of the community and their organizational capacity\n\nThese figures come from contemporary sources: Dr. King's firsthand account published in 1958 [1] and newspaper financial reports from 1956 [2]. The evidence shows the boycott's effectiveness as an economic protest tool.",
+          "confidence": 0.88,
+          "tone": "formal",
+          "completeness": "partial"
+        },
+        "sources": [
+          {
+            "citation_label": "King, M.L. (1958) — Stride Toward Freedom: The Montgomery Story",
+            "canonical_url": "https://archive.org/details/stridetowardfree00king",
+            "source_org": "Internet Archive",
+            "year": 1958,
+            "content_type": "memoir",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "mlk_stride_toward_freedom",
+            "chunk_id": "mlk_stride_toward_freedom::chunk::12",
+            "tags": ["montgomery", "boycott", "civil_rights", "economic_impact"],
+            "relevance_score": 0.91
+          },
+          {
+            "citation_label": "Montgomery Advertiser (1956) — Bus Line Financial Reports",
+            "canonical_url": "https://newspapers.com/montgomery-advertiser-1956",
+            "source_org": "Montgomery Advertiser",
+            "year": 1956,
+            "content_type": "news_article",
+            "license": "Archive Access License",
+            "namespace": "kwanzaa_black_press",
+            "doc_id": "montgomery_advertiser_1956",
+            "chunk_id": "montgomery_advertiser_1956::chunk::5",
+            "tags": ["montgomery", "boycott", "newspaper", "primary_source"],
+            "relevance_score": 0.87
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What evidence exists about the Montgomery Bus Boycott's economic impact?",
+          "top_k": 10,
+          "namespaces": ["kwanzaa_primary_sources", "kwanzaa_black_press"],
+          "filters": {
+            "year_gte": 1955,
+            "year_lte": 1960,
+            "tags": ["montgomery", "boycott"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.91,
+              "snippet": "The bus company, which depended heavily on Negro patronage...",
+              "citation_label": "King, M.L. (1958) — Stride Toward Freedom",
+              "canonical_url": "https://archive.org/details/stridetowardfree00king",
+              "doc_id": "mlk_stride_toward_freedom",
+              "chunk_id": "mlk_stride_toward_freedom::chunk::12",
+              "namespace": "kwanzaa_primary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.87,
+              "snippet": "City officials reported that the bus line operated...",
+              "citation_label": "Montgomery Advertiser (1956)",
+              "canonical_url": "https://newspapers.com/montgomery-advertiser-1956",
+              "doc_id": "montgomery_advertiser_1956",
+              "chunk_id": "montgomery_advertiser_1956::chunk::5",
+              "namespace": "kwanzaa_black_press"
+            }
+          ],
+          "execution_time_ms": 312
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Broader economic impact on Montgomery businesses beyond the bus company",
+            "Long-term financial recovery timeline for the bus line",
+            "Detailed cost breakdown of alternative transportation systems organized by the community"
+          ],
+          "clarifying_questions": [
+            "Are you interested in the broader economic impact on Montgomery businesses?",
+            "Would you like information about the financial organization of alternative transportation?"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Imani", "Ujima"],
+        "quality_score": 0.92,
+        "reviewer": "human_annotator_001",
+        "notes": "Good example of researcher persona using multiple source types and acknowledging gaps"
+      }
+    },
+    {
+      "sample_id": "citation_creator_003",
+      "category": "citation",
+      "persona": "creator",
+      "user_query": "Help me write an introduction for a Kwanzaa celebration speech that honors our ancestors",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.84,
+          "chunk_id": "karenga_kwanzaa_origins::chunk::2",
+          "doc_id": "karenga_kwanzaa_origins",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Kwanzaa was created to introduce and reinforce seven basic values of African culture which contribute to building and reinforcing community among African people. These values are called the Nguzo Saba which in Swahili means the Seven Principles.",
+          "metadata": {
+            "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+            "canonical_url": "https://officialkwanzaawebsite.org/origins",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "tags": ["kwanzaa", "nguzo_saba", "principles", "origin"]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": false,
+          "primary_sources_only": false,
+          "creative_mode": true
+        },
+        "answer": {
+          "text": "Here's a grounded introduction that honors the cultural foundation of Kwanzaa:\n\n---\n\n\"Habari Gani! As we gather to celebrate Kwanzaa, we honor not only this season but the continuous thread of wisdom that connects us to our ancestors. Dr. Maulana Karenga created Kwanzaa to introduce and reinforce seven basic values of African culture—values that contribute to building and reinforcing community among African people [1]. These values, the Nguzo Saba or Seven Principles, are not new creations but ancient truths given new voice.\n\nTonight, we light these candles not as mere symbols, but as commitments. Each flame represents a principle our ancestors lived by, struggled for, and passed down so we might thrive. We gather in their honor, in their memory, and in their spirit—knowing that the work of building beloved community continues with each of us.\"\n\n---\n\nThis introduction grounds your speech in the historical purpose of Kwanzaa while maintaining a reverent, ceremonial tone. You can adapt the language to match your specific audience and event.",
+          "confidence": 0.82,
+          "tone": "creative",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+            "canonical_url": "https://officialkwanzaawebsite.org/origins",
+            "source_org": "Official Kwanzaa Website",
+            "year": 1977,
+            "content_type": "essay",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "karenga_kwanzaa_origins",
+            "chunk_id": "karenga_kwanzaa_origins::chunk::2",
+            "tags": ["kwanzaa", "nguzo_saba", "principles", "origin"],
+            "relevance_score": 0.84
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Kwanzaa celebration speech ancestors principles",
+          "top_k": 5,
+          "namespaces": ["kwanzaa_primary_sources"],
+          "filters": {
+            "tags": ["kwanzaa", "principles"]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.84,
+              "snippet": "Kwanzaa was created to introduce and reinforce...",
+              "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+              "canonical_url": "https://officialkwanzaawebsite.org/origins",
+              "doc_id": "karenga_kwanzaa_origins",
+              "chunk_id": "karenga_kwanzaa_origins::chunk::2",
+              "namespace": "kwanzaa_primary_sources"
+            }
+          ],
+          "execution_time_ms": 198
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Specific traditional greetings or rituals you may want to incorporate",
+            "Your community's specific Kwanzaa celebration traditions"
+          ],
+          "clarifying_questions": [
+            "Would you like suggestions for incorporating each of the Seven Principles?",
+            "Should the speech address a specific night of Kwanzaa or the celebration overall?"
+          ]
+        },
+        "integrity": {
+          "citation_required": false,
+          "citations_provided": true,
+          "retrieval_confidence": "medium",
+          "fallback_behavior": "not_needed"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": ["Kuumba", "Imani"],
+        "quality_score": 0.90,
+        "reviewer": "human_annotator_002",
+        "notes": "Good example of creative mode with grounding - balances originality with source material"
+      }
+    }
+  ]
+}

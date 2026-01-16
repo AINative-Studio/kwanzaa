@@ -179,6 +179,18 @@ class Settings(BaseSettings):
         description="Embedding cache TTL",
     )
 
+    # Model Mode Settings
+    DEFAULT_MODEL_MODE: str = Field(
+        default="full",
+        description="Default model mode (base, base_adapter, full)",
+    )
+    SESSION_TTL_MINUTES: int = Field(
+        default=60,
+        ge=1,
+        le=1440,
+        description="Session TTL in minutes (max 24 hours)",
+    )
+
     # Feature Flags
     ENABLE_RERANKING: bool = Field(
         default=True,

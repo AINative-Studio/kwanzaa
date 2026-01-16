@@ -4,7 +4,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ValidationError
 
-from app.api.v1.endpoints import search
+from app.api.v1.endpoints import modes, search
 from app.core.config import settings
 from app.core.errors import (
     APIError,
@@ -58,6 +58,11 @@ app.include_router(
     search.router,
     prefix=f"{settings.API_V1_PREFIX}/search",
     tags=["search"],
+)
+app.include_router(
+    modes.router,
+    prefix=f"{settings.API_V1_PREFIX}/modes",
+    tags=["modes"],
 )
 
 

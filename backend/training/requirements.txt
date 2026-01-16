@@ -1,0 +1,42 @@
+# Training Requirements for Kwanzaa Adapter Training
+# Install with: pip install -r backend/training/requirements.txt
+
+# Core ML frameworks
+torch>=2.1.0,<3.0.0
+transformers>=4.36.0
+datasets>=2.16.0
+accelerate>=0.25.0
+
+# Adapter training (QLoRA)
+peft>=0.7.0
+bitsandbytes>=0.41.0  # For 4-bit quantization
+
+# Model optimization
+optimum>=1.16.0
+flash-attn>=2.4.0  # Optional, for Flash Attention 2
+
+# Training utilities
+tensorboard>=2.15.0
+wandb>=0.16.0  # Optional, for experiment tracking
+mlflow>=2.9.0  # Optional, for model registry
+
+# Data processing
+numpy>=1.24.0,<2.0.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Configuration and utilities
+pyyaml>=6.0.0
+tqdm>=4.66.0
+safetensors>=0.4.0
+
+# Evaluation
+evaluate>=0.4.1
+rouge-score>=0.1.2
+sacrebleu>=2.3.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=24.0.0
+ruff>=0.1.0
