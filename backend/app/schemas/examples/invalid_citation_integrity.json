@@ -1,0 +1,22 @@
+{
+  "version": "kwanzaa.answer.v1",
+  "answer": {
+    "text": "This violates citation integrity - citations required but not provided."
+  },
+  "sources": [],
+  "retrieval_summary": {
+    "query": "test query",
+    "top_k": 10,
+    "namespaces": ["kwanzaa_primary_sources"],
+    "results": []
+  },
+  "unknowns": {
+    "unsupported_claims": [],
+    "missing_context": [],
+    "clarifying_questions": []
+  },
+  "integrity": {
+    "citation_required": true,
+    "citations_provided": false
+  }
+}

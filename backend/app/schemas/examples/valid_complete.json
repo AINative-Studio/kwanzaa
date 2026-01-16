@@ -1,0 +1,111 @@
+{
+  "version": "kwanzaa.answer.v1",
+  "persona": "educator",
+  "model_mode": "base_adapter_rag",
+  "toggles": {
+    "require_citations": true,
+    "primary_sources_only": true,
+    "creative_mode": false
+  },
+  "answer": {
+    "text": "The Civil Rights Act of 1964 was landmark federal legislation that prohibited discrimination based on race, color, religion, sex, or national origin. It addressed discrimination in public accommodations (Title II), employment (Title VII), and federally funded programs (Title VI). The Act was signed into law by President Lyndon B. Johnson on July 2, 1964, following extensive debate and a historic filibuster in the Senate.",
+    "confidence": 0.95,
+    "tone": "educational",
+    "completeness": "complete"
+  },
+  "sources": [
+    {
+      "citation_label": "National Archives (1964) — Civil Rights Act of 1964",
+      "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+      "source_org": "National Archives and Records Administration",
+      "year": 1964,
+      "content_type": "legal_document",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "doc_id": "nara_cra_1964",
+      "chunk_id": "nara_cra_1964::chunk::3",
+      "tags": ["civil_rights", "legislation", "1960s", "johnson"],
+      "relevance_score": 0.95
+    },
+    {
+      "citation_label": "Library of Congress (1964) — Legislative History: Civil Rights Act",
+      "canonical_url": "https://www.loc.gov/law/help/civil-rights-act-1964",
+      "source_org": "Library of Congress",
+      "year": 1964,
+      "content_type": "legislative_history",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "doc_id": "loc_cra_history_1964",
+      "chunk_id": "loc_cra_history_1964::chunk::1",
+      "tags": ["civil_rights", "legislation", "congressional_record"],
+      "relevance_score": 0.88
+    }
+  ],
+  "retrieval_summary": {
+    "query": "What did the Civil Rights Act of 1964 prohibit?",
+    "top_k": 5,
+    "namespaces": ["kwanzaa_primary_sources"],
+    "filters": {
+      "content_type": ["legal_document", "proclamation", "legislative_history"],
+      "year_gte": 1960,
+      "year_lte": 1970,
+      "tags": ["civil_rights"]
+    },
+    "results": [
+      {
+        "rank": 1,
+        "score": 0.95,
+        "snippet": "An Act to enforce the constitutional right to vote, to confer jurisdiction upon the district courts of the United States to provide injunctive relief against discrimination in public accommodations, to authorize the Attorney General to institute suits to protect constitutional rights in public facilities and public education...",
+        "citation_label": "National Archives (1964) — Civil Rights Act of 1964",
+        "canonical_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+        "doc_id": "nara_cra_1964",
+        "chunk_id": "nara_cra_1964::chunk::3",
+        "namespace": "kwanzaa_primary_sources"
+      },
+      {
+        "rank": 2,
+        "score": 0.88,
+        "snippet": "The Civil Rights Act of 1964 outlawed major forms of discrimination against African Americans and women, including racial segregation. It ended unequal application of voter registration requirements and racial segregation in schools, at the workplace and by facilities that served the general public.",
+        "citation_label": "Library of Congress (1964) — Legislative History: Civil Rights Act",
+        "canonical_url": "https://www.loc.gov/law/help/civil-rights-act-1964",
+        "doc_id": "loc_cra_history_1964",
+        "chunk_id": "loc_cra_history_1964::chunk::1",
+        "namespace": "kwanzaa_primary_sources"
+      },
+      {
+        "rank": 3,
+        "score": 0.82,
+        "snippet": "Title VII of the Civil Rights Act of 1964 is a federal law that prohibits employers from discriminating against employees on the basis of sex, race, color, national origin, and religion.",
+        "citation_label": "EEOC (1964) — Title VII Overview",
+        "canonical_url": "https://www.eeoc.gov/statutes/title-vii-civil-rights-act-1964",
+        "doc_id": "eeoc_title7_1964",
+        "chunk_id": "eeoc_title7_1964::chunk::2",
+        "namespace": "kwanzaa_primary_sources"
+      }
+    ],
+    "execution_time_ms": 342,
+    "embedding_model": "text-embedding-3-small"
+  },
+  "unknowns": {
+    "unsupported_claims": [],
+    "missing_context": [
+      "Detailed enforcement case law from 1965-1967 is not included in the current corpus",
+      "State-level implementation variations are not comprehensively covered"
+    ],
+    "clarifying_questions": []
+  },
+  "integrity": {
+    "citation_required": true,
+    "citations_provided": true,
+    "retrieval_confidence": "high",
+    "fallback_behavior": "not_needed"
+  },
+  "provenance": {
+    "generated_at": "2026-01-16T19:23:45Z",
+    "retrieval_run_id": "9b2d7cfa-cc5e-4a2b-9a6e-6c77f47a9c21",
+    "assistant_message_id": "c5f0a75e-4e5c-4a11-9f55-1b5b0a31d77e",
+    "session_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+    "model_version": "gpt-4-turbo-2024-04-09",
+    "adapter_version": "kwanzaa-adapter-v1.2.0"
+  }
+}

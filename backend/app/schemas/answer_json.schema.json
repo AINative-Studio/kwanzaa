@@ -1,0 +1,424 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ainative.studio/schemas/kwanzaa/answer_json/v1.0.0",
+  "title": "Kwanzaa Answer JSON Contract",
+  "description": "Strict JSON schema for AI responses with citations, provenance tracking, and transparent uncertainty. Enforces Imani (Faith) through verifiable sources and honest communication of limitations.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": [
+    "version",
+    "answer",
+    "sources",
+    "retrieval_summary",
+    "unknowns"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^kwanzaa\\.answer\\.v[0-9]+$",
+      "description": "Contract version identifier",
+      "examples": ["kwanzaa.answer.v1"]
+    },
+    "persona": {
+      "type": "string",
+      "enum": ["educator", "researcher", "creator", "builder"],
+      "description": "Persona mode that generated this response"
+    },
+    "model_mode": {
+      "type": "string",
+      "enum": ["base_adapter_rag", "base_only", "adapter_only", "creative"],
+      "description": "Model mode used for generation"
+    },
+    "toggles": {
+      "type": "object",
+      "description": "User-controlled behavior toggles enforcing Kujichagulia (Self-Determination)",
+      "properties": {
+        "require_citations": {
+          "type": "boolean",
+          "description": "Whether citations are mandatory for this response"
+        },
+        "primary_sources_only": {
+          "type": "boolean",
+          "description": "Whether only primary sources should be used"
+        },
+        "creative_mode": {
+          "type": "boolean",
+          "description": "Whether creative generation is enabled"
+        }
+      },
+      "required": ["require_citations", "primary_sources_only", "creative_mode"]
+    },
+    "answer": {
+      "type": "object",
+      "description": "The main AI response with metadata",
+      "required": ["text"],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000,
+          "description": "The main response text"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Model confidence score for this answer"
+        },
+        "tone": {
+          "type": "string",
+          "enum": ["neutral", "educational", "conversational", "formal", "creative"],
+          "description": "Tone of the response"
+        },
+        "completeness": {
+          "type": "string",
+          "enum": ["complete", "partial", "insufficient_data"],
+          "description": "Assessment of answer completeness based on available data"
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "Array of source citations with full provenance metadata enforcing Imani (Faith)",
+      "items": {
+        "type": "object",
+        "required": [
+          "citation_label",
+          "canonical_url",
+          "source_org",
+          "year",
+          "content_type",
+          "license",
+          "namespace",
+          "doc_id",
+          "chunk_id"
+        ],
+        "properties": {
+          "citation_label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "description": "Human-readable citation label",
+            "examples": ["National Archives (1964) — Civil Rights Act"]
+          },
+          "canonical_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Canonical URL to source document"
+          },
+          "source_org": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Source organization name",
+            "examples": ["National Archives", "Library of Congress"]
+          },
+          "year": {
+            "type": "integer",
+            "minimum": 1600,
+            "maximum": 2100,
+            "description": "Year of document or content"
+          },
+          "content_type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "Content type classification",
+            "examples": ["speech", "letter", "proclamation", "legal_document", "article"]
+          },
+          "license": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "License information for the source",
+            "examples": ["Public Domain", "CC BY 4.0", "Fair Use"]
+          },
+          "namespace": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "Vector namespace where this source resides",
+            "examples": ["kwanzaa_primary_sources", "kwanzaa_secondary_sources"]
+          },
+          "doc_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Unique document identifier"
+          },
+          "chunk_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Unique chunk identifier within the document"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "maxItems": 50,
+            "description": "Content tags for categorization"
+          },
+          "relevance_score": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Relevance score for this source to the query"
+          }
+        },
+        "additionalProperties": true
+      },
+      "minItems": 0,
+      "maxItems": 100
+    },
+    "retrieval_summary": {
+      "type": "object",
+      "description": "Summary of the retrieval process enforcing Ujima (Collective Work) through transparent 'Show Your Work'",
+      "required": ["query", "top_k", "namespaces", "results"],
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "description": "The original query text that was processed"
+        },
+        "top_k": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Number of results requested from retrieval"
+        },
+        "namespaces": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "minItems": 1,
+          "maxItems": 20,
+          "description": "Vector namespaces searched"
+        },
+        "filters": {
+          "type": "object",
+          "description": "Filters applied to the retrieval query",
+          "properties": {
+            "content_type": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Content type filters"
+            },
+            "year": {
+              "type": "integer",
+              "description": "Exact year filter"
+            },
+            "year_gte": {
+              "type": "integer",
+              "minimum": 1600,
+              "maximum": 2100,
+              "description": "Minimum year (inclusive)"
+            },
+            "year_lte": {
+              "type": "integer",
+              "minimum": 1600,
+              "maximum": 2100,
+              "description": "Maximum year (inclusive)"
+            },
+            "source_org": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Source organization filters"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Tag filters"
+            }
+          },
+          "additionalProperties": true
+        },
+        "results": {
+          "type": "array",
+          "description": "Top retrieval results with metadata",
+          "items": {
+            "type": "object",
+            "required": ["rank", "score", "citation_label", "canonical_url", "doc_id", "chunk_id", "namespace"],
+            "properties": {
+              "rank": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "Result rank (1-indexed)"
+              },
+              "score": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "description": "Similarity or relevance score"
+              },
+              "snippet": {
+                "type": "string",
+                "maxLength": 2000,
+                "description": "Text snippet from the retrieved chunk"
+              },
+              "citation_label": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500,
+                "description": "Human-readable citation label"
+              },
+              "canonical_url": {
+                "type": "string",
+                "format": "uri",
+                "description": "Canonical URL to source document"
+              },
+              "doc_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "description": "Document identifier"
+              },
+              "chunk_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "description": "Chunk identifier"
+              },
+              "namespace": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "description": "Vector namespace"
+              }
+            }
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "execution_time_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total retrieval execution time in milliseconds"
+        },
+        "embedding_model": {
+          "type": "string",
+          "description": "Embedding model used for retrieval",
+          "examples": ["text-embedding-3-small", "text-embedding-ada-002"]
+        }
+      }
+    },
+    "unknowns": {
+      "type": "object",
+      "description": "Transparent communication of limitations and gaps enforcing Imani (Faith) through honest acknowledgment",
+      "required": ["unsupported_claims", "missing_context", "clarifying_questions"],
+      "properties": {
+        "unsupported_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "description": "Claims that cannot be supported by the corpus"
+        },
+        "missing_context": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "description": "Context or information gaps in the corpus"
+        },
+        "clarifying_questions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "description": "Questions that would help provide a better answer"
+        },
+        "out_of_scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "description": "Topics or queries that are outside the corpus scope"
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "description": "Integrity metadata for trust and safety",
+      "properties": {
+        "citation_required": {
+          "type": "boolean",
+          "description": "Whether citations were required for this response"
+        },
+        "citations_provided": {
+          "type": "boolean",
+          "description": "Whether citations were actually provided"
+        },
+        "retrieval_confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low", "none"],
+          "description": "Overall confidence in retrieval results"
+        },
+        "fallback_behavior": {
+          "type": "string",
+          "enum": ["not_needed", "creative_generation", "refusal", "clarification_requested"],
+          "description": "Fallback behavior used when retrieval was insufficient"
+        },
+        "safety_flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "description": "Safety or policy flags triggered"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Generation provenance metadata enforcing Ujamaa (Cooperative Economics) through shared credit",
+      "required": ["generated_at"],
+      "properties": {
+        "generated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of generation"
+        },
+        "retrieval_run_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for the retrieval run"
+        },
+        "assistant_message_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for the assistant message"
+        },
+        "session_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Session identifier for request correlation"
+        },
+        "model_version": {
+          "type": "string",
+          "description": "Model version or identifier used for generation"
+        },
+        "adapter_version": {
+          "type": "string",
+          "description": "Adapter version if used"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
