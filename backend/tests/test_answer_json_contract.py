@@ -391,6 +391,18 @@ class TestExampleFiles:
             AnswerJsonContract.model_validate(data)
         assert "imani" in str(exc_info.value).lower()
 
+    def test_valid_refusal_example(self, examples_dir):
+        """Test that valid_refusal.json is valid."""
+        with open(examples_dir / "valid_refusal.json") as f:
+            data = json.load(f)
+
+        contract = AnswerJsonContract.model_validate(data)
+        assert contract.version == "kwanzaa.answer.v1"
+        assert len(contract.sources) == 0
+        assert contract.integrity.fallback_behavior == FallbackBehavior.REFUSAL
+        assert contract.answer.completeness == Completeness.INSUFFICIENT_DATA
+        assert len(contract.unknowns.out_of_scope) > 0
+
 
 class TestSerializationRoundTrip:
     """Test serialization and deserialization."""

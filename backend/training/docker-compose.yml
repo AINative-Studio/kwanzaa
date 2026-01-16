@@ -1,0 +1,108 @@
+# Kwanzaa Training Docker Compose Configuration
+# EPIC 3A - Hugging Face Environment & Prerequisites
+# Issue #51: E3A-US5 - Install Training Dependencies
+#
+# This docker-compose file provides an easy way to run the training environment
+# with GPU support and proper volume mounts.
+#
+# Usage:
+#   docker-compose -f backend/training/docker-compose.yml up -d
+#   docker-compose -f backend/training/docker-compose.yml exec training bash
+
+version: '3.8'
+
+services:
+  training:
+    build:
+      context: ../..
+      dockerfile: backend/training/Dockerfile
+    image: kwanzaa-training:latest
+    container_name: kwanzaa-training
+
+    # GPU configuration
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+    # Environment variables
+    environment:
+      # Hugging Face configuration
+      - HF_HOME=/workspace/.cache/huggingface
+      - TRANSFORMERS_CACHE=/workspace/.cache/huggingface/transformers
+      - HF_DATASETS_CACHE=/workspace/.cache/huggingface/datasets
+
+      # PyTorch configuration
+      - PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:512
+      - CUDA_VISIBLE_DEVICES=0
+
+      # Training configuration
+      - WANDB_MODE=offline
+      - TOKENIZERS_PARALLELISM=false
+
+      # Optional: Set from .env file
+      # - HF_TOKEN=${HF_TOKEN}
+      # - WANDB_API_KEY=${WANDB_API_KEY}
+
+    # Volume mounts
+    volumes:
+      # Mount entire project
+      - ../../:/workspace
+
+      # Persistent cache for models and datasets
+      - huggingface-cache:/workspace/.cache/huggingface
+
+      # Mount training outputs
+      - training-outputs:/workspace/adapters
+      - training-logs:/workspace/logs
+
+    # Working directory
+    working_dir: /workspace
+
+    # Keep container running
+    stdin_open: true
+    tty: true
+
+    # Restart policy
+    restart: unless-stopped
+
+    # Network
+    networks:
+      - kwanzaa-network
+
+    # Ports (optional)
+    ports:
+      - "6006:6006"  # TensorBoard
+      - "8888:8888"  # Jupyter (if installed)
+
+  # Optional: TensorBoard service
+  tensorboard:
+    image: tensorflow/tensorflow:latest
+    container_name: kwanzaa-tensorboard
+    command: tensorboard --logdir=/logs --host=0.0.0.0 --port=6006
+    volumes:
+      - training-logs:/logs
+    ports:
+      - "6007:6006"
+    networks:
+      - kwanzaa-network
+    depends_on:
+      - training
+    restart: unless-stopped
+
+# Named volumes for persistence
+volumes:
+  huggingface-cache:
+    driver: local
+  training-outputs:
+    driver: local
+  training-logs:
+    driver: local
+
+# Network
+networks:
+  kwanzaa-network:
+    driver: bridge

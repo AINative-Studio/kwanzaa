@@ -1,0 +1,57 @@
+{
+  "version": "kwanzaa.answer.v1",
+  "persona": "educator",
+  "model_mode": "base_adapter_rag",
+  "toggles": {
+    "require_citations": true,
+    "primary_sources_only": true,
+    "creative_mode": false
+  },
+  "answer": {
+    "text": "I cannot answer this question because it falls outside the scope of the Kwanzaa corpus. The corpus focuses on African American history, culture, and the Kwanzaa celebration itself. Questions about unrelated topics cannot be answered with proper citations from the available sources.",
+    "confidence": 0.95,
+    "tone": "formal",
+    "completeness": "insufficient_data"
+  },
+  "sources": [],
+  "retrieval_summary": {
+    "query": "What is the recipe for chocolate chip cookies?",
+    "top_k": 10,
+    "namespaces": ["kwanzaa_primary_sources", "kwanzaa_secondary_sources"],
+    "filters": {},
+    "results": [],
+    "execution_time_ms": 156,
+    "embedding_model": "text-embedding-3-small"
+  },
+  "unknowns": {
+    "unsupported_claims": [
+      "This query is completely out of scope for the Kwanzaa knowledge base"
+    ],
+    "missing_context": [
+      "The corpus does not contain information about recipes or cooking",
+      "No relevant documents were retrieved for this query"
+    ],
+    "clarifying_questions": [
+      "Are you looking for information about Kwanzaa celebrations, African American history, or cultural topics?",
+      "Would you like to know about traditional African American cuisine served during Kwanzaa?"
+    ],
+    "out_of_scope": [
+      "General recipe questions",
+      "Cooking instructions",
+      "Non-cultural food-related queries"
+    ]
+  },
+  "integrity": {
+    "citation_required": false,
+    "citations_provided": false,
+    "retrieval_confidence": "none",
+    "fallback_behavior": "refusal"
+  },
+  "provenance": {
+    "generated_at": "2026-01-16T20:15:30Z",
+    "retrieval_run_id": "a9b8c7d6-e5f4-4a3b-2c1d-0e9f8a7b6c5d",
+    "assistant_message_id": "b0c1d2e3-f4a5-4b6c-7d8e-9f0a1b2c3d4e",
+    "session_id": "c2d3e4f5-a6b7-4c8d-9e0f-1a2b3c4d5e6f",
+    "model_version": "gpt-4-turbo-2024-04-09"
+  }
+}

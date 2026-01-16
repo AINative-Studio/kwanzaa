@@ -243,8 +243,49 @@ if (isAnswerJsonContract(data)) {
 | Examples | `/backend/app/schemas/examples/` |
 | Tests | `/backend/tests/test_answer_json_contract.py` |
 
+## Common Use Cases
+
+### 1. Success with Citations
+See: `/backend/app/schemas/examples/valid_complete.json`
+
+### 2. Partial Answer with Unknowns
+See: `/backend/app/schemas/examples/valid_with_unknowns.json`
+
+### 3. Refusal (Out of Scope)
+See: `/backend/app/schemas/examples/valid_refusal.json`
+
+```json
+{
+  "answer": {
+    "text": "I cannot answer this question because it falls outside the scope...",
+    "completeness": "insufficient_data"
+  },
+  "sources": [],
+  "integrity": {
+    "citation_required": false,
+    "citations_provided": false,
+    "retrieval_confidence": "none",
+    "fallback_behavior": "refusal"
+  }
+}
+```
+
+## AIKit Component Mapping
+
+| Contract Section | AIKit Component |
+|------------------|-----------------|
+| `answer` | `<AgentResponse>` |
+| `sources` | `<CitationList>` |
+| `retrieval_summary` | `<ToolResult>` (collapsible) |
+| `unknowns` | `<UnknownsCard>` |
+| `integrity` | `<IntegrityBadges>` |
+| `provenance` | `<ProvenanceFooter>` |
+
+See [AIKit Integration Guide](/Users/aideveloper/kwanzaa/docs/aikit-integration.md) for complete implementation examples.
+
 ## Links
 
 - [Full Documentation](/Users/aideveloper/kwanzaa/docs/answer_json_contract.md)
-- [Implementation Summary](/Users/aideveloper/kwanzaa/docs/implementation_summary_e8_us1.md)
+- [AIKit Integration Guide](/Users/aideveloper/kwanzaa/docs/aikit-integration.md)
+- [Implementation Summary](/Users/aideveloper/kwanzaa/docs/implementation-summary-issue-23.md)
 - [Schema Directory README](/Users/aideveloper/kwanzaa/backend/app/schemas/README.md)

@@ -1,0 +1,88 @@
+# Kwanzaa Training Docker Ignore
+# Exclude files that don't need to be in the Docker image
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+training_env/
+.venv
+
+# Cache directories
+.cache/
+*.cache
+
+# Hugging Face cache
+.cache/huggingface/
+huggingface_cache/
+
+# Training outputs
+adapters/
+checkpoints/
+outputs/
+runs/
+
+# Logs
+logs/
+*.log
+
+# Model files (download in container)
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.onnx
+
+# Data files
+data/
+datasets/
+*.csv
+*.json
+*.jsonl
+*.parquet
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (not needed in image)
+docs/
+*.md
+!README.md
+
+# Tests
+tests/
+test_*.py
+*_test.py
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Environment files
+.env
+.env.*
+*.key
+*.pem
+
+# Temporary files
+tmp/
+temp/
+*.tmp

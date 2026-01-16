@@ -1,42 +1,163 @@
 # Training Requirements for Kwanzaa Adapter Training
+# EPIC 3A - Hugging Face Environment & Prerequisites
+# Issue #51: E3A-US5 - Install Training Dependencies
+#
+# Python version requirement: 3.9+
+# CUDA requirement: 11.8+ or 12.1+ recommended
 # Install with: pip install -r backend/training/requirements.txt
+#
+# All versions are pinned for reproducibility
+# Last updated: 2026-01-16
 
-# Core ML frameworks
-torch>=2.1.0,<3.0.0
-transformers>=4.36.0
-datasets>=2.16.0
-accelerate>=0.25.0
+# ==============================================================================
+# Core ML Frameworks
+# ==============================================================================
 
-# Adapter training (QLoRA)
-peft>=0.7.0
-bitsandbytes>=0.41.0  # For 4-bit quantization
+# PyTorch - Core deep learning framework
+# CUDA 11.8 version - adjust based on your GPU
+torch==2.1.2
+torchvision==0.16.2
+torchaudio==2.1.2
 
-# Model optimization
-optimum>=1.16.0
-flash-attn>=2.4.0  # Optional, for Flash Attention 2
+# HuggingFace Transformers - Model library
+transformers==4.37.2
 
-# Training utilities
-tensorboard>=2.15.0
-wandb>=0.16.0  # Optional, for experiment tracking
-mlflow>=2.9.0  # Optional, for model registry
+# HuggingFace Datasets - Dataset loading and processing
+datasets==2.16.1
 
-# Data processing
-numpy>=1.24.0,<2.0.0
-pandas>=2.0.0
-scikit-learn>=1.3.0
+# Accelerate - Distributed training and mixed precision
+accelerate==0.26.1
 
-# Configuration and utilities
-pyyaml>=6.0.0
-tqdm>=4.66.0
-safetensors>=0.4.0
+# ==============================================================================
+# Parameter-Efficient Fine-Tuning (PEFT)
+# ==============================================================================
 
-# Evaluation
-evaluate>=0.4.1
-rouge-score>=0.1.2
-sacrebleu>=2.3.0
+# PEFT - LoRA/QLoRA adapter training
+peft==0.8.2
 
-# Development and testing
-pytest>=7.4.0
-pytest-cov>=4.1.0
-black>=24.0.0
-ruff>=0.1.0
+# Bitsandbytes - 4-bit/8-bit quantization for QLoRA
+bitsandbytes==0.42.0
+
+# ==============================================================================
+# Training Utilities & Optimization
+# ==============================================================================
+
+# TRL - Transformer Reinforcement Learning (RLHF, DPO, PPO)
+trl==0.7.10
+
+# Optimum - Hardware-optimized inference
+optimum==1.16.2
+
+# SentencePiece - Tokenization for LLaMA and other models
+sentencepiece==0.1.99
+
+# Safetensors - Safe tensor serialization
+safetensors==0.4.2
+
+# ==============================================================================
+# Experiment Tracking & Logging
+# ==============================================================================
+
+# Weights & Biases - Experiment tracking (optional but recommended)
+wandb==0.16.2
+
+# TensorBoard - Experiment visualization
+tensorboard==2.15.1
+
+# MLflow - Model registry and tracking (optional)
+mlflow==2.10.0
+
+# ==============================================================================
+# Data Processing & Utilities
+# ==============================================================================
+
+# NumPy - Numerical computing
+numpy==1.26.3
+
+# Pandas - Data manipulation
+pandas==2.1.4
+
+# Scikit-learn - ML utilities and metrics
+scikit-learn==1.4.0
+
+# PyYAML - Configuration files
+pyyaml==6.0.1
+
+# TQDM - Progress bars
+tqdm==4.66.1
+
+# ==============================================================================
+# Evaluation Metrics
+# ==============================================================================
+
+# Evaluate - HuggingFace evaluation library
+evaluate==0.4.1
+
+# ROUGE - Text summarization metrics
+rouge-score==0.1.2
+
+# SacreBLEU - Translation metrics
+sacrebleu==2.4.0
+
+# NLTK - Natural language processing utilities
+nltk==3.8.1
+
+# ==============================================================================
+# Development & Testing
+# ==============================================================================
+
+# Pytest - Testing framework
+pytest==7.4.4
+pytest-asyncio==0.23.3
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+
+# Code Quality
+black==24.1.1
+ruff==0.1.13
+mypy==1.8.0
+
+# ==============================================================================
+# Additional Utilities
+# ==============================================================================
+
+# Python-dotenv - Environment variable management
+python-dotenv==1.0.0
+
+# Huggingface Hub - Model and dataset repository
+huggingface-hub==0.20.3
+
+# Tokenizers - Fast tokenization
+tokenizers==0.15.1
+
+# Einops - Tensor operations
+einops==0.7.0
+
+# ==============================================================================
+# Optional: Advanced Features
+# ==============================================================================
+
+# Flash Attention 2 - Memory-efficient attention (requires CUDA)
+# Uncomment if you have compatible GPU (A100, H100, etc.)
+# flash-attn==2.5.0
+
+# DeepSpeed - Advanced distributed training (optional)
+# deepspeed==0.12.6
+
+# xFormers - Memory-efficient transformers (optional)
+# xformers==0.0.23.post1
+
+# ==============================================================================
+# Notes:
+# ==============================================================================
+# 1. For CPU-only training, install torch with:
+#    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+#
+# 2. For CUDA 12.1, use:
+#    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+#
+# 3. flash-attn requires compilation and is optional but provides 2-3x speedup
+#
+# 4. bitsandbytes requires CUDA for quantization support
+#
+# 5. For Apple Silicon (M1/M2), use MPS backend with standard PyTorch installation
