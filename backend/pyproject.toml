@@ -16,7 +16,14 @@ addopts = [
 markers = [
     "unit: Unit tests",
     "integration: Integration tests",
-    "slow: Slow running tests"
+    "slow: Slow running tests",
+    "citation: Citation coverage evaluation tests",
+    "evaluation: Model evaluation tests",
+    "adapter: Adapter-specific tests",
+    "config: Configuration tests",
+    "rag: RAG integration tests",
+    "redteam: Red-team adversarial testing",
+    "cultural_integrity: Cultural integrity testing"
 ]
 
 [tool.coverage.run]
