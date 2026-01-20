@@ -5,6 +5,9 @@ adapter:
   name: "qlora"
   method: "qlora"
 
+  # Path to trained adapter weights
+  adapter_path: "models/adapters/kwanzaa-adapter-v1"
+
   # LoRA parameters
   lora:
     r: 16  # Rank of LoRA matrices

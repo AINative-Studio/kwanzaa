@@ -3,7 +3,7 @@
 
 model:
   provider: "meta"
-  model_id: "meta-llama/Llama-2-7b-chat-hf"
+  model_id: "meta-llama/Llama-3.2-1B-Instruct"
   model_type: "causal_lm"
 
   # Model capabilities
