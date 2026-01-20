@@ -99,14 +99,20 @@ def setup_model_and_tokenizer(config: Dict[str, Any]) -> tuple:
     )
 
     # Load base model with quantization
+    torch_dtype_str = model_config.get("torch_dtype", "auto")
+    if torch_dtype_str == "auto":
+        torch_dtype = "auto"
+    elif isinstance(torch_dtype_str, str):
+        torch_dtype = getattr(torch, torch_dtype_str)
+    else:
+        torch_dtype = torch_dtype_str
+
     model = AutoModelForCausalLM.from_pretrained(
         model_config["base_model_id"],
         quantization_config=bnb_config,
         device_map=model_config.get("device_map", "auto"),
         trust_remote_code=model_config.get("trust_remote_code", True),
-        torch_dtype=getattr(torch, model_config.get("torch_dtype", "auto"))
-        if isinstance(model_config.get("torch_dtype"), str)
-        else "auto",
+        torch_dtype=torch_dtype,
     )
 
     # Prepare model for k-bit training

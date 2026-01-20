@@ -1,13 +1,13 @@
 ================================================================================
 KWANZAA ADAPTER TRAINING DATASET VALIDATION REPORT
 ================================================================================
-Generated: 2026-01-16T15:42:51.305757
+Generated: 2026-01-16T15:45:09.992372
 
 SUMMARY
 --------------------------------------------------------------------------------
 Total files validated: 4
-Successful: 1
-Failed: 3
+Successful: 4
+Failed: 0
 
 AGGREGATE STATISTICS
 --------------------------------------------------------------------------------
@@ -35,20 +35,22 @@ FILE VALIDATION RESULTS
   Version: 2.0.0
   Samples: 52
 
-✗ FAIL: format-compliance-examples.json
-  Errors:
-    - Schema validation failed:
-    -   samples -> 0 -> user_query: String should have at least 10 characters
-
-✗ FAIL: grounded-answer-examples.json
+✓ PASS: format-compliance-examples.json
   Version: 1.0.0
   Samples: 0
   Errors:
-    - WARNING: Missing personas: {'creator'}. All four personas should be represented.
+    - INFO: Missing personas: {'builder'}. This is acceptable for individual files.
 
-✗ FAIL: refusal-examples.json
+✓ PASS: grounded-answer-examples.json
+  Version: 1.0.0
+  Samples: 0
   Errors:
-    - Schema validation failed:
-    -   samples -> 3: Value error, Refusal sample refusal_creator_004 has high-quality retrieval results (score > 0.7). Refusal samples should have no context or low-quality context.
+    - INFO: Missing personas: {'creator'}. This is acceptable for individual files.
+
+✓ PASS: refusal-examples.json
+  Version: 1.0.0
+  Samples: 0
+  Errors:
+    - INFO: Missing personas: {'builder'}. This is acceptable for individual files.
 
 ================================================================================

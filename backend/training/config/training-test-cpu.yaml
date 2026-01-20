@@ -1,0 +1,152 @@
+# Kwanzaa Adapter Training Configuration - CPU/MPS Test Version
+# For local testing on Apple Silicon or CPU-only systems
+# This config disables 4-bit quantization and reduces batch sizes
+
+run:
+  name: "kwanzaa-adapter-test-cpu"
+  output_dir: "outputs/test-cpu"
+  seed: 42
+  mixed_precision: "no"  # Disable for CPU compatibility
+  logging_steps: 1
+  save_steps: 100  # Don't save during test
+  eval_steps: 100  # Don't eval during test
+  save_total_limit: 1
+  report_to: []  # Disable reporting for test
+
+  # Reproducibility
+  deterministic: true
+  dataloader_num_workers: 0  # Disable for testing
+  dataloader_pin_memory: false
+
+model:
+  # Base model configuration
+  base_model_id: "allenai/OLMo-7B-Instruct"
+  trust_remote_code: true
+  use_flash_attention: false  # Disable for CPU
+
+  # Loading configuration
+  torch_dtype: "float32"  # Use float32 for CPU
+  device_map: "cpu"  # Force CPU for testing
+  low_cpu_mem_usage: true
+
+adapter:
+  # Adapter configuration - NO QUANTIZATION for CPU
+  method: "lora"  # Standard LoRA instead of QLoRA
+
+  # LoRA parameters (same as QLoRA)
+  lora:
+    r: 8  # Reduced rank for faster testing
+    alpha: 16
+    dropout: 0.05
+    bias: "none"
+    task_type: "CAUSAL_LM"
+    target_modules:
+      - "q_proj"
+      - "k_proj"
+      - "v_proj"
+      - "o_proj"
+
+  # NO QUANTIZATION - removed for CPU compatibility
+  quantization:
+    load_in_4bit: false
+    enabled: false
+
+data:
+  # Dataset paths (relative to project root)
+  train_file: "data/training/kwanzaa_train.jsonl"
+  eval_file: "data/training/kwanzaa_eval.jsonl"
+
+  # Data format
+  format: "chat_jsonl"
+  max_seq_length: 512  # Reduced for faster testing
+  packing: false  # Disable for simpler testing
+
+  # Data processing
+  num_proc: 1
+  preprocessing_num_workers: 1
+
+  # Conversation template
+  system_prompt: "You are a helpful AI assistant that provides accurate, citation-grounded responses. Always use retrieved context when available and cite sources appropriately."
+
+training:
+  # Training hyperparameters - MINIMAL for testing
+  num_train_epochs: 1
+  max_steps: 5  # ONLY 5 STEPS FOR TESTING
+  learning_rate: 0.0002
+  lr_scheduler_type: "constant"  # No warmup for short test
+  warmup_ratio: 0.0
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+
+  # Batch sizes - VERY SMALL for CPU
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 1
+  effective_batch_size: 1
+
+  # Optimizer - standard Adam for CPU
+  optim: "adamw_torch"  # Not paged_adamw_8bit
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-8
+
+  # Memory optimizations
+  gradient_checkpointing: false  # Disable for testing
+
+  # Early stopping
+  early_stopping:
+    enabled: false  # Disable for short test
+
+evaluation:
+  # Evaluation strategy - DISABLED for test
+  strategy: "no"
+
+  # Metrics to track
+  metrics:
+    - "loss"
+
+  # Generation parameters for evaluation
+  generation:
+    temperature: 0.2
+    top_p: 0.9
+    max_new_tokens: 50  # Very short for testing
+    do_sample: false
+
+checkpointing:
+  # Checkpoint management - MINIMAL
+  save_strategy: "no"  # Don't save during test
+  load_best_model_at_end: false
+
+artifacts:
+  # Output artifacts
+  output_dir: "outputs/test-cpu"
+
+  # Versioning - disabled for test
+  versioning:
+    enabled: false
+
+publishing:
+  # Hugging Face Hub publishing - DISABLED
+  enabled: false
+
+monitoring:
+  # Training monitoring - MINIMAL
+  tensorboard:
+    enabled: false
+  wandb:
+    enabled: false
+  mlflow:
+    enabled: false
+
+# Hardware requirements
+hardware:
+  minimum_vram_gb: 0  # CPU only
+  recommended_vram_gb: 0
+  recommended_gpu: "CPU or MPS"
+  distributed_training: false
+  num_gpus: 0
+
+# Test-specific notes
+test_config: true
+test_purpose: "Verify training script works, data loads correctly, and pipeline executes without errors"
+expected_duration: "5-10 minutes on CPU"

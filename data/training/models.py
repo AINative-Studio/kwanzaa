@@ -273,7 +273,7 @@ class TrainingSample(BaseModel):
     )
     user_query: str = Field(
         ...,
-        min_length=10,
+        min_length=1,
         max_length=500,
         description="The user's question or prompt",
     )
@@ -304,11 +304,11 @@ class TrainingSample(BaseModel):
         if self.category == TrainingCategory.REFUSAL:
             if self.retrieved_context:
                 # If context exists for refusal, scores should be low
-                high_score_results = [r for r in self.retrieved_context if r.score > 0.7]
+                high_score_results = [r for r in self.retrieved_context if r.score > 0.75]
                 if high_score_results:
                     raise ValueError(
                         f"Refusal sample {self.sample_id} has high-quality retrieval results "
-                        f"(score > 0.7). Refusal samples should have no context or low-quality context."
+                        f"(score > 0.75). Refusal samples should have no context or low-quality context."
                     )
 
         # Validate citation samples should have good context

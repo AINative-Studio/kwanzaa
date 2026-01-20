@@ -1,7 +1,25 @@
 {
-  "dataset_version": "1.0.0",
+  "dataset_version": "2.0.0",
   "created_at": "2026-01-16T00:00:00Z",
-  "description": "Refusal training examples - teaching the model to refuse gracefully when information is not available in the corpus",
+  "updated_at": "2026-01-17T04:04:24Z",
+  "description": "Training examples for refusal category",
+  "statistics": {
+    "total_samples": 32,
+    "by_category": {
+      "refusal": 32
+    },
+    "by_persona": {
+      "educator": 7,
+      "researcher": 9,
+      "creator": 7,
+      "builder": 9
+    },
+    "by_difficulty": {
+      "easy": 8,
+      "hard": 17,
+      "medium": 7
+    }
+  },
   "samples": [
     {
       "sample_id": "refusal_educator_001",
@@ -28,10 +46,14 @@
         "retrieval_summary": {
           "query": "What was the attendance at the 2023 Kwanzaa celebration in Atlanta?",
           "top_k": 10,
-          "namespaces": ["kwanzaa_primary_sources"],
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
           "filters": {
             "year": 2023,
-            "tags": ["atlanta"]
+            "tags": [
+              "atlanta"
+            ]
           },
           "results": [],
           "execution_time_ms": 156
@@ -62,7 +84,9 @@
       },
       "metadata": {
         "difficulty": "easy",
-        "principle_focus": ["Imani"],
+        "principle_focus": [
+          "Imani"
+        ],
         "quality_score": 0.95,
         "reviewer": "human_annotator_001",
         "notes": "Clear refusal with helpful alternatives - demonstrates honest acknowledgment of limitations"
@@ -82,13 +106,17 @@
           "namespace": "kwanzaa_primary_sources",
           "content": "Kwanzaa was created in 1966 by Dr. Maulana Karenga as a way to help African Americans reconnect with their African cultural and historical heritage.",
           "metadata": {
-            "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+            "citation_label": "Karenga, M. (1977) \u2014 Kwanzaa: Origin, Concepts, Practice",
             "canonical_url": "https://officialkwanzaawebsite.org/origins",
             "source_org": "Official Kwanzaa Website",
             "year": 1977,
             "content_type": "essay",
             "license": "CC BY-NC 4.0",
-            "tags": ["kwanzaa", "origin", "history"]
+            "tags": [
+              "kwanzaa",
+              "origin",
+              "history"
+            ]
           }
         }
       ],
@@ -102,14 +130,14 @@
           "creative_mode": false
         },
         "answer": {
-          "text": "I cannot answer this question because my corpus does not contain economic data, GDP statistics, or quantitative research on Kwanzaa celebration rates. While I retrieved a document about Kwanzaa's origins [1], this source provides historical context but no economic analysis or celebration rate data.\n\nThis question requires:\n1. Economic datasets (GDP growth data by community demographics)\n2. Quantitative surveys on Kwanzaa celebration prevalence\n3. Longitudinal studies correlating cultural practices with economic indicators\n4. Peer-reviewed research specifically examining this relationship\n\nMy corpus focuses on primary historical documents, cultural texts, and foundational sources about Kwanzaa's principles and practices—not contemporary economic research. For this type of analysis, you would need:\n- Academic databases (JSTOR, ProQuest, Google Scholar)\n- U.S. Census data combined with cultural survey research\n- Economic sociology journals\n- Specialized research on cultural economics in Black communities\n\nThe retrieved source [1] has a low relevance score (0.62) because it only addresses Kwanzaa's origin, not economic correlations.",
+          "text": "I cannot answer this question because my corpus does not contain economic data, GDP statistics, or quantitative research on Kwanzaa celebration rates. While I retrieved a document about Kwanzaa's origins [1], this source provides historical context but no economic analysis or celebration rate data.\n\nThis question requires:\n1. Economic datasets (GDP growth data by community demographics)\n2. Quantitative surveys on Kwanzaa celebration prevalence\n3. Longitudinal studies correlating cultural practices with economic indicators\n4. Peer-reviewed research specifically examining this relationship\n\nMy corpus focuses on primary historical documents, cultural texts, and foundational sources about Kwanzaa's principles and practices\u2014not contemporary economic research. For this type of analysis, you would need:\n- Academic databases (JSTOR, ProQuest, Google Scholar)\n- U.S. Census data combined with cultural survey research\n- Economic sociology journals\n- Specialized research on cultural economics in Black communities\n\nThe retrieved source [1] has a low relevance score (0.62) because it only addresses Kwanzaa's origin, not economic correlations.",
           "confidence": 0.92,
           "tone": "formal",
           "completeness": "insufficient_data"
         },
         "sources": [
           {
-            "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+            "citation_label": "Karenga, M. (1977) \u2014 Kwanzaa: Origin, Concepts, Practice",
             "canonical_url": "https://officialkwanzaawebsite.org/origins",
             "source_org": "Official Kwanzaa Website",
             "year": 1977,
@@ -118,20 +146,26 @@
             "namespace": "kwanzaa_primary_sources",
             "doc_id": "karenga_kwanzaa_origins",
             "chunk_id": "karenga_kwanzaa_origins::chunk::1",
-            "tags": ["kwanzaa", "origin", "history"],
+            "tags": [
+              "kwanzaa",
+              "origin",
+              "history"
+            ],
             "relevance_score": 0.62
           }
         ],
         "retrieval_summary": {
           "query": "GDP growth correlation Kwanzaa celebration rates Black communities economic data",
           "top_k": 10,
-          "namespaces": ["kwanzaa_primary_sources"],
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
           "results": [
             {
               "rank": 1,
               "score": 0.62,
               "snippet": "Kwanzaa was created in 1966 by Dr. Maulana Karenga...",
-              "citation_label": "Karenga, M. (1977) — Kwanzaa: Origin, Concepts, Practice",
+              "citation_label": "Karenga, M. (1977) \u2014 Kwanzaa: Origin, Concepts, Practice",
               "canonical_url": "https://officialkwanzaawebsite.org/origins",
               "doc_id": "karenga_kwanzaa_origins",
               "chunk_id": "karenga_kwanzaa_origins::chunk::1",
@@ -168,7 +202,10 @@
       },
       "metadata": {
         "difficulty": "hard",
-        "principle_focus": ["Imani", "Nia"],
+        "principle_focus": [
+          "Imani",
+          "Nia"
+        ],
         "quality_score": 0.93,
         "reviewer": "human_annotator_001",
         "notes": "Sophisticated refusal for researcher persona - explains why sources are insufficient and provides research direction",
@@ -190,13 +227,17 @@
           "namespace": "kwanzaa_primary_sources",
           "content": "While Kwanzaa originated as a African-American cultural celebration, its principles of community, self-determination, and cultural pride have resonated with people of African descent globally.",
           "metadata": {
-            "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+            "citation_label": "Karenga, M. (1988) \u2014 The African American Holiday of Kwanzaa",
             "canonical_url": "https://officialkwanzaawebsite.org/global",
             "source_org": "Official Kwanzaa Website",
             "year": 1988,
             "content_type": "essay",
             "license": "CC BY-NC 4.0",
-            "tags": ["kwanzaa", "global", "diaspora"]
+            "tags": [
+              "kwanzaa",
+              "global",
+              "diaspora"
+            ]
           }
         }
       ],
@@ -217,7 +258,7 @@
         },
         "sources": [
           {
-            "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+            "citation_label": "Karenga, M. (1988) \u2014 The African American Holiday of Kwanzaa",
             "canonical_url": "https://officialkwanzaawebsite.org/global",
             "source_org": "Official Kwanzaa Website",
             "year": 1988,
@@ -226,23 +267,33 @@
             "namespace": "kwanzaa_primary_sources",
             "doc_id": "karenga_kwanzaa_global",
             "chunk_id": "karenga_kwanzaa_global::chunk::4",
-            "tags": ["kwanzaa", "global", "diaspora"],
+            "tags": [
+              "kwanzaa",
+              "global",
+              "diaspora"
+            ],
             "relevance_score": 0.58
           }
         ],
         "retrieval_summary": {
           "query": "How many people celebrate Kwanzaa in France?",
           "top_k": 10,
-          "namespaces": ["kwanzaa_primary_sources"],
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
           "filters": {
-            "tags": ["global", "international", "france"]
+            "tags": [
+              "global",
+              "international",
+              "france"
+            ]
           },
           "results": [
             {
               "rank": 1,
               "score": 0.58,
               "snippet": "While Kwanzaa originated as a African-American cultural celebration...",
-              "citation_label": "Karenga, M. (1988) — The African American Holiday of Kwanzaa",
+              "citation_label": "Karenga, M. (1988) \u2014 The African American Holiday of Kwanzaa",
               "canonical_url": "https://officialkwanzaawebsite.org/global",
               "doc_id": "karenga_kwanzaa_global",
               "chunk_id": "karenga_kwanzaa_global::chunk::4",
@@ -277,8 +328,10 @@
       },
       "metadata": {
         "difficulty": "medium",
-        "principle_focus": ["Imani"],
-        "quality_score": 0.90,
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.9,
         "reviewer": "human_annotator_002",
         "notes": "Refusal with partial context - acknowledges what IS known while being clear about limitations"
       }
@@ -297,13 +350,17 @@
           "namespace": "kwanzaa_primary_sources",
           "content": "The Seven Principles (Nguzo Saba) are: Umoja (Unity), Kujichagulia (Self-Determination), Ujima (Collective Work and Responsibility), Ujamaa (Cooperative Economics), Nia (Purpose), Kuumba (Creativity), and Imani (Faith).",
           "metadata": {
-            "citation_label": "Karenga, M. (1977) — The Nguzo Saba (Seven Principles)",
+            "citation_label": "Karenga, M. (1977) \u2014 The Nguzo Saba (Seven Principles)",
             "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
             "source_org": "Official Kwanzaa Website",
             "year": 1977,
             "content_type": "reference",
             "license": "CC BY-NC 4.0",
-            "tags": ["nguzo_saba", "principles", "kwanzaa"]
+            "tags": [
+              "nguzo_saba",
+              "principles",
+              "kwanzaa"
+            ]
           }
         }
       ],
@@ -324,7 +381,7 @@
         },
         "sources": [
           {
-            "citation_label": "Karenga, M. (1977) — The Nguzo Saba (Seven Principles)",
+            "citation_label": "Karenga, M. (1977) \u2014 The Nguzo Saba (Seven Principles)",
             "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
             "source_org": "Official Kwanzaa Website",
             "year": 1977,
@@ -333,20 +390,26 @@
             "namespace": "kwanzaa_primary_sources",
             "doc_id": "nguzo_saba_principles",
             "chunk_id": "nguzo_saba_principles::chunk::1",
-            "tags": ["nguzo_saba", "principles", "kwanzaa"],
+            "tags": [
+              "nguzo_saba",
+              "principles",
+              "kwanzaa"
+            ],
             "relevance_score": 0.71
           }
         ],
         "retrieval_summary": {
           "query": "Kwanzaa principles creative content song",
           "top_k": 5,
-          "namespaces": ["kwanzaa_primary_sources"],
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
           "results": [
             {
               "rank": 1,
               "score": 0.71,
               "snippet": "The Seven Principles (Nguzo Saba) are: Umoja (Unity)...",
-              "citation_label": "Karenga, M. (1977) — The Nguzo Saba",
+              "citation_label": "Karenga, M. (1977) \u2014 The Nguzo Saba",
               "canonical_url": "https://officialkwanzaawebsite.org/nguzo-saba",
               "doc_id": "nguzo_saba_principles",
               "chunk_id": "nguzo_saba_principles::chunk::1",
@@ -383,12 +446,2748 @@
       },
       "metadata": {
         "difficulty": "hard",
-        "principle_focus": ["Imani", "Kuumba", "Kujichagulia"],
+        "principle_focus": [
+          "Imani",
+          "Kuumba",
+          "Kujichagulia"
+        ],
         "quality_score": 0.91,
         "reviewer": "human_annotator_002",
         "notes": "Nuanced refusal for creator persona - offers collaboration instead of rejection, respects user's creative autonomy",
         "edge_case": true,
         "failure_mode": "Requests requiring real-time cultural knowledge or performative language"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_005",
+      "category": "refusal",
+      "persona": "educator",
+      "user_query": "What happened at the 2023 Kwanzaa celebration in Los Angeles?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5247066612673059,
+          "chunk_id": "wells_red_record::chunk::1",
+          "doc_id": "wells_red_record",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Wells-Barnett, I.B. (1895) \u2014 The Red Record",
+            "canonical_url": "https://www.gutenberg.org/ebooks/14977",
+            "source_org": "Project Gutenberg",
+            "year": 1895,
+            "content_type": "investigative_report",
+            "license": "Public Domain",
+            "tags": [
+              "ida_b_wells",
+              "lynching",
+              "investigation",
+              "anti_lynching_campaign"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide information about recent events because my corpus focuses on historical documents and foundational cultural materials.- Contacting relevant organizations directly\n- Historical context and foundational knowledge\n\n\nWhat I can help you with:\n- Information about Kwanzaa's principles and traditions",
+          "confidence": 0.9381629632631249,
+          "tone": "educational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What happened at the 2023 Kwanzaa celebration in Los Angeles?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5247066612673059,
+              "chunk_id": "wells_red_record::chunk::1",
+              "doc_id": "wells_red_record",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Wells-Barnett, I.B. (1895) \u2014 The Red Record",
+                "canonical_url": "https://www.gutenberg.org/ebooks/14977",
+                "source_org": "Project Gutenberg",
+                "year": 1895,
+                "content_type": "investigative_report",
+                "license": "Public Domain",
+                "tags": [
+                  "ida_b_wells",
+                  "lynching",
+                  "investigation",
+                  "anti_lynching_campaign"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 219
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for contemporary_event",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Contemporary Event"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.9090447448732305,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: contemporary_event",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer contemporary_event questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_007",
+      "category": "refusal",
+      "persona": "educator",
+      "user_query": "What is the correlation between celebration rate and Kwanzaa adoption?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.49914979995000386,
+          "chunk_id": "voting_rights_act_1965::chunk::1",
+          "doc_id": "voting_rights_act_1965",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "US Congress (1965) \u2014 Voting Rights Act",
+            "canonical_url": "https://www.archives.gov/milestone-documents/voting-rights-act",
+            "source_org": "National Archives",
+            "year": 1965,
+            "content_type": "legal_document",
+            "license": "Public Domain",
+            "tags": [
+              "voting_rights",
+              "legislation",
+              "civil_rights",
+              "suffrage"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot perform this analysis because my corpus lacks the quantitative datasets required.- Information about Kwanzaa's principles and traditions\n- Consulting academic databases for contemporary research\n- Historical context and foundational knowledge\n- Checking recent news sources",
+          "confidence": 0.9476423111594586,
+          "tone": "educational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What is the correlation between celebration rate and Kwanzaa adoption?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.49914979995000386,
+              "chunk_id": "voting_rights_act_1965::chunk::1",
+              "doc_id": "voting_rights_act_1965",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "US Congress (1965) \u2014 Voting Rights Act",
+                "canonical_url": "https://www.archives.gov/milestone-documents/voting-rights-act",
+                "source_org": "National Archives",
+                "year": 1965,
+                "content_type": "legal_document",
+                "license": "Public Domain",
+                "tags": [
+                  "voting_rights",
+                  "legislation",
+                  "civil_rights",
+                  "suffrage"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 235
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for quantitative_analysis",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Quantitative Analysis"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.884443436882149,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: quantitative_analysis",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer quantitative_analysis questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_009",
+      "category": "refusal",
+      "persona": "educator",
+      "user_query": "What do Black people think about Black culture?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5299001659449853,
+          "chunk_id": "chicago_defender_1919::chunk::1",
+          "doc_id": "chicago_defender_1919",
+          "namespace": "kwanzaa_black_press",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Chicago Defender (1919) \u2014 Red Summer Coverage",
+            "canonical_url": "https://www.chipublib.org/chicago-defender/",
+            "source_org": "Chicago Public Library",
+            "year": 1919,
+            "content_type": "news_article",
+            "license": "Archive Access License",
+            "tags": [
+              "chicago_defender",
+              "red_summer",
+              "race_riots",
+              "black_press"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot speak for all Black people, as there is tremendous diversity in perspectives and experiences.\n\nWhat I can help you with:\n- Checking recent news sources\n- Primary source materials from the corpus\n\n\nFor current information, I recommend:",
+          "confidence": 0.9057923427130846,
+          "tone": "educational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What do Black people think about Black culture?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5299001659449853,
+              "chunk_id": "chicago_defender_1919::chunk::1",
+              "doc_id": "chicago_defender_1919",
+              "namespace": "kwanzaa_black_press",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Chicago Defender (1919) \u2014 Red Summer Coverage",
+                "canonical_url": "https://www.chipublib.org/chicago-defender/",
+                "source_org": "Chicago Public Library",
+                "year": 1919,
+                "content_type": "news_article",
+                "license": "Archive Access License",
+                "tags": [
+                  "chicago_defender",
+                  "red_summer",
+                  "race_riots",
+                  "black_press"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 172
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for monolithic_assumption",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Monolithic Assumption"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.893517131313449,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: monolithic_assumption",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer monolithic_assumption questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_011",
+      "category": "refusal",
+      "persona": "creator",
+      "user_query": "What did a modern activist say about Black culture last week?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide information about recent news or contemporary statements.\n\nWhat I can help you with:\n- Checking recent news sources\n- Information about Kwanzaa's principles and traditions\n- Primary source materials from the corpus",
+          "confidence": 0.9166505275366145,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What did a modern activist say about Black culture last week?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 203
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for recent_news",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Recent News"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.9303174694644588,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: recent_news",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer recent_news questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_013",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "What happened at the 2024 Kwanzaa celebration in Chicago?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5853430855789609,
+          "chunk_id": "garvey_philosophy_opinions::chunk::1",
+          "doc_id": "garvey_philosophy_opinions",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Garvey, M. (1923) \u2014 Philosophy and Opinions of Marcus Garvey",
+            "canonical_url": "https://archive.org/details/philosophyandopi00garv",
+            "source_org": "Internet Archive",
+            "year": 1923,
+            "content_type": "essay_collection",
+            "license": "Public Domain",
+            "tags": [
+              "marcus_garvey",
+              "pan_africanism",
+              "unia",
+              "back_to_africa"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide information about recent events because my corpus focuses on historical documents and foundational cultural materials.- Contacting relevant organizations directly\n- Information about Kwanzaa's principles and traditions\n\n\nWhat I can help you with:\n\n\nFor current information, I recommend:",
+          "confidence": 0.9235926203055049,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What happened at the 2024 Kwanzaa celebration in Chicago?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5853430855789609,
+              "chunk_id": "garvey_philosophy_opinions::chunk::1",
+              "doc_id": "garvey_philosophy_opinions",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Garvey, M. (1923) \u2014 Philosophy and Opinions of Marcus Garvey",
+                "canonical_url": "https://archive.org/details/philosophyandopi00garv",
+                "source_org": "Internet Archive",
+                "year": 1923,
+                "content_type": "essay_collection",
+                "license": "Public Domain",
+                "tags": [
+                  "marcus_garvey",
+                  "pan_africanism",
+                  "unia",
+                  "back_to_africa"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 209
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for contemporary_event",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Contemporary Event"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8625300138016213,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: contemporary_event",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer contemporary_event questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_015",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "How many people celebrate Kwanzaa in France?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.47903821901145266,
+          "chunk_id": "fannie_lou_hamer_testimony::chunk::1",
+          "doc_id": "fannie_lou_hamer_testimony",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Hamer, F.L. (1964) \u2014 Democratic National Convention Testimony",
+            "canonical_url": "https://www.loc.gov/item/2017655141/",
+            "source_org": "Library of Congress",
+            "year": 1964,
+            "content_type": "testimony",
+            "license": "Public Domain",
+            "tags": [
+              "fannie_lou_hamer",
+              "voting_rights",
+              "mfdp",
+              "testimony"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I don't have statistical or demographic data for this question.- Primary source materials from the corpus\n\n\nWhat I can help you with:\n- Information about Kwanzaa's principles and traditions\n\n\nFor current information, I recommend:",
+          "confidence": 0.9398590785907526,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "How many people celebrate Kwanzaa in France?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.47903821901145266,
+              "chunk_id": "fannie_lou_hamer_testimony::chunk::1",
+              "doc_id": "fannie_lou_hamer_testimony",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Hamer, F.L. (1964) \u2014 Democratic National Convention Testimony",
+                "canonical_url": "https://www.loc.gov/item/2017655141/",
+                "source_org": "Library of Congress",
+                "year": 1964,
+                "content_type": "testimony",
+                "license": "Public Domain",
+                "tags": [
+                  "fannie_lou_hamer",
+                  "voting_rights",
+                  "mfdp",
+                  "testimony"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 209
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for demographic_data",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Demographic Data"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8288595961210494,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: demographic_data",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer demographic_data questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_017",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "Isn't Kwanzaa just made up and fake?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "This question contains a false premise. Kwanzaa is a legitimate cultural celebration created in 1966.- Primary source materials from the corpus\n\n\nFor current information, I recommend:\n- Information about Kwanzaa's principles and traditions\n- Contacting relevant organizations directly",
+          "confidence": 0.906188933721897,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "Isn't Kwanzaa just made up and fake?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 153
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for delegitimizing_question",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Delegitimizing Question"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8672655197102809,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: delegitimizing_question",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer delegitimizing_question questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_019",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "How can I make money from Kwanzaa?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5548114408375227,
+          "chunk_id": "mlk_dream_speech::chunk::1",
+          "doc_id": "mlk_dream_speech",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "King, M.L. Jr. (1963) \u2014 I Have a Dream Speech",
+            "canonical_url": "https://www.archives.gov/files/press/exhibits/dream-speech.pdf",
+            "source_org": "National Archives",
+            "year": 1963,
+            "content_type": "speech",
+            "license": "Public Domain",
+            "tags": [
+              "mlk",
+              "i_have_a_dream",
+              "march_on_washington",
+              "speech"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I focus on cultural education and historical understanding, not commercial applications.- Historical context and foundational knowledge\n- Checking recent news sources\n- Contacting relevant organizations directly\n- Consulting academic databases for contemporary research",
+          "confidence": 0.9399025811687519,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "How can I make money from Kwanzaa?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5548114408375227,
+              "chunk_id": "mlk_dream_speech::chunk::1",
+              "doc_id": "mlk_dream_speech",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "King, M.L. Jr. (1963) \u2014 I Have a Dream Speech",
+                "canonical_url": "https://www.archives.gov/files/press/exhibits/dream-speech.pdf",
+                "source_org": "National Archives",
+                "year": 1963,
+                "content_type": "speech",
+                "license": "Public Domain",
+                "tags": [
+                  "mlk",
+                  "i_have_a_dream",
+                  "march_on_washington",
+                  "speech"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 211
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for commercial_exploitation",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Commercial Exploitation"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8503022369256203,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: commercial_exploitation",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer commercial_exploitation questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_021",
+      "category": "refusal",
+      "persona": "educator",
+      "user_query": "What is the correlation between income and cultural identity?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot perform this analysis because my corpus lacks the quantitative datasets required.- Information about Kwanzaa's principles and traditions\n- Primary source materials from the corpus\n\n\nFor current information, I recommend:\n- Consulting academic databases for contemporary research",
+          "confidence": 0.9236468583287794,
+          "tone": "educational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What is the correlation between income and cultural identity?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 215
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for quantitative_analysis",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Quantitative Analysis"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8155532081343554,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: quantitative_analysis",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer quantitative_analysis questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_023",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "What did a contemporary leader say about the Nguzo Saba last week?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide information about recent news or contemporary statements.- Checking recent news sources\n- Consulting academic databases for contemporary research\n- Information about Kwanzaa's principles and traditions\n- Primary source materials from the corpus",
+          "confidence": 0.9173148323280478,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What did a contemporary leader say about the Nguzo Saba last week?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 226
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for recent_news",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Recent News"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8276364450622612,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: recent_news",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer recent_news questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_025",
+      "category": "refusal",
+      "persona": "creator",
+      "user_query": "How can I make money from Kwanzaa?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I focus on cultural education and historical understanding, not commercial applications.\n\nFor current information, I recommend:\n- Information about Kwanzaa's principles and traditions\n- Historical context and foundational knowledge\n- Contacting relevant organizations directly",
+          "confidence": 0.9334114254178634,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "How can I make money from Kwanzaa?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 231
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for commercial_exploitation",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Commercial Exploitation"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8320915100914853,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: commercial_exploitation",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer commercial_exploitation questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_027",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "Who will win the community service award this year?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot make predictions about future events.\n\nWhat I can help you with:\n- Information about Kwanzaa's principles and traditions\n- Consulting academic databases for contemporary research\n- Contacting relevant organizations directly",
+          "confidence": 0.9339092816091673,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "Who will win the community service award this year?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 156
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for prediction",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Prediction"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8024166591260999,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: prediction",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer prediction questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_029",
+      "category": "refusal",
+      "persona": "educator",
+      "user_query": "What do Black people think about Kwanzaa?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.6449602596728237,
+          "chunk_id": "chicago_defender_1919::chunk::1",
+          "doc_id": "chicago_defender_1919",
+          "namespace": "kwanzaa_black_press",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Chicago Defender (1919) \u2014 Red Summer Coverage",
+            "canonical_url": "https://www.chipublib.org/chicago-defender/",
+            "source_org": "Chicago Public Library",
+            "year": 1919,
+            "content_type": "news_article",
+            "license": "Archive Access License",
+            "tags": [
+              "chicago_defender",
+              "red_summer",
+              "race_riots",
+              "black_press"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot speak for all Black people, as there is tremendous diversity in perspectives and experiences.- Contacting relevant organizations directly\n- Consulting academic databases for contemporary research\n- Primary source materials from the corpus\n\n\nWhat I can help you with:",
+          "confidence": 0.9177740675028678,
+          "tone": "educational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What do Black people think about Kwanzaa?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.6449602596728237,
+              "chunk_id": "chicago_defender_1919::chunk::1",
+              "doc_id": "chicago_defender_1919",
+              "namespace": "kwanzaa_black_press",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Chicago Defender (1919) \u2014 Red Summer Coverage",
+                "canonical_url": "https://www.chipublib.org/chicago-defender/",
+                "source_org": "Chicago Public Library",
+                "year": 1919,
+                "content_type": "news_article",
+                "license": "Archive Access License",
+                "tags": [
+                  "chicago_defender",
+                  "red_summer",
+                  "race_riots",
+                  "black_press"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 231
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for monolithic_assumption",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Monolithic Assumption"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.927125256745365,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: monolithic_assumption",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer monolithic_assumption questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_031",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "What happened at the 2023 Kwanzaa celebration in Detroit?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5300977241989459,
+          "chunk_id": "dubois_souls_black_folk::chunk::1",
+          "doc_id": "dubois_souls_black_folk",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Du Bois, W.E.B. (1903) \u2014 The Souls of Black Folk",
+            "canonical_url": "https://www.gutenberg.org/ebooks/408",
+            "source_org": "Project Gutenberg",
+            "year": 1903,
+            "content_type": "essay_collection",
+            "license": "Public Domain",
+            "tags": [
+              "w_e_b_dubois",
+              "double_consciousness",
+              "talented_tenth",
+              "sociology"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide information about recent events because my corpus focuses on historical documents and foundational cultural materials.\n\nFor current information, I recommend:\n- Primary source materials from the corpus\n- Consulting academic databases for contemporary research\n\n\nWhat I can help you with:",
+          "confidence": 0.9190603259239363,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What happened at the 2023 Kwanzaa celebration in Detroit?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5300977241989459,
+              "chunk_id": "dubois_souls_black_folk::chunk::1",
+              "doc_id": "dubois_souls_black_folk",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Du Bois, W.E.B. (1903) \u2014 The Souls of Black Folk",
+                "canonical_url": "https://www.gutenberg.org/ebooks/408",
+                "source_org": "Project Gutenberg",
+                "year": 1903,
+                "content_type": "essay_collection",
+                "license": "Public Domain",
+                "tags": [
+                  "w_e_b_dubois",
+                  "double_consciousness",
+                  "talented_tenth",
+                  "sociology"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 175
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for contemporary_event",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Contemporary Event"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8465883277493318,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: contemporary_event",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer contemporary_event questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_033",
+      "category": "refusal",
+      "persona": "creator",
+      "user_query": "What do Black people think about Black culture?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.6419701619802936,
+          "chunk_id": "dubois_souls_black_folk::chunk::1",
+          "doc_id": "dubois_souls_black_folk",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Du Bois, W.E.B. (1903) \u2014 The Souls of Black Folk",
+            "canonical_url": "https://www.gutenberg.org/ebooks/408",
+            "source_org": "Project Gutenberg",
+            "year": 1903,
+            "content_type": "essay_collection",
+            "license": "Public Domain",
+            "tags": [
+              "w_e_b_dubois",
+              "double_consciousness",
+              "talented_tenth",
+              "sociology"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot speak for all Black people, as there is tremendous diversity in perspectives and experiences.- Information about Kwanzaa's principles and traditions\n\n\nFor current information, I recommend:\n- Historical context and foundational knowledge\n- Checking recent news sources",
+          "confidence": 0.919614234628652,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What do Black people think about Black culture?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.6419701619802936,
+              "chunk_id": "dubois_souls_black_folk::chunk::1",
+              "doc_id": "dubois_souls_black_folk",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Du Bois, W.E.B. (1903) \u2014 The Souls of Black Folk",
+                "canonical_url": "https://www.gutenberg.org/ebooks/408",
+                "source_org": "Project Gutenberg",
+                "year": 1903,
+                "content_type": "essay_collection",
+                "license": "Public Domain",
+                "tags": [
+                  "w_e_b_dubois",
+                  "double_consciousness",
+                  "talented_tenth",
+                  "sociology"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 202
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for monolithic_assumption",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Monolithic Assumption"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8638822786358196,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: monolithic_assumption",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer monolithic_assumption questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_035",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "How many people celebrate Kwanzaa in UK?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.6165328858025658,
+          "chunk_id": "mlk_dream_speech::chunk::1",
+          "doc_id": "mlk_dream_speech",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "King, M.L. Jr. (1963) \u2014 I Have a Dream Speech",
+            "canonical_url": "https://www.archives.gov/files/press/exhibits/dream-speech.pdf",
+            "source_org": "National Archives",
+            "year": 1963,
+            "content_type": "speech",
+            "license": "Public Domain",
+            "tags": [
+              "mlk",
+              "i_have_a_dream",
+              "march_on_washington",
+              "speech"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I don't have statistical or demographic data for this question.- Information about Kwanzaa's principles and traditions\n- Historical context and foundational knowledge\n- Checking recent news sources\n- Primary source materials from the corpus",
+          "confidence": 0.930522102309767,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "How many people celebrate Kwanzaa in UK?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.6165328858025658,
+              "chunk_id": "mlk_dream_speech::chunk::1",
+              "doc_id": "mlk_dream_speech",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "King, M.L. Jr. (1963) \u2014 I Have a Dream Speech",
+                "canonical_url": "https://www.archives.gov/files/press/exhibits/dream-speech.pdf",
+                "source_org": "National Archives",
+                "year": 1963,
+                "content_type": "speech",
+                "license": "Public Domain",
+                "tags": [
+                  "mlk",
+                  "i_have_a_dream",
+                  "march_on_washington",
+                  "speech"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 244
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for demographic_data",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Demographic Data"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8338022709535434,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: demographic_data",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer demographic_data questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_037",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "What's trending on social media about African heritage?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5579609370211316,
+          "chunk_id": "carmichael_black_power::chunk::1",
+          "doc_id": "carmichael_black_power",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Carmichael, S. & Hamilton, C. (1967) \u2014 Black Power: The Politics of Liberation",
+            "canonical_url": "https://archive.org/details/blackpowerpoliti00carm",
+            "source_org": "Internet Archive",
+            "year": 1967,
+            "content_type": "political_theory",
+            "license": "Fair Use",
+            "tags": [
+              "stokely_carmichael",
+              "black_power",
+              "sncc",
+              "political_theory"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I don't have access to current social media trends or real-time information.- Consulting academic databases for contemporary research\n\n\nWhat I can help you with:\n- Primary source materials from the corpus\n- Historical context and foundational knowledge",
+          "confidence": 0.9292322612460915,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What's trending on social media about African heritage?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5579609370211316,
+              "chunk_id": "carmichael_black_power::chunk::1",
+              "doc_id": "carmichael_black_power",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Carmichael, S. & Hamilton, C. (1967) \u2014 Black Power: The Politics of Liberation",
+                "canonical_url": "https://archive.org/details/blackpowerpoliti00carm",
+                "source_org": "Internet Archive",
+                "year": 1967,
+                "content_type": "political_theory",
+                "license": "Fair Use",
+                "tags": [
+                  "stokely_carmichael",
+                  "black_power",
+                  "sncc",
+                  "political_theory"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 189
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for current_trends",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Current Trends"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8583855889564755,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: current_trends",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer current_trends questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_039",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "What's trending on social media about Black culture?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5511879895521767,
+          "chunk_id": "oral_history_selma_marcher::chunk::1",
+          "doc_id": "oral_history_selma_marcher",
+          "namespace": "kwanzaa_oral_histories",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Smith, J. (1995) \u2014 Oral History: Selma to Montgomery March",
+            "canonical_url": "https://www.loc.gov/collections/civil-rights-history-project/",
+            "source_org": "Library of Congress",
+            "year": 1995,
+            "content_type": "oral_history",
+            "license": "Public Domain",
+            "tags": [
+              "selma",
+              "oral_history",
+              "voting_rights",
+              "firsthand_account"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I don't have access to current social media trends or real-time information.- Checking recent news sources\n- Consulting academic databases for contemporary research\n\n\nFor current information, I recommend:\n\n\nWhat I can help you with:",
+          "confidence": 0.9052929702728946,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What's trending on social media about Black culture?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5511879895521767,
+              "chunk_id": "oral_history_selma_marcher::chunk::1",
+              "doc_id": "oral_history_selma_marcher",
+              "namespace": "kwanzaa_oral_histories",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Smith, J. (1995) \u2014 Oral History: Selma to Montgomery March",
+                "canonical_url": "https://www.loc.gov/collections/civil-rights-history-project/",
+                "source_org": "Library of Congress",
+                "year": 1995,
+                "content_type": "oral_history",
+                "license": "Public Domain",
+                "tags": [
+                  "selma",
+                  "oral_history",
+                  "voting_rights",
+                  "firsthand_account"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 157
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for current_trends",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Current Trends"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8385711140217645,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: current_trends",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer current_trends questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_041",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "How can I make money from Kwanzaa?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5422261872137943,
+          "chunk_id": "fannie_lou_hamer_testimony::chunk::1",
+          "doc_id": "fannie_lou_hamer_testimony",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Hamer, F.L. (1964) \u2014 Democratic National Convention Testimony",
+            "canonical_url": "https://www.loc.gov/item/2017655141/",
+            "source_org": "Library of Congress",
+            "year": 1964,
+            "content_type": "testimony",
+            "license": "Public Domain",
+            "tags": [
+              "fannie_lou_hamer",
+              "voting_rights",
+              "mfdp",
+              "testimony"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I focus on cultural education and historical understanding, not commercial applications.- Consulting academic databases for contemporary research\n- Information about Kwanzaa's principles and traditions\n- Checking recent news sources\n- Historical context and foundational knowledge",
+          "confidence": 0.9069913280874408,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "How can I make money from Kwanzaa?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5422261872137943,
+              "chunk_id": "fannie_lou_hamer_testimony::chunk::1",
+              "doc_id": "fannie_lou_hamer_testimony",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Hamer, F.L. (1964) \u2014 Democratic National Convention Testimony",
+                "canonical_url": "https://www.loc.gov/item/2017655141/",
+                "source_org": "Library of Congress",
+                "year": 1964,
+                "content_type": "testimony",
+                "license": "Public Domain",
+                "tags": [
+                  "fannie_lou_hamer",
+                  "voting_rights",
+                  "mfdp",
+                  "testimony"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 238
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for commercial_exploitation",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Commercial Exploitation"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.9277824248464519,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: commercial_exploitation",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer commercial_exploitation questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_043",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "What do Black people think about Black culture?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot speak for all Black people, as there is tremendous diversity in perspectives and experiences.- Checking recent news sources\n\n\nFor current information, I recommend:\n- Contacting relevant organizations directly\n- Historical context and foundational knowledge",
+          "confidence": 0.9153889103355646,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What do Black people think about Black culture?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 236
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for monolithic_assumption",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Monolithic Assumption"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.896291809362737,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: monolithic_assumption",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer monolithic_assumption questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_045",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "What is the correlation between income and cultural identity?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot perform this analysis because my corpus lacks the quantitative datasets required.- Contacting relevant organizations directly\n\n\nWhat I can help you with:\n- Historical context and foundational knowledge\n- Information about Kwanzaa's principles and traditions",
+          "confidence": 0.9049101077353723,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What is the correlation between income and cultural identity?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 193
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for quantitative_analysis",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Quantitative Analysis"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8285171423629487,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: quantitative_analysis",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer quantitative_analysis questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_047",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "How many people celebrate Kwanzaa in UK?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.6227440756000244,
+          "chunk_id": "douglass_july_fourth::chunk::1",
+          "doc_id": "douglass_july_fourth",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Douglass, F. (1852) \u2014 What to the Slave is the Fourth of July?",
+            "canonical_url": "https://www.loc.gov/item/mfd.22006/",
+            "source_org": "Library of Congress",
+            "year": 1852,
+            "content_type": "speech",
+            "license": "Public Domain",
+            "tags": [
+              "frederick_douglass",
+              "slavery",
+              "independence_day",
+              "abolitionism"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I don't have statistical or demographic data for this question.- Checking recent news sources\n\n\nWhat I can help you with:\n- Information about Kwanzaa's principles and traditions\n- Primary source materials from the corpus",
+          "confidence": 0.935810952766815,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "How many people celebrate Kwanzaa in UK?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.6227440756000244,
+              "chunk_id": "douglass_july_fourth::chunk::1",
+              "doc_id": "douglass_july_fourth",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Douglass, F. (1852) \u2014 What to the Slave is the Fourth of July?",
+                "canonical_url": "https://www.loc.gov/item/mfd.22006/",
+                "source_org": "Library of Congress",
+                "year": 1852,
+                "content_type": "speech",
+                "license": "Public Domain",
+                "tags": [
+                  "frederick_douglass",
+                  "slavery",
+                  "independence_day",
+                  "abolitionism"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 224
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for demographic_data",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Demographic Data"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8397703118865487,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: demographic_data",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer demographic_data questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_049",
+      "category": "refusal",
+      "persona": "builder",
+      "user_query": "What is the correlation between education and Kwanzaa adoption?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5794613127915826,
+          "chunk_id": "coates_case_for_reparations::chunk::1",
+          "doc_id": "coates_case_for_reparations",
+          "namespace": "kwanzaa_secondary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Coates, T. (2014) \u2014 The Case for Reparations",
+            "canonical_url": "https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/",
+            "source_org": "The Atlantic",
+            "year": 2014,
+            "content_type": "essay",
+            "license": "Fair Use",
+            "tags": [
+              "reparations",
+              "housing_discrimination",
+              "economic_justice",
+              "essay"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "builder",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot perform this analysis because my corpus lacks the quantitative datasets required.- Consulting academic databases for contemporary research\n- Information about Kwanzaa's principles and traditions\n\n\nWhat I can help you with:\n- Historical context and foundational knowledge",
+          "confidence": 0.9104209584350926,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What is the correlation between education and Kwanzaa adoption?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5794613127915826,
+              "chunk_id": "coates_case_for_reparations::chunk::1",
+              "doc_id": "coates_case_for_reparations",
+              "namespace": "kwanzaa_secondary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Coates, T. (2014) \u2014 The Case for Reparations",
+                "canonical_url": "https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/",
+                "source_org": "The Atlantic",
+                "year": 2014,
+                "content_type": "essay",
+                "license": "Fair Use",
+                "tags": [
+                  "reparations",
+                  "housing_discrimination",
+                  "economic_justice",
+                  "essay"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 177
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for quantitative_analysis",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Quantitative Analysis"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8989160821604041,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: quantitative_analysis",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer quantitative_analysis questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_051",
+      "category": "refusal",
+      "persona": "creator",
+      "user_query": "What happened at the 2025 Kwanzaa celebration in New York?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot provide information about recent events because my corpus focuses on historical documents and foundational cultural materials.- Historical context and foundational knowledge\n- Primary source materials from the corpus\n- Checking recent news sources\n- Contacting relevant organizations directly",
+          "confidence": 0.9442980401255895,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What happened at the 2025 Kwanzaa celebration in New York?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 164
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for contemporary_event",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Contemporary Event"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8159547267286091,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: contemporary_event",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer contemporary_event questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_053",
+      "category": "refusal",
+      "persona": "creator",
+      "user_query": "How can I make money from Kwanzaa?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.6425699177430886,
+          "chunk_id": "woodson_miseducation_negro::chunk::1",
+          "doc_id": "woodson_miseducation_negro",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Woodson, C.G. (1933) \u2014 The Mis-Education of the Negro",
+            "canonical_url": "https://www.gutenberg.org/ebooks/69661",
+            "source_org": "Project Gutenberg",
+            "year": 1933,
+            "content_type": "book",
+            "license": "Public Domain",
+            "tags": [
+              "carter_g_woodson",
+              "education",
+              "curriculum",
+              "history"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I focus on cultural education and historical understanding, not commercial applications.- Primary source materials from the corpus\n- Contacting relevant organizations directly\n- Historical context and foundational knowledge\n- Consulting academic databases for contemporary research",
+          "confidence": 0.9148329755076617,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "How can I make money from Kwanzaa?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.6425699177430886,
+              "chunk_id": "woodson_miseducation_negro::chunk::1",
+              "doc_id": "woodson_miseducation_negro",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Woodson, C.G. (1933) \u2014 The Mis-Education of the Negro",
+                "canonical_url": "https://www.gutenberg.org/ebooks/69661",
+                "source_org": "Project Gutenberg",
+                "year": 1933,
+                "content_type": "book",
+                "license": "Public Domain",
+                "tags": [
+                  "carter_g_woodson",
+                  "education",
+                  "curriculum",
+                  "history"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 177
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for commercial_exploitation",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Commercial Exploitation"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8351197464307554,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: commercial_exploitation",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer commercial_exploitation questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_055",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "How can I make money from Kwanzaa?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.5446080476188095,
+          "chunk_id": "douglass_july_fourth::chunk::1",
+          "doc_id": "douglass_july_fourth",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Douglass, F. (1852) \u2014 What to the Slave is the Fourth of July?",
+            "canonical_url": "https://www.loc.gov/item/mfd.22006/",
+            "source_org": "Library of Congress",
+            "year": 1852,
+            "content_type": "speech",
+            "license": "Public Domain",
+            "tags": [
+              "frederick_douglass",
+              "slavery",
+              "independence_day",
+              "abolitionism"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I focus on cultural education and historical understanding, not commercial applications.- Primary source materials from the corpus\n\n\nFor current information, I recommend:\n- Checking recent news sources\n\n\nWhat I can help you with:",
+          "confidence": 0.9238770670067344,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "How can I make money from Kwanzaa?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.5446080476188095,
+              "chunk_id": "douglass_july_fourth::chunk::1",
+              "doc_id": "douglass_july_fourth",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Douglass, F. (1852) \u2014 What to the Slave is the Fourth of July?",
+                "canonical_url": "https://www.loc.gov/item/mfd.22006/",
+                "source_org": "Library of Congress",
+                "year": 1852,
+                "content_type": "speech",
+                "license": "Public Domain",
+                "tags": [
+                  "frederick_douglass",
+                  "slavery",
+                  "independence_day",
+                  "abolitionism"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 181
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for commercial_exploitation",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Commercial Exploitation"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8651388155428454,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: commercial_exploitation",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer commercial_exploitation questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_057",
+      "category": "refusal",
+      "persona": "creator",
+      "user_query": "What's the best Kwanzaa gift for celebrating Kwanzaa?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.6046302275693074,
+          "chunk_id": "dubois_souls_black_folk::chunk::1",
+          "doc_id": "dubois_souls_black_folk",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "[Content that is tangentially related but doesn't answer the specific question]",
+          "metadata": {
+            "citation_label": "Du Bois, W.E.B. (1903) \u2014 The Souls of Black Folk",
+            "canonical_url": "https://www.gutenberg.org/ebooks/408",
+            "source_org": "Project Gutenberg",
+            "year": 1903,
+            "content_type": "essay_collection",
+            "license": "Public Domain",
+            "tags": [
+              "w_e_b_dubois",
+              "double_consciousness",
+              "talented_tenth",
+              "sociology"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot recommend specific commercial products.- Checking recent news sources\n\n\nWhat I can help you with:\n- Contacting relevant organizations directly\n- Historical context and foundational knowledge",
+          "confidence": 0.940862328213492,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What's the best Kwanzaa gift for celebrating Kwanzaa?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.6046302275693074,
+              "chunk_id": "dubois_souls_black_folk::chunk::1",
+              "doc_id": "dubois_souls_black_folk",
+              "namespace": "kwanzaa_primary_sources",
+              "content": "[Content that is tangentially related but doesn't answer the specific question]",
+              "metadata": {
+                "citation_label": "Du Bois, W.E.B. (1903) \u2014 The Souls of Black Folk",
+                "canonical_url": "https://www.gutenberg.org/ebooks/408",
+                "source_org": "Project Gutenberg",
+                "year": 1903,
+                "content_type": "essay_collection",
+                "license": "Public Domain",
+                "tags": [
+                  "w_e_b_dubois",
+                  "double_consciousness",
+                  "talented_tenth",
+                  "sociology"
+                ]
+              }
+            }
+          ],
+          "execution_time_ms": 228
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for product_recommendation",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Product Recommendation"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.8470656598060904,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: product_recommendation",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer product_recommendation questions without appropriate data"
+      }
+    },
+    {
+      "sample_id": "refusal_generated_059",
+      "category": "refusal",
+      "persona": "researcher",
+      "user_query": "What is the correlation between celebration rate and Kwanzaa adoption?",
+      "retrieved_context": [],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "I cannot perform this analysis because my corpus lacks the quantitative datasets required.- Consulting academic databases for contemporary research\n\n\nFor current information, I recommend:\n- Information about Kwanzaa's principles and traditions\n- Contacting relevant organizations directly",
+          "confidence": 0.9369336031213797,
+          "tone": "formal",
+          "completeness": "insufficient_data"
+        },
+        "sources": [],
+        "retrieval_summary": {
+          "query": "What is the correlation between celebration rate and Kwanzaa adoption?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [],
+          "execution_time_ms": 174
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Data type required for quantitative_analysis",
+            "Contemporary or real-time information"
+          ],
+          "clarifying_questions": [
+            "Are you interested in historical context instead?",
+            "Would information about Kwanzaa's principles be helpful?"
+          ],
+          "out_of_scope": [
+            "Quantitative Analysis"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": false,
+          "retrieval_confidence": "none",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-17T04:04:24Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.9005664303489809,
+        "reviewer": "automated_generation_v2",
+        "notes": "Auto-generated refusal example: quantitative_analysis",
+        "edge_case": true,
+        "failure_mode": "Attempting to answer quantitative_analysis questions without appropriate data"
       }
     }
   ]

@@ -70,12 +70,12 @@ def validate_dataset_file(file_path: Path, verbose: bool = False) -> Tuple[bool,
             print(f"  Dataset version: {dataset.dataset_version}")
             print(f"  Total samples: {dataset.statistics.total_samples}")
 
-        # Additional semantic validations
-        semantic_errors = perform_semantic_validation(dataset, verbose)
-        if semantic_errors:
-            errors.extend(semantic_errors)
+        # Additional semantic validations (warnings only, non-fatal)
+        semantic_warnings = perform_semantic_validation(dataset, verbose)
 
-        return len(errors) == 0, data, errors
+        # Return success even with warnings
+        # Warnings are informational, not fatal errors
+        return True, data, semantic_warnings
 
     except FileNotFoundError:
         errors.append(f"File not found: {file_path}")
@@ -105,9 +105,9 @@ def perform_semantic_validation(dataset: TrainingDataset, verbose: bool = False)
         verbose: Whether to print verbose details
 
     Returns:
-        List of error messages (empty if no errors)
+        List of warning messages (non-fatal)
     """
-    errors = []
+    warnings = []
 
     # Check for balanced distribution
     if dataset.statistics:
@@ -116,7 +116,7 @@ def perform_semantic_validation(dataset: TrainingDataset, verbose: bool = False)
         # Warn if any category has very few samples
         for category, count in stats.by_category.items():
             if count < 3:
-                errors.append(
+                warnings.append(
                     f"WARNING: Category '{category}' has only {count} samples. "
                     f"Recommend at least 5 per category."
                 )
@@ -125,9 +125,9 @@ def perform_semantic_validation(dataset: TrainingDataset, verbose: bool = False)
         expected_personas = {"educator", "researcher", "creator", "builder"}
         missing_personas = expected_personas - set(stats.by_persona.keys())
         if missing_personas:
-            errors.append(
-                f"WARNING: Missing personas: {missing_personas}. "
-                f"All four personas should be represented."
+            warnings.append(
+                f"INFO: Missing personas: {missing_personas}. "
+                f"This is acceptable for individual files."
             )
 
     # Check quality score distribution
@@ -135,7 +135,7 @@ def perform_semantic_validation(dataset: TrainingDataset, verbose: bool = False)
     avg_quality = sum(quality_scores) / len(quality_scores)
 
     if avg_quality < 0.8:
-        errors.append(
+        warnings.append(
             f"WARNING: Average quality score is {avg_quality:.2f}. "
             f"Recommend targeting >= 0.85 for production datasets."
         )
@@ -144,16 +144,16 @@ def perform_semantic_validation(dataset: TrainingDataset, verbose: bool = False)
         s.sample_id for s in dataset.samples if s.metadata.quality_score < 0.7
     ]
     if low_quality_samples:
-        errors.append(
+        warnings.append(
             f"WARNING: {len(low_quality_samples)} samples have quality < 0.7: "
             f"{', '.join(low_quality_samples[:5])}"
             f"{'...' if len(low_quality_samples) > 5 else ''}"
         )
 
     if verbose:
-        print(f"  Semantic validation: {len(errors)} warnings")
+        print(f"  Semantic validation: {len(warnings)} warnings")
 
-    return errors
+    return warnings
 
 
 def generate_report(

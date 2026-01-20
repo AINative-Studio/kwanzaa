@@ -6,9 +6,9 @@ run:
   output_dir: "outputs/kwanzaa-adapter-v0"
   seed: 42
   mixed_precision: "bf16"  # fallback to "fp16" if bf16 not supported
-  logging_steps: 10
-  save_steps: 200
-  eval_steps: 200
+  logging_steps: 7
+  save_steps: 7
+  eval_steps: 7
   save_total_limit: 3
   report_to: ["tensorboard"]  # Options: tensorboard, wandb, mlflow
 
@@ -76,7 +76,7 @@ data:
 
 training:
   # Training hyperparameters
-  num_train_epochs: 2
+  num_train_epochs: 4
   learning_rate: 0.0002  # 2e-4 standard for QLoRA
   lr_scheduler_type: "cosine"
   warmup_ratio: 0.03
@@ -109,7 +109,7 @@ training:
 evaluation:
   # Evaluation strategy
   strategy: "steps"
-  steps: 200
+  steps: 7
 
   # Metrics to track
   metrics:
@@ -132,7 +132,7 @@ evaluation:
 checkpointing:
   # Checkpoint management
   save_strategy: "steps"
-  save_steps: 200
+  save_steps: 7
   save_total_limit: 3
   load_best_model_at_end: true
   metric_for_best_model: "eval_loss"

@@ -1,0 +1,103 @@
+# Local Training Requirements (Apple Silicon / CPU)
+# For testing on M1/M2/M3 Macs or CPU-only systems
+# Install with: pip install -r backend/training/requirements-local.txt
+
+# ==============================================================================
+# Core ML Frameworks (CPU/MPS compatible)
+# ==============================================================================
+
+# PyTorch - CPU/MPS version (Apple Silicon optimized)
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+
+# HuggingFace Transformers
+transformers==4.37.2
+
+# HuggingFace Datasets
+datasets==2.16.1
+
+# Accelerate
+accelerate==0.26.1
+
+# ==============================================================================
+# Parameter-Efficient Fine-Tuning (PEFT)
+# ==============================================================================
+
+# PEFT - LoRA adapter training (works on CPU)
+peft==0.8.2
+
+# NOTE: bitsandbytes requires CUDA - skip for local testing
+# We'll use full precision instead of 4-bit quantization
+# bitsandbytes==0.42.0
+
+# ==============================================================================
+# Training Utilities & Optimization
+# ==============================================================================
+
+# TRL - Transformer Reinforcement Learning
+trl==0.7.10
+
+# SentencePiece - Tokenization
+sentencepiece==0.1.99
+
+# Safetensors - Safe tensor serialization
+safetensors==0.4.2
+
+# ==============================================================================
+# Experiment Tracking & Logging
+# ==============================================================================
+
+# TensorBoard - Experiment visualization
+tensorboard==2.15.1
+
+# ==============================================================================
+# Data Processing & Utilities
+# ==============================================================================
+
+# NumPy - Numerical computing
+numpy>=1.24.0
+
+# Pandas - Data manipulation
+pandas>=2.0.0
+
+# Scikit-learn - ML utilities and metrics
+scikit-learn>=1.3.0
+
+# PyYAML - Configuration files
+pyyaml>=6.0
+
+# TQDM - Progress bars
+tqdm>=4.65.0
+
+# ==============================================================================
+# Evaluation Metrics
+# ==============================================================================
+
+# Evaluate - HuggingFace evaluation library
+evaluate==0.4.1
+
+# ==============================================================================
+# Additional Utilities
+# ==============================================================================
+
+# Python-dotenv - Environment variable management
+python-dotenv>=1.0.0
+
+# Huggingface Hub - Model and dataset repository
+huggingface-hub>=0.20.0
+
+# Tokenizers - Fast tokenization
+tokenizers>=0.15.0
+
+# Einops - Tensor operations
+einops>=0.7.0
+
+# ==============================================================================
+# Notes:
+# ==============================================================================
+# 1. This is for LOCAL TESTING ONLY on CPU/MPS
+# 2. No bitsandbytes (requires CUDA for quantization)
+# 3. Training will be slower but verifies the pipeline works
+# 4. For production GPU training, use requirements.txt on RunPod
+# 5. Apple Silicon Macs will automatically use MPS backend

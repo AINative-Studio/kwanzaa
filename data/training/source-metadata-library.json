@@ -1,0 +1,310 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-01-16T12:00:00Z",
+  "description": "Source metadata library for Kwanzaa citation training examples. Contains realistic metadata for primary sources, secondary sources, oral histories, Black press, and government documents.",
+  "metadata": {
+    "purpose": "Support citation example generation with consistent, realistic source metadata",
+    "usage": "Reference this library when creating training examples to ensure consistency",
+    "namespaces": [
+      "kwanzaa_primary_sources",
+      "kwanzaa_secondary_sources",
+      "kwanzaa_black_press",
+      "kwanzaa_oral_histories",
+      "kwanzaa_news_archive"
+    ]
+  },
+  "sources": [
+    {
+      "doc_id": "mlk_dream_speech",
+      "citation_label": "King, M.L. Jr. (1963) — I Have a Dream Speech",
+      "canonical_url": "https://www.archives.gov/files/press/exhibits/dream-speech.pdf",
+      "source_org": "National Archives",
+      "year": 1963,
+      "content_type": "speech",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["mlk", "i_have_a_dream", "march_on_washington", "speech"],
+      "description": "Dr. King's iconic speech delivered at the March on Washington for Jobs and Freedom"
+    },
+    {
+      "doc_id": "mlk_letter_birmingham_jail",
+      "citation_label": "King, M.L. Jr. (1963) — Letter from Birmingham Jail",
+      "canonical_url": "https://www.archives.gov/milestone-documents/letter-from-birmingham-jail",
+      "source_org": "National Archives",
+      "year": 1963,
+      "content_type": "letter",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["mlk", "birmingham", "nonviolent_resistance", "letter"],
+      "description": "MLK's response to white clergymen explaining nonviolent resistance philosophy"
+    },
+    {
+      "doc_id": "douglass_july_fourth",
+      "citation_label": "Douglass, F. (1852) — What to the Slave is the Fourth of July?",
+      "canonical_url": "https://www.loc.gov/item/mfd.22006/",
+      "source_org": "Library of Congress",
+      "year": 1852,
+      "content_type": "speech",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["frederick_douglass", "slavery", "independence_day", "abolitionism"],
+      "description": "Douglass's powerful oration on American independence and slavery"
+    },
+    {
+      "doc_id": "wells_red_record",
+      "citation_label": "Wells-Barnett, I.B. (1895) — The Red Record",
+      "canonical_url": "https://www.gutenberg.org/ebooks/14977",
+      "source_org": "Project Gutenberg",
+      "year": 1895,
+      "content_type": "investigative_report",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["ida_b_wells", "lynching", "investigation", "anti_lynching_campaign"],
+      "description": "Ida B. Wells's investigative documentation of lynching in America"
+    },
+    {
+      "doc_id": "dubois_souls_black_folk",
+      "citation_label": "Du Bois, W.E.B. (1903) — The Souls of Black Folk",
+      "canonical_url": "https://www.gutenberg.org/ebooks/408",
+      "source_org": "Project Gutenberg",
+      "year": 1903,
+      "content_type": "essay_collection",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["w_e_b_dubois", "double_consciousness", "talented_tenth", "sociology"],
+      "description": "Du Bois's foundational essays on Black American experience and consciousness"
+    },
+    {
+      "doc_id": "malcolm_x_ballot_bullet",
+      "citation_label": "Malcolm X (1964) — The Ballot or the Bullet",
+      "canonical_url": "https://www.archives.gov/research/african-americans/speeches/ballot-or-bullet",
+      "source_org": "National Archives",
+      "year": 1964,
+      "content_type": "speech",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["malcolm_x", "voting_rights", "self_defense", "black_nationalism"],
+      "description": "Malcolm X's speech on voting rights and self-determination"
+    },
+    {
+      "doc_id": "brown_v_board_decision",
+      "citation_label": "Supreme Court (1954) — Brown v. Board of Education Decision",
+      "canonical_url": "https://www.archives.gov/milestone-documents/brown-v-board-of-education",
+      "source_org": "National Archives",
+      "year": 1954,
+      "content_type": "legal_document",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["brown_v_board", "desegregation", "education", "supreme_court"],
+      "description": "Landmark Supreme Court decision declaring school segregation unconstitutional"
+    },
+    {
+      "doc_id": "voting_rights_act_1965",
+      "citation_label": "US Congress (1965) — Voting Rights Act",
+      "canonical_url": "https://www.archives.gov/milestone-documents/voting-rights-act",
+      "source_org": "National Archives",
+      "year": 1965,
+      "content_type": "legal_document",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["voting_rights", "legislation", "civil_rights", "suffrage"],
+      "description": "Federal legislation prohibiting racial discrimination in voting"
+    },
+    {
+      "doc_id": "emancipation_proclamation",
+      "citation_label": "Lincoln, A. (1863) — Emancipation Proclamation",
+      "canonical_url": "https://www.archives.gov/exhibits/featured-documents/emancipation-proclamation",
+      "source_org": "National Archives",
+      "year": 1863,
+      "content_type": "executive_order",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["emancipation", "slavery", "lincoln", "civil_war"],
+      "description": "Executive order freeing enslaved people in Confederate states"
+    },
+    {
+      "doc_id": "fannie_lou_hamer_testimony",
+      "citation_label": "Hamer, F.L. (1964) — Democratic National Convention Testimony",
+      "canonical_url": "https://www.loc.gov/item/2017655141/",
+      "source_org": "Library of Congress",
+      "year": 1964,
+      "content_type": "testimony",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["fannie_lou_hamer", "voting_rights", "mfdp", "testimony"],
+      "description": "Hamer's powerful testimony on voting rights violations in Mississippi"
+    },
+    {
+      "doc_id": "angela_davis_autobiography",
+      "citation_label": "Davis, A. (1974) — Angela Davis: An Autobiography",
+      "canonical_url": "https://archive.org/details/angeladavisautob00davi",
+      "source_org": "Internet Archive",
+      "year": 1974,
+      "content_type": "autobiography",
+      "license": "Fair Use",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["angela_davis", "black_power", "prison_abolition", "autobiography"],
+      "description": "Angela Davis's memoir covering activism, imprisonment, and political philosophy"
+    },
+    {
+      "doc_id": "carmichael_black_power",
+      "citation_label": "Carmichael, S. & Hamilton, C. (1967) — Black Power: The Politics of Liberation",
+      "canonical_url": "https://archive.org/details/blackpowerpoliti00carm",
+      "source_org": "Internet Archive",
+      "year": 1967,
+      "content_type": "political_theory",
+      "license": "Fair Use",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["stokely_carmichael", "black_power", "sncc", "political_theory"],
+      "description": "Foundational text defining Black Power movement and political liberation"
+    },
+    {
+      "doc_id": "chicago_defender_1919",
+      "citation_label": "Chicago Defender (1919) — Red Summer Coverage",
+      "canonical_url": "https://www.chipublib.org/chicago-defender/",
+      "source_org": "Chicago Public Library",
+      "year": 1919,
+      "content_type": "news_article",
+      "license": "Archive Access License",
+      "namespace": "kwanzaa_black_press",
+      "tags": ["chicago_defender", "red_summer", "race_riots", "black_press"],
+      "description": "Black press coverage of 1919 racial violence across America"
+    },
+    {
+      "doc_id": "pittsburgh_courier_1945",
+      "citation_label": "Pittsburgh Courier (1945) — Double V Campaign",
+      "canonical_url": "https://www.loc.gov/collections/pittsburgh-courier/",
+      "source_org": "Library of Congress",
+      "year": 1945,
+      "content_type": "news_article",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_black_press",
+      "tags": ["pittsburgh_courier", "double_v", "wwii", "black_press"],
+      "description": "Campaign for victory against fascism abroad and racism at home"
+    },
+    {
+      "doc_id": "oral_history_selma_marcher",
+      "citation_label": "Smith, J. (1995) — Oral History: Selma to Montgomery March",
+      "canonical_url": "https://www.loc.gov/collections/civil-rights-history-project/",
+      "source_org": "Library of Congress",
+      "year": 1995,
+      "content_type": "oral_history",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_oral_histories",
+      "tags": ["selma", "oral_history", "voting_rights", "firsthand_account"],
+      "description": "Firsthand account of Selma to Montgomery march from participant"
+    },
+    {
+      "doc_id": "taylor_race_for_profit",
+      "citation_label": "Taylor, K. (2019) — Race for Profit: How Banks and Real Estate Undermined Black Homeownership",
+      "canonical_url": "https://uncpress.org/book/9781469653662/race-for-profit/",
+      "source_org": "UNC Press",
+      "year": 2019,
+      "content_type": "scholarly_book",
+      "license": "Fair Use",
+      "namespace": "kwanzaa_secondary_sources",
+      "tags": ["housing_discrimination", "redlining", "economic_justice", "scholarly"],
+      "description": "Scholarly analysis of housing discrimination and predatory practices"
+    },
+    {
+      "doc_id": "coates_case_for_reparations",
+      "citation_label": "Coates, T. (2014) — The Case for Reparations",
+      "canonical_url": "https://www.theatlantic.com/magazine/archive/2014/06/the-case-for-reparations/361631/",
+      "source_org": "The Atlantic",
+      "year": 2014,
+      "content_type": "essay",
+      "license": "Fair Use",
+      "namespace": "kwanzaa_secondary_sources",
+      "tags": ["reparations", "housing_discrimination", "economic_justice", "essay"],
+      "description": "Long-form essay documenting case for reparations for slavery and discrimination"
+    },
+    {
+      "doc_id": "karenga_kwanzaa_celebrations",
+      "citation_label": "Karenga, M. (1998) — Kwanzaa: A Celebration of Family, Community and Culture",
+      "canonical_url": "https://officialkwanzaawebsite.org/book",
+      "source_org": "Official Kwanzaa Website",
+      "year": 1998,
+      "content_type": "book",
+      "license": "CC BY-NC 4.0",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["kwanzaa", "nguzo_saba", "celebration", "cultural_practice"],
+      "description": "Comprehensive guide to Kwanzaa principles, symbols, and celebration practices"
+    },
+    {
+      "doc_id": "woodson_miseducation_negro",
+      "citation_label": "Woodson, C.G. (1933) — The Mis-Education of the Negro",
+      "canonical_url": "https://www.gutenberg.org/ebooks/69661",
+      "source_org": "Project Gutenberg",
+      "year": 1933,
+      "content_type": "book",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["carter_g_woodson", "education", "curriculum", "history"],
+      "description": "Woodson's critique of American education system's treatment of Black history"
+    },
+    {
+      "doc_id": "garvey_philosophy_opinions",
+      "citation_label": "Garvey, M. (1923) — Philosophy and Opinions of Marcus Garvey",
+      "canonical_url": "https://archive.org/details/philosophyandopi00garv",
+      "source_org": "Internet Archive",
+      "year": 1923,
+      "content_type": "essay_collection",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["marcus_garvey", "pan_africanism", "unia", "back_to_africa"],
+      "description": "Collection of Garvey's writings on Pan-Africanism and Black self-determination"
+    },
+    {
+      "doc_id": "baker_radical_politics",
+      "citation_label": "Baker, E. (1960) — Ella Baker and the Black Freedom Movement",
+      "canonical_url": "https://www.loc.gov/collections/civil-rights-history-project/about-this-collection/ella-baker/",
+      "source_org": "Library of Congress",
+      "year": 1960,
+      "content_type": "speech",
+      "license": "Public Domain",
+      "namespace": "kwanzaa_primary_sources",
+      "tags": ["ella_baker", "grassroots_organizing", "sncc", "leadership"],
+      "description": "Ella Baker's philosophy on grassroots organizing and participatory democracy"
+    }
+  ],
+  "citation_patterns": {
+    "single_source": {
+      "description": "Answer supported by one authoritative source",
+      "example_format": "The Civil Rights Act prohibited discrimination [1].",
+      "use_cases": ["factual_questions", "direct_quotes", "simple_historical_facts"]
+    },
+    "multiple_sources": {
+      "description": "Answer synthesizing information from multiple sources",
+      "example_format": "According to source A [1], and corroborated by source B [2]...",
+      "use_cases": ["comprehensive_answers", "multiple_perspectives", "confirmation"]
+    },
+    "conflicting_sources": {
+      "description": "Handling disagreement between sources",
+      "example_format": "Source A estimates X [1], while source B estimates Y [2]. The most reliable appears to be...",
+      "use_cases": ["disputed_facts", "varying_estimates", "historical_controversies"]
+    },
+    "primary_vs_secondary": {
+      "description": "Privileging primary sources while using secondary for context",
+      "example_format": "As participant X stated [1 - primary], which historian Y contextualizes as [2 - secondary]...",
+      "use_cases": ["firsthand_accounts", "historical_analysis", "scholarly_context"]
+    },
+    "direct_quote": {
+      "description": "Using exact words from source with quotation marks",
+      "example_format": "Dr. King stated: \"exact quote here\" [1].",
+      "use_cases": ["famous_quotes", "precise_language", "legal_text"]
+    },
+    "paraphrase": {
+      "description": "Restating source material in different words",
+      "example_format": "The source explains that [paraphrased content] [1].",
+      "use_cases": ["technical_content", "synthesis", "readability"]
+    }
+  },
+  "quality_criteria": {
+    "citation_accuracy": "Citations must match retrieved context exactly",
+    "source_diversity": "Use variety of source types (speeches, documents, oral histories, etc.)",
+    "cultural_authenticity": "Maintain respect and accuracy in representing Black American history",
+    "metadata_completeness": "All required metadata fields must be present",
+    "relevance_scores": "Scores should reflect realistic retrieval confidence (0.7-0.99)",
+    "year_accuracy": "Years must be historically accurate for events and publications"
+  }
+}

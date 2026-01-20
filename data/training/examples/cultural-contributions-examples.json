@@ -1,0 +1,998 @@
+{
+  "dataset_version": "2.0.0",
+  "created_at": "2026-01-16T00:00:00Z",
+  "updated_at": "2026-01-17T04:04:24Z",
+  "description": "Training examples for cultural_contributions category",
+  "statistics": {
+    "total_samples": 5,
+    "by_category": {
+      "citation": 4,
+      "refusal": 1
+    },
+    "by_persona": {
+      "educator": 3,
+      "researcher": 1,
+      "creator": 1
+    },
+    "by_difficulty": {
+      "medium": 3,
+      "easy": 1,
+      "hard": 1
+    }
+  },
+  "samples": [
+    {
+      "sample_id": "cultural_contrib_rock_001",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "Was rock and roll created by Black musicians?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "chunk_id": "sister_rosetta_tharpe_bio::chunk::3",
+          "doc_id": "sister_rosetta_tharpe_biography",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "Sister Rosetta Tharpe (1915-1973) is widely recognized as the 'Godmother of Rock and Roll.' Her innovative electric guitar playing and energetic performances in the 1930s and 1940s laid the foundation for what would become rock and roll. She performed gospel music with a rock edge, influencing artists like Elvis Presley, Johnny Cash, Chuck Berry, Little Richard, and Jerry Lee Lewis. Her 1938 recording 'Rock Me' and 1945 'Strange Things Happening Every Day' featured distorted electric guitar that predated rock and roll by a decade.",
+          "metadata": {
+            "citation_label": "Wald, G. (2007) \u2014 Shout, Sister, Shout! The Untold Story of Rock-and-Roll Trailblazer Sister Rosetta Tharpe",
+            "canonical_url": "https://www.beaconpress.com/books/shout-sister-shout/",
+            "source_org": "Beacon Press",
+            "year": 2007,
+            "content_type": "biography",
+            "license": "Fair Use",
+            "tags": [
+              "sister_rosetta_tharpe",
+              "rock_and_roll",
+              "music_history",
+              "gospel"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.89,
+          "chunk_id": "chuck_berry_pioneer::chunk::1",
+          "doc_id": "chuck_berry_rock_pioneer",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "Chuck Berry's 'Maybellene' (1955) is considered one of the first true rock and roll records. Berry's innovative guitar riffs, storytelling lyrics about cars and teenage life, duckwalk stage presence, and showmanship defined the genre's musical vocabulary and performance style. Along with Little Richard's explosive piano-pounding performances and Fats Domino's New Orleans rhythm contributions, Berry established rock and roll as a distinct musical form emerging from blues, R&B, and gospel traditions.",
+          "metadata": {
+            "citation_label": "Pegg, B. (2002) \u2014 Brown Eyed Handsome Man: The Life and Hard Times of Chuck Berry",
+            "canonical_url": "https://www.routledge.com/Chuck-Berry/Pegg/p/book/9780415934558",
+            "source_org": "Routledge",
+            "year": 2002,
+            "content_type": "biography",
+            "license": "Fair Use",
+            "tags": [
+              "chuck_berry",
+              "rock_and_roll",
+              "maybellene",
+              "music_innovation"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "score": 0.86,
+          "chunk_id": "little_richard_impact::chunk::2",
+          "doc_id": "little_richard_biography",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "Little Richard (Richard Wayne Penniman, 1932-2020) brought unprecedented energy and flamboyance to rock and roll with hits like 'Tutti Frutti' (1955) and 'Long Tall Sally' (1956). His pounding piano style, falsetto screams, and outrageously theatrical performances broke down barriers of race, gender expression, and musical convention. The Beatles, Jimi Hendrix, and countless others cited him as their primary inspiration. As he famously declared, 'I am the architect of rock and roll.'",
+          "metadata": {
+            "citation_label": "White, C. (1984) \u2014 The Life and Times of Little Richard: The Authorised Biography",
+            "canonical_url": "https://www.omnibuspress.com/little-richard",
+            "source_org": "Omnibus Press",
+            "year": 1984,
+            "content_type": "biography",
+            "license": "Fair Use",
+            "tags": [
+              "little_richard",
+              "rock_and_roll",
+              "tutti_frutti",
+              "performance_art"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Yes, rock and roll was created and pioneered by Black musicians in the 1940s-1950s. The genre emerged from the synthesis of blues, gospel, and R&B\u2014all Black musical traditions.\n\nKey Black Pioneers:\n\n**Sister Rosetta Tharpe (1915-1973)** - The 'Godmother of Rock and Roll'\n- Her electric guitar playing and energetic gospel performances in the 1930s-40s laid rock and roll's foundation [1]\n- Recordings like 'Rock Me' (1938) and 'Strange Things Happening Every Day' (1945) featured distorted guitar a decade before rock and roll was named [1]\n- Directly influenced Elvis Presley, Chuck Berry, Little Richard, Johnny Cash, and Jerry Lee Lewis [1]\n\n**Chuck Berry** - Defined the musical vocabulary\n- 'Maybellene' (1955) is considered one of the first true rock and roll records [2]\n- His innovative guitar riffs, storytelling lyrics, and duckwalk stage presence established rock's core elements [2]\n\n**Little Richard** - The architect\n- Brought unprecedented energy with 'Tutti Frutti' (1955) and 'Long Tall Sally' (1956) [3]\n- His pounding piano, falsetto screams, and theatrical performances broke musical and cultural barriers [3]\n- Inspired The Beatles, Jimi Hendrix, and countless others [3]\n\nOther pioneers include Fats Domino, Bo Diddley, and many more. While the genre was later commercialized and dominated by white artists, its origins are unquestionably rooted in Black creativity and innovation.",
+          "confidence": 0.96,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Wald, G. (2007) \u2014 Shout, Sister, Shout! The Untold Story of Rock-and-Roll Trailblazer Sister Rosetta Tharpe",
+            "canonical_url": "https://www.beaconpress.com/books/shout-sister-shout/",
+            "source_org": "Beacon Press",
+            "year": 2007,
+            "content_type": "biography",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "sister_rosetta_tharpe_biography",
+            "chunk_id": "sister_rosetta_tharpe_bio::chunk::3",
+            "tags": [
+              "sister_rosetta_tharpe",
+              "rock_and_roll",
+              "music_history",
+              "gospel"
+            ],
+            "relevance_score": 0.92
+          },
+          {
+            "citation_label": "Pegg, B. (2002) \u2014 Brown Eyed Handsome Man: The Life and Hard Times of Chuck Berry",
+            "canonical_url": "https://www.routledge.com/Chuck-Berry/Pegg/p/book/9780415934558",
+            "source_org": "Routledge",
+            "year": 2002,
+            "content_type": "biography",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "chuck_berry_rock_pioneer",
+            "chunk_id": "chuck_berry_pioneer::chunk::1",
+            "tags": [
+              "chuck_berry",
+              "rock_and_roll",
+              "maybellene",
+              "music_innovation"
+            ],
+            "relevance_score": 0.89
+          },
+          {
+            "citation_label": "White, C. (1984) \u2014 The Life and Times of Little Richard: The Authorised Biography",
+            "canonical_url": "https://www.omnibuspress.com/little-richard",
+            "source_org": "Omnibus Press",
+            "year": 1984,
+            "content_type": "biography",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "little_richard_biography",
+            "chunk_id": "little_richard_impact::chunk::2",
+            "tags": [
+              "little_richard",
+              "rock_and_roll",
+              "tutti_frutti",
+              "performance_art"
+            ],
+            "relevance_score": 0.86
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Was rock and roll created by Black musicians?",
+          "top_k": 5,
+          "namespaces": [
+            "kwanzaa_black_innovators",
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {
+            "tags": [
+              "rock_and_roll",
+              "music_history"
+            ]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Sister Rosetta Tharpe (1915-1973) is widely recognized as the 'Godmother of Rock and Roll.'...",
+              "citation_label": "Wald, G. (2007) \u2014 Shout, Sister, Shout!",
+              "canonical_url": "https://www.beaconpress.com/books/shout-sister-shout/",
+              "doc_id": "sister_rosetta_tharpe_biography",
+              "chunk_id": "sister_rosetta_tharpe_bio::chunk::3",
+              "namespace": "kwanzaa_black_innovators"
+            },
+            {
+              "rank": 2,
+              "score": 0.89,
+              "snippet": "Chuck Berry's 'Maybellene' (1955) is considered one of the first true rock and roll records...",
+              "citation_label": "Pegg, B. (2002) \u2014 Brown Eyed Handsome Man",
+              "canonical_url": "https://www.routledge.com/Chuck-Berry/Pegg/p/book/9780415934558",
+              "doc_id": "chuck_berry_rock_pioneer",
+              "chunk_id": "chuck_berry_pioneer::chunk::1",
+              "namespace": "kwanzaa_black_innovators"
+            },
+            {
+              "rank": 3,
+              "score": 0.86,
+              "snippet": "Little Richard brought unprecedented energy and flamboyance to rock and roll...",
+              "citation_label": "White, C. (1984) \u2014 The Life and Times of Little Richard",
+              "canonical_url": "https://www.omnibuspress.com/little-richard",
+              "doc_id": "little_richard_biography",
+              "chunk_id": "little_richard_impact::chunk::2",
+              "namespace": "kwanzaa_black_innovators"
+            }
+          ],
+          "execution_time_ms": 287
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-16T23:50:00Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Kuumba",
+          "Kujichagulia",
+          "Imani"
+        ],
+        "quality_score": 0.95,
+        "reviewer": "human_annotator_003",
+        "notes": "Addresses cultural erasure of Black rock pioneers. Celebrates Black creativity (Kuumba) and counters common misconception that rock was white-created. Provides specific dates, names, and contributions.",
+        "edge_case": false,
+        "failure_mode": "Cultural erasure - failing to acknowledge Black innovation"
+      }
+    },
+    {
+      "sample_id": "cultural_contrib_hiphop_001",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "When and where did hip-hop start? Who were the founding pioneers?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.94,
+          "chunk_id": "kool_herc_birth_hiphop::chunk::1",
+          "doc_id": "hip_hop_origins_1973",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "On August 11, 1973, DJ Kool Herc (Clive Campbell), a Jamaican immigrant living in the Bronx, hosted a back-to-school party for his sister Cindy at 1520 Sedgwick Avenue in the West Bronx. Using two turntables and a mixer, Herc pioneered the technique of isolating and extending the instrumental 'break' sections of funk, soul, and disco records\u2014the parts where dancers went wild. This 'breakbeat' technique created the foundation for hip-hop DJing and breakdancing (b-boying). Music historians widely recognize this event as the birth of hip-hop culture.",
+          "metadata": {
+            "citation_label": "Chang, J. (2005) \u2014 Can't Stop Won't Stop: A History of the Hip-Hop Generation",
+            "canonical_url": "https://us.macmillan.com/books/9780312425791",
+            "source_org": "Picador",
+            "year": 2005,
+            "content_type": "cultural_history",
+            "license": "Fair Use",
+            "tags": [
+              "kool_herc",
+              "hip_hop",
+              "1520_sedgwick",
+              "bronx",
+              "1973"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.91,
+          "chunk_id": "hip_hop_founding_trinity::chunk::2",
+          "doc_id": "hip_hop_pioneers",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "Hip-hop's 'Founding Trinity' consists of three Bronx-based innovators: DJ Kool Herc (the originator), Afrika Bambaataa (the educator and organizer), and Grandmaster Flash (the technical innovator). Bambaataa founded the Universal Zulu Nation in 1973, transforming hip-hop from party music into a cultural movement with consciousness. He codified hip-hop's 'Four Elements': DJing, MCing (rapping), B-boying (breakdancing), and Graffiti Art. Grandmaster Flash advanced DJing technology, inventing techniques like backspin, punch phrasing, and scratching that became hip-hop's sonic signature.",
+          "metadata": {
+            "citation_label": "Rose, T. (1994) \u2014 Black Noise: Rap Music and Black Culture in Contemporary America",
+            "canonical_url": "https://www.upne.com/0819562750.html",
+            "source_org": "Wesleyan University Press",
+            "year": 1994,
+            "content_type": "academic_analysis",
+            "license": "Fair Use",
+            "tags": [
+              "afrika_bambaataa",
+              "grandmaster_flash",
+              "four_elements",
+              "zulu_nation"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "score": 0.88,
+          "chunk_id": "bronx_context_1970s::chunk::5",
+          "doc_id": "south_bronx_1970s",
+          "namespace": "kwanzaa_black_press",
+          "content": "The South Bronx in the 1970s was devastated by urban decay, white flight, arson-for-profit schemes, and the construction of the Cross-Bronx Expressway which destroyed stable neighborhoods. Black and Latino youth, abandoned by city services and facing poverty and gang violence, created hip-hop as a form of cultural resistance and creative expression. The music emerged from block parties, community centers, and parks where DJs powered equipment by tapping into street lamp electrical boxes.",
+          "metadata": {
+            "citation_label": "Flores, J. (2000) \u2014 From Bomba to Hip-Hop: Puerto Rican Culture and Latino Identity",
+            "canonical_url": "https://cup.columbia.edu/book/from-bomba-to-hip-hop/9780231106504",
+            "source_org": "Columbia University Press",
+            "year": 2000,
+            "content_type": "cultural_analysis",
+            "license": "Fair Use",
+            "tags": [
+              "south_bronx",
+              "urban_decay",
+              "cultural_resistance",
+              "1970s"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Hip-hop originated on **August 11, 1973**, in the West Bronx, New York, at **1520 Sedgwick Avenue** during a back-to-school party hosted by DJ Kool Herc (Clive Campbell) for his sister Cindy [1]. This event is widely recognized by music historians as hip-hop's birth.\n\n**The Founding Trinity:**\n\n1. **DJ Kool Herc (Clive Campbell)** - The Originator\n   - Pioneered the 'breakbeat' technique: isolating and extending instrumental break sections using two turntables [1]\n   - Created the foundation for hip-hop DJing and breakdancing (b-boying) [1]\n   - Jamaican immigrant who brought sound system culture to the Bronx [1]\n\n2. **Afrika Bambaataa** - The Educator and Organizer\n   - Founded the Universal Zulu Nation (1973), transforming hip-hop into a conscious cultural movement [2]\n   - Codified hip-hop's **Four Elements**: DJing, MCing (rapping), B-boying (breakdancing), and Graffiti Art [2]\n   - Promoted hip-hop as a positive alternative to gang violence [2]\n\n3. **Grandmaster Flash** - The Technical Innovator\n   - Advanced DJing technology with innovations like backspin, punch phrasing, and scratching [2]\n   - Created techniques that became hip-hop's sonic signature [2]\n\n**Sociohistorical Context:**\n\nHip-hop emerged from the South Bronx during extreme urban crisis\u2014devastation from white flight, arson schemes, and the Cross-Bronx Expressway's construction which destroyed stable Black and Latino neighborhoods [3]. Facing poverty and gang violence, youth created hip-hop as cultural resistance and creative expression at block parties and parks, often powering equipment by tapping street lamp electricity [3].\n\nHip-hop represents both artistic innovation (Kuumba) and self-determination (Kujichagulia)\u2014creating culture and identity despite systemic neglect.",
+          "confidence": 0.97,
+          "tone": "formal",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Chang, J. (2005) \u2014 Can't Stop Won't Stop: A History of the Hip-Hop Generation",
+            "canonical_url": "https://us.macmillan.com/books/9780312425791",
+            "source_org": "Picador",
+            "year": 2005,
+            "content_type": "cultural_history",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "hip_hop_origins_1973",
+            "chunk_id": "kool_herc_birth_hiphop::chunk::1",
+            "tags": [
+              "kool_herc",
+              "hip_hop",
+              "1520_sedgwick",
+              "bronx",
+              "1973"
+            ],
+            "relevance_score": 0.94
+          },
+          {
+            "citation_label": "Rose, T. (1994) \u2014 Black Noise: Rap Music and Black Culture in Contemporary America",
+            "canonical_url": "https://www.upne.com/0819562750.html",
+            "source_org": "Wesleyan University Press",
+            "year": 1994,
+            "content_type": "academic_analysis",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "hip_hop_pioneers",
+            "chunk_id": "hip_hop_founding_trinity::chunk::2",
+            "tags": [
+              "afrika_bambaataa",
+              "grandmaster_flash",
+              "four_elements",
+              "zulu_nation"
+            ],
+            "relevance_score": 0.91
+          },
+          {
+            "citation_label": "Flores, J. (2000) \u2014 From Bomba to Hip-Hop: Puerto Rican Culture and Latino Identity",
+            "canonical_url": "https://cup.columbia.edu/book/from-bomba-to-hip-hop/9780231106504",
+            "source_org": "Columbia University Press",
+            "year": 2000,
+            "content_type": "cultural_analysis",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_black_press",
+            "doc_id": "south_bronx_1970s",
+            "chunk_id": "bronx_context_1970s::chunk::5",
+            "tags": [
+              "south_bronx",
+              "urban_decay",
+              "cultural_resistance",
+              "1970s"
+            ],
+            "relevance_score": 0.88
+          }
+        ],
+        "retrieval_summary": {
+          "query": "When and where did hip-hop start? Who were the founding pioneers?",
+          "top_k": 5,
+          "namespaces": [
+            "kwanzaa_black_innovators",
+            "kwanzaa_black_press"
+          ],
+          "filters": {
+            "tags": [
+              "hip_hop",
+              "origins",
+              "pioneers"
+            ]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.94,
+              "snippet": "On August 11, 1973, DJ Kool Herc hosted a back-to-school party at 1520 Sedgwick Avenue...",
+              "citation_label": "Chang, J. (2005) \u2014 Can't Stop Won't Stop",
+              "canonical_url": "https://us.macmillan.com/books/9780312425791",
+              "doc_id": "hip_hop_origins_1973",
+              "chunk_id": "kool_herc_birth_hiphop::chunk::1",
+              "namespace": "kwanzaa_black_innovators"
+            },
+            {
+              "rank": 2,
+              "score": 0.91,
+              "snippet": "Hip-hop's 'Founding Trinity' consists of DJ Kool Herc, Afrika Bambaataa, and Grandmaster Flash...",
+              "citation_label": "Rose, T. (1994) \u2014 Black Noise",
+              "canonical_url": "https://www.upne.com/0819562750.html",
+              "doc_id": "hip_hop_pioneers",
+              "chunk_id": "hip_hop_founding_trinity::chunk::2",
+              "namespace": "kwanzaa_black_innovators"
+            },
+            {
+              "rank": 3,
+              "score": 0.88,
+              "snippet": "The South Bronx in the 1970s was devastated by urban decay...",
+              "citation_label": "Flores, J. (2000) \u2014 From Bomba to Hip-Hop",
+              "canonical_url": "https://cup.columbia.edu/book/from-bomba-to-hip-hop/9780231106504",
+              "doc_id": "south_bronx_1970s",
+              "chunk_id": "bronx_context_1970s::chunk::5",
+              "namespace": "kwanzaa_black_press"
+            }
+          ],
+          "execution_time_ms": 298
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-16T23:50:00Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Kuumba",
+          "Kujichagulia",
+          "Ujima"
+        ],
+        "quality_score": 0.96,
+        "reviewer": "human_annotator_003",
+        "notes": "Precise historical details (specific date, address, names). Researcher persona requires formal tone and sociohistorical context. Connects to Kwanzaa principles of creativity and self-determination.",
+        "edge_case": false,
+        "failure_mode": "Vague or inaccurate hip-hop history"
+      }
+    },
+    {
+      "sample_id": "cultural_contrib_appropriation_001",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "Why did white musicians get famous for rock and roll when Black people invented it?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.91,
+          "chunk_id": "cultural_appropriation_rock::chunk::4",
+          "doc_id": "rock_roll_racial_dynamics",
+          "namespace": "kwanzaa_secondary_sources",
+          "content": "The mainstream music industry's embrace of white rock and roll artists like Elvis Presley while marginalizing Black originators like Chuck Berry and Little Richard was rooted in systemic racism and segregation. Radio stations were divided into 'race records' (Black artists) and mainstream programming (white artists). Record executives deliberately sought white performers who could make Black music 'palatable' to white audiences. As Sam Phillips of Sun Records famously said, 'If I could find a white man who had the Negro sound and the Negro feel, I could make a billion dollars.' Elvis Presley became that artist, achieving unprecedented success performing a style created by Black musicians.",
+          "metadata": {
+            "citation_label": "Bertrand, M. (2000) \u2014 Race, Rock, and Elvis",
+            "canonical_url": "https://www.press.uillinois.edu/books/catalog/63xhb6ry9780252025679.html",
+            "source_org": "University of Illinois Press",
+            "year": 2000,
+            "content_type": "academic_study",
+            "license": "Fair Use",
+            "tags": [
+              "cultural_appropriation",
+              "elvis_presley",
+              "racism",
+              "music_industry"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.87,
+          "chunk_id": "exploitation_black_artists::chunk::2",
+          "doc_id": "music_industry_exploitation",
+          "namespace": "kwanzaa_secondary_sources",
+          "content": "Black rock and roll pioneers faced systematic exploitation through predatory contracts, lack of copyright protection, and outright theft of their compositions. Little Richard sold the rights to 'Tutti Frutti' for $50 and received no royalties despite its massive commercial success. Chuck Berry spent years in legal battles over songwriting credits. Sister Rosetta Tharpe never received adequate recognition or compensation during her lifetime. Meanwhile, white artists covering their songs\u2014often with inferior versions\u2014received radio play, television appearances, and financial success that was denied to the Black originators due to segregation and industry racism.",
+          "metadata": {
+            "citation_label": "Garofalo, R. (1997) \u2014 Rockin' Out: Popular Music in the USA",
+            "canonical_url": "https://www.pearson.com/us/higher-education/product/Garofalo-Rockin-Out/9780205960217.html",
+            "source_org": "Pearson",
+            "year": 1997,
+            "content_type": "textbook",
+            "license": "Fair Use",
+            "tags": [
+              "exploitation",
+              "music_industry",
+              "copyright",
+              "racism"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "This is a painful and important example of cultural appropriation and systemic racism in the American music industry. While Black artists like Sister Rosetta Tharpe, Chuck Berry, and Little Richard created rock and roll, white artists like Elvis Presley achieved far greater commercial success due to deliberate racial barriers.\n\n**Key Factors:**\n\n1. **Radio Segregation**\n   - Stations divided music into 'race records' (Black artists) vs. mainstream (white artists) [1]\n   - Black artists were excluded from mainstream radio regardless of talent [1]\n\n2. **Industry Strategy**\n   - Record executives intentionally sought white performers to make Black music 'palatable' to white audiences [1]\n   - Sam Phillips of Sun Records famously said: 'If I could find a white man who had the Negro sound and the Negro feel, I could make a billion dollars' [1]\n   - Elvis became that artist, achieving success by performing Black musical styles [1]\n\n3. **Systematic Exploitation**\n   - Black artists faced predatory contracts with no royalty protections [2]\n   - Little Richard sold 'Tutti Frutti' rights for $50 and received no royalties despite massive success [2]\n   - Chuck Berry fought years-long legal battles for songwriting credits [2]\n   - Sister Rosetta Tharpe never received adequate recognition or compensation [2]\n\n4. **Segregation's Impact**\n   - White artists covering Black songs received radio play, TV appearances, and financial rewards denied to Black originators [2]\n   - Even inferior covers by white artists outsold the original Black versions [2]\n\nThis pattern illustrates how racism steals not just credit but economic opportunity from Black innovators. Many Black rock pioneers died in poverty while white artists covering their work became millionaires. Understanding this history helps us recognize ongoing cultural appropriation and work toward equitable recognition of Black creativity.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Bertrand, M. (2000) \u2014 Race, Rock, and Elvis",
+            "canonical_url": "https://www.press.uillinois.edu/books/catalog/63xhb6ry9780252025679.html",
+            "source_org": "University of Illinois Press",
+            "year": 2000,
+            "content_type": "academic_study",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_secondary_sources",
+            "doc_id": "rock_roll_racial_dynamics",
+            "chunk_id": "cultural_appropriation_rock::chunk::4",
+            "tags": [
+              "cultural_appropriation",
+              "elvis_presley",
+              "racism",
+              "music_industry"
+            ],
+            "relevance_score": 0.91
+          },
+          {
+            "citation_label": "Garofalo, R. (1997) \u2014 Rockin' Out: Popular Music in the USA",
+            "canonical_url": "https://www.pearson.com/us/higher-education/product/Garofalo-Rockin-Out/9780205960217.html",
+            "source_org": "Pearson",
+            "year": 1997,
+            "content_type": "textbook",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_secondary_sources",
+            "doc_id": "music_industry_exploitation",
+            "chunk_id": "exploitation_black_artists::chunk::2",
+            "tags": [
+              "exploitation",
+              "music_industry",
+              "copyright",
+              "racism"
+            ],
+            "relevance_score": 0.87
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Why did white musicians get famous for rock and roll when Black people invented it?",
+          "top_k": 5,
+          "namespaces": [
+            "kwanzaa_secondary_sources",
+            "kwanzaa_black_press"
+          ],
+          "filters": {
+            "tags": [
+              "cultural_appropriation",
+              "music_industry",
+              "racism"
+            ]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.91,
+              "snippet": "The mainstream music industry's embrace of white rock artists while marginalizing Black originators...",
+              "citation_label": "Bertrand, M. (2000) \u2014 Race, Rock, and Elvis",
+              "canonical_url": "https://www.press.uillinois.edu/books/catalog/63xhb6ry9780252025679.html",
+              "doc_id": "rock_roll_racial_dynamics",
+              "chunk_id": "cultural_appropriation_rock::chunk::4",
+              "namespace": "kwanzaa_secondary_sources"
+            },
+            {
+              "rank": 2,
+              "score": 0.87,
+              "snippet": "Black rock and roll pioneers faced systematic exploitation through predatory contracts...",
+              "citation_label": "Garofalo, R. (1997) \u2014 Rockin' Out",
+              "canonical_url": "https://www.pearson.com/us/higher-education/product/Garofalo-Rockin-Out/9780205960217.html",
+              "doc_id": "music_industry_exploitation",
+              "chunk_id": "exploitation_black_artists::chunk::2",
+              "namespace": "kwanzaa_secondary_sources"
+            }
+          ],
+          "execution_time_ms": 312
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-16T23:50:00Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani",
+          "Kujichagulia",
+          "Ujamaa"
+        ],
+        "quality_score": 0.93,
+        "reviewer": "human_annotator_003",
+        "notes": "Addresses emotionally charged topic of cultural appropriation and economic exploitation. Validates user's concern while providing historical context. Educator persona maintains informative but empathetic tone. Connects to economic justice (Ujamaa) and self-determination (Kujichagulia).",
+        "edge_case": true,
+        "failure_mode": "Dismissing user's concern about injustice, or providing defensiveness instead of historical facts"
+      }
+    },
+    {
+      "sample_id": "cultural_contrib_inventors_001",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What important inventions were created by Black people?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.89,
+          "chunk_id": "garrett_morgan_inventions::chunk::1",
+          "doc_id": "black_inventors_transportation",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "Garrett Morgan (1877-1963) invented the three-position traffic signal in 1923, which included the yellow 'caution' light that is now standard worldwide. His traffic signal design was purchased by General Electric and became the basis for modern traffic control systems. Earlier, in 1914, Morgan invented the 'Safety Hood,' a smoke protection device (gas mask) that saved countless lives. He personally used it to rescue workers trapped in a tunnel explosion in Cleveland in 1916, though he had to pretend to be 'Big Chief Mason' because officials wouldn't trust a Black man's invention.",
+          "metadata": {
+            "citation_label": "James, P. (1989) \u2014 The Real McCoy: African-American Invention and Innovation, 1619-1930",
+            "canonical_url": "https://www.si.edu/object/garrett-morgan",
+            "source_org": "Smithsonian Institution",
+            "year": 1989,
+            "content_type": "historical_documentation",
+            "license": "Public Domain",
+            "tags": [
+              "garrett_morgan",
+              "traffic_light",
+              "gas_mask",
+              "inventions"
+            ]
+          }
+        },
+        {
+          "rank": 2,
+          "score": 0.88,
+          "chunk_id": "lewis_latimer_electricity::chunk::2",
+          "doc_id": "black_inventors_technology",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "Lewis Howard Latimer (1848-1928) invented the carbon filament for the incandescent light bulb in 1881, making electric lighting practical and affordable for widespread use. While Thomas Edison invented the light bulb, it was Latimer's carbon filament that made it commercially viable\u2014earlier filaments burned out too quickly. Latimer worked with both Alexander Graham Bell (drafting plans for the telephone) and Thomas Edison. He was the only Black member of Edison's elite research team, the 'Edison Pioneers.'",
+          "metadata": {
+            "citation_label": "Turner, G. (1991) \u2014 Lewis Howard Latimer: Inventor and Renaissance Man",
+            "canonical_url": "https://www.blackpast.org/african-american-history/latimer-lewis-howard-1848-1928/",
+            "source_org": "BlackPast.org",
+            "year": 1991,
+            "content_type": "biography",
+            "license": "CC BY-NC 4.0",
+            "tags": [
+              "lewis_latimer",
+              "light_bulb",
+              "carbon_filament",
+              "edison"
+            ]
+          }
+        },
+        {
+          "rank": 3,
+          "score": 0.85,
+          "chunk_id": "patricia_bath_medical::chunk::1",
+          "doc_id": "black_inventors_medicine",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "Dr. Patricia Bath (1942-2019) invented the Laserphaco Probe in 1986, a revolutionary device for cataract treatment that uses laser technology to vaporize cataracts quickly and painlessly. She was the first African American woman doctor to receive a medical patent. Bath's invention has restored sight to millions of people worldwide. She also co-founded the American Institute for the Prevention of Blindness, stating 'eyesight is a basic human right.'",
+          "metadata": {
+            "citation_label": "Hayden, R. (2012) \u2014 11 African American Inventors Who Changed the World",
+            "canonical_url": "https://www.biography.com/scientist/patricia-bath",
+            "source_org": "Biography.com",
+            "year": 2012,
+            "content_type": "biography",
+            "license": "Fair Use",
+            "tags": [
+              "patricia_bath",
+              "laserphaco_probe",
+              "medicine",
+              "cataracts"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Black inventors have created numerous critical technologies that are foundational to modern life. Here are some major examples:\n\n**Transportation & Safety:**\n\n**Garrett Morgan (1877-1963)**\n- Three-position traffic signal with yellow 'caution' light (1923) [1]\n- This design was purchased by General Electric and became the basis for modern traffic control worldwide [1]\n- Safety Hood/gas mask (1914) that saved countless lives [1]\n- Personally rescued tunnel explosion victims in Cleveland (1916), though had to disguise his identity because officials wouldn't trust a Black inventor [1]\n\n**Lighting & Electricity:**\n\n**Lewis Howard Latimer (1848-1928)**\n- Carbon filament for incandescent light bulb (1881) [2]\n- While Edison invented the light bulb, Latimer's carbon filament made it commercially viable\u2014earlier filaments burned out too quickly [2]\n- Worked with both Alexander Graham Bell (telephone patent drawings) and Thomas Edison [2]\n- Only Black member of Edison's elite 'Edison Pioneers' research team [2]\n\n**Medicine:**\n\n**Dr. Patricia Bath (1942-2019)**\n- Laserphaco Probe for cataract treatment (1986) [3]\n- Uses laser technology to vaporize cataracts quickly and painlessly [3]\n- First African American woman doctor to receive a medical patent [3]\n- Restored sight to millions worldwide; co-founded American Institute for Prevention of Blindness [3]\n\n**Additional Notable Inventors (not fully detailed here):**\n- George Washington Carver: 300+ uses for peanuts, agricultural innovations\n- Madam C.J. Walker: Hair care products, first female self-made millionaire\n- Granville Woods: Railway telegraphy systems\n- Mark Dean: IBM personal computer technology\n- Dr. Charles Drew: Blood plasma storage and blood banks\n\nThese inventions demonstrate sustained Black innovation despite systematic barriers to education, funding, and recognition. Many Black inventors faced racism that prevented proper credit and compensation for their work.",
+          "confidence": 0.91,
+          "tone": "educational",
+          "completeness": "partial"
+        },
+        "sources": [
+          {
+            "citation_label": "James, P. (1989) \u2014 The Real McCoy: African-American Invention and Innovation, 1619-1930",
+            "canonical_url": "https://www.si.edu/object/garrett-morgan",
+            "source_org": "Smithsonian Institution",
+            "year": 1989,
+            "content_type": "historical_documentation",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "black_inventors_transportation",
+            "chunk_id": "garrett_morgan_inventions::chunk::1",
+            "tags": [
+              "garrett_morgan",
+              "traffic_light",
+              "gas_mask",
+              "inventions"
+            ],
+            "relevance_score": 0.89
+          },
+          {
+            "citation_label": "Turner, G. (1991) \u2014 Lewis Howard Latimer: Inventor and Renaissance Man",
+            "canonical_url": "https://www.blackpast.org/african-american-history/latimer-lewis-howard-1848-1928/",
+            "source_org": "BlackPast.org",
+            "year": 1991,
+            "content_type": "biography",
+            "license": "CC BY-NC 4.0",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "black_inventors_technology",
+            "chunk_id": "lewis_latimer_electricity::chunk::2",
+            "tags": [
+              "lewis_latimer",
+              "light_bulb",
+              "carbon_filament",
+              "edison"
+            ],
+            "relevance_score": 0.88
+          },
+          {
+            "citation_label": "Hayden, R. (2012) \u2014 11 African American Inventors Who Changed the World",
+            "canonical_url": "https://www.biography.com/scientist/patricia-bath",
+            "source_org": "Biography.com",
+            "year": 2012,
+            "content_type": "biography",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "black_inventors_medicine",
+            "chunk_id": "patricia_bath_medical::chunk::1",
+            "tags": [
+              "patricia_bath",
+              "laserphaco_probe",
+              "medicine",
+              "cataracts"
+            ],
+            "relevance_score": 0.85
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What important inventions were created by Black people?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_black_innovators"
+          ],
+          "filters": {
+            "tags": [
+              "inventions",
+              "technology",
+              "innovation"
+            ]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.89,
+              "snippet": "Garrett Morgan invented the three-position traffic signal in 1923...",
+              "citation_label": "James, P. (1989) \u2014 The Real McCoy",
+              "canonical_url": "https://www.si.edu/object/garrett-morgan",
+              "doc_id": "black_inventors_transportation",
+              "chunk_id": "garrett_morgan_inventions::chunk::1",
+              "namespace": "kwanzaa_black_innovators"
+            },
+            {
+              "rank": 2,
+              "score": 0.88,
+              "snippet": "Lewis Howard Latimer invented the carbon filament for the incandescent light bulb...",
+              "citation_label": "Turner, G. (1991) \u2014 Lewis Howard Latimer",
+              "canonical_url": "https://www.blackpast.org/african-american-history/latimer-lewis-howard-1848-1928/",
+              "doc_id": "black_inventors_technology",
+              "chunk_id": "lewis_latimer_electricity::chunk::2",
+              "namespace": "kwanzaa_black_innovators"
+            },
+            {
+              "rank": 3,
+              "score": 0.85,
+              "snippet": "Dr. Patricia Bath invented the Laserphaco Probe in 1986...",
+              "citation_label": "Hayden, R. (2012) \u2014 11 African American Inventors",
+              "canonical_url": "https://www.biography.com/scientist/patricia-bath",
+              "doc_id": "black_inventors_medicine",
+              "chunk_id": "patricia_bath_medical::chunk::1",
+              "namespace": "kwanzaa_black_innovators"
+            }
+          ],
+          "execution_time_ms": 276
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Full details on George Washington Carver, Madam C.J. Walker, Granville Woods, Mark Dean, and Charles Drew mentioned but not fully cited"
+          ],
+          "clarifying_questions": [
+            "Would you like detailed information about any specific inventor?",
+            "Are you interested in a particular field of invention (technology, medicine, agriculture)?"
+          ]
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-16T23:50:00Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Kuumba",
+          "Kujichagulia",
+          "Nia"
+        ],
+        "quality_score": 0.92,
+        "reviewer": "human_annotator_003",
+        "notes": "Celebrates Black innovation across multiple domains. Completeness marked 'partial' because additional inventors mentioned but not fully sourced. Demonstrates proper handling of broad question with specific cited examples plus general mentions.",
+        "edge_case": false,
+        "failure_mode": "Vague 'yes Black people invented things' without specific examples and citations"
+      }
+    },
+    {
+      "sample_id": "cultural_contrib_refusal_001",
+      "category": "refusal",
+      "persona": "creator",
+      "user_query": "What's the latest hip-hop beef and who's winning?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.64,
+          "chunk_id": "hip_hop_battle_culture::chunk::3",
+          "doc_id": "hip_hop_competitive_tradition",
+          "namespace": "kwanzaa_black_innovators",
+          "content": "Battle culture has been central to hip-hop since its inception in the Bronx. MCs competed in verbal jousting, with rappers like Busy Bee Starski and Kool Moe Dee engaging in legendary face-to-face battles in the late 1970s and early 1980s. The competitive element pushed artists to develop more complex rhyme schemes, wordplay, and delivery techniques. This tradition evolved from African American verbal traditions like 'the dozens' (ritualized insult exchanges) and toast-telling.",
+          "metadata": {
+            "citation_label": "Bradley, A. (2009) \u2014 Book of Rhymes: The Poetics of Hip Hop",
+            "canonical_url": "https://www.basicbooks.com/titles/adam-bradley/book-of-rhymes/9780465003471/",
+            "source_org": "Basic Books",
+            "year": 2009,
+            "content_type": "cultural_analysis",
+            "license": "Fair Use",
+            "tags": [
+              "hip_hop",
+              "battle_culture",
+              "competitive_tradition",
+              "verbal_arts"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "creator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": false,
+          "primary_sources_only": false,
+          "creative_mode": true
+        },
+        "answer": {
+          "text": "I can't provide information about current hip-hop conflicts because my knowledge focuses on hip-hop's historical foundations and cultural traditions, not contemporary celebrity news or social media drama.\n\nWhat I retrieved [1] discusses hip-hop's battle culture tradition dating back to the 1970s-80s Bronx, but this is historical context, not current events.\n\n**For current hip-hop news, check:**\n- Hip-hop media: Complex, The Source, XXL Magazine, HipHopDX\n- Social media: Twitter/X, Instagram (artists' official accounts)\n- Music journalism: Pitchfork, Rolling Stone hip-hop coverage\n- YouTube: Hip-hop commentary channels\n\n**What I CAN help you with:**\n- The historical tradition of battle rap and competitive MCing [1]\n- How hip-hop's competitive culture connects to African American verbal traditions like 'the dozens' [1]\n- Evolution of lyrical techniques driven by competition [1]\n- Legendary historical battles (Busy Bee vs. Kool Moe Dee, etc.) [1]\n- The cultural significance of verbal sparring in hip-hop\n\nIf you're interested in understanding why hip-hop has competitive 'beef' culture, I can explain the historical and cultural roots of that tradition. But for who's beefing right now? You'll need real-time sources, not me!",
+          "confidence": 0.88,
+          "tone": "conversational",
+          "completeness": "insufficient_data"
+        },
+        "sources": [
+          {
+            "citation_label": "Bradley, A. (2009) \u2014 Book of Rhymes: The Poetics of Hip Hop",
+            "canonical_url": "https://www.basicbooks.com/titles/adam-bradley/book-of-rhymes/9780465003471/",
+            "source_org": "Basic Books",
+            "year": 2009,
+            "content_type": "cultural_analysis",
+            "license": "Fair Use",
+            "namespace": "kwanzaa_black_innovators",
+            "doc_id": "hip_hop_competitive_tradition",
+            "chunk_id": "hip_hop_battle_culture::chunk::3",
+            "tags": [
+              "hip_hop",
+              "battle_culture",
+              "competitive_tradition",
+              "verbal_arts"
+            ],
+            "relevance_score": 0.64
+          }
+        ],
+        "retrieval_summary": {
+          "query": "latest hip-hop beef current rap conflicts",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_black_innovators",
+            "kwanzaa_black_press"
+          ],
+          "filters": {
+            "tags": [
+              "hip_hop",
+              "contemporary",
+              "conflicts"
+            ]
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.64,
+              "snippet": "Battle culture has been central to hip-hop since its inception...",
+              "citation_label": "Bradley, A. (2009) \u2014 Book of Rhymes",
+              "canonical_url": "https://www.basicbooks.com/titles/adam-bradley/book-of-rhymes/9780465003471/",
+              "doc_id": "hip_hop_competitive_tradition",
+              "chunk_id": "hip_hop_battle_culture::chunk::3",
+              "namespace": "kwanzaa_black_innovators"
+            }
+          ],
+          "execution_time_ms": 198
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [
+            "Current hip-hop artist conflicts and social media disputes",
+            "Recent diss tracks and responses",
+            "Contemporary rap beef dynamics",
+            "Real-time music industry news"
+          ],
+          "clarifying_questions": [
+            "Are you interested in the historical tradition of hip-hop battles instead?",
+            "Would information about famous historical rap beefs (like Biggie vs. Tupac context) be helpful?",
+            "Are you researching competitive culture in hip-hop more generally?"
+          ],
+          "out_of_scope": [
+            "Current celebrity news and social media drama",
+            "Recent diss tracks and ongoing conflicts",
+            "Real-time hip-hop industry developments"
+          ]
+        },
+        "integrity": {
+          "citation_required": false,
+          "citations_provided": true,
+          "retrieval_confidence": "low",
+          "fallback_behavior": "refusal"
+        },
+        "provenance": {
+          "generated_at": "2026-01-16T23:50:00Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani",
+          "Kujichagulia"
+        ],
+        "quality_score": 0.9,
+        "reviewer": "human_annotator_003",
+        "notes": "Creator persona refusal with conversational, friendly tone. Acknowledges what WAS retrieved (historical context) but clearly states limitations. Provides helpful alternative sources AND pivots to what the system CAN answer. Demonstrates appropriate boundaries without being dismissive.",
+        "edge_case": false,
+        "failure_mode": "Attempting to answer contemporary questions with outdated information, or inventing current events"
+      }
+    }
+  ]
+}
