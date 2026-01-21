@@ -1,19 +1,20 @@
 {
-  "dataset_version": "1.0.0",
-  "created_at": "2026-01-20T20:52:57.702768Z",
-  "description": "Citation training examples for well-known historical facts (addresses Issue #56 failure pattern)",
+  "dataset_version": "2.0.0",
+  "created_at": "2026-01-20T23:41:45.109360Z",
+  "description": "Citation training examples for well-known historical facts (complete set addressing Issue #56 gaps)",
   "statistics": {
-    "total_samples": 10,
+    "total_samples": 15,
     "by_category": {
       "citation": 10
     },
     "by_persona": {
-      "educator": 10
+      "educator": 10,
+      "researcher": 5
     },
     "by_difficulty": {
-      "easy": 5,
-      "medium": 5,
-      "hard": 0
+      "easy": 6,
+      "medium": 8,
+      "hard": 1
     }
   },
   "samples": [
@@ -999,6 +1000,496 @@
         "edge_case": false,
         "failure_mode": "treating_common_knowledge_as_uncited"
       }
+    },
+    {
+      "sample_id": "citation_wellknown_011",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "What were Frederick Douglass's main arguments in his 1852 Fourth of July speech?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.95,
+          "chunk_id": "douglass_speech_chunk_1",
+          "doc_id": "douglass_fourth_july",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Frederick Douglass delivered a powerful critique of American hypocrisy in celebrating independence while maintaining slavery. He challenged audiences by asking what the Fourth of July meant to enslaved people.",
+          "metadata": {
+            "citation_label": "Douglass, F. (1852) — Fourth of July Speech",
+            "canonical_url": "https://www.loc.gov/item/mfd.22029/",
+            "source_org": "Library of Congress",
+            "year": 1852,
+            "content_type": "primary_source_speech",
+            "license": "Public Domain",
+            "tags": [
+              "frederick_douglass",
+              "abolition",
+              "speech"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Frederick Douglass delivered a powerful critique of American hypocrisy in his 1852 Fourth of July speech [1]. He challenged audiences by asking what the holiday meant to enslaved people, exposing the contradiction of celebrating freedom while maintaining slavery [1].",
+          "confidence": 0.96,
+          "tone": "scholarly",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Douglass, F. (1852) — Fourth of July Speech",
+            "canonical_url": "https://www.loc.gov/item/mfd.22029/",
+            "source_org": "Library of Congress",
+            "year": 1852,
+            "content_type": "primary_source_speech",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "douglass_fourth_july",
+            "chunk_id": "douglass_speech_chunk_1",
+            "tags": [
+              "frederick_douglass",
+              "abolition",
+              "speech"
+            ],
+            "relevance_score": 0.95
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What were Frederick Douglass's main arguments in his 1852 Fourth of July speech?",
+          "top_k": 5,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.95,
+              "snippet": "Frederick Douglass delivered...",
+              "doc_id": "douglass_fourth_july"
+            }
+          ]
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        }
+      },
+      "metadata": {
+        "difficulty": "hard",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.96,
+        "reviewer": "citation_gaps_team",
+        "notes": "CRITICAL: fixes res_001 failure",
+        "edge_case": false,
+        "failure_mode": "treating_famous_speeches_as_uncited"
+      }
+    },
+    {
+      "sample_id": "citation_wellknown_012",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What role did Harriet Tubman play in the Underground Railroad?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.94,
+          "chunk_id": "tubman_chunk_1",
+          "doc_id": "harriet_tubman_nps",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "Harriet Tubman escaped slavery and made about 13 missions to rescue approximately 70 enslaved people using the Underground Railroad network.",
+          "metadata": {
+            "citation_label": "NPS (2022) — Harriet Tubman",
+            "canonical_url": "https://www.nps.gov/articles/harriet-tubman.htm",
+            "source_org": "National Park Service",
+            "year": 2022,
+            "content_type": "historical_reference",
+            "license": "Public Domain",
+            "tags": [
+              "harriet_tubman",
+              "underground_railroad"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Harriet Tubman escaped slavery and made approximately 13 missions to rescue about 70 enslaved people using the Underground Railroad network [1].",
+          "confidence": 0.95,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "NPS (2022) — Harriet Tubman",
+            "canonical_url": "https://www.nps.gov/articles/harriet-tubman.htm",
+            "source_org": "National Park Service",
+            "year": 2022,
+            "content_type": "historical_reference",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "harriet_tubman_nps",
+            "chunk_id": "tubman_chunk_1",
+            "tags": [
+              "harriet_tubman",
+              "underground_railroad"
+            ],
+            "relevance_score": 0.94
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What role did Harriet Tubman play in the Underground Railroad?",
+          "top_k": 5,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.94,
+              "snippet": "Harriet Tubman escaped...",
+              "doc_id": "harriet_tubman_nps"
+            }
+          ]
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani",
+          "Kujichagulia"
+        ],
+        "quality_score": 0.95,
+        "reviewer": "citation_gaps_team",
+        "notes": "Well-known abolitionist",
+        "edge_case": false,
+        "failure_mode": "treating_famous_people_as_uncited"
+      }
+    },
+    {
+      "sample_id": "citation_wellknown_013",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "Why did Rosa Parks refuse to give up her bus seat in 1955?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.93,
+          "chunk_id": "rosa_parks_chunk_1",
+          "doc_id": "rosa_parks_archive",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "On December 1, 1955, Rosa Parks refused to give up her seat to a white passenger on a Montgomery, Alabama city bus. Her arrest for violating segregation laws sparked the Montgomery Bus Boycott, which lasted 381 days and led to a Supreme Court ruling that segregation on public buses was unconstitutional.",
+          "metadata": {
+            "citation_label": "Rosa Parks Institute (1955) — Rosa Parks Arrest",
+            "canonical_url": "https://www.rosaparks.org/biography/",
+            "source_org": "Rosa and Raymond Parks Institute",
+            "year": 1955,
+            "content_type": "historical_documentation",
+            "license": "Educational Use",
+            "tags": [
+              "rosa_parks",
+              "montgomery_bus_boycott",
+              "civil_rights"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "On December 1, 1955, Rosa Parks refused to give up her seat to a white passenger on a Montgomery, Alabama city bus [1]. Her arrest for violating segregation laws sparked the Montgomery Bus Boycott [1]. This boycott lasted 381 days and led to a Supreme Court ruling that segregation on public buses was unconstitutional [1].",
+          "confidence": 0.94,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Rosa Parks Institute (1955) — Rosa Parks Arrest",
+            "canonical_url": "https://www.rosaparks.org/biography/",
+            "source_org": "Rosa and Raymond Parks Institute",
+            "year": 1955,
+            "content_type": "historical_documentation",
+            "license": "Educational Use",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "rosa_parks_archive",
+            "chunk_id": "rosa_parks_chunk_1",
+            "tags": [
+              "rosa_parks",
+              "montgomery_bus_boycott",
+              "civil_rights"
+            ],
+            "relevance_score": 0.93
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Why did Rosa Parks refuse to give up her bus seat in 1955?",
+          "top_k": 5,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {
+            "year_gte": 1950,
+            "year_lte": 1960
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.93,
+              "snippet": "On December 1, 1955, Rosa Parks refused...",
+              "doc_id": "rosa_parks_archive"
+            }
+          ]
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principle_focus": [
+          "Imani",
+          "Kujichagulia"
+        ],
+        "quality_score": 0.94,
+        "reviewer": "citation_gaps_team",
+        "notes": "Iconic civil rights figure",
+        "edge_case": false,
+        "failure_mode": "treating_iconic_figures_as_uncited"
+      }
+    },
+    {
+      "sample_id": "citation_wellknown_014",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "What were W.E.B. Du Bois's main contributions to African American scholarship?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.94,
+          "chunk_id": "web_du_bois_chunk_1",
+          "doc_id": "web_du_bois_biography",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "W.E.B. Du Bois was a sociologist, historian, and civil rights activist. He was the first African American to earn a doctorate from Harvard University. His seminal work The Souls of Black Folk introduced the concept of double consciousness. Du Bois co-founded the NAACP in 1909 and edited its magazine, The Crisis, for 24 years.",
+          "metadata": {
+            "citation_label": "Library of Congress (2023) — W.E.B. Du Bois Papers",
+            "canonical_url": "https://www.loc.gov/collections/web-du-bois-papers/",
+            "source_org": "Library of Congress",
+            "year": 2023,
+            "content_type": "biographical_reference",
+            "license": "Public Domain",
+            "tags": [
+              "web_du_bois",
+              "naacp",
+              "sociology",
+              "scholarship"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "W.E.B. Du Bois made foundational contributions to African American scholarship [1]. He was the first African American to earn a doctorate from Harvard University [1]. His seminal work The Souls of Black Folk introduced the concept of double consciousness [1]. Du Bois co-founded the NAACP in 1909 and edited its magazine, The Crisis, for 24 years [1].",
+          "confidence": 0.95,
+          "tone": "scholarly",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Library of Congress (2023) — W.E.B. Du Bois Papers",
+            "canonical_url": "https://www.loc.gov/collections/web-du-bois-papers/",
+            "source_org": "Library of Congress",
+            "year": 2023,
+            "content_type": "biographical_reference",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "web_du_bois_biography",
+            "chunk_id": "web_du_bois_chunk_1",
+            "tags": [
+              "web_du_bois",
+              "naacp",
+              "sociology",
+              "scholarship"
+            ],
+            "relevance_score": 0.94
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What were W.E.B. Du Bois's main contributions to African American scholarship?",
+          "top_k": 5,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.94,
+              "snippet": "W.E.B. Du Bois was a sociologist...",
+              "doc_id": "web_du_bois_biography"
+            }
+          ]
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani",
+          "Nia"
+        ],
+        "quality_score": 0.95,
+        "reviewer": "citation_gaps_team",
+        "notes": "Scholar/researcher persona fit",
+        "edge_case": false,
+        "failure_mode": "treating_famous_scholars_as_uncited"
+      }
+    },
+    {
+      "sample_id": "citation_wellknown_015",
+      "category": "citation",
+      "persona": "researcher",
+      "user_query": "What did the 15th Amendment to the U.S. Constitution establish?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.95,
+          "chunk_id": "15th_amendment_chunk_1",
+          "doc_id": "15th_amendment_nara",
+          "namespace": "kwanzaa_primary_sources",
+          "content": "The 15th Amendment to the United States Constitution, ratified on February 3, 1870, prohibited the federal government and states from denying a citizen the right to vote based on race, color, or previous condition of servitude. It was the third and final of the Reconstruction Amendments.",
+          "metadata": {
+            "citation_label": "National Archives (1870) — 15th Amendment",
+            "canonical_url": "https://www.archives.gov/milestone-documents/15th-amendment",
+            "source_org": "National Archives and Records Administration",
+            "year": 1870,
+            "content_type": "constitutional_amendment",
+            "license": "Public Domain",
+            "tags": [
+              "15th_amendment",
+              "voting_rights",
+              "reconstruction"
+            ]
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "researcher",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": true,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "The 15th Amendment to the United States Constitution, ratified on February 3, 1870, established voting rights protections based on race [1]. The amendment prohibited the federal government and states from denying a citizen the right to vote based on race, color, or previous condition of servitude [1]. It was the third and final of the Reconstruction Amendments [1].",
+          "confidence": 0.96,
+          "tone": "scholarly",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "National Archives (1870) — 15th Amendment",
+            "canonical_url": "https://www.archives.gov/milestone-documents/15th-amendment",
+            "source_org": "National Archives and Records Administration",
+            "year": 1870,
+            "content_type": "constitutional_amendment",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_primary_sources",
+            "doc_id": "15th_amendment_nara",
+            "chunk_id": "15th_amendment_chunk_1",
+            "tags": [
+              "15th_amendment",
+              "voting_rights",
+              "reconstruction"
+            ],
+            "relevance_score": 0.95
+          }
+        ],
+        "retrieval_summary": {
+          "query": "What did the 15th Amendment to the U.S. Constitution establish?",
+          "top_k": 5,
+          "namespaces": [
+            "kwanzaa_primary_sources"
+          ],
+          "filters": {
+            "year_gte": 1865,
+            "year_lte": 1875
+          },
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.95,
+              "snippet": "The 15th Amendment...",
+              "doc_id": "15th_amendment_nara"
+            }
+          ]
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        }
+      },
+      "metadata": {
+        "difficulty": "medium",
+        "principle_focus": [
+          "Imani"
+        ],
+        "quality_score": 0.96,
+        "reviewer": "citation_gaps_team",
+        "notes": "Completes Reconstruction Amendments trilogy (13th, 14th, 15th)",
+        "edge_case": false,
+        "failure_mode": "treating_constitutional_amendments_as_uncited"
+      }
     }
-  ]
+  ],
+  "updated_at": "2026-01-21T00:54:52.589055+00:00"
 }
