@@ -1,0 +1,1813 @@
+{
+  "dataset_name": "Black Inventors Examples",
+  "version": "1.0.0",
+  "description": "Training examples for Black inventors and their innovations",
+  "source": "https://huggingface.co/spaces/Hyram33/black-inventors",
+  "license": "Educational Use",
+  "created_at": "2026-01-21T06:06:42Z",
+  "total_samples": 17,
+  "samples": [
+    {
+      "sample_id": "inventor_001",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the traffic signal?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Garrett Morgan invented the three-position traffic signal in 1923 after witnessing a terrible accident.",
+          "metadata": {
+            "citation_label": "Garrett Morgan — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Garrett_Morgan.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Garrett Morgan [1] invented the three-position traffic signal in 1923 after witnessing a terrible accident.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Garrett Morgan — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Garrett_Morgan.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_garrett_morgan",
+            "chunk_id": "inventor_garrett_morgan_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the traffic signal?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Garrett Morgan invented the three-position traffic signal in 1923 after witnessing a terrible accide...",
+              "citation_label": "Garrett Morgan — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Garrett_Morgan.jpg",
+              "doc_id": "inventor_garrett_morgan",
+              "chunk_id": "inventor_garrett_morgan_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Garrett Morgan",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_002",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented peanut butter?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Carver developed over 300 uses for peanuts and revolutionized agriculture in the American South.",
+          "metadata": {
+            "citation_label": "George Washington Carver — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/George_Washington_Carver_c1910_-_Restoration.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "George Washington Carver Carver developed over 300 uses for peanuts and revolutionized agriculture in the American South.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "George Washington Carver — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/George_Washington_Carver_c1910_-_Restoration.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_george_washington_carver",
+            "chunk_id": "inventor_george_washington_carver_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented peanut butter?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Carver developed over 300 uses for peanuts and revolutionized agriculture in the American South....",
+              "citation_label": "George Washington Carver — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/George_Washington_Carver_c1910_-_Restoration.jpg",
+              "doc_id": "inventor_george_washington_carver",
+              "chunk_id": "inventor_george_washington_carver_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: George Washington Carver",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_003",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the carbon filament for light bulbs?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Latimer worked with Edison and invented the carbon filament making bulbs practical for everyday use.",
+          "metadata": {
+            "citation_label": "Lewis Latimer — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Lewis_Howard_Latimer.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Lewis Latimer Latimer worked with Edison and invented the carbon filament making bulbs practical for everyday use.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Lewis Latimer — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Lewis_Howard_Latimer.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_lewis_latimer",
+            "chunk_id": "inventor_lewis_latimer_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the carbon filament for light bulbs?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Latimer worked with Edison and invented the carbon filament making bulbs practical for everyday use....",
+              "citation_label": "Lewis Latimer — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Lewis_Howard_Latimer.jpg",
+              "doc_id": "inventor_lewis_latimer",
+              "chunk_id": "inventor_lewis_latimer_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Lewis Latimer",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_004",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the modern-day refrigerator truck?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Jones held over 60 patents, including portable air-cooling units revolutionizing perishable food transport.",
+          "metadata": {
+            "citation_label": "Frederick Jones — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Frederick_McKinley_Jones.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Frederick Jones Jones held over 60 patents, including portable air-cooling units revolutionizing perishable food transport.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Frederick Jones — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Frederick_McKinley_Jones.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_frederick_jones",
+            "chunk_id": "inventor_frederick_jones_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the modern-day refrigerator truck?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Jones held over 60 patents, including portable air-cooling units revolutionizing perishable food tra...",
+              "citation_label": "Frederick Jones — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Frederick_McKinley_Jones.jpg",
+              "doc_id": "inventor_frederick_jones",
+              "chunk_id": "inventor_frederick_jones_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Frederick Jones",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_005",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the ironing board?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Boone improved the ironing board in 1892 with a narrower, curved design for pressing clothing.",
+          "metadata": {
+            "citation_label": "Sarah Boone — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Sarah_Boone_inventor.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Sarah Boone Boone improved the ironing board in 1892 with a narrower, curved design for pressing clothing.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Sarah Boone — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Sarah_Boone_inventor.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_sarah_boone",
+            "chunk_id": "inventor_sarah_boone_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the ironing board?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Boone improved the ironing board in 1892 with a narrower, curved design for pressing clothing....",
+              "citation_label": "Sarah Boone — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Sarah_Boone_inventor.jpg",
+              "doc_id": "inventor_sarah_boone",
+              "chunk_id": "inventor_sarah_boone_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Sarah Boone",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_006",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who developed the first successful laser cataract surgery technique?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Dr. Bath was the first African American woman doctor receiving a medical patent for pioneering laser surgery.",
+          "metadata": {
+            "citation_label": "Patricia Bath — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Dr._Patricia_Bath.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Patricia Bath Dr. Bath was the first African American woman doctor receiving a medical patent for pioneering laser surgery.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Patricia Bath — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Dr._Patricia_Bath.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_patricia_bath",
+            "chunk_id": "inventor_patricia_bath_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who developed the first successful laser cataract surgery technique?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Dr. Bath was the first African American woman doctor receiving a medical patent for pioneering laser...",
+              "citation_label": "Patricia Bath — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Dr._Patricia_Bath.jpg",
+              "doc_id": "inventor_patricia_bath",
+              "chunk_id": "inventor_patricia_bath_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Patricia Bath",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_007",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the Super Soaker water gun?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Johnson, a NASA engineer, invented the Super Soaker becoming one of the most popular toys ever.",
+          "metadata": {
+            "citation_label": "Lonnie Johnson — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Lonnie_Johnson_2010.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Lonnie Johnson Johnson, a NASA engineer, invented the Super Soaker becoming one of the most popular toys ever.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Lonnie Johnson — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Lonnie_Johnson_2010.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_lonnie_johnson",
+            "chunk_id": "inventor_lonnie_johnson_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the Super Soaker water gun?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Johnson, a NASA engineer, invented the Super Soaker becoming one of the most popular toys ever....",
+              "citation_label": "Lonnie Johnson — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Lonnie_Johnson_2010.jpg",
+              "doc_id": "inventor_lonnie_johnson",
+              "chunk_id": "inventor_lonnie_johnson_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Lonnie Johnson",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_008",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the automatic lubricator for steam engines, known as 'the real McCoy'?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "McCoy's automatic oiling device was so superior that people requested 'the real McCoy.' He held 57 patents.",
+          "metadata": {
+            "citation_label": "Elijah McCoy — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Elijah_McCoy_three-quarter_length_portrait.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Elijah McCoy McCoy's automatic oiling device was so superior that people requested 'the real McCoy.' He held 57 patents.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Elijah McCoy — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Elijah_McCoy_three-quarter_length_portrait.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_elijah_mccoy",
+            "chunk_id": "inventor_elijah_mccoy_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the automatic lubricator for steam engines, known as 'the real McCoy'?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "McCoy's automatic oiling device was so superior that people requested 'the real McCoy.' He held 57 p...",
+              "citation_label": "Elijah McCoy — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Elijah_McCoy_three-quarter_length_portrait.jpg",
+              "doc_id": "inventor_elijah_mccoy",
+              "chunk_id": "inventor_elijah_mccoy_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Elijah McCoy",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_009",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who was the first Black woman millionaire in America due to her haircare products?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Walker built a beauty empire in the early 1900s becoming one of the most successful self-made women.",
+          "metadata": {
+            "citation_label": "Madam C.J. Walker — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Madam_CJ_Walker_1914.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Madam C.J. Walker Walker built a beauty empire in the early 1900s becoming one of the most successful self-made women.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Madam C.J. Walker — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Madam_CJ_Walker_1914.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_madam_cj_walker",
+            "chunk_id": "inventor_madam_cj_walker_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who was the first Black woman millionaire in America due to her haircare products?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Walker built a beauty empire in the early 1900s becoming one of the most successful self-made women....",
+              "citation_label": "Madam C.J. Walker — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Madam_CJ_Walker_1914.jpg",
+              "doc_id": "inventor_madam_cj_walker",
+              "chunk_id": "inventor_madam_cj_walker_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Madam C.J. Walker",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_010",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented improvements to the portable pencil sharpener?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Love invented the portable pencil sharpener in 1897 with shaving collection, a design still used today.",
+          "metadata": {
+            "citation_label": "John Lee Love — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/John_Lee_Love.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "John Lee Love Love invented the portable pencil sharpener in 1897 with shaving collection, a design still used today.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "John Lee Love — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/John_Lee_Love.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_john_lee_love",
+            "chunk_id": "inventor_john_lee_love_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented improvements to the portable pencil sharpener?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Love invented the portable pencil sharpener in 1897 with shaving collection, a design still used tod...",
+              "citation_label": "John Lee Love — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/John_Lee_Love.jpg",
+              "doc_id": "inventor_john_lee_love",
+              "chunk_id": "inventor_john_lee_love_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: John Lee Love",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_011",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the home security system?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Brown invented the first home security system in 1966 including cameras, monitors, and microphones.",
+          "metadata": {
+            "citation_label": "Marie Van Brittan Brown — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Marie_Van_Brittan_Brown.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Marie Van Brittan Brown Brown invented the first home security system in 1966 including cameras, monitors, and microphones.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Marie Van Brittan Brown — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Marie_Van_Brittan_Brown.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_marie_van_brittan_brown",
+            "chunk_id": "inventor_marie_van_brittan_brown_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the home security system?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Brown invented the first home security system in 1966 including cameras, monitors, and microphones....",
+              "citation_label": "Marie Van Brittan Brown — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Marie_Van_Brittan_Brown.jpg",
+              "doc_id": "inventor_marie_van_brittan_brown",
+              "chunk_id": "inventor_marie_van_brittan_brown_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Marie Van Brittan Brown",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_012",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the synchronous multiplex railway telegraph?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Woods invented the synchronous multiplex railway telegraph and held over 50 patents improving railway safety.",
+          "metadata": {
+            "citation_label": "Granville T. Woods — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Granville_T._Woods.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Granville T. Woods Woods invented the synchronous multiplex railway telegraph and held over 50 patents improving railway safety.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Granville T. Woods — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Granville_T._Woods.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_granville_t_woods",
+            "chunk_id": "inventor_granville_t_woods_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the synchronous multiplex railway telegraph?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Woods invented the synchronous multiplex railway telegraph and held over 50 patents improving railwa...",
+              "citation_label": "Granville T. Woods — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Granville_T._Woods.jpg",
+              "doc_id": "inventor_granville_t_woods",
+              "chunk_id": "inventor_granville_t_woods_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Granville T. Woods",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_013",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the modern blood bank?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Drew developed blood plasma storage techniques leading to first large-scale blood banks during WWII.",
+          "metadata": {
+            "citation_label": "Dr. Charles Drew — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Charles_Drew_c1940s.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Dr. Charles Drew Drew developed blood plasma storage techniques leading to first large-scale blood banks during WWII.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Dr. Charles Drew — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Charles_Drew_c1940s.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_dr_charles_drew",
+            "chunk_id": "inventor_dr_charles_drew_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the modern blood bank?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Drew developed blood plasma storage techniques leading to first large-scale blood banks during WWII....",
+              "citation_label": "Dr. Charles Drew — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Charles_Drew_c1940s.jpg",
+              "doc_id": "inventor_dr_charles_drew",
+              "chunk_id": "inventor_dr_charles_drew_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Dr. Charles Drew",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_014",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the golf tee?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Grant, a Harvard-trained dentist, invented the wooden golf tee in 1899 replacing sand piles.",
+          "metadata": {
+            "citation_label": "Dr. George Grant — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/George_Franklin_Grant.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Dr. George Grant Grant, a Harvard-trained dentist, invented the wooden golf tee in 1899 replacing sand piles.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Dr. George Grant — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/George_Franklin_Grant.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_dr_george_grant",
+            "chunk_id": "inventor_dr_george_grant_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the golf tee?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Grant, a Harvard-trained dentist, invented the wooden golf tee in 1899 replacing sand piles....",
+              "citation_label": "Dr. George Grant — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/George_Franklin_Grant.jpg",
+              "doc_id": "inventor_dr_george_grant",
+              "chunk_id": "inventor_dr_george_grant_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Dr. George Grant",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_015",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented improvements to the chamber commode?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Elkins patented an improved chamber commode in 1872 with features like bookshelves and washstands.",
+          "metadata": {
+            "citation_label": "Thomas Elkins — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Thomas_Elkins.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Thomas Elkins Elkins patented an improved chamber commode in 1872 with features like bookshelves and washstands.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Thomas Elkins — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Thomas_Elkins.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_thomas_elkins",
+            "chunk_id": "inventor_thomas_elkins_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented improvements to the chamber commode?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Elkins patented an improved chamber commode in 1872 with features like bookshelves and washstands....",
+              "citation_label": "Thomas Elkins — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Thomas_Elkins.jpg",
+              "doc_id": "inventor_thomas_elkins",
+              "chunk_id": "inventor_thomas_elkins_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Thomas Elkins",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_016",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the folding chair?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Alexander patented the folding chair in 1911, improving portability and becoming event standard.",
+          "metadata": {
+            "citation_label": "Nathaniel Alexander — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Nathaniel_Alexander.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "Nathaniel Alexander Alexander patented the folding chair in 1911, improving portability and becoming event standard.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "Nathaniel Alexander — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Nathaniel_Alexander.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_nathaniel_alexander",
+            "chunk_id": "inventor_nathaniel_alexander_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the folding chair?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Alexander patented the folding chair in 1911, improving portability and becoming event standard....",
+              "citation_label": "Nathaniel Alexander — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Nathaniel_Alexander.jpg",
+              "doc_id": "inventor_nathaniel_alexander",
+              "chunk_id": "inventor_nathaniel_alexander_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: Nathaniel Alexander",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    },
+    {
+      "sample_id": "inventor_017",
+      "category": "grounded_answer",
+      "persona": "educator",
+      "user_query": "Who invented the potato chip?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "Crum, a chef, invented the potato chip in 1853 when a customer complained fries were too thick.",
+          "metadata": {
+            "citation_label": "George Crum — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/George_Crum.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "model_mode": "base_adapter_rag",
+        "toggles": {
+          "require_citations": true,
+          "primary_sources_only": false,
+          "creative_mode": false
+        },
+        "answer": {
+          "text": "George Crum Crum, a chef, invented the potato chip in 1853 when a customer complained fries were too thick.",
+          "confidence": 0.92,
+          "tone": "educational",
+          "completeness": "complete"
+        },
+        "sources": [
+          {
+            "citation_label": "George Crum — Black Inventor",
+            "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/George_Crum.jpg",
+            "source_org": "Wikipedia",
+            "year": null,
+            "content_type": "biographical",
+            "license": "Public Domain",
+            "namespace": "kwanzaa_inventors",
+            "doc_id": "inventor_george_crum",
+            "chunk_id": "inventor_george_crum_bio",
+            "tags": [
+              "inventor",
+              "innovation",
+              "african_american_history"
+            ],
+            "relevance_score": 0.92
+          }
+        ],
+        "retrieval_summary": {
+          "query": "Who invented the potato chip?",
+          "top_k": 10,
+          "namespaces": [
+            "kwanzaa_inventors"
+          ],
+          "filters": {},
+          "results": [
+            {
+              "rank": 1,
+              "score": 0.92,
+              "snippet": "Crum, a chef, invented the potato chip in 1853 when a customer complained fries were too thick....",
+              "citation_label": "George Crum — Black Inventor",
+              "canonical_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/George_Crum.jpg",
+              "doc_id": "inventor_george_crum",
+              "chunk_id": "inventor_george_crum_bio",
+              "namespace": "kwanzaa_inventors"
+            }
+          ],
+          "execution_time_ms": 245
+        },
+        "unknowns": {
+          "unsupported_claims": [],
+          "missing_context": [],
+          "clarifying_questions": []
+        },
+        "integrity": {
+          "citation_required": true,
+          "citations_provided": true,
+          "retrieval_confidence": "high",
+          "fallback_behavior": "not_needed"
+        },
+        "provenance": {
+          "generated_at": "2026-01-21T06:06:42Z"
+        }
+      },
+      "metadata": {
+        "difficulty": "easy",
+        "principles": [
+          "nia",
+          "kuumba"
+        ],
+        "quality_score": 0.9,
+        "source": "black_inventors_quiz",
+        "notes": "Black inventor: George Crum",
+        "tags": [
+          "inventor",
+          "innovation",
+          "african_american_history"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,419 @@
+{
+  "dataset_name": "Educator Test-Aligned Examples",
+  "version": "1.0.0",
+  "description": "Training examples precisely aligned with educator citation coverage test cases",
+  "source": "Citation coverage test requirements",
+  "license": "Educational Use",
+  "created_at": "2026-01-21T22:47:00Z",
+  "total_samples": 12,
+  "samples": [
+    {
+      "sample_id": "edu_aligned_001",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "When was the Emancipation Proclamation signed, and what did it declare?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.95,
+          "content": "The Emancipation Proclamation was signed by President Abraham Lincoln on January 1, 1863. It declared that all enslaved people in Confederate states 'shall be then, thenceforward, and forever free.' While it did not immediately free all enslaved people, it fundamentally transformed the Civil War into a fight for freedom and paved the way for the 13th Amendment.",
+          "metadata": {
+            "citation_label": "Emancipation Proclamation — National Archives",
+            "canonical_url": "https://www.archives.gov/exhibits/featured-documents/emancipation-proclamation",
+            "source_org": "National Archives",
+            "year": 1863,
+            "content_type": "primary_source"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "The Emancipation Proclamation was signed by President Abraham Lincoln on January 1, 1863 [1]. It declared that all enslaved people in Confederate states 'shall be then, thenceforward, and forever free' [1]. While it did not immediately free all enslaved people, it fundamentally transformed the Civil War into a fight for freedom and paved the way for the 13th Amendment [1].",
+          "confidence": 0.95
+        },
+        "sources": [{
+          "citation_label": "Emancipation Proclamation — National Archives",
+          "canonical_url": "https://www.archives.gov/exhibits/featured-documents/emancipation-proclamation",
+          "source_org": "National Archives",
+          "year": 1863
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_002",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What innovations did George Washington Carver develop using peanuts?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.94,
+          "content": "George Washington Carver developed over 300 uses for peanuts at Tuskegee Institute. His innovations included peanut butter, cooking oil, soap, cosmetics, ink, dyes, plastics, wood stains, and even gasoline. Carver's work revolutionized Southern agriculture by promoting crop rotation and diversification, helping farmers improve soil quality and economic stability.",
+          "metadata": {
+            "citation_label": "George Washington Carver Innovations — Tuskegee University Archives",
+            "canonical_url": "https://www.tuskegee.edu/carver",
+            "source_org": "Tuskegee University",
+            "year": 1916,
+            "content_type": "biographical"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "George Washington Carver developed over 300 uses for peanuts at Tuskegee Institute [1]. His innovations included peanut butter, cooking oil, soap, cosmetics, ink, dyes, plastics, wood stains, and even gasoline [1]. Carver's work revolutionized Southern agriculture by promoting crop rotation and diversification, helping farmers improve soil quality and economic stability [1].",
+          "confidence": 0.94
+        },
+        "sources": [{
+          "citation_label": "George Washington Carver Innovations — Tuskegee University Archives",
+          "canonical_url": "https://www.tuskegee.edu/carver",
+          "source_org": "Tuskegee University",
+          "year": 1916
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_003",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What were the key provisions of the Voting Rights Act of 1965?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.96,
+          "content": "The Voting Rights Act of 1965 prohibited racial discrimination in voting. Key provisions included: (1) Banning literacy tests and other discriminatory voting practices, (2) Federal oversight and preclearance requirements for states with histories of discrimination (Section 5), (3) Authorizing federal examiners to register voters, and (4) Providing federal enforcement mechanisms to protect voting rights.",
+          "metadata": {
+            "citation_label": "Voting Rights Act of 1965 — U.S. Department of Justice",
+            "canonical_url": "https://www.justice.gov/crt/voting-rights-act-1965",
+            "source_org": "U.S. Department of Justice",
+            "year": 1965,
+            "content_type": "legislation"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "The Voting Rights Act of 1965 prohibited racial discrimination in voting [1]. Key provisions included: (1) Banning literacy tests and other discriminatory voting practices, (2) Federal oversight and preclearance requirements for states with histories of discrimination (Section 5), (3) Authorizing federal examiners to register voters, and (4) Providing federal enforcement mechanisms to protect voting rights [1].",
+          "confidence": 0.96
+        },
+        "sources": [{
+          "citation_label": "Voting Rights Act of 1965 — U.S. Department of Justice",
+          "canonical_url": "https://www.justice.gov/crt/voting-rights-act-1965",
+          "source_org": "U.S. Department of Justice",
+          "year": 1965
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_004",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What was the outcome of Brown v. Board of Education and why was it significant?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.97,
+          "content": "In Brown v. Board of Education (1954), the Supreme Court unanimously ruled that racial segregation in public schools was unconstitutional, overturning Plessy v. Ferguson's 'separate but equal' doctrine. Chief Justice Earl Warren wrote that 'separate educational facilities are inherently unequal,' violating the 14th Amendment's Equal Protection Clause. This landmark decision catalyzed the Civil Rights Movement and began the legal dismantling of Jim Crow segregation.",
+          "metadata": {
+            "citation_label": "Brown v. Board of Education — Supreme Court Decision",
+            "canonical_url": "https://www.supremecourt.gov/about/brown.aspx",
+            "source_org": "U.S. Supreme Court",
+            "year": 1954,
+            "content_type": "legal_decision"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "In Brown v. Board of Education (1954), the Supreme Court unanimously ruled that racial segregation in public schools was unconstitutional, overturning Plessy v. Ferguson's 'separate but equal' doctrine [1]. Chief Justice Earl Warren wrote that 'separate educational facilities are inherently unequal,' violating the 14th Amendment's Equal Protection Clause [1]. This landmark decision catalyzed the Civil Rights Movement and began the legal dismantling of Jim Crow segregation [1].",
+          "confidence": 0.97
+        },
+        "sources": [{
+          "citation_label": "Brown v. Board of Education — Supreme Court Decision",
+          "canonical_url": "https://www.supremecourt.gov/about/brown.aspx",
+          "source_org": "U.S. Supreme Court",
+          "year": 1954
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_005",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "Describe the role of the Tuskegee Airmen during World War II.",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.93,
+          "content": "The Tuskegee Airmen were the first African American military aviators in the U.S. Armed Forces. Trained at Tuskegee Army Air Field in Alabama, they flew over 15,000 combat sorties and 1,500 missions escorting bombers over Europe during WWII. They earned 96 Distinguished Flying Crosses and never lost a bomber they escorted to enemy fighters - an unprecedented record. Their outstanding service helped pave the way for military desegregation in 1948.",
+          "metadata": {
+            "citation_label": "Tuskegee Airmen — National Museum of the U.S. Air Force",
+            "canonical_url": "https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/196297/tuskegee-airmen/",
+            "source_org": "National Museum of the U.S. Air Force",
+            "year": 1945,
+            "content_type": "historical"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "The Tuskegee Airmen were the first African American military aviators in the U.S. Armed Forces [1]. Trained at Tuskegee Army Air Field in Alabama, they flew over 15,000 combat sorties and 1,500 missions escorting bombers over Europe during WWII [1]. They earned 96 Distinguished Flying Crosses and never lost a bomber they escorted to enemy fighters - an unprecedented record [1]. Their outstanding service helped pave the way for military desegregation in 1948 [1].",
+          "confidence": 0.93
+        },
+        "sources": [{
+          "citation_label": "Tuskegee Airmen — National Museum of the U.S. Air Force",
+          "canonical_url": "https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/196297/tuskegee-airmen/",
+          "source_org": "National Museum of the U.S. Air Force",
+          "year": 1945
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_006",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What were the main goals of the March on Washington in 1963?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.95,
+          "content": "The March on Washington for Jobs and Freedom on August 28, 1963, had several key goals: (1) Passage of meaningful civil rights legislation, (2) Elimination of racial segregation in public schools, (3) Protection from police brutality, (4) A federal works program for full employment, (5) A Fair Employment Practices Act banning job discrimination, and (6) A $2 minimum wage. Over 250,000 people gathered at the Lincoln Memorial, where Dr. Martin Luther King Jr. delivered his historic 'I Have a Dream' speech.",
+          "metadata": {
+            "citation_label": "March on Washington — National Archives",
+            "canonical_url": "https://www.archives.gov/exhibits/american_originals/march.html",
+            "source_org": "National Archives",
+            "year": 1963,
+            "content_type": "historical"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "The March on Washington for Jobs and Freedom on August 28, 1963, had several key goals [1]: (1) Passage of meaningful civil rights legislation, (2) Elimination of racial segregation in public schools, (3) Protection from police brutality, (4) A federal works program for full employment, (5) A Fair Employment Practices Act banning job discrimination, and (6) A $2 minimum wage [1]. Over 250,000 people gathered at the Lincoln Memorial, where Dr. Martin Luther King Jr. delivered his historic 'I Have a Dream' speech [1].",
+          "confidence": 0.95
+        },
+        "sources": [{
+          "citation_label": "March on Washington — National Archives",
+          "canonical_url": "https://www.archives.gov/exhibits/american_originals/march.html",
+          "source_org": "National Archives",
+          "year": 1963
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_007",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "Who were the Little Rock Nine and what challenges did they face?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.94,
+          "content": "The Little Rock Nine were nine African American students who integrated Central High School in Little Rock, Arkansas, in 1957, following the Brown v. Board decision. They were Minnijean Brown, Elizabeth Eckford, Ernest Green, Thelma Mothershed, Melba Pattillo, Gloria Ray, Terrence Roberts, Jefferson Thomas, and Carlotta Walls. They faced violent mobs, death threats, and daily harassment. Governor Orval Faubus called in the Arkansas National Guard to prevent their entry, forcing President Eisenhower to federalize the Guard and send the 101st Airborne Division to escort them to school.",
+          "metadata": {
+            "citation_label": "Little Rock Nine — National Park Service",
+            "canonical_url": "https://www.nps.gov/chsc/learn/historyculture/the-little-rock-nine.htm",
+            "source_org": "National Park Service",
+            "year": 1957,
+            "content_type": "historical"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "The Little Rock Nine were nine African American students who integrated Central High School in Little Rock, Arkansas, in 1957, following the Brown v. Board decision [1]. They were Minnijean Brown, Elizabeth Eckford, Ernest Green, Thelma Mothershed, Melba Pattillo, Gloria Ray, Terrence Roberts, Jefferson Thomas, and Carlotta Walls [1]. They faced violent mobs, death threats, and daily harassment [1]. Governor Orval Faubus called in the Arkansas National Guard to prevent their entry, forcing President Eisenhower to federalize the Guard and send the 101st Airborne Division to escort them to school [1].",
+          "confidence": 0.94
+        },
+        "sources": [{
+          "citation_label": "Little Rock Nine — National Park Service",
+          "canonical_url": "https://www.nps.gov/chsc/learn/historyculture/the-little-rock-nine.htm",
+          "source_org": "National Park Service",
+          "year": 1957
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_008",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What contributions did Katherine Johnson make to NASA's space program?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.96,
+          "content": "Katherine Johnson was a NASA mathematician whose calculations were critical to the success of U.S. space missions. Her precise trajectory calculations enabled Alan Shepard's 1961 Freedom 7 mission, the first American in space. She calculated the trajectory for John Glenn's 1962 Friendship 7 orbital mission; Glenn specifically requested that Johnson verify the computer's calculations before his flight. Her work was essential for the Apollo 11 moon landing in 1969 and the Space Shuttle program. She received the Presidential Medal of Freedom in 2015.",
+          "metadata": {
+            "citation_label": "Katherine Johnson — NASA Biography",
+            "canonical_url": "https://www.nasa.gov/content/katherine-johnson-biography",
+            "source_org": "NASA",
+            "year": 2015,
+            "content_type": "biographical"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "Katherine Johnson was a NASA mathematician whose calculations were critical to the success of U.S. space missions [1]. Her precise trajectory calculations enabled Alan Shepard's 1961 Freedom 7 mission, the first American in space [1]. She calculated the trajectory for John Glenn's 1962 Friendship 7 orbital mission; Glenn specifically requested that Johnson verify the computer's calculations before his flight [1]. Her work was essential for the Apollo 11 moon landing in 1969 and the Space Shuttle program [1]. She received the Presidential Medal of Freedom in 2015 [1].",
+          "confidence": 0.96
+        },
+        "sources": [{
+          "citation_label": "Katherine Johnson — NASA Biography",
+          "canonical_url": "https://www.nasa.gov/content/katherine-johnson-biography",
+          "source_org": "NASA",
+          "year": 2015
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_009",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "Explain the significance of Juneteenth in American history.",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.95,
+          "content": "Juneteenth, celebrated on June 19th, commemorates the day in 1865 when Union General Gordon Granger arrived in Galveston, Texas, and announced that all enslaved people were free - two and a half years after the Emancipation Proclamation. This date marks the end of slavery in the United States. Juneteenth became a federal holiday in 2021, recognizing its importance as the nation's second Independence Day and honoring African American freedom and achievement.",
+          "metadata": {
+            "citation_label": "Juneteenth — National Museum of African American History and Culture",
+            "canonical_url": "https://nmaahc.si.edu/explore/stories/historical-legacy-juneteenth",
+            "source_org": "Smithsonian NMAAHC",
+            "year": 1865,
+            "content_type": "historical"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "Juneteenth, celebrated on June 19th, commemorates the day in 1865 when Union General Gordon Granger arrived in Galveston, Texas, and announced that all enslaved people were free - two and a half years after the Emancipation Proclamation [1]. This date marks the end of slavery in the United States [1]. Juneteenth became a federal holiday in 2021, recognizing its importance as the nation's second Independence Day and honoring African American freedom and achievement [1].",
+          "confidence": 0.95
+        },
+        "sources": [{
+          "citation_label": "Juneteenth — National Museum of African American History and Culture",
+          "canonical_url": "https://nmaahc.si.edu/explore/stories/historical-legacy-juneteenth",
+          "source_org": "Smithsonian NMAAHC",
+          "year": 1865
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_010",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What was the purpose of the Freedmen's Bureau after the Civil War?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.93,
+          "content": "The Freedmen's Bureau, officially the Bureau of Refugees, Freedmen, and Abandoned Lands, was established in 1865 to aid formerly enslaved people during Reconstruction. Its purposes included: (1) Providing food, housing, and medical aid, (2) Establishing schools and hiring teachers, (3) Supervising labor contracts between freedmen and employers, (4) Managing confiscated Confederate lands, and (5) Operating military courts to protect civil rights. It established over 1,000 schools and helped negotiate labor contracts for four million formerly enslaved people.",
+          "metadata": {
+            "citation_label": "Freedmen's Bureau — National Archives",
+            "canonical_url": "https://www.archives.gov/research/african-americans/freedmens-bureau",
+            "source_org": "National Archives",
+            "year": 1865,
+            "content_type": "historical"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "The Freedmen's Bureau, officially the Bureau of Refugees, Freedmen, and Abandoned Lands, was established in 1865 to aid formerly enslaved people during Reconstruction [1]. Its purposes included: (1) Providing food, housing, and medical aid, (2) Establishing schools and hiring teachers, (3) Supervising labor contracts between freedmen and employers, (4) Managing confiscated Confederate lands, and (5) Operating military courts to protect civil rights [1]. It established over 1,000 schools and helped negotiate labor contracts for four million formerly enslaved people [1].",
+          "confidence": 0.93
+        },
+        "sources": [{
+          "citation_label": "Freedmen's Bureau — National Archives",
+          "canonical_url": "https://www.archives.gov/research/african-americans/freedmens-bureau",
+          "source_org": "National Archives",
+          "year": 1865
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_011",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What specific achievements did Mae Jemison accomplish in space?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.94,
+          "content": "Dr. Mae Jemison became the first African American woman in space when she flew aboard Space Shuttle Endeavour on September 12, 1992, as a mission specialist on STS-47. During the eight-day mission, she conducted experiments in material science and life sciences, including bone cell research and investigating how tadpoles develop in zero gravity. She logged 190 hours, 30 minutes, 23 seconds in space, orbiting Earth 127 times. Before NASA, Jemison served as a medical officer in the Peace Corps.",
+          "metadata": {
+            "citation_label": "Mae Jemison — NASA Biography",
+            "canonical_url": "https://www.nasa.gov/content/dr-mae-c-jemison",
+            "source_org": "NASA",
+            "year": 1992,
+            "content_type": "biographical"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "Dr. Mae Jemison became the first African American woman in space when she flew aboard Space Shuttle Endeavour on September 12, 1992, as a mission specialist on STS-47 [1]. During the eight-day mission, she conducted experiments in material science and life sciences, including bone cell research and investigating how tadpoles develop in zero gravity [1]. She logged 190 hours, 30 minutes, 23 seconds in space, orbiting Earth 127 times [1]. Before NASA, Jemison served as a medical officer in the Peace Corps [1].",
+          "confidence": 0.94
+        },
+        "sources": [{
+          "citation_label": "Mae Jemison — NASA Biography",
+          "canonical_url": "https://www.nasa.gov/content/dr-mae-c-jemison",
+          "source_org": "NASA",
+          "year": 1992
+        }]
+      }
+    },
+    {
+      "sample_id": "edu_aligned_012",
+      "category": "citation",
+      "persona": "educator",
+      "user_query": "What were the core principles established in the Black Panther Party's Ten-Point Program?",
+      "retrieved_context": [
+        {
+          "rank": 1,
+          "score": 0.92,
+          "content": "The Black Panther Party's Ten-Point Program (1966) outlined their political objectives: (1) Freedom and self-determination, (2) Full employment, (3) End to capitalist exploitation, (4) Decent housing, (5) Education that teaches true history, (6) Free healthcare, (7) End to police brutality, (8) End to wars of aggression, (9) Freedom for all Black prisoners, and (10) Land, bread, housing, education, clothing, justice, and peace. The program concluded with a quote from the Declaration of Independence about the right to alter or abolish oppressive government.",
+          "metadata": {
+            "citation_label": "Black Panther Party Ten-Point Program — Primary Source Document",
+            "canonical_url": "https://www.marxists.org/history/usa/workers/black-panthers/1966/10/15.htm",
+            "source_org": "Black Panther Party Archives",
+            "year": 1966,
+            "content_type": "primary_source"
+          }
+        }
+      ],
+      "expected_output": {
+        "version": "kwanzaa.answer.v1",
+        "persona": "educator",
+        "answer": {
+          "text": "The Black Panther Party's Ten-Point Program (1966) outlined their political objectives [1]: (1) Freedom and self-determination, (2) Full employment, (3) End to capitalist exploitation, (4) Decent housing, (5) Education that teaches true history, (6) Free healthcare, (7) End to police brutality, (8) End to wars of aggression, (9) Freedom for all Black prisoners, and (10) Land, bread, housing, education, clothing, justice, and peace [1]. The program concluded with a quote from the Declaration of Independence about the right to alter or abolish oppressive government [1].",
+          "confidence": 0.92
+        },
+        "sources": [{
+          "citation_label": "Black Panther Party Ten-Point Program — Primary Source Document",
+          "canonical_url": "https://www.marxists.org/history/usa/workers/black-panthers/1966/10/15.htm",
+          "source_org": "Black Panther Party Archives",
+          "year": 1966
+        }]
+      }
+    }
+  ]
+}

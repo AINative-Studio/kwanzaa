@@ -23,7 +23,7 @@ except ImportError:
 
 # Configuration
 MODEL_ID = "meta-llama/Llama-3.2-1B-Instruct"
-OUTPUT_DIR = "./outputs/kwanzaa-adapter-v1"
+OUTPUT_DIR = "./outputs/kwanzaa-adapter-v2"
 TRAIN_FILE = "data/training/kwanzaa_train.jsonl"
 EVAL_FILE = "data/training/kwanzaa_eval.jsonl"
 
@@ -130,6 +130,8 @@ training_args = TrainingArguments(
     group_by_length=True,
     report_to="none",
     push_to_hub=False,
+    use_cpu=True,  # Force CPU training
+    no_cuda=True,  # Disable CUDA
 )
 
 # Data collator

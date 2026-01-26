@@ -1,0 +1,230 @@
+# AINative Platform Adapter Training Configuration
+# QLoRA-based adapter training for AINative platform expertise
+
+run:
+  name: "ainative-adapter-v1"
+  output_dir: "outputs/ainative-adapter-v1"
+  seed: 42
+  mixed_precision: "bf16"  # fallback to "fp16" if bf16 not supported
+  logging_steps: 5
+  save_steps: 5
+  eval_steps: 5
+  save_total_limit: 3
+  report_to: ["tensorboard"]
+
+  # Reproducibility
+  deterministic: true
+  dataloader_num_workers: 4
+  dataloader_pin_memory: true
+
+model:
+  # Llama-3.2-1B base model for AINative expertise
+  base_model_id: "meta-llama/Llama-3.2-1B-Instruct"
+  trust_remote_code: true
+  use_flash_attention: true
+
+  # Loading configuration
+  torch_dtype: "auto"  # Will use bf16 if available, else fp16
+  device_map: "auto"
+  low_cpu_mem_usage: true
+
+adapter:
+  # QLoRA adapter configuration
+  method: "qlora"
+
+  # LoRA parameters (smaller model = fewer params needed)
+  lora:
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    bias: "none"
+    task_type: "CAUSAL_LM"
+    target_modules:
+      - "q_proj"
+      - "k_proj"
+      - "v_proj"
+      - "o_proj"
+      - "gate_proj"
+      - "up_proj"
+      - "down_proj"
+
+  # 4-bit quantization
+  quantization:
+    load_in_4bit: true
+    bnb_4bit_compute_dtype: "bfloat16"
+    bnb_4bit_use_double_quant: true
+    bnb_4bit_quant_type: "nf4"
+
+data:
+  # AINative dataset paths
+  train_file: "data/training/ainative_train.jsonl"
+  eval_file: "data/training/ainative_eval.jsonl"
+
+  # Data format
+  format: "chat_jsonl"  # Messages format with system/user/assistant
+  max_seq_length: 2048
+  packing: true  # Pack multiple short samples into sequences
+
+  # Data processing
+  num_proc: 4
+  preprocessing_num_workers: 4
+
+  # System prompt for AINative expertise
+  system_prompt: |
+    You are an expert AINative platform developer with deep knowledge of:
+    - FastAPI backend development with async patterns
+    - ZeroDB vector database operations and semantic search
+    - AIkit SDK and platform SDKs (React, Vue, Svelte, Next.js)
+    - Agent Swarm multi-agent orchestration and task coordination
+    - TDD/BDD testing with pytest (80%+ coverage required)
+    - MCP server tool implementation
+    - OpenAPI specification and API client generation
+
+training:
+  # Training hyperparameters
+  num_train_epochs: 4
+  learning_rate: 0.0002  # 2e-4 standard for QLoRA
+  lr_scheduler_type: "cosine"
+  warmup_ratio: 0.03
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+
+  # Batch sizes and accumulation (smaller model = can use larger batches)
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 8
+  effective_batch_size: 16
+
+  # Optimizer (memory-efficient for QLoRA)
+  optim: "paged_adamw_8bit"
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 1.0e-8
+
+  # Memory optimizations
+  gradient_checkpointing: true
+  gradient_checkpointing_kwargs:
+    use_reentrant: false
+
+  # Early stopping
+  early_stopping:
+    enabled: true
+    patience: 3
+    threshold: 0.001
+
+evaluation:
+  # Evaluation strategy
+  strategy: "steps"
+  steps: 5
+
+  # Metrics to track
+  metrics:
+    - "loss"
+    - "perplexity"
+
+  # Generation parameters for evaluation
+  generation:
+    temperature: 0.2
+    top_p: 0.9
+    top_k: 50
+    max_new_tokens: 800
+    do_sample: true
+    repetition_penalty: 1.1
+
+checkpointing:
+  # Checkpoint management
+  save_strategy: "steps"
+  save_steps: 5
+  save_total_limit: 3
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false
+
+  # Checkpoint verification
+  verify_base_weights_unchanged: true
+  generate_checksums: true
+
+artifacts:
+  # Output artifacts
+  output_dir: "outputs/ainative-adapter-v1"
+
+  # Versioning
+  versioning:
+    enabled: true
+    version_format: "v{major}.{minor}.{patch}"
+    auto_increment: true
+    git_tag: false
+
+  # Metadata to include
+  metadata:
+    base_model_id: "meta-llama/Llama-3.2-1B-Instruct"
+    dataset_version: "v1"
+    task: "ainative_platform_expertise"
+    training_date: "auto"
+    author: "ainative"
+    categories:
+      - "agent_swarm"
+      - "aikit_sdk"
+      - "zerodb"
+      - "tests"
+      - "openapi"
+      - "mcp_tools"
+      - "standards"
+      - "patterns"
+
+  # Files to include in final artifact
+  include_files:
+    - "adapter_config.json"
+    - "adapter_model.safetensors"
+    - "training_config.yaml"
+    - "training_metrics.json"
+    - "checksums.json"
+    - "README.md"
+
+publishing:
+  # Hugging Face Hub publishing
+  enabled: false  # Set to true to auto-publish
+  hf_repo: "ainative/ainative-adapter-v1"
+  private: false
+
+  # Publishing metadata
+  metadata:
+    base_model: "meta-llama/Llama-3.2-1B-Instruct"
+    task: "ainative-platform-expertise"
+    language: "en"
+    license: "apache-2.0"
+    tags:
+      - "qlora"
+      - "ainative"
+      - "agent-swarm"
+      - "aikit-sdk"
+      - "zerodb"
+      - "platform-development"
+
+monitoring:
+  # Training monitoring
+  tensorboard:
+    enabled: true
+    log_dir: "outputs/ainative-adapter-v1/tensorboard"
+
+  # Weights & Biases (optional)
+  wandb:
+    enabled: false
+    project: "ainative-training"
+    entity: "ainative"
+    name: "ainative-adapter-v1"
+
+# Hardware requirements
+hardware:
+  minimum_vram_gb: 6  # Llama-3.2-1B is smaller
+  recommended_vram_gb: 10
+  recommended_gpu: "RTX 3090, RTX 4090, A10G, A100, or better"
+  distributed_training: false
+  num_gpus: 1
+
+# Budget and cost estimates
+cost_estimate:
+  training_hours: 1.5
+  cost_per_hour_a10g: 1.00
+  estimated_total_cost: 1.50
+  currency: "USD"
