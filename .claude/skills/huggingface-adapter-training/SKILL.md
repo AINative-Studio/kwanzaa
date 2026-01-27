@@ -5,7 +5,7 @@ Complete workflow for training Kwanzaa and AINative LoRA adapters on HuggingFace
 ## Metadata
 
 ```yaml
-version: 1.1.0
+version: 1.2.0
 tags: [huggingface, lora, adapter, training, kwanzaa, ainative]
 triggers:
   - "train adapter"
@@ -789,14 +789,191 @@ Project Structure:
 - `scripts/download_ainative_adapter.py` - Download trained adapters
 - `scripts/validate_ainative_adapter_cpu.py` - CPU-based validation
 
+## CRITICAL: Validated Configuration (2026-01-27)
+
+### Space Build Failures - Root Causes and Solutions
+
+**ISSUE 1: Dependency Conflict (CRITICAL)**
+```
+ERROR: ResolutionImpossible
+gradio 5.10.0 depends on huggingface-hub>=0.25.1
+The user requested huggingface_hub==0.20.0
+```
+
+**Solution**: Use `huggingface_hub==0.25.1` (NOT 0.20.0)
+
+**ISSUE 2: Conflicting requirements.txt**
+- **Problem**: Docker SDK spaces should ONLY use Dockerfile
+- **Solution**: DELETE requirements.txt before pushing
+- **Check**: Space should have exactly 5 files (not 6)
+
+**ISSUE 3: Unstable Base Images**
+- **Problem**: Using `:latest` tags causes build timeouts
+- **Solution**: Pin to `nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04`
+
+### Validated Dockerfile (PROVEN - 2026-01-27)
+
+```dockerfile
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONUNBUFFERED=1 \
+    HF_HOME=/app/.cache \
+    CUDA_HOME=/usr/local/cuda
+
+WORKDIR /app
+
+# Install system dependencies (including curl for health check)
+RUN apt-get update && apt-get install -y \
+    python3.10 \
+    python3-pip \
+    git \
+    wget \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip
+RUN pip3 install --upgrade pip setuptools wheel
+
+# Install PyTorch with CUDA 11.8 support
+RUN pip3 install --no-cache-dir \
+    torch==2.1.0 \
+    torchvision==0.16.0 \
+    torchaudio==2.1.0 \
+    --index-url https://download.pytorch.org/whl/cu118
+
+# Install training dependencies (huggingface_hub FIRST!)
+RUN pip3 install --no-cache-dir \
+    huggingface_hub==0.25.1 \
+    transformers==4.36.0 \
+    datasets==2.16.0 \
+    peft==0.7.1 \
+    bitsandbytes==0.41.3 \
+    trl==0.7.4 \
+    accelerate==0.25.0 \
+    gradio==5.10.0 \
+    scipy \
+    sentencepiece \
+    protobuf
+
+# Copy application files
+COPY train.py /app/train.py
+COPY app.py /app/app.py
+
+# Create cache directory
+RUN mkdir -p /app/.cache
+
+# Expose Gradio port
+EXPOSE 7860
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:7860/ || exit 1
+
+# Run Gradio app
+CMD ["python3", "app.py"]
+```
+
+### Critical Version Requirements
+
+- ✅ `huggingface_hub==0.25.1` (REQUIRED for Gradio 5.10.0)
+- ✅ `gradio==5.10.0` (avoid 6.x API changes)
+- ✅ `transformers==4.36.0`
+- ✅ `torch==2.1.0` with CUDA 11.8 index
+- ✅ `bitsandbytes==0.41.3`
+
+### Pre-Push Validation
+
+ALWAYS run before pushing to Space:
+
+```bash
+# Validate Space configuration
+python3 scripts/validate_hf_space_config.py /tmp/kwanzaa-training
+
+# Expected output: "ALL CHECKS PASSED"
+```
+
+Or use the hook:
+
+```bash
+# Hook runs automatically when pushing to HF Space
+.claude/hooks/pre-hf-space-push.sh --space-dir /tmp/kwanzaa-training
+```
+
+### Space File Checklist
+
+Exactly 5 files (NO MORE, NO LESS):
+- [ ] Dockerfile (validated configuration)
+- [ ] app.py (Gradio UI)
+- [ ] train.py (training script)
+- [ ] README.md (with YAML frontmatter)
+- [ ] .gitattributes (HF metadata)
+
+❌ **NEVER INCLUDE**: requirements.txt (causes conflicts with Docker SDK)
+
+### Dependency Installation Order
+
+1. **huggingface_hub** (FIRST - base dependency)
+2. transformers, datasets, peft
+3. bitsandbytes, trl, accelerate
+4. gradio
+5. scipy, sentencepiece, protobuf
+
+### Build Timeline (Expected)
+
+- **Build starts**: 0 min
+- **BUILDING**: 10-15 min (Docker image build)
+- **APP_STARTING**: 30-60 sec (Gradio launch)
+- **RUNNING**: Ready for training ✅
+
+If build takes >20 min, there's likely an issue.
+
+### Common Build Errors
+
+**"ResolutionImpossible"**
+→ Dependency conflict, check huggingface_hub version
+
+**"Launch timed out after 30 min"**
+→ Using unstable base image or wrong dependency versions
+
+**"ModuleNotFoundError: gradio"**
+→ requirements.txt conflict, delete it
+
+**"Health check failed"**
+→ Missing curl in Dockerfile or wrong port
+
+### Quick Fix Commands
+
+```bash
+# Clean Space directory
+cd /tmp/kwanzaa-training
+rm -f requirements.txt *.pyc __pycache__
+
+# Validate before push
+python3 scripts/validate_hf_space_config.py .
+
+# Check Space status
+curl -s "https://huggingface.co/api/spaces/ainativestudio/kwanzaa-training" | \
+  python3 -c "import sys, json; d = json.load(sys.stdin); \
+  print(f'Status: {d[\"runtime\"][\"stage\"]}')"
+```
+
+### Reference Documentation
+
+- **Process Doc**: `docs/training/HUGGINGFACE_SPACE_TRAINING_PROCESS.md`
+- **Validation Script**: `scripts/validate_hf_space_config.py`
+- **Pre-Push Hook**: `.claude/hooks/pre-hf-space-push.sh`
+
 ## Notes
 
 1. **Token Security**: ALWAYS use environment variables for tokens, NEVER hardcode
-2. **Dataset Versions**: Use `ainative-training-v2` (enhanced, 60 samples) for best results
-3. **GPU Selection**: ZeroGPU A100 is most cost-effective for fast training
+2. **Dataset Versions**: Use `ainative-training-v2` (163 samples) for best results
+3. **GPU Selection**: A10G GPU sufficient for 1B model training (1-2 hours)
 4. **Validation Required**: ALWAYS validate adapters before deployment
-5. **Version Control**: Tag adapter versions (v1, v2, etc.) for tracking
-6. **Quality over Quantity**: 60 high-quality examples > 200 low-quality examples
+5. **Version Control**: Tag adapter versions (v1, v2, v3) for tracking
+6. **Quality over Quantity**: 163 high-quality examples > 500 low-quality examples
+7. **CRITICAL**: Run `scripts/validate_hf_space_config.py` before every Space push
+8. **Build Monitoring**: Expect 10-15 min build time, anything longer indicates issues
 
 ## Success Criteria
 
